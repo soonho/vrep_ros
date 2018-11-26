@@ -1,0 +1,15 @@
+<package>
+  <description brief="caso1">
+
+     caso1
+
+  </description>
+  <author>Carlos</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/caso1</url>
+  <depend package="roscpp"/>
+
+</package>
+
+

@@ -1,0 +1,17 @@
+<launch>
+
+  #### Server ###################################
+
+  <node pkg="potential_field_robot" type="field_server" name="field_server" 
+    output="screen">
+
+  </node>
+
+  #### Control ##################################
+
+  <node pkg="potential_field_robot" type="control_listener" name="potential_wizard" 
+    output="screen">
+
+  </node>
+
+</launch>
