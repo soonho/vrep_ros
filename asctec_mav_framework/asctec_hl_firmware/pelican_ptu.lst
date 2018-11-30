@@ -1,0 +1,436 @@
+   1              		.file	"pelican_ptu.c"
+   9              	.Ltext0:
+  10              		.align	2
+  11              		.global	PTU_init
+  13              	PTU_init:
+  14              	.LFB2:
+  15              	.LM1:
+  16              		@ Function supports interworking.
+  17              		@ args = 0, pretend = 0, frame = 0
+  18              		@ frame_needed = 1, uses_anonymous_args = 0
+  19 0000 0DC0A0E1 		mov	ip, sp
+  20              	.LCFI0:
+  21 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+  22              	.LCFI1:
+  23 0008 04B04CE2 		sub	fp, ip, #4
+  24              	.LCFI2:
+  25              	.LM2:
+  26 000c 0E22A0E3 		mov	r2, #-536870912
+  27 0010 0B2982E2 		add	r2, r2, #180224
+  28 0014 0E32A0E3 		mov	r3, #-536870912
+  29 0018 0B3983E2 		add	r3, r3, #180224
+  30 001c 003093E5 		ldr	r3, [r3, #0]
+  31 0020 023983E3 		orr	r3, r3, #32768
+  32 0024 003082E5 		str	r3, [r2, #0]
+  33              	.LM3:
+  34 0028 0E22A0E3 		mov	r2, #-536870912
+  35 002c 0B2982E2 		add	r2, r2, #180224
+  36 0030 0E32A0E3 		mov	r3, #-536870912
+  37 0034 0B3983E2 		add	r3, r3, #180224
+  38 0038 003093E5 		ldr	r3, [r3, #0]
+  39 003c 0139C3E3 		bic	r3, r3, #16384
+  40 0040 003082E5 		str	r3, [r2, #0]
+  41              	.LM4:
+  42 0044 7C209FE5 		ldr	r2, .L3
+  43 0048 0F3AA0E3 		mov	r3, #61440
+  44 004c 3C3083E2 		add	r3, r3, #60
+  45 0050 043082E5 		str	r3, [r2, #4]
+  46              	.LM5:
+  47 0054 6C209FE5 		ldr	r2, .L3
+  48 0058 D63CA0E3 		mov	r3, #54784
+  49 005c 453083E2 		add	r3, r3, #69
+  50 0060 0C3082E5 		str	r3, [r2, #12]
+  51              	.LM6:
+  52 0064 5C209FE5 		ldr	r2, .L3
+  53 0068 B33CA0E3 		mov	r3, #45824
+  54 006c B03083E2 		add	r3, r3, #176
+  55 0070 103082E5 		str	r3, [r2, #16]
+  56              	.LM7:
+  57 0074 4C209FE5 		ldr	r2, .L3
+  58 0078 7D3BA0E3 		mov	r3, #128000
+  59 007c 143082E5 		str	r3, [r2, #20]
+  60              	.LM8:
+  61 0080 40209FE5 		ldr	r2, .L3
+  62 0084 0539A0E3 		mov	r3, #81920
+  63 0088 503083E2 		add	r3, r3, #80
+  64 008c 003082E5 		str	r3, [r2, #0]
+  65              	.LM9:
+  66 0090 30209FE5 		ldr	r2, .L3
+  67 0094 D63BA0E3 		mov	r3, #219136
+  68 0098 363E83E2 		add	r3, r3, #864
+  69 009c 083082E5 		str	r3, [r2, #8]
+  70              	.LM10:
+  71 00a0 20209FE5 		ldr	r2, .L3
+  72 00a4 B33CA0E3 		mov	r3, #45824
+  73 00a8 B03083E2 		add	r3, r3, #176
+  74 00ac 183082E5 		str	r3, [r2, #24]
+  75              	.LM11:
+  76 00b0 10209FE5 		ldr	r2, .L3
+  77 00b4 7D3BA0E3 		mov	r3, #128000
+  78 00b8 1C3082E5 		str	r3, [r2, #28]
+  79              	.LM12:
+  80 00bc 0CD04BE2 		sub	sp, fp, #12
+  81 00c0 00689DE8 		ldmfd	sp, {fp, sp, lr}
+  82 00c4 1EFF2FE1 		bx	lr
+  83              	.L4:
+  84              		.align	2
+  85              	.L3:
+  86 00c8 00000000 		.word	CAMERA_ptu
+  87              	.LFE2:
+  89              		.bss
+  90              		.align	2
+  91              	cam_angle_pitch.1364:
+  92 0000 00000000 		.space	4
+  93              		.align	2
+  94              	ptu_cnt.1361:
+  95 0004 00000000 		.space	4
+  96              		.text
+  97              		.align	2
+  98              		.global	PTU_update
+ 100              	PTU_update:
+ 101              	.LFB3:
+ 102              	.LM13:
+ 103              		@ Function supports interworking.
+ 104              		@ args = 0, pretend = 0, frame = 8
+ 105              		@ frame_needed = 1, uses_anonymous_args = 0
+ 106 00cc 0DC0A0E1 		mov	ip, sp
+ 107              	.LCFI3:
+ 108 00d0 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 109              	.LCFI4:
+ 110 00d4 04B04CE2 		sub	fp, ip, #4
+ 111              	.LCFI5:
+ 112 00d8 08D04DE2 		sub	sp, sp, #8
+ 113              	.LCFI6:
+ 114              	.LM14:
+ 115 00dc CC319FE5 		ldr	r3, .L11
+ 116 00e0 003093E5 		ldr	r3, [r3, #0]
+ 117 00e4 012083E2 		add	r2, r3, #1
+ 118 00e8 C0319FE5 		ldr	r3, .L11
+ 119 00ec 002083E5 		str	r2, [r3, #0]
+ 120 00f0 B8319FE5 		ldr	r3, .L11
+ 121 00f4 003093E5 		ldr	r3, [r3, #0]
+ 122 00f8 090053E3 		cmp	r3, #9
+ 123 00fc 680000DA 		ble	.L10
+ 124              	.LBB2:
+ 125              	.LM15:
+ 126 0100 A8219FE5 		ldr	r2, .L11
+ 127 0104 0030A0E3 		mov	r3, #0
+ 128 0108 003082E5 		str	r3, [r2, #0]
+ 129              	.LM16:
+ 130 010c A0319FE5 		ldr	r3, .L11+4
+ 131 0110 001093E5 		ldr	r1, [r3, #0]
+ 132 0114 0130A0E1 		mov	r3, r1
+ 133 0118 0331A0E1 		mov	r3, r3, asl #2
+ 134 011c 013083E0 		add	r3, r3, r1
+ 135 0120 0321A0E1 		mov	r2, r3, asl #2
+ 136 0124 023083E0 		add	r3, r3, r2
+ 137 0128 0331A0E1 		mov	r3, r3, asl #2
+ 138 012c 013083E0 		add	r3, r3, r1
+ 139 0130 8321A0E1 		mov	r2, r3, asl #3
+ 140 0134 021063E0 		rsb	r1, r3, r2
+ 141 0138 78319FE5 		ldr	r3, .L11+8
+ 142 013c 9123C3E0 		smull	r2, r3, r1, r3
+ 143 0140 4323A0E1 		mov	r2, r3, asr #6
+ 144 0144 C13FA0E1 		mov	r3, r1, asr #31
+ 145 0148 020063E0 		rsb	r0, r3, r2
+ 146 014c 60319FE5 		ldr	r3, .L11+4
+ 147 0150 041093E5 		ldr	r1, [r3, #4]
+ 148 0154 0130A0E1 		mov	r3, r1
+ 149 0158 0331A0E1 		mov	r3, r3, asl #2
+ 150 015c 013083E0 		add	r3, r3, r1
+ 151 0160 0321A0E1 		mov	r2, r3, asl #2
+ 152 0164 023083E0 		add	r3, r3, r2
+ 153 0168 0331A0E1 		mov	r3, r3, asl #2
+ 154 016c 013083E0 		add	r3, r3, r1
+ 155 0170 8321A0E1 		mov	r2, r3, asl #3
+ 156 0174 021063E0 		rsb	r1, r3, r2
+ 157 0178 38319FE5 		ldr	r3, .L11+8
+ 158 017c 9123C3E0 		smull	r2, r3, r1, r3
+ 159 0180 4323A0E1 		mov	r2, r3, asr #6
+ 160 0184 C13FA0E1 		mov	r3, r1, asr #31
+ 161 0188 023063E0 		rsb	r3, r3, r2
+ 162 018c 033080E0 		add	r3, r0, r3
+ 163 0190 10300BE5 		str	r3, [fp, #-16]
+ 164              	.LM17:
+ 165 0194 18319FE5 		ldr	r3, .L11+4
+ 166 0198 042093E5 		ldr	r2, [r3, #4]
+ 167 019c 0230A0E1 		mov	r3, r2
+ 168 01a0 033BA0E1 		mov	r3, r3, asl #22
+ 169 01a4 033062E0 		rsb	r3, r2, r3
+ 170 01a8 0331A0E1 		mov	r3, r3, asl #2
+ 171 01ac 023083E0 		add	r3, r3, r2
+ 172 01b0 0331A0E1 		mov	r3, r3, asl #2
+ 173 01b4 023083E0 		add	r3, r3, r2
+ 174 01b8 0332A0E1 		mov	r3, r3, asl #4
+ 175 01bc 033062E0 		rsb	r3, r2, r3
+ 176 01c0 0331A0E1 		mov	r3, r3, asl #2
+ 177 01c4 021083E0 		add	r1, r3, r2
+ 178 01c8 E8309FE5 		ldr	r3, .L11+8
+ 179 01cc 9123C3E0 		smull	r2, r3, r1, r3
+ 180 01d0 4323A0E1 		mov	r2, r3, asr #6
+ 181 01d4 C13FA0E1 		mov	r3, r1, asr #31
+ 182 01d8 020063E0 		rsb	r0, r3, r2
+ 183 01dc D0309FE5 		ldr	r3, .L11+4
+ 184 01e0 001093E5 		ldr	r1, [r3, #0]
+ 185 01e4 0130A0E1 		mov	r3, r1
+ 186 01e8 0331A0E1 		mov	r3, r3, asl #2
+ 187 01ec 013083E0 		add	r3, r3, r1
+ 188 01f0 0321A0E1 		mov	r2, r3, asl #2
+ 189 01f4 023083E0 		add	r3, r3, r2
+ 190 01f8 0331A0E1 		mov	r3, r3, asl #2
+ 191 01fc 013083E0 		add	r3, r3, r1
+ 192 0200 8321A0E1 		mov	r2, r3, asl #3
+ 193 0204 021063E0 		rsb	r1, r3, r2
+ 194 0208 A8309FE5 		ldr	r3, .L11+8
+ 195 020c 9123C3E0 		smull	r2, r3, r1, r3
+ 196 0210 4323A0E1 		mov	r2, r3, asr #6
+ 197 0214 C13FA0E1 		mov	r3, r1, asr #31
+ 198 0218 023063E0 		rsb	r3, r3, r2
+ 199 021c 033080E0 		add	r3, r0, r3
+ 200 0220 14300BE5 		str	r3, [fp, #-20]
+ 201              	.LM18:
+ 202 0224 90309FE5 		ldr	r3, .L11+12
+ 203 0228 042093E5 		ldr	r2, [r3, #4]
+ 204 022c 8C309FE5 		ldr	r3, .L11+16
+ 205 0230 002083E5 		str	r2, [r3, #0]
+ 206              	.LM19:
+ 207 0234 80309FE5 		ldr	r3, .L11+12
+ 208 0238 B030D3E1 		ldrh	r3, [r3, #0]
+ 209 023c 023003E2 		and	r3, r3, #2
+ 210 0240 000053E3 		cmp	r3, #0
+ 211 0244 0900000A 		beq	.L8
+ 212              	.LM20:
+ 213 0248 70309FE5 		ldr	r3, .L11+16
+ 214 024c 003093E5 		ldr	r3, [r3, #0]
+ 215 0250 0300A0E1 		mov	r0, r3
+ 216 0254 FEFFFFEB 		bl	SERVO_pitch_move
+ 217              	.LM21:
+ 218 0258 5C309FE5 		ldr	r3, .L11+12
+ 219 025c 083093E5 		ldr	r3, [r3, #8]
+ 220 0260 003063E2 		rsb	r3, r3, #0
+ 221 0264 0300A0E1 		mov	r0, r3
+ 222 0268 FEFFFFEB 		bl	SERVO_roll_move
+ 223 026c 0C0000EA 		b	.L10
+ 224              	.L8:
+ 225              	.LM22:
+ 226 0270 48309FE5 		ldr	r3, .L11+16
+ 227 0274 002093E5 		ldr	r2, [r3, #0]
+ 228 0278 14301BE5 		ldr	r3, [fp, #-20]
+ 229 027c 033082E0 		add	r3, r2, r3
+ 230 0280 0300A0E1 		mov	r0, r3
+ 231 0284 FEFFFFEB 		bl	SERVO_pitch_move
+ 232              	.LM23:
+ 233 0288 2C309FE5 		ldr	r3, .L11+12
+ 234 028c 082093E5 		ldr	r2, [r3, #8]
+ 235 0290 10301BE5 		ldr	r3, [fp, #-16]
+ 236 0294 033082E0 		add	r3, r2, r3
+ 237 0298 003063E2 		rsb	r3, r3, #0
+ 238 029c 0300A0E1 		mov	r0, r3
+ 239 02a0 FEFFFFEB 		bl	SERVO_roll_move
+ 240              	.L10:
+ 241              	.LBE2:
+ 242              	.LM24:
+ 243 02a4 0CD04BE2 		sub	sp, fp, #12
+ 244 02a8 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 245 02ac 1EFF2FE1 		bx	lr
+ 246              	.L12:
+ 247              		.align	2
+ 248              	.L11:
+ 249 02b0 04000000 		.word	ptu_cnt.1361
+ 250 02b4 00000000 		.word	IMU_CalcData
+ 251 02b8 D34D6210 		.word	274877907
+ 252 02bc 00000000 		.word	CAMERA_Commands
+ 253 02c0 00000000 		.word	cam_angle_pitch.1364
+ 254              	.LFE3:
+ 256              		.align	2
+ 257              		.global	SERVO_pitch_move
+ 259              	SERVO_pitch_move:
+ 260              	.LFB4:
+ 261              	.LM25:
+ 262              		@ Function supports interworking.
+ 263              		@ args = 0, pretend = 0, frame = 8
+ 264              		@ frame_needed = 1, uses_anonymous_args = 0
+ 265 02c4 0DC0A0E1 		mov	ip, sp
+ 266              	.LCFI7:
+ 267 02c8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 268              	.LCFI8:
+ 269 02cc 04B04CE2 		sub	fp, ip, #4
+ 270              	.LCFI9:
+ 271 02d0 08D04DE2 		sub	sp, sp, #8
+ 272              	.LCFI10:
+ 273 02d4 14000BE5 		str	r0, [fp, #-20]
+ 274              	.LM26:
+ 275 02d8 C0309FE5 		ldr	r3, .L19
+ 276 02dc 040093E5 		ldr	r0, [r3, #4]
+ 277 02e0 14101BE5 		ldr	r1, [fp, #-20]
+ 278 02e4 B8309FE5 		ldr	r3, .L19+4
+ 279 02e8 9123C3E0 		smull	r2, r3, r1, r3
+ 280 02ec 4321A0E1 		mov	r2, r3, asr #2
+ 281 02f0 C13FA0E1 		mov	r3, r1, asr #31
+ 282 02f4 022063E0 		rsb	r2, r3, r2
+ 283 02f8 A0309FE5 		ldr	r3, .L19
+ 284 02fc 0C3093E5 		ldr	r3, [r3, #12]
+ 285 0300 930201E0 		mul	r1, r3, r2
+ 286 0304 9C309FE5 		ldr	r3, .L19+8
+ 287 0308 9123C3E0 		smull	r2, r3, r1, r3
+ 288 030c 4326A0E1 		mov	r2, r3, asr #12
+ 289 0310 C13FA0E1 		mov	r3, r1, asr #31
+ 290 0314 023063E0 		rsb	r3, r3, r2
+ 291 0318 033080E0 		add	r3, r0, r3
+ 292 031c 10300BE5 		str	r3, [fp, #-16]
+ 293              	.LM27:
+ 294 0320 78309FE5 		ldr	r3, .L19
+ 295 0324 143093E5 		ldr	r3, [r3, #20]
+ 296 0328 0320A0E1 		mov	r2, r3
+ 297 032c 10301BE5 		ldr	r3, [fp, #-16]
+ 298 0330 030052E1 		cmp	r2, r3
+ 299 0334 0300002A 		bcs	.L14
+ 300 0338 60309FE5 		ldr	r3, .L19
+ 301 033c 143093E5 		ldr	r3, [r3, #20]
+ 302 0340 10300BE5 		str	r3, [fp, #-16]
+ 303 0344 080000EA 		b	.L16
+ 304              	.L14:
+ 305              	.LM28:
+ 306 0348 50309FE5 		ldr	r3, .L19
+ 307 034c 103093E5 		ldr	r3, [r3, #16]
+ 308 0350 0320A0E1 		mov	r2, r3
+ 309 0354 10301BE5 		ldr	r3, [fp, #-16]
+ 310 0358 030052E1 		cmp	r2, r3
+ 311 035c 0200009A 		bls	.L16
+ 312 0360 38309FE5 		ldr	r3, .L19
+ 313 0364 103093E5 		ldr	r3, [r3, #16]
+ 314 0368 10300BE5 		str	r3, [fp, #-16]
+ 315              	.L16:
+ 316              	.LM29:
+ 317 036c 0E32A0E3 		mov	r3, #-536870912
+ 318 0370 053983E2 		add	r3, r3, #81920
+ 319 0374 443083E2 		add	r3, r3, #68
+ 320 0378 10201BE5 		ldr	r2, [fp, #-16]
+ 321 037c 002083E5 		str	r2, [r3, #0]
+ 322              	.LM30:
+ 323 0380 0E32A0E3 		mov	r3, #-536870912
+ 324 0384 053983E2 		add	r3, r3, #81920
+ 325 0388 503083E2 		add	r3, r3, #80
+ 326 038c 2620A0E3 		mov	r2, #38
+ 327 0390 002083E5 		str	r2, [r3, #0]
+ 328              	.LM31:
+ 329 0394 0CD04BE2 		sub	sp, fp, #12
+ 330 0398 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 331 039c 1EFF2FE1 		bx	lr
+ 332              	.L20:
+ 333              		.align	2
+ 334              	.L19:
+ 335 03a0 00000000 		.word	CAMERA_ptu
+ 336 03a4 67666666 		.word	1717986919
+ 337 03a8 6B298274 		.word	1954687339
+ 338              	.LFE4:
+ 340              		.align	2
+ 341              		.global	SERVO_roll_move
+ 343              	SERVO_roll_move:
+ 344              	.LFB5:
+ 345              	.LM32:
+ 346              		@ Function supports interworking.
+ 347              		@ args = 0, pretend = 0, frame = 8
+ 348              		@ frame_needed = 1, uses_anonymous_args = 0
+ 349 03ac 0DC0A0E1 		mov	ip, sp
+ 350              	.LCFI11:
+ 351 03b0 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 352              	.LCFI12:
+ 353 03b4 04B04CE2 		sub	fp, ip, #4
+ 354              	.LCFI13:
+ 355 03b8 08D04DE2 		sub	sp, sp, #8
+ 356              	.LCFI14:
+ 357 03bc 14000BE5 		str	r0, [fp, #-20]
+ 358              	.LM33:
+ 359 03c0 B8309FE5 		ldr	r3, .L27
+ 360 03c4 000093E5 		ldr	r0, [r3, #0]
+ 361 03c8 14101BE5 		ldr	r1, [fp, #-20]
+ 362 03cc B0309FE5 		ldr	r3, .L27+4
+ 363 03d0 9123C3E0 		smull	r2, r3, r1, r3
+ 364 03d4 4321A0E1 		mov	r2, r3, asr #2
+ 365 03d8 C13FA0E1 		mov	r3, r1, asr #31
+ 366 03dc 022063E0 		rsb	r2, r3, r2
+ 367 03e0 98309FE5 		ldr	r3, .L27
+ 368 03e4 083093E5 		ldr	r3, [r3, #8]
+ 369 03e8 930201E0 		mul	r1, r3, r2
+ 370 03ec 94309FE5 		ldr	r3, .L27+8
+ 371 03f0 9123C3E0 		smull	r2, r3, r1, r3
+ 372 03f4 4326A0E1 		mov	r2, r3, asr #12
+ 373 03f8 C13FA0E1 		mov	r3, r1, asr #31
+ 374 03fc 023063E0 		rsb	r3, r3, r2
+ 375 0400 033080E0 		add	r3, r0, r3
+ 376 0404 10300BE5 		str	r3, [fp, #-16]
+ 377              	.LM34:
+ 378 0408 70309FE5 		ldr	r3, .L27
+ 379 040c 1C2093E5 		ldr	r2, [r3, #28]
+ 380 0410 10301BE5 		ldr	r3, [fp, #-16]
+ 381 0414 030052E1 		cmp	r2, r3
+ 382 0418 030000AA 		bge	.L22
+ 383 041c 5C309FE5 		ldr	r3, .L27
+ 384 0420 1C3093E5 		ldr	r3, [r3, #28]
+ 385 0424 10300BE5 		str	r3, [fp, #-16]
+ 386 0428 070000EA 		b	.L24
+ 387              	.L22:
+ 388              	.LM35:
+ 389 042c 4C309FE5 		ldr	r3, .L27
+ 390 0430 182093E5 		ldr	r2, [r3, #24]
+ 391 0434 10301BE5 		ldr	r3, [fp, #-16]
+ 392 0438 030052E1 		cmp	r2, r3
+ 393 043c 020000DA 		ble	.L24
+ 394 0440 38309FE5 		ldr	r3, .L27
+ 395 0444 183093E5 		ldr	r3, [r3, #24]
+ 396 0448 10300BE5 		str	r3, [fp, #-16]
+ 397              	.L24:
+ 398              	.LM36:
+ 399 044c 0E32A0E3 		mov	r3, #-536870912
+ 400 0450 053983E2 		add	r3, r3, #81920
+ 401 0454 203083E2 		add	r3, r3, #32
+ 402 0458 10201BE5 		ldr	r2, [fp, #-16]
+ 403 045c 002083E5 		str	r2, [r3, #0]
+ 404              	.LM37:
+ 405 0460 0E32A0E3 		mov	r3, #-536870912
+ 406 0464 053983E2 		add	r3, r3, #81920
+ 407 0468 503083E2 		add	r3, r3, #80
+ 408 046c 2620A0E3 		mov	r2, #38
+ 409 0470 002083E5 		str	r2, [r3, #0]
+ 410              	.LM38:
+ 411 0474 0CD04BE2 		sub	sp, fp, #12
+ 412 0478 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 413 047c 1EFF2FE1 		bx	lr
+ 414              	.L28:
+ 415              		.align	2
+ 416              	.L27:
+ 417 0480 00000000 		.word	CAMERA_ptu
+ 418 0484 67666666 		.word	1717986919
+ 419 0488 6B298274 		.word	1954687339
+ 420              	.LFE5:
+ 422              		.comm	GPS_timeout,4,4
+ 423              		.comm	SYSTEM_initialized,1,1
+ 424              		.comm	CAMERA_ptu,32,4
+ 425              		.comm	CAMERA_Commands,12,4
+ 542              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 pelican_ptu.c
+     /tmp/ccCp1HFK.s:10     .text:00000000 $a
+     /tmp/ccCp1HFK.s:13     .text:00000000 PTU_init
+     /tmp/ccCp1HFK.s:86     .text:000000c8 $d
+                            *COM*:00000020 CAMERA_ptu
+     /tmp/ccCp1HFK.s:90     .bss:00000000 $d
+     /tmp/ccCp1HFK.s:91     .bss:00000000 cam_angle_pitch.1364
+     /tmp/ccCp1HFK.s:94     .bss:00000004 ptu_cnt.1361
+     /tmp/ccCp1HFK.s:97     .text:000000cc $a
+     /tmp/ccCp1HFK.s:100    .text:000000cc PTU_update
+     /tmp/ccCp1HFK.s:259    .text:000002c4 SERVO_pitch_move
+     /tmp/ccCp1HFK.s:343    .text:000003ac SERVO_roll_move
+     /tmp/ccCp1HFK.s:249    .text:000002b0 $d
+                            *COM*:0000000c CAMERA_Commands
+     /tmp/ccCp1HFK.s:256    .text:000002c4 $a
+     /tmp/ccCp1HFK.s:335    .text:000003a0 $d
+     /tmp/ccCp1HFK.s:340    .text:000003ac $a
+     /tmp/ccCp1HFK.s:417    .text:00000480 $d
+                            *COM*:00000004 GPS_timeout
+                            *COM*:00000001 SYSTEM_initialized
+     /tmp/ccCp1HFK.s:439    .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+IMU_CalcData

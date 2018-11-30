@@ -1,0 +1,305 @@
+   1              		.file	"irq.c"
+   9              	.Ltext0:
+  10              		.align	2
+  12              	DefaultVICHandler:
+  13              	.LFB2:
+  14              	.LM1:
+  15              		@ Function supports interworking.
+  16              		@ args = 0, pretend = 0, frame = 0
+  17              		@ frame_needed = 1, uses_anonymous_args = 0
+  18 0000 0DC0A0E1 		mov	ip, sp
+  19              	.LCFI0:
+  20 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+  21              	.LCFI1:
+  22 0008 04B04CE2 		sub	fp, ip, #4
+  23              	.LCFI2:
+  24              	.LM2:
+  25 000c 0030A0E3 		mov	r3, #0
+  26 0010 FD3E43E2 		sub	r3, r3, #4048
+  27 0014 0020A0E3 		mov	r2, #0
+  28 0018 002083E5 		str	r2, [r3, #0]
+  29              	.L2:
+  30              	.LM3:
+  31 001c FEFFFFEA 		b	.L2
+  32              	.LFE2:
+  34              		.align	2
+  35              		.global	init_VIC
+  37              	init_VIC:
+  38              	.LFB3:
+  39              	.LM4:
+  40              		@ Function supports interworking.
+  41              		@ args = 0, pretend = 0, frame = 12
+  42              		@ frame_needed = 1, uses_anonymous_args = 0
+  43 0020 0DC0A0E1 		mov	ip, sp
+  44              	.LCFI3:
+  45 0024 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+  46              	.LCFI4:
+  47 0028 04B04CE2 		sub	fp, ip, #4
+  48              	.LCFI5:
+  49 002c 0CD04DE2 		sub	sp, sp, #12
+  50              	.LCFI6:
+  51              	.LM5:
+  52 0030 0030A0E3 		mov	r3, #0
+  53 0034 18300BE5 		str	r3, [fp, #-24]
+  54              	.LM6:
+  55 0038 FE3EE0E3 		mvn	r3, #4064
+  56 003c 0B3043E2 		sub	r3, r3, #11
+  57 0040 0020E0E3 		mvn	r2, #0
+  58 0044 002083E5 		str	r2, [r3, #0]
+  59              	.LM7:
+  60 0048 0030A0E3 		mov	r3, #0
+  61 004c FD3E43E2 		sub	r3, r3, #4048
+  62 0050 0020A0E3 		mov	r2, #0
+  63 0054 002083E5 		str	r2, [r3, #0]
+  64              	.LM8:
+  65 0058 FF3EE0E3 		mvn	r3, #4080
+  66 005c 033043E2 		sub	r3, r3, #3
+  67 0060 0020A0E3 		mov	r2, #0
+  68 0064 002083E5 		str	r2, [r3, #0]
+  69              	.LM9:
+  70 0068 0030A0E3 		mov	r3, #0
+  71 006c 18300BE5 		str	r3, [fp, #-24]
+  72 0070 100000EA 		b	.L5
+  73              	.L6:
+  74              	.LM10:
+  75 0074 18301BE5 		ldr	r3, [fp, #-24]
+  76 0078 0331A0E1 		mov	r3, r3, asl #2
+  77 007c 0F3C43E2 		sub	r3, r3, #3840
+  78 0080 14300BE5 		str	r3, [fp, #-20]
+  79              	.LM11:
+  80 0084 18301BE5 		ldr	r3, [fp, #-24]
+  81 0088 0331A0E1 		mov	r3, r3, asl #2
+  82 008c 0E3C43E2 		sub	r3, r3, #3584
+  83 0090 10300BE5 		str	r3, [fp, #-16]
+  84              	.LM12:
+  85 0094 14201BE5 		ldr	r2, [fp, #-20]
+  86 0098 0030A0E3 		mov	r3, #0
+  87 009c 003082E5 		str	r3, [r2, #0]
+  88              	.LM13:
+  89 00a0 10201BE5 		ldr	r2, [fp, #-16]
+  90 00a4 0030A0E3 		mov	r3, #0
+  91 00a8 003082E5 		str	r3, [r2, #0]
+  92              	.LM14:
+  93 00ac 18301BE5 		ldr	r3, [fp, #-24]
+  94 00b0 013083E2 		add	r3, r3, #1
+  95 00b4 18300BE5 		str	r3, [fp, #-24]
+  96              	.L5:
+  97 00b8 18301BE5 		ldr	r3, [fp, #-24]
+  98 00bc 0F0053E3 		cmp	r3, #15
+  99 00c0 EBFFFF9A 		bls	.L6
+ 100              	.LM15:
+ 101 00c4 3F3DE0E3 		mvn	r3, #4032
+ 102 00c8 0B3043E2 		sub	r3, r3, #11
+ 103 00cc 0C209FE5 		ldr	r2, .L9
+ 104 00d0 002083E5 		str	r2, [r3, #0]
+ 105              	.LM16:
+ 106 00d4 0CD04BE2 		sub	sp, fp, #12
+ 107 00d8 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 108 00dc 1EFF2FE1 		bx	lr
+ 109              	.L10:
+ 110              		.align	2
+ 111              	.L9:
+ 112 00e0 00000000 		.word	DefaultVICHandler
+ 113              	.LFE3:
+ 115              		.align	2
+ 116              		.global	install_irq
+ 118              	install_irq:
+ 119              	.LFB4:
+ 120              	.LM17:
+ 121              		@ Function supports interworking.
+ 122              		@ args = 0, pretend = 0, frame = 24
+ 123              		@ frame_needed = 1, uses_anonymous_args = 0
+ 124 00e4 0DC0A0E1 		mov	ip, sp
+ 125              	.LCFI7:
+ 126 00e8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 127              	.LCFI8:
+ 128 00ec 04B04CE2 		sub	fp, ip, #4
+ 129              	.LCFI9:
+ 130 00f0 18D04DE2 		sub	sp, sp, #24
+ 131              	.LCFI10:
+ 132 00f4 1C000BE5 		str	r0, [fp, #-28]
+ 133 00f8 20100BE5 		str	r1, [fp, #-32]
+ 134              	.LM18:
+ 135 00fc FE2EE0E3 		mvn	r2, #4064
+ 136 0100 0B2042E2 		sub	r2, r2, #11
+ 137 0104 1C101BE5 		ldr	r1, [fp, #-28]
+ 138 0108 0130A0E3 		mov	r3, #1
+ 139 010c 1331A0E1 		mov	r3, r3, asl r1
+ 140 0110 003082E5 		str	r3, [r2, #0]
+ 141              	.LM19:
+ 142 0114 0030A0E3 		mov	r3, #0
+ 143 0118 18300BE5 		str	r3, [fp, #-24]
+ 144 011c 170000EA 		b	.L12
+ 145              	.L13:
+ 146              	.LM20:
+ 147 0120 18301BE5 		ldr	r3, [fp, #-24]
+ 148 0124 0331A0E1 		mov	r3, r3, asl #2
+ 149 0128 0F3C43E2 		sub	r3, r3, #3840
+ 150 012c 14300BE5 		str	r3, [fp, #-20]
+ 151              	.LM21:
+ 152 0130 18301BE5 		ldr	r3, [fp, #-24]
+ 153 0134 0331A0E1 		mov	r3, r3, asl #2
+ 154 0138 0E3C43E2 		sub	r3, r3, #3584
+ 155 013c 10300BE5 		str	r3, [fp, #-16]
+ 156              	.LM22:
+ 157 0140 14301BE5 		ldr	r3, [fp, #-20]
+ 158 0144 003093E5 		ldr	r3, [r3, #0]
+ 159 0148 000053E3 		cmp	r3, #0
+ 160 014c 0800001A 		bne	.L14
+ 161              	.LM23:
+ 162 0150 20301BE5 		ldr	r3, [fp, #-32]
+ 163 0154 0320A0E1 		mov	r2, r3
+ 164 0158 14301BE5 		ldr	r3, [fp, #-20]
+ 165 015c 002083E5 		str	r2, [r3, #0]
+ 166              	.LM24:
+ 167 0160 1C301BE5 		ldr	r3, [fp, #-28]
+ 168 0164 202083E3 		orr	r2, r3, #32
+ 169 0168 10301BE5 		ldr	r3, [fp, #-16]
+ 170 016c 002083E5 		str	r2, [r3, #0]
+ 171              	.LM25:
+ 172 0170 050000EA 		b	.L16
+ 173              	.L14:
+ 174              	.LM26:
+ 175 0174 18301BE5 		ldr	r3, [fp, #-24]
+ 176 0178 013083E2 		add	r3, r3, #1
+ 177 017c 18300BE5 		str	r3, [fp, #-24]
+ 178              	.L12:
+ 179 0180 18301BE5 		ldr	r3, [fp, #-24]
+ 180 0184 0F0053E3 		cmp	r3, #15
+ 181 0188 E4FFFF9A 		bls	.L13
+ 182              	.L16:
+ 183              	.LM27:
+ 184 018c 18301BE5 		ldr	r3, [fp, #-24]
+ 185 0190 100053E3 		cmp	r3, #16
+ 186 0194 0200001A 		bne	.L17
+ 187              	.LM28:
+ 188 0198 0030A0E3 		mov	r3, #0
+ 189 019c 24300BE5 		str	r3, [fp, #-36]
+ 190 01a0 070000EA 		b	.L19
+ 191              	.L17:
+ 192              	.LM29:
+ 193 01a4 0020A0E3 		mov	r2, #0
+ 194 01a8 FF2E42E2 		sub	r2, r2, #4080
+ 195 01ac 1C101BE5 		ldr	r1, [fp, #-28]
+ 196 01b0 0130A0E3 		mov	r3, #1
+ 197 01b4 1331A0E1 		mov	r3, r3, asl r1
+ 198 01b8 003082E5 		str	r3, [r2, #0]
+ 199              	.LM30:
+ 200 01bc 0130A0E3 		mov	r3, #1
+ 201 01c0 24300BE5 		str	r3, [fp, #-36]
+ 202              	.L19:
+ 203 01c4 24301BE5 		ldr	r3, [fp, #-36]
+ 204              	.LM31:
+ 205 01c8 0300A0E1 		mov	r0, r3
+ 206 01cc 0CD04BE2 		sub	sp, fp, #12
+ 207 01d0 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 208 01d4 1EFF2FE1 		bx	lr
+ 209              	.LFE4:
+ 211              		.align	2
+ 212              		.global	uninstall_irq
+ 214              	uninstall_irq:
+ 215              	.LFB5:
+ 216              	.LM32:
+ 217              		@ Function supports interworking.
+ 218              		@ args = 0, pretend = 0, frame = 20
+ 219              		@ frame_needed = 1, uses_anonymous_args = 0
+ 220 01d8 0DC0A0E1 		mov	ip, sp
+ 221              	.LCFI11:
+ 222 01dc 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 223              	.LCFI12:
+ 224 01e0 04B04CE2 		sub	fp, ip, #4
+ 225              	.LCFI13:
+ 226 01e4 14D04DE2 		sub	sp, sp, #20
+ 227              	.LCFI14:
+ 228 01e8 1C000BE5 		str	r0, [fp, #-28]
+ 229              	.LM33:
+ 230 01ec FE2EE0E3 		mvn	r2, #4064
+ 231 01f0 0B2042E2 		sub	r2, r2, #11
+ 232 01f4 1C101BE5 		ldr	r1, [fp, #-28]
+ 233 01f8 0130A0E3 		mov	r3, #1
+ 234 01fc 1331A0E1 		mov	r3, r3, asl r1
+ 235 0200 003082E5 		str	r3, [r2, #0]
+ 236              	.LM34:
+ 237 0204 0030A0E3 		mov	r3, #0
+ 238 0208 18300BE5 		str	r3, [fp, #-24]
+ 239 020c 190000EA 		b	.L22
+ 240              	.L23:
+ 241              	.LM35:
+ 242 0210 18301BE5 		ldr	r3, [fp, #-24]
+ 243 0214 0331A0E1 		mov	r3, r3, asl #2
+ 244 0218 0F3C43E2 		sub	r3, r3, #3840
+ 245 021c 14300BE5 		str	r3, [fp, #-20]
+ 246              	.LM36:
+ 247 0220 18301BE5 		ldr	r3, [fp, #-24]
+ 248 0224 0331A0E1 		mov	r3, r3, asl #2
+ 249 0228 0E3C43E2 		sub	r3, r3, #3584
+ 250 022c 10300BE5 		str	r3, [fp, #-16]
+ 251              	.LM37:
+ 252 0230 10301BE5 		ldr	r3, [fp, #-16]
+ 253 0234 003093E5 		ldr	r3, [r3, #0]
+ 254 0238 2020C3E3 		bic	r2, r3, #32
+ 255 023c 1C301BE5 		ldr	r3, [fp, #-28]
+ 256 0240 030052E1 		cmp	r2, r3
+ 257 0244 0800001A 		bne	.L24
+ 258              	.LM38:
+ 259 0248 14201BE5 		ldr	r2, [fp, #-20]
+ 260 024c 0030A0E3 		mov	r3, #0
+ 261 0250 003082E5 		str	r3, [r2, #0]
+ 262              	.LM39:
+ 263 0254 10301BE5 		ldr	r3, [fp, #-16]
+ 264 0258 003093E5 		ldr	r3, [r3, #0]
+ 265 025c 2020C3E3 		bic	r2, r3, #32
+ 266 0260 10301BE5 		ldr	r3, [fp, #-16]
+ 267 0264 002083E5 		str	r2, [r3, #0]
+ 268              	.LM40:
+ 269 0268 050000EA 		b	.L26
+ 270              	.L24:
+ 271              	.LM41:
+ 272 026c 18301BE5 		ldr	r3, [fp, #-24]
+ 273 0270 013083E2 		add	r3, r3, #1
+ 274 0274 18300BE5 		str	r3, [fp, #-24]
+ 275              	.L22:
+ 276 0278 18301BE5 		ldr	r3, [fp, #-24]
+ 277 027c 0F0053E3 		cmp	r3, #15
+ 278 0280 E2FFFF9A 		bls	.L23
+ 279              	.L26:
+ 280              	.LM42:
+ 281 0284 18301BE5 		ldr	r3, [fp, #-24]
+ 282 0288 100053E3 		cmp	r3, #16
+ 283 028c 0200001A 		bne	.L27
+ 284              	.LM43:
+ 285 0290 0030A0E3 		mov	r3, #0
+ 286 0294 20300BE5 		str	r3, [fp, #-32]
+ 287 0298 070000EA 		b	.L29
+ 288              	.L27:
+ 289              	.LM44:
+ 290 029c 0020A0E3 		mov	r2, #0
+ 291 02a0 FF2E42E2 		sub	r2, r2, #4080
+ 292 02a4 1C101BE5 		ldr	r1, [fp, #-28]
+ 293 02a8 0130A0E3 		mov	r3, #1
+ 294 02ac 1331A0E1 		mov	r3, r3, asl r1
+ 295 02b0 003082E5 		str	r3, [r2, #0]
+ 296              	.LM45:
+ 297 02b4 0130A0E3 		mov	r3, #1
+ 298 02b8 20300BE5 		str	r3, [fp, #-32]
+ 299              	.L29:
+ 300 02bc 20301BE5 		ldr	r3, [fp, #-32]
+ 301              	.LM46:
+ 302 02c0 0300A0E1 		mov	r0, r3
+ 303 02c4 0CD04BE2 		sub	sp, fp, #12
+ 304 02c8 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 305 02cc 1EFF2FE1 		bx	lr
+ 306              	.LFE5:
+ 424              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 irq.c
+     /tmp/ccnBx6Zt.s:10     .text:00000000 $a
+     /tmp/ccnBx6Zt.s:12     .text:00000000 DefaultVICHandler
+     /tmp/ccnBx6Zt.s:37     .text:00000020 init_VIC
+     /tmp/ccnBx6Zt.s:112    .text:000000e0 $d
+     /tmp/ccnBx6Zt.s:115    .text:000000e4 $a
+     /tmp/ccnBx6Zt.s:118    .text:000000e4 install_irq
+     /tmp/ccnBx6Zt.s:214    .text:000001d8 uninstall_irq
+     /tmp/ccnBx6Zt.s:321    .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

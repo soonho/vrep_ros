@@ -1,0 +1,3964 @@
+   1              		.file	"dekf.c"
+   9              	.Ltext0:
+  10              		.align	2
+  11              		.global	initState
+  13              	initState:
+  14              	.LFB5:
+  15              	.LM1:
+  16              		@ Function supports interworking.
+  17              		@ args = 0, pretend = 0, frame = 0
+  18              		@ frame_needed = 0, uses_anonymous_args = 0
+  19              	.LVL0:
+  20              	.LBB16:
+  21              	.LM2:
+  22 0000 543190E5 		ldr	r3, [r0, #340]	@ float
+  23 0004 3C3080E5 		str	r3, [r0, #60]	@ float
+  24 0008 483190E5 		ldr	r3, [r0, #328]	@ float
+  25              	.LBE16:
+  26              	.LM3:
+  27 000c F04F2DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  28              	.LCFI0:
+  29              	.LBB17:
+  30              	.LM4:
+  31 0010 303080E5 		str	r3, [r0, #48]	@ float
+  32 0014 4C3190E5 		ldr	r3, [r0, #332]	@ float
+  33 0018 182190E5 		ldr	r2, [r0, #280]	@ float
+  34 001c 1C1190E5 		ldr	r1, [r0, #284]	@ float
+  35 0020 20C190E5 		ldr	ip, [r0, #288]	@ float
+  36 0024 24E190E5 		ldr	lr, [r0, #292]	@ float
+  37 0028 284190E5 		ldr	r4, [r0, #296]	@ float
+  38 002c 2C5190E5 		ldr	r5, [r0, #300]	@ float
+  39 0030 306190E5 		ldr	r6, [r0, #304]	@ float
+  40 0034 347190E5 		ldr	r7, [r0, #308]	@ float
+  41 0038 388190E5 		ldr	r8, [r0, #312]	@ float
+  42 003c 3CA190E5 		ldr	sl, [r0, #316]	@ float
+  43 0040 409190E5 		ldr	r9, [r0, #320]	@ float
+  44 0044 44B190E5 		ldr	fp, [r0, #324]	@ float
+  45 0048 343080E5 		str	r3, [r0, #52]	@ float
+  46 004c 503190E5 		ldr	r3, [r0, #336]	@ float
+  47 0050 002080E5 		str	r2, [r0, #0]	@ float
+  48 0054 041080E5 		str	r1, [r0, #4]	@ float
+  49 0058 08C080E5 		str	ip, [r0, #8]	@ float
+  50 005c 0CE080E5 		str	lr, [r0, #12]	@ float
+  51 0060 104080E5 		str	r4, [r0, #16]	@ float
+  52 0064 145080E5 		str	r5, [r0, #20]	@ float
+  53 0068 186080E5 		str	r6, [r0, #24]	@ float
+  54 006c 1C7080E5 		str	r7, [r0, #28]	@ float
+  55 0070 208080E5 		str	r8, [r0, #32]	@ float
+  56 0074 24A080E5 		str	sl, [r0, #36]	@ float
+  57 0078 289080E5 		str	r9, [r0, #40]	@ float
+  58 007c 2CB080E5 		str	fp, [r0, #44]	@ float
+  59 0080 383080E5 		str	r3, [r0, #56]	@ float
+  60              	.LBE17:
+  61              	.LM5:
+  62 0084 F04FBDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  63 0088 1EFF2FE1 		bx	lr
+  64              	.LFE5:
+  66              		.align	2
+  67              		.global	DEKF_getInitializeEvent
+  69              	DEKF_getInitializeEvent:
+  70              	.LFB8:
+  71              	.LM6:
+  72              		@ Function supports interworking.
+  73              		@ args = 0, pretend = 0, frame = 0
+  74              		@ frame_needed = 0, uses_anonymous_args = 0
+  75              		@ link register save eliminated.
+  76              	.LVL1:
+  77              	.LM7:
+  78 008c A801D0E5 		ldrb	r0, [r0, #424]	@ zero_extendqisi2
+  79              	.LVL2:
+  80              	.LM8:
+  81              		@ lr needed for prologue
+  82              	.LM9:
+  83 0090 1EFF2FE1 		bx	lr
+  84              	.LFE8:
+  86              		.global	__mulsf3
+  87              		.global	__addsf3
+  88              		.global	__extendsfdf2
+  89              		.global	__muldf3
+  90              		.global	__adddf3
+  91              		.global	__truncdfsf2
+  92              		.global	__gesf2
+  93              		.global	__subsf3
+  94              		.global	__divsf3
+  95              		.global	__subdf3
+  96              		.global	__ltsf2
+  97              		.align	2
+  98              		.global	yawFromQuaternion
+ 100              	yawFromQuaternion:
+ 101              	.LFB9:
+ 102              	.LM10:
+ 103              		@ Function supports interworking.
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106              	.LVL3:
+ 107 0094 F0412DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, lr}
+ 108              	.LCFI1:
+ 109              	.LM11:
+ 110 0098 087090E5 		ldr	r7, [r0, #8]	@ float
+ 111 009c 0C4090E5 		ldr	r4, [r0, #12]	@ float
+ 112              	.LM12:
+ 113 00a0 0060A0E1 		mov	r6, r0
+ 114              	.LM13:
+ 115 00a4 0710A0E1 		mov	r1, r7
+ 116 00a8 0700A0E1 		mov	r0, r7
+ 117              	.LVL4:
+ 118 00ac FEFFFFEB 		bl	__mulsf3
+ 119 00b0 0410A0E1 		mov	r1, r4
+ 120 00b4 0050A0E1 		mov	r5, r0
+ 121 00b8 0400A0E1 		mov	r0, r4
+ 122 00bc FEFFFFEB 		bl	__mulsf3
+ 123 00c0 0010A0E1 		mov	r1, r0
+ 124 00c4 0500A0E1 		mov	r0, r5
+ 125 00c8 FEFFFFEB 		bl	__addsf3
+ 126 00cc FEFFFFEB 		bl	__extendsfdf2
+ 127 00d0 0321A0E3 		mov	r2, #-1073741824
+ 128 00d4 0030A0E3 		mov	r3, #0
+ 129 00d8 FEFFFFEB 		bl	__muldf3
+ 130 00dc FF25A0E3 		mov	r2, #1069547520
+ 131 00e0 032682E2 		add	r2, r2, #3145728
+ 132 00e4 0030A0E3 		mov	r3, #0
+ 133 00e8 FEFFFFEB 		bl	__adddf3
+ 134 00ec FEFFFFEB 		bl	__truncdfsf2
+ 135              	.LM14:
+ 136 00f0 001096E5 		ldr	r1, [r6, #0]	@ float
+ 137              	.LM15:
+ 138 00f4 0080A0E1 		mov	r8, r0
+ 139              	.LVL5:
+ 140              	.LM16:
+ 141 00f8 0400A0E1 		mov	r0, r4
+ 142 00fc FEFFFFEB 		bl	__mulsf3
+ 143 0100 041096E5 		ldr	r1, [r6, #4]	@ float
+ 144 0104 0040A0E1 		mov	r4, r0
+ 145 0108 0700A0E1 		mov	r0, r7
+ 146 010c FEFFFFEB 		bl	__mulsf3
+ 147 0110 0010A0E1 		mov	r1, r0
+ 148 0114 0400A0E1 		mov	r0, r4
+ 149 0118 FEFFFFEB 		bl	__addsf3
+ 150 011c 0010A0E1 		mov	r1, r0
+ 151 0120 FEFFFFEB 		bl	__addsf3
+ 152 0124 0060A0E1 		mov	r6, r0
+ 153              	.LVL6:
+ 154              	.LM17:
+ 155 0128 0201C0E3 		bic	r0, r0, #-2147483648
+ 156 012c FEFFFFEB 		bl	__extendsfdf2
+ 157 0130 562F8FE2 		adr	r2, .L15
+ 158 0134 0C0092E8 		ldmia	r2, {r2-r3}
+ 159 0138 FEFFFFEB 		bl	__adddf3
+ 160 013c FEFFFFEB 		bl	__truncdfsf2
+ 161              	.LM18:
+ 162 0140 0010A0E3 		mov	r1, #0
+ 163              	.LM19:
+ 164 0144 0050A0E1 		mov	r5, r0
+ 165              	.LVL7:
+ 166              	.LM20:
+ 167 0148 0800A0E1 		mov	r0, r8
+ 168 014c FEFFFFEB 		bl	__gesf2
+ 169 0150 000050E3 		cmp	r0, #0
+ 170 0154 2A0000BA 		blt	.L6
+ 171              	.LM21:
+ 172 0158 0510A0E1 		mov	r1, r5
+ 173 015c 0800A0E1 		mov	r0, r8
+ 174 0160 FEFFFFEB 		bl	__subsf3
+ 175 0164 0510A0E1 		mov	r1, r5
+ 176 0168 0040A0E1 		mov	r4, r0
+ 177 016c 0800A0E1 		mov	r0, r8
+ 178 0170 FEFFFFEB 		bl	__addsf3
+ 179 0174 0010A0E1 		mov	r1, r0
+ 180 0178 0400A0E1 		mov	r0, r4
+ 181 017c FEFFFFEB 		bl	__divsf3
+ 182 0180 FEFFFFEB 		bl	__extendsfdf2
+ 183 0184 432F8FE2 		adr	r2, .L15+8
+ 184 0188 0C0092E8 		ldmia	r2, {r2-r3}
+ 185 018c 0040A0E1 		mov	r4, r0
+ 186 0190 0150A0E1 		mov	r5, r1
+ 187              	.LVL8:
+ 188 0194 FEFFFFEB 		bl	__muldf3
+ 189 0198 0020A0E1 		mov	r2, r0
+ 190 019c 0130A0E1 		mov	r3, r1
+ 191 01a0 0400A0E1 		mov	r0, r4
+ 192 01a4 0510A0E1 		mov	r1, r5
+ 193 01a8 FEFFFFEB 		bl	__muldf3
+ 194 01ac EC208FE2 		adr	r2, .L15+16
+ 195 01b0 0C0092E8 		ldmia	r2, {r2-r3}
+ 196 01b4 FEFFFFEB 		bl	__subdf3
+ 197 01b8 0020A0E1 		mov	r2, r0
+ 198 01bc 0130A0E1 		mov	r3, r1
+ 199 01c0 0400A0E1 		mov	r0, r4
+ 200 01c4 0510A0E1 		mov	r1, r5
+ 201 01c8 FEFFFFEB 		bl	__muldf3
+ 202 01cc D4208FE2 		adr	r2, .L15+24
+ 203 01d0 0C0092E8 		ldmia	r2, {r2-r3}
+ 204 01d4 FEFFFFEB 		bl	__adddf3
+ 205 01d8 FEFFFFEB 		bl	__truncdfsf2
+ 206 01dc 0040A0E1 		mov	r4, r0
+ 207              	.LVL9:
+ 208              	.L9:
+ 209              	.LM22:
+ 210 01e0 0600A0E1 		mov	r0, r6
+ 211 01e4 0010A0E3 		mov	r1, #0
+ 212 01e8 FEFFFFEB 		bl	__ltsf2
+ 213 01ec 000050E3 		cmp	r0, #0
+ 214              	.LM23:
+ 215 01f0 023184B2 		addlt	r3, r4, #-2147483648
+ 216 01f4 0340A0B1 		movlt	r4, r3
+ 217              	.LM24:
+ 218 01f8 0400A0E1 		mov	r0, r4
+ 219 01fc F041BDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, lr}
+ 220 0200 1EFF2FE1 		bx	lr
+ 221              	.LVL10:
+ 222              	.L6:
+ 223              	.LM25:
+ 224 0204 0510A0E1 		mov	r1, r5
+ 225 0208 0800A0E1 		mov	r0, r8
+ 226 020c FEFFFFEB 		bl	__addsf3
+ 227 0210 0810A0E1 		mov	r1, r8
+ 228 0214 0040A0E1 		mov	r4, r0
+ 229 0218 0500A0E1 		mov	r0, r5
+ 230 021c FEFFFFEB 		bl	__subsf3
+ 231 0220 0010A0E1 		mov	r1, r0
+ 232 0224 0400A0E1 		mov	r0, r4
+ 233 0228 FEFFFFEB 		bl	__divsf3
+ 234 022c FEFFFFEB 		bl	__extendsfdf2
+ 235 0230 60208FE2 		adr	r2, .L15+8
+ 236 0234 0C0092E8 		ldmia	r2, {r2-r3}
+ 237 0238 0040A0E1 		mov	r4, r0
+ 238 023c 0150A0E1 		mov	r5, r1
+ 239              	.LVL11:
+ 240 0240 FEFFFFEB 		bl	__muldf3
+ 241 0244 0020A0E1 		mov	r2, r0
+ 242 0248 0130A0E1 		mov	r3, r1
+ 243 024c 0400A0E1 		mov	r0, r4
+ 244 0250 0510A0E1 		mov	r1, r5
+ 245 0254 FEFFFFEB 		bl	__muldf3
+ 246 0258 40208FE2 		adr	r2, .L15+16
+ 247 025c 0C0092E8 		ldmia	r2, {r2-r3}
+ 248 0260 FEFFFFEB 		bl	__subdf3
+ 249 0264 0020A0E1 		mov	r2, r0
+ 250 0268 0130A0E1 		mov	r3, r1
+ 251 026c 0400A0E1 		mov	r0, r4
+ 252 0270 0510A0E1 		mov	r1, r5
+ 253 0274 FEFFFFEB 		bl	__muldf3
+ 254 0278 30208FE2 		adr	r2, .L15+32
+ 255 027c 0C0092E8 		ldmia	r2, {r2-r3}
+ 256 0280 FEFFFFEB 		bl	__adddf3
+ 257 0284 FEFFFFEB 		bl	__truncdfsf2
+ 258 0288 0040A0E1 		mov	r4, r0
+ 259              	.LVL12:
+ 260 028c D3FFFFEA 		b	.L9
+ 261              	.L16:
+ 262              		.align	2
+ 263              	.L15:
+ 264 0290 DF7CDB3D 		.word	1037794527
+ 265 0294 BBBDD7D9 		.word	-640172613
+ 266 0298 5B20C93F 		.word	1070145627
+ 267 029c E3361AC0 		.word	-1072023837
+ 268 02a0 166AEF3F 		.word	1072654870
+ 269 02a4 60764F1E 		.word	508524128
+ 270 02a8 FB21E93F 		.word	1072243195
+ 271 02ac 182D4454 		.word	1413754136
+ 272 02b0 7CD90240 		.word	1073928572
+ 273 02b4 D221337F 		.word	2134057426
+ 274              	.LFE9:
+ 276              		.align	2
+ 277              		.global	quaternionMultiplication
+ 279              	quaternionMultiplication:
+ 280              	.LFB10:
+ 281              	.LM26:
+ 282              		@ Function supports interworking.
+ 283              		@ args = 0, pretend = 0, frame = 0
+ 284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 285              	.LVL13:
+ 286 02b8 F0402DE9 		stmfd	sp!, {r4, r5, r6, r7, lr}
+ 287              	.LCFI2:
+ 288              	.LM27:
+ 289 02bc 0050A0E1 		mov	r5, r0
+ 290 02c0 0140A0E1 		mov	r4, r1
+ 291              	.LM28:
+ 292 02c4 000090E5 		ldr	r0, [r0, #0]	@ float
+ 293              	.LVL14:
+ 294 02c8 001091E5 		ldr	r1, [r1, #0]	@ float
+ 295              	.LVL15:
+ 296              	.LM29:
+ 297 02cc 0270A0E1 		mov	r7, r2
+ 298              	.LM30:
+ 299 02d0 FEFFFFEB 		bl	__mulsf3
+ 300              	.LVL16:
+ 301 02d4 041094E5 		ldr	r1, [r4, #4]	@ float
+ 302 02d8 0060A0E1 		mov	r6, r0
+ 303 02dc 040095E5 		ldr	r0, [r5, #4]	@ float
+ 304 02e0 FEFFFFEB 		bl	__mulsf3
+ 305 02e4 0010A0E1 		mov	r1, r0
+ 306 02e8 0600A0E1 		mov	r0, r6
+ 307 02ec FEFFFFEB 		bl	__subsf3
+ 308 02f0 081094E5 		ldr	r1, [r4, #8]	@ float
+ 309 02f4 0060A0E1 		mov	r6, r0
+ 310 02f8 080095E5 		ldr	r0, [r5, #8]	@ float
+ 311 02fc FEFFFFEB 		bl	__mulsf3
+ 312 0300 0010A0E1 		mov	r1, r0
+ 313 0304 0600A0E1 		mov	r0, r6
+ 314 0308 FEFFFFEB 		bl	__subsf3
+ 315 030c 0C1094E5 		ldr	r1, [r4, #12]	@ float
+ 316 0310 0060A0E1 		mov	r6, r0
+ 317 0314 0C0095E5 		ldr	r0, [r5, #12]	@ float
+ 318 0318 FEFFFFEB 		bl	__mulsf3
+ 319 031c 0010A0E1 		mov	r1, r0
+ 320 0320 0600A0E1 		mov	r0, r6
+ 321 0324 FEFFFFEB 		bl	__subsf3
+ 322 0328 000087E5 		str	r0, [r7, #0]	@ float
+ 323              	.LM31:
+ 324 032c 041094E5 		ldr	r1, [r4, #4]	@ float
+ 325 0330 000095E5 		ldr	r0, [r5, #0]	@ float
+ 326 0334 FEFFFFEB 		bl	__mulsf3
+ 327 0338 001094E5 		ldr	r1, [r4, #0]	@ float
+ 328 033c 0060A0E1 		mov	r6, r0
+ 329 0340 040095E5 		ldr	r0, [r5, #4]	@ float
+ 330 0344 FEFFFFEB 		bl	__mulsf3
+ 331 0348 0010A0E1 		mov	r1, r0
+ 332 034c 0600A0E1 		mov	r0, r6
+ 333 0350 FEFFFFEB 		bl	__addsf3
+ 334 0354 0C1094E5 		ldr	r1, [r4, #12]	@ float
+ 335 0358 0060A0E1 		mov	r6, r0
+ 336 035c 080095E5 		ldr	r0, [r5, #8]	@ float
+ 337 0360 FEFFFFEB 		bl	__mulsf3
+ 338 0364 0010A0E1 		mov	r1, r0
+ 339 0368 0600A0E1 		mov	r0, r6
+ 340 036c FEFFFFEB 		bl	__addsf3
+ 341 0370 081094E5 		ldr	r1, [r4, #8]	@ float
+ 342 0374 0060A0E1 		mov	r6, r0
+ 343 0378 0C0095E5 		ldr	r0, [r5, #12]	@ float
+ 344 037c FEFFFFEB 		bl	__mulsf3
+ 345 0380 0010A0E1 		mov	r1, r0
+ 346 0384 0600A0E1 		mov	r0, r6
+ 347 0388 FEFFFFEB 		bl	__subsf3
+ 348 038c 040087E5 		str	r0, [r7, #4]	@ float
+ 349              	.LM32:
+ 350 0390 081094E5 		ldr	r1, [r4, #8]	@ float
+ 351 0394 000095E5 		ldr	r0, [r5, #0]	@ float
+ 352 0398 FEFFFFEB 		bl	__mulsf3
+ 353 039c 001094E5 		ldr	r1, [r4, #0]	@ float
+ 354 03a0 0060A0E1 		mov	r6, r0
+ 355 03a4 080095E5 		ldr	r0, [r5, #8]	@ float
+ 356 03a8 FEFFFFEB 		bl	__mulsf3
+ 357 03ac 0010A0E1 		mov	r1, r0
+ 358 03b0 0600A0E1 		mov	r0, r6
+ 359 03b4 FEFFFFEB 		bl	__addsf3
+ 360 03b8 0C1094E5 		ldr	r1, [r4, #12]	@ float
+ 361 03bc 0060A0E1 		mov	r6, r0
+ 362 03c0 040095E5 		ldr	r0, [r5, #4]	@ float
+ 363 03c4 FEFFFFEB 		bl	__mulsf3
+ 364 03c8 0010A0E1 		mov	r1, r0
+ 365 03cc 0600A0E1 		mov	r0, r6
+ 366 03d0 FEFFFFEB 		bl	__subsf3
+ 367 03d4 041094E5 		ldr	r1, [r4, #4]	@ float
+ 368 03d8 0060A0E1 		mov	r6, r0
+ 369 03dc 0C0095E5 		ldr	r0, [r5, #12]	@ float
+ 370 03e0 FEFFFFEB 		bl	__mulsf3
+ 371 03e4 0010A0E1 		mov	r1, r0
+ 372 03e8 0600A0E1 		mov	r0, r6
+ 373 03ec FEFFFFEB 		bl	__addsf3
+ 374 03f0 080087E5 		str	r0, [r7, #8]	@ float
+ 375              	.LM33:
+ 376 03f4 0C1094E5 		ldr	r1, [r4, #12]	@ float
+ 377 03f8 000095E5 		ldr	r0, [r5, #0]	@ float
+ 378 03fc FEFFFFEB 		bl	__mulsf3
+ 379 0400 081094E5 		ldr	r1, [r4, #8]	@ float
+ 380 0404 0060A0E1 		mov	r6, r0
+ 381 0408 040095E5 		ldr	r0, [r5, #4]	@ float
+ 382 040c FEFFFFEB 		bl	__mulsf3
+ 383 0410 0010A0E1 		mov	r1, r0
+ 384 0414 0600A0E1 		mov	r0, r6
+ 385 0418 FEFFFFEB 		bl	__addsf3
+ 386 041c 041094E5 		ldr	r1, [r4, #4]	@ float
+ 387 0420 0060A0E1 		mov	r6, r0
+ 388 0424 080095E5 		ldr	r0, [r5, #8]	@ float
+ 389 0428 FEFFFFEB 		bl	__mulsf3
+ 390 042c 0010A0E1 		mov	r1, r0
+ 391 0430 0600A0E1 		mov	r0, r6
+ 392 0434 FEFFFFEB 		bl	__subsf3
+ 393 0438 001094E5 		ldr	r1, [r4, #0]	@ float
+ 394 043c 0060A0E1 		mov	r6, r0
+ 395 0440 0C0095E5 		ldr	r0, [r5, #12]	@ float
+ 396 0444 FEFFFFEB 		bl	__mulsf3
+ 397 0448 0010A0E1 		mov	r1, r0
+ 398 044c 0600A0E1 		mov	r0, r6
+ 399 0450 FEFFFFEB 		bl	__addsf3
+ 400 0454 0C0087E5 		str	r0, [r7, #12]	@ float
+ 401              	.LM34:
+ 402 0458 F040BDE8 		ldmfd	sp!, {r4, r5, r6, r7, lr}
+ 403 045c 1EFF2FE1 		bx	lr
+ 404              	.LFE10:
+ 406              		.global	__fixdfsi
+ 407              		.align	2
+ 408              		.global	float2Int
+ 410              	float2Int:
+ 411              	.LFB11:
+ 412              	.LM35:
+ 413              		@ Function supports interworking.
+ 414              		@ args = 0, pretend = 0, frame = 0
+ 415              		@ frame_needed = 0, uses_anonymous_args = 0
+ 416              	.LVL17:
+ 417 0460 10402DE9 		stmfd	sp!, {r4, lr}
+ 418              	.LCFI3:
+ 419              	.LM36:
+ 420 0464 0010A0E3 		mov	r1, #0
+ 421              	.LM37:
+ 422 0468 0040A0E1 		mov	r4, r0
+ 423              	.LM38:
+ 424 046c FEFFFFEB 		bl	__gesf2
+ 425              	.LVL18:
+ 426 0470 000050E3 		cmp	r0, #0
+ 427 0474 0400A0E1 		mov	r0, r4
+ 428 0478 070000BA 		blt	.L20
+ 429              	.LVL19:
+ 430 047c FEFFFFEB 		bl	__extendsfdf2
+ 431              	.LVL20:
+ 432 0480 FF25A0E3 		mov	r2, #1069547520
+ 433 0484 022682E2 		add	r2, r2, #2097152
+ 434 0488 0030A0E3 		mov	r3, #0
+ 435 048c FEFFFFEB 		bl	__adddf3
+ 436 0490 FEFFFFEB 		bl	__fixdfsi
+ 437              	.L23:
+ 438              	.LM39:
+ 439 0494 1040BDE8 		ldmfd	sp!, {r4, lr}
+ 440 0498 1EFF2FE1 		bx	lr
+ 441              	.LVL21:
+ 442              	.L20:
+ 443              	.LM40:
+ 444 049c 0400A0E1 		mov	r0, r4
+ 445 04a0 FEFFFFEB 		bl	__extendsfdf2
+ 446              	.LVL22:
+ 447 04a4 FF25A0E3 		mov	r2, #1069547520
+ 448 04a8 022682E2 		add	r2, r2, #2097152
+ 449 04ac 0030A0E3 		mov	r3, #0
+ 450 04b0 FEFFFFEB 		bl	__subdf3
+ 451 04b4 FEFFFFEB 		bl	__fixdfsi
+ 452 04b8 F5FFFFEA 		b	.L23
+ 453              	.LFE11:
+ 455              		.align	2
+ 456              		.global	float2Short
+ 458              	float2Short:
+ 459              	.LFB12:
+ 460              	.LM41:
+ 461              		@ Function supports interworking.
+ 462              		@ args = 0, pretend = 0, frame = 0
+ 463              		@ frame_needed = 0, uses_anonymous_args = 0
+ 464              	.LVL23:
+ 465 04bc 10402DE9 		stmfd	sp!, {r4, lr}
+ 466              	.LCFI4:
+ 467              	.LM42:
+ 468 04c0 0010A0E3 		mov	r1, #0
+ 469              	.LM43:
+ 470 04c4 0040A0E1 		mov	r4, r0
+ 471              	.LM44:
+ 472 04c8 FEFFFFEB 		bl	__gesf2
+ 473              	.LVL24:
+ 474 04cc 000050E3 		cmp	r0, #0
+ 475 04d0 0400A0E1 		mov	r0, r4
+ 476 04d4 090000BA 		blt	.L26
+ 477              	.LVL25:
+ 478 04d8 FEFFFFEB 		bl	__extendsfdf2
+ 479              	.LVL26:
+ 480 04dc FF25A0E3 		mov	r2, #1069547520
+ 481 04e0 022682E2 		add	r2, r2, #2097152
+ 482 04e4 0030A0E3 		mov	r3, #0
+ 483 04e8 FEFFFFEB 		bl	__adddf3
+ 484 04ec FEFFFFEB 		bl	__fixdfsi
+ 485 04f0 0008A0E1 		mov	r0, r0, asl #16
+ 486 04f4 4008A0E1 		mov	r0, r0, asr #16
+ 487              	.L29:
+ 488              	.LM45:
+ 489 04f8 1040BDE8 		ldmfd	sp!, {r4, lr}
+ 490 04fc 1EFF2FE1 		bx	lr
+ 491              	.LVL27:
+ 492              	.L26:
+ 493              	.LM46:
+ 494 0500 0400A0E1 		mov	r0, r4
+ 495 0504 FEFFFFEB 		bl	__extendsfdf2
+ 496              	.LVL28:
+ 497 0508 FF25A0E3 		mov	r2, #1069547520
+ 498 050c 022682E2 		add	r2, r2, #2097152
+ 499 0510 0030A0E3 		mov	r3, #0
+ 500 0514 FEFFFFEB 		bl	__subdf3
+ 501 0518 FEFFFFEB 		bl	__fixdfsi
+ 502 051c 0008A0E1 		mov	r0, r0, asl #16
+ 503 0520 4008A0E1 		mov	r0, r0, asr #16
+ 504 0524 F3FFFFEA 		b	.L29
+ 505              	.LFE12:
+ 507              		.align	2
+ 508              		.global	DEKF_sendState
+ 510              	DEKF_sendState:
+ 511              	.LFB3:
+ 512              	.LM47:
+ 513              		@ Function supports interworking.
+ 514              		@ args = 0, pretend = 0, frame = 0
+ 515              		@ frame_needed = 0, uses_anonymous_args = 0
+ 516              	.LVL29:
+ 517 0528 F04F2DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 518              	.LCFI5:
+ 519              	.LM48:
+ 520 052c DCE09FE5 		ldr	lr, .L33
+ 521 0530 B032DEE1 		ldrh	r3, [lr, #32]
+ 522 0534 B43BC0E1 		strh	r3, [r0, #180]	@ movhi
+ 523              	.LM49:
+ 524 0538 B232DEE1 		ldrh	r3, [lr, #34]
+ 525 053c 003063E2 		rsb	r3, r3, #0
+ 526 0540 B63BC0E1 		strh	r3, [r0, #182]	@ movhi
+ 527              	.LM50:
+ 528 0544 B4C2DEE1 		ldrh	ip, [lr, #36]
+ 529 0548 00C06CE2 		rsb	ip, ip, #0
+ 530 054c B8CBC0E1 		strh	ip, [r0, #184]	@ movhi
+ 531              	.LM51:
+ 532 0550 BA30DEE1 		ldrh	r3, [lr, #10]
+ 533 0554 BA3BC0E1 		strh	r3, [r0, #186]	@ movhi
+ 534              	.LM52:
+ 535 0558 B830DEE1 		ldrh	r3, [lr, #8]
+ 536 055c 003063E2 		rsb	r3, r3, #0
+ 537 0560 BC3BC0E1 		strh	r3, [r0, #188]	@ movhi
+ 538              	.LM53:
+ 539 0564 BCC0DEE1 		ldrh	ip, [lr, #12]
+ 540              	.LM54:
+ 541 0568 084090E5 		ldr	r4, [r0, #8]	@ float
+ 542 056c 04E090E5 		ldr	lr, [r0, #4]	@ float
+ 543 0570 0C5090E5 		ldr	r5, [r0, #12]	@ float
+ 544 0574 106090E5 		ldr	r6, [r0, #16]	@ float
+ 545 0578 147090E5 		ldr	r7, [r0, #20]	@ float
+ 546 057c 188090E5 		ldr	r8, [r0, #24]	@ float
+ 547 0580 1CA090E5 		ldr	sl, [r0, #28]	@ float
+ 548 0584 209090E5 		ldr	r9, [r0, #32]	@ float
+ 549 0588 003090E5 		ldr	r3, [r0, #0]	@ float
+ 550 058c 24B090E5 		ldr	fp, [r0, #36]	@ float
+ 551              	.LM55:
+ 552 0590 00C06CE2 		rsb	ip, ip, #0
+ 553              	.LM56:
+ 554 0594 AC1080E5 		str	r1, [r0, #172]
+ 555 0598 B02080E5 		str	r2, [r0, #176]
+ 556              	.LM57:
+ 557 059c BECBC0E1 		strh	ip, [r0, #190]	@ movhi
+ 558              	.LM58:
+ 559 05a0 C03080E5 		str	r3, [r0, #192]	@ float
+ 560 05a4 C4E080E5 		str	lr, [r0, #196]	@ float
+ 561 05a8 C84080E5 		str	r4, [r0, #200]	@ float
+ 562 05ac CC5080E5 		str	r5, [r0, #204]	@ float
+ 563 05b0 D06080E5 		str	r6, [r0, #208]	@ float
+ 564 05b4 D47080E5 		str	r7, [r0, #212]	@ float
+ 565 05b8 D88080E5 		str	r8, [r0, #216]	@ float
+ 566 05bc DCA080E5 		str	sl, [r0, #220]	@ float
+ 567 05c0 E09080E5 		str	r9, [r0, #224]	@ float
+ 568 05c4 E4B080E5 		str	fp, [r0, #228]	@ float
+ 569 05c8 283090E5 		ldr	r3, [r0, #40]	@ float
+ 570 05cc 302090E5 		ldr	r2, [r0, #48]	@ float
+ 571 05d0 341090E5 		ldr	r1, [r0, #52]	@ float
+ 572              	.LVL30:
+ 573 05d4 38C090E5 		ldr	ip, [r0, #56]	@ float
+ 574 05d8 3CE090E5 		ldr	lr, [r0, #60]	@ float
+ 575 05dc E83080E5 		str	r3, [r0, #232]	@ float
+ 576 05e0 2C3090E5 		ldr	r3, [r0, #44]	@ float
+ 577 05e4 F02080E5 		str	r2, [r0, #240]	@ float
+ 578 05e8 EC3080E5 		str	r3, [r0, #236]	@ float
+ 579 05ec F41080E5 		str	r1, [r0, #244]	@ float
+ 580 05f0 F8C080E5 		str	ip, [r0, #248]	@ float
+ 581 05f4 FCE080E5 		str	lr, [r0, #252]	@ float
+ 582              	.LM59:
+ 583 05f8 AC1080E2 		add	r1, r0, #172
+ 584 05fc 5820A0E3 		mov	r2, #88
+ 585 0600 0E00A0E3 		mov	r0, #14
+ 586              	.LVL31:
+ 587 0604 FEFFFFEB 		bl	writePacket2Ringbuffer
+ 588              	.LM60:
+ 589 0608 F04FBDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 590 060c 1EFF2FE1 		bx	lr
+ 591              	.L34:
+ 592              		.align	2
+ 593              	.L33:
+ 594 0610 00000000 		.word	LL_1khz_attitude_data
+ 595              	.LFE3:
+ 597              		.align	2
+ 598              		.global	DEKF_init
+ 600              	DEKF_init:
+ 601              	.LFB2:
+ 602              	.LM61:
+ 603              		@ Function supports interworking.
+ 604              		@ args = 0, pretend = 0, frame = 0
+ 605              		@ frame_needed = 0, uses_anonymous_args = 0
+ 606              	.LVL32:
+ 607              	.LM62:
+ 608 0614 0030A0E3 		mov	r3, #0
+ 609              	.LM63:
+ 610 0618 FEC5A0E3 		mov	ip, #1065353216
+ 611              	.LM64:
+ 612 061c 30402DE9 		stmfd	sp!, {r4, r5, lr}
+ 613              	.LCFI6:
+ 614              	.LM65:
+ 615 0620 0020A0E3 		mov	r2, #0
+ 616              	.LM66:
+ 617 0624 0040A0E1 		mov	r4, r0
+ 618              	.LM67:
+ 619 0628 3C3080E5 		str	r3, [r0, #60]	@ float
+ 620              	.LM68:
+ 621 062c 18C080E5 		str	ip, [r0, #24]	@ float
+ 622              	.LM69:
+ 623 0630 403080E5 		str	r3, [r0, #64]	@ float
+ 624              	.LM70:
+ 625 0634 003080E5 		str	r3, [r0, #0]	@ float
+ 626              	.LM71:
+ 627 0638 443080E5 		str	r3, [r0, #68]	@ float
+ 628              	.LM72:
+ 629 063c 043080E5 		str	r3, [r0, #4]	@ float
+ 630              	.LM73:
+ 631 0640 483080E5 		str	r3, [r0, #72]	@ float
+ 632              	.LM74:
+ 633 0644 083080E5 		str	r3, [r0, #8]	@ float
+ 634              	.LM75:
+ 635 0648 4C3080E5 		str	r3, [r0, #76]	@ float
+ 636              	.LM76:
+ 637 064c 0C3080E5 		str	r3, [r0, #12]	@ float
+ 638              	.LM77:
+ 639 0650 503080E5 		str	r3, [r0, #80]	@ float
+ 640              	.LM78:
+ 641 0654 103080E5 		str	r3, [r0, #16]	@ float
+ 642              	.LM79:
+ 643 0658 543080E5 		str	r3, [r0, #84]	@ float
+ 644              	.LM80:
+ 645 065c 143080E5 		str	r3, [r0, #20]	@ float
+ 646              	.LM81:
+ 647 0660 5C3080E5 		str	r3, [r0, #92]	@ float
+ 648              	.LM82:
+ 649 0664 1C3080E5 		str	r3, [r0, #28]	@ float
+ 650              	.LM83:
+ 651 0668 603080E5 		str	r3, [r0, #96]	@ float
+ 652              	.LM84:
+ 653 066c 203080E5 		str	r3, [r0, #32]	@ float
+ 654              	.LM85:
+ 655 0670 643080E5 		str	r3, [r0, #100]	@ float
+ 656              	.LM86:
+ 657 0674 243080E5 		str	r3, [r0, #36]	@ float
+ 658              	.LM87:
+ 659 0678 683080E5 		str	r3, [r0, #104]	@ float
+ 660              	.LM88:
+ 661 067c 283080E5 		str	r3, [r0, #40]	@ float
+ 662              	.LM89:
+ 663 0680 6C3080E5 		str	r3, [r0, #108]	@ float
+ 664              	.LM90:
+ 665 0684 2C3080E5 		str	r3, [r0, #44]	@ float
+ 666              	.LM91:
+ 667 0688 703080E5 		str	r3, [r0, #112]	@ float
+ 668              	.LM92:
+ 669 068c 303080E5 		str	r3, [r0, #48]	@ float
+ 670              	.LM93:
+ 671 0690 743080E5 		str	r3, [r0, #116]	@ float
+ 672              	.LM94:
+ 673 0694 343080E5 		str	r3, [r0, #52]	@ float
+ 674              	.LM95:
+ 675 0698 783080E5 		str	r3, [r0, #120]	@ float
+ 676              	.LM96:
+ 677 069c 383080E5 		str	r3, [r0, #56]	@ float
+ 678              	.LM97:
+ 679 06a0 7C3080E5 		str	r3, [r0, #124]	@ float
+ 680              	.LM98:
+ 681 06a4 58C080E5 		str	ip, [r0, #88]	@ float
+ 682              	.LM99:
+ 683 06a8 0150A0E1 		mov	r5, r1
+ 684              	.LM100:
+ 685 06ac 0000A0E3 		mov	r0, #0
+ 686              	.LVL33:
+ 687 06b0 0010A0E3 		mov	r1, #0
+ 688              	.LVL34:
+ 689 06b4 600184E5 		str	r0, [r4, #352]
+ 690 06b8 641184E5 		str	r1, [r4, #356]
+ 691              	.LM101:
+ 692 06bc 9C2184E5 		str	r2, [r4, #412]
+ 693              	.LM102:
+ 694 06c0 A42184E5 		str	r2, [r4, #420]
+ 695              	.LM103:
+ 696 06c4 A02184E5 		str	r2, [r4, #416]
+ 697              	.LM104:
+ 698 06c8 FEFFFFEB 		bl	autogen_ekf_propagation_initialize
+ 699              	.LM105:
+ 700 06cc 685184E5 		str	r5, [r4, #360]
+ 701              	.LM106:
+ 702 06d0 0E00A0E3 		mov	r0, #14
+ 703 06d4 411F84E2 		add	r1, r4, #260
+ 704 06d8 FEFFFFEB 		bl	registerPacket
+ 705 06dc 5C0184E5 		str	r0, [r4, #348]
+ 706              	.LM107:
+ 707 06e0 3040BDE8 		ldmfd	sp!, {r4, r5, lr}
+ 708 06e4 1EFF2FE1 		bx	lr
+ 709              	.LFE2:
+ 711              		.global	__divdf3
+ 712              		.align	2
+ 713              		.global	writeControllerOutput
+ 715              	writeControllerOutput:
+ 716              	.LFB7:
+ 717              	.LM108:
+ 718              		@ Function supports interworking.
+ 719              		@ args = 0, pretend = 0, frame = 0
+ 720              		@ frame_needed = 0, uses_anonymous_args = 0
+ 721              	.LVL35:
+ 722 06e8 F0452DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, sl, lr}
+ 723              	.LCFI7:
+ 724              	.LM109:
+ 725 06ec 9C4190E5 		ldr	r4, [r0, #412]
+ 726 06f0 000054E3 		cmp	r4, #0
+ 727              	.LM110:
+ 728 06f4 0080A0E1 		mov	r8, r0
+ 729              	.LM111:
+ 730 06f8 3E0100DA 		ble	.L38
+ 731              	.LVL36:
+ 732              	.LBB34:
+ 733              	.LM112:
+ 734 06fc 6C0190E5 		ldr	r0, [r0, #364]	@ float
+ 735 0700 841198E5 		ldr	r1, [r8, #388]	@ float
+ 736 0704 FEFFFFEB 		bl	__subsf3
+ 737 0708 881198E5 		ldr	r1, [r8, #392]	@ float
+ 738 070c 6C0188E5 		str	r0, [r8, #364]	@ float
+ 739 0710 700198E5 		ldr	r0, [r8, #368]	@ float
+ 740 0714 FEFFFFEB 		bl	__subsf3
+ 741 0718 8C1198E5 		ldr	r1, [r8, #396]	@ float
+ 742 071c 700188E5 		str	r0, [r8, #368]	@ float
+ 743 0720 740198E5 		ldr	r0, [r8, #372]	@ float
+ 744 0724 FEFFFFEB 		bl	__subsf3
+ 745 0728 901198E5 		ldr	r1, [r8, #400]	@ float
+ 746 072c 740188E5 		str	r0, [r8, #372]	@ float
+ 747 0730 780198E5 		ldr	r0, [r8, #376]	@ float
+ 748 0734 FEFFFFEB 		bl	__subsf3
+ 749 0738 941198E5 		ldr	r1, [r8, #404]	@ float
+ 750 073c 780188E5 		str	r0, [r8, #376]	@ float
+ 751 0740 7C0198E5 		ldr	r0, [r8, #380]	@ float
+ 752 0744 FEFFFFEB 		bl	__subsf3
+ 753 0748 981198E5 		ldr	r1, [r8, #408]	@ float
+ 754 074c 7C0188E5 		str	r0, [r8, #380]	@ float
+ 755 0750 800198E5 		ldr	r0, [r8, #384]	@ float
+ 756 0754 FEFFFFEB 		bl	__subsf3
+ 757              	.LBE34:
+ 758              	.LM113:
+ 759 0758 013044E2 		sub	r3, r4, #1
+ 760              	.LBB35:
+ 761              	.LM114:
+ 762 075c 800188E5 		str	r0, [r8, #384]	@ float
+ 763              	.LBE35:
+ 764              	.LM115:
+ 765 0760 9C3188E5 		str	r3, [r8, #412]
+ 766              	.LVL37:
+ 767              	.L40:
+ 768              	.LM116:
+ 769 0764 683198E5 		ldr	r3, [r8, #360]
+ 770 0768 0020A0E3 		mov	r2, #0
+ 771 076c 0110A0E3 		mov	r1, #1
+ 772 0770 1720C3E5 		strb	r2, [r3, #23]
+ 773 0774 1610C3E5 		strb	r1, [r3, #22]
+ 774              	.LM117:
+ 775 0778 6C1198E5 		ldr	r1, [r8, #364]	@ float
+ 776 077c 000098E5 		ldr	r0, [r8, #0]	@ float
+ 777 0780 FEFFFFEB 		bl	__subsf3
+ 778 0784 1113A0E3 		mov	r1, #1140850688
+ 779 0788 7A1881E2 		add	r1, r1, #7995392
+ 780 078c FEFFFFEB 		bl	__mulsf3
+ 781              	.LBB36:
+ 782              	.LBB37:
+ 783              	.LM118:
+ 784 0790 0010A0E3 		mov	r1, #0
+ 785              	.LBE37:
+ 786              	.LBE36:
+ 787              	.LM119:
+ 788 0794 0040A0E1 		mov	r4, r0
+ 789              	.LVL38:
+ 790              	.LBB38:
+ 791              	.LBB39:
+ 792              	.LM120:
+ 793 0798 FEFFFFEB 		bl	__gesf2
+ 794 079c 000050E3 		cmp	r0, #0
+ 795              	.LBE39:
+ 796              	.LBE38:
+ 797              	.LM121:
+ 798 07a0 685198E5 		ldr	r5, [r8, #360]
+ 799              	.LBB40:
+ 800              	.LBB41:
+ 801              	.LM122:
+ 802 07a4 750100BA 		blt	.L42
+ 803 07a8 0400A0E1 		mov	r0, r4
+ 804 07ac FEFFFFEB 		bl	__extendsfdf2
+ 805 07b0 FF25A0E3 		mov	r2, #1069547520
+ 806 07b4 022682E2 		add	r2, r2, #2097152
+ 807 07b8 0030A0E3 		mov	r3, #0
+ 808 07bc FEFFFFEB 		bl	__adddf3
+ 809 07c0 FEFFFFEB 		bl	__fixdfsi
+ 810              	.L45:
+ 811              	.LBE41:
+ 812              	.LBE40:
+ 813              	.LM123:
+ 814 07c4 203CA0E1 		mov	r3, r0, lsr #24
+ 815 07c8 2024A0E1 		mov	r2, r0, lsr #8
+ 816 07cc 2018A0E1 		mov	r1, r0, lsr #16
+ 817 07d0 0330C5E5 		strb	r3, [r5, #3]
+ 818 07d4 0120C5E5 		strb	r2, [r5, #1]
+ 819 07d8 0210C5E5 		strb	r1, [r5, #2]
+ 820 07dc 0000C5E5 		strb	r0, [r5, #0]
+ 821              	.LM124:
+ 822 07e0 701198E5 		ldr	r1, [r8, #368]	@ float
+ 823 07e4 040098E5 		ldr	r0, [r8, #4]	@ float
+ 824 07e8 FEFFFFEB 		bl	__subsf3
+ 825 07ec 1113A0E3 		mov	r1, #1140850688
+ 826 07f0 7A1881E2 		add	r1, r1, #7995392
+ 827 07f4 FEFFFFEB 		bl	__mulsf3
+ 828              	.LBB42:
+ 829              	.LBB43:
+ 830              	.LM125:
+ 831 07f8 0010A0E3 		mov	r1, #0
+ 832              	.LBE43:
+ 833              	.LBE42:
+ 834              	.LM126:
+ 835 07fc 0040A0E1 		mov	r4, r0
+ 836              	.LVL39:
+ 837              	.LBB44:
+ 838              	.LBB45:
+ 839              	.LM127:
+ 840 0800 FEFFFFEB 		bl	__gesf2
+ 841 0804 000050E3 		cmp	r0, #0
+ 842              	.LBE45:
+ 843              	.LBE44:
+ 844              	.LM128:
+ 845 0808 685198E5 		ldr	r5, [r8, #360]
+ 846              	.LBB46:
+ 847              	.LBB47:
+ 848              	.LM129:
+ 849 080c 530100BA 		blt	.L46
+ 850 0810 0400A0E1 		mov	r0, r4
+ 851 0814 FEFFFFEB 		bl	__extendsfdf2
+ 852 0818 FF25A0E3 		mov	r2, #1069547520
+ 853 081c 022682E2 		add	r2, r2, #2097152
+ 854 0820 0030A0E3 		mov	r3, #0
+ 855 0824 FEFFFFEB 		bl	__adddf3
+ 856 0828 FEFFFFEB 		bl	__fixdfsi
+ 857              	.L49:
+ 858              	.LBE47:
+ 859              	.LBE46:
+ 860              	.LM130:
+ 861 082c 003060E2 		rsb	r3, r0, #0
+ 862 0830 2314A0E1 		mov	r1, r3, lsr #8
+ 863 0834 2308A0E1 		mov	r0, r3, lsr #16
+ 864 0838 232CA0E1 		mov	r2, r3, lsr #24
+ 865 083c 0720C5E5 		strb	r2, [r5, #7]
+ 866 0840 0430C5E5 		strb	r3, [r5, #4]
+ 867 0844 0510C5E5 		strb	r1, [r5, #5]
+ 868 0848 0600C5E5 		strb	r0, [r5, #6]
+ 869              	.LM131:
+ 870 084c 741198E5 		ldr	r1, [r8, #372]	@ float
+ 871 0850 080098E5 		ldr	r0, [r8, #8]	@ float
+ 872 0854 FEFFFFEB 		bl	__subsf3
+ 873 0858 1113A0E3 		mov	r1, #1140850688
+ 874 085c 7A1881E2 		add	r1, r1, #7995392
+ 875 0860 FEFFFFEB 		bl	__mulsf3
+ 876              	.LBB48:
+ 877              	.LBB49:
+ 878              	.LM132:
+ 879 0864 0010A0E3 		mov	r1, #0
+ 880              	.LBE49:
+ 881              	.LBE48:
+ 882              	.LM133:
+ 883 0868 0040A0E1 		mov	r4, r0
+ 884              	.LVL40:
+ 885              	.LBB50:
+ 886              	.LBB51:
+ 887              	.LM134:
+ 888 086c FEFFFFEB 		bl	__gesf2
+ 889 0870 000050E3 		cmp	r0, #0
+ 890              	.LBE51:
+ 891              	.LBE50:
+ 892              	.LM135:
+ 893 0874 685198E5 		ldr	r5, [r8, #360]
+ 894              	.LBB52:
+ 895              	.LBB53:
+ 896              	.LM136:
+ 897 0878 300100BA 		blt	.L50
+ 898 087c 0400A0E1 		mov	r0, r4
+ 899 0880 FEFFFFEB 		bl	__extendsfdf2
+ 900 0884 FF25A0E3 		mov	r2, #1069547520
+ 901 0888 022682E2 		add	r2, r2, #2097152
+ 902 088c 0030A0E3 		mov	r3, #0
+ 903 0890 FEFFFFEB 		bl	__adddf3
+ 904 0894 FEFFFFEB 		bl	__fixdfsi
+ 905              	.L53:
+ 906              	.LBE53:
+ 907              	.LBE52:
+ 908              	.LM137:
+ 909 0898 003060E2 		rsb	r3, r0, #0
+ 910 089c 2314A0E1 		mov	r1, r3, lsr #8
+ 911 08a0 2308A0E1 		mov	r0, r3, lsr #16
+ 912 08a4 232CA0E1 		mov	r2, r3, lsr #24
+ 913 08a8 0B20C5E5 		strb	r2, [r5, #11]
+ 914 08ac 0830C5E5 		strb	r3, [r5, #8]
+ 915 08b0 0910C5E5 		strb	r1, [r5, #9]
+ 916 08b4 0A00C5E5 		strb	r0, [r5, #10]
+ 917              	.LM138:
+ 918 08b8 781198E5 		ldr	r1, [r8, #376]	@ float
+ 919 08bc 0C0098E5 		ldr	r0, [r8, #12]	@ float
+ 920 08c0 FEFFFFEB 		bl	__subsf3
+ 921 08c4 1113A0E3 		mov	r1, #1140850688
+ 922 08c8 7A1881E2 		add	r1, r1, #7995392
+ 923 08cc FEFFFFEB 		bl	__mulsf3
+ 924              	.LBB54:
+ 925              	.LBB55:
+ 926              	.LM139:
+ 927 08d0 0010A0E3 		mov	r1, #0
+ 928              	.LBE55:
+ 929              	.LBE54:
+ 930              	.LM140:
+ 931 08d4 0040A0E1 		mov	r4, r0
+ 932              	.LVL41:
+ 933              	.LBB56:
+ 934              	.LBB57:
+ 935              	.LM141:
+ 936 08d8 FEFFFFEB 		bl	__gesf2
+ 937 08dc 000050E3 		cmp	r0, #0
+ 938              	.LBE57:
+ 939              	.LBE56:
+ 940              	.LM142:
+ 941 08e0 685198E5 		ldr	r5, [r8, #360]
+ 942              	.LBB58:
+ 943              	.LBB59:
+ 944              	.LM143:
+ 945 08e4 0B0100BA 		blt	.L54
+ 946 08e8 0400A0E1 		mov	r0, r4
+ 947 08ec FEFFFFEB 		bl	__extendsfdf2
+ 948 08f0 FF25A0E3 		mov	r2, #1069547520
+ 949 08f4 022682E2 		add	r2, r2, #2097152
+ 950 08f8 0030A0E3 		mov	r3, #0
+ 951 08fc FEFFFFEB 		bl	__adddf3
+ 952 0900 FEFFFFEB 		bl	__fixdfsi
+ 953 0904 0008A0E1 		mov	r0, r0, asl #16
+ 954 0908 4008A0E1 		mov	r0, r0, asr #16
+ 955              	.L57:
+ 956              	.LBE59:
+ 957              	.LBE58:
+ 958              	.LM144:
+ 959 090c 2034A0E1 		mov	r3, r0, lsr #8
+ 960 0910 1130C5E5 		strb	r3, [r5, #17]
+ 961 0914 1000C5E5 		strb	r0, [r5, #16]
+ 962              	.LM145:
+ 963 0918 7C1198E5 		ldr	r1, [r8, #380]	@ float
+ 964 091c 100098E5 		ldr	r0, [r8, #16]	@ float
+ 965 0920 FEFFFFEB 		bl	__subsf3
+ 966 0924 1113A0E3 		mov	r1, #1140850688
+ 967 0928 7A1881E2 		add	r1, r1, #7995392
+ 968 092c FEFFFFEB 		bl	__mulsf3
+ 969              	.LBB60:
+ 970              	.LBB61:
+ 971              	.LM146:
+ 972 0930 0010A0E3 		mov	r1, #0
+ 973              	.LBE61:
+ 974              	.LBE60:
+ 975              	.LM147:
+ 976 0934 0040A0E1 		mov	r4, r0
+ 977              	.LVL42:
+ 978              	.LBB62:
+ 979              	.LBB63:
+ 980              	.LM148:
+ 981 0938 FEFFFFEB 		bl	__gesf2
+ 982 093c 000050E3 		cmp	r0, #0
+ 983              	.LBE63:
+ 984              	.LBE62:
+ 985              	.LM149:
+ 986 0940 685198E5 		ldr	r5, [r8, #360]
+ 987              	.LBB64:
+ 988              	.LBB65:
+ 989              	.LM150:
+ 990 0944 E90000BA 		blt	.L58
+ 991 0948 0400A0E1 		mov	r0, r4
+ 992 094c FEFFFFEB 		bl	__extendsfdf2
+ 993 0950 FF25A0E3 		mov	r2, #1069547520
+ 994 0954 022682E2 		add	r2, r2, #2097152
+ 995 0958 0030A0E3 		mov	r3, #0
+ 996 095c FEFFFFEB 		bl	__adddf3
+ 997 0960 FEFFFFEB 		bl	__fixdfsi
+ 998 0964 0008A0E1 		mov	r0, r0, asl #16
+ 999 0968 4008A0E1 		mov	r0, r0, asr #16
+ 1000              	.L61:
+ 1001              	.LBE65:
+ 1002              	.LBE64:
+ 1003              	.LM151:
+ 1004 096c 002060E2 		rsb	r2, r0, #0
+ 1005 0970 2234A0E1 		mov	r3, r2, lsr #8
+ 1006 0974 1330C5E5 		strb	r3, [r5, #19]
+ 1007 0978 1220C5E5 		strb	r2, [r5, #18]
+ 1008              	.LM152:
+ 1009 097c 801198E5 		ldr	r1, [r8, #384]	@ float
+ 1010 0980 140098E5 		ldr	r0, [r8, #20]	@ float
+ 1011 0984 FEFFFFEB 		bl	__subsf3
+ 1012 0988 1113A0E3 		mov	r1, #1140850688
+ 1013 098c 7A1881E2 		add	r1, r1, #7995392
+ 1014 0990 FEFFFFEB 		bl	__mulsf3
+ 1015              	.LBB66:
+ 1016              	.LBB67:
+ 1017              	.LM153:
+ 1018 0994 0010A0E3 		mov	r1, #0
+ 1019              	.LBE67:
+ 1020              	.LBE66:
+ 1021              	.LM154:
+ 1022 0998 0040A0E1 		mov	r4, r0
+ 1023              	.LVL43:
+ 1024              	.LBB68:
+ 1025              	.LBB69:
+ 1026              	.LM155:
+ 1027 099c FEFFFFEB 		bl	__gesf2
+ 1028 09a0 000050E3 		cmp	r0, #0
+ 1029              	.LBE69:
+ 1030              	.LBE68:
+ 1031              	.LM156:
+ 1032 09a4 685198E5 		ldr	r5, [r8, #360]
+ 1033              	.LBB70:
+ 1034              	.LBB71:
+ 1035              	.LM157:
+ 1036 09a8 C60000BA 		blt	.L62
+ 1037 09ac 0400A0E1 		mov	r0, r4
+ 1038 09b0 FEFFFFEB 		bl	__extendsfdf2
+ 1039 09b4 FF25A0E3 		mov	r2, #1069547520
+ 1040 09b8 022682E2 		add	r2, r2, #2097152
+ 1041 09bc 0030A0E3 		mov	r3, #0
+ 1042 09c0 FEFFFFEB 		bl	__adddf3
+ 1043 09c4 FEFFFFEB 		bl	__fixdfsi
+ 1044 09c8 0008A0E1 		mov	r0, r0, asl #16
+ 1045 09cc 4008A0E1 		mov	r0, r0, asr #16
+ 1046              	.L65:
+ 1047              	.LBE71:
+ 1048              	.LBE70:
+ 1049              	.LM158:
+ 1050 09d0 002060E2 		rsb	r2, r0, #0
+ 1051 09d4 2234A0E1 		mov	r3, r2, lsr #8
+ 1052 09d8 1530C5E5 		strb	r3, [r5, #21]
+ 1053 09dc 1420C5E5 		strb	r2, [r5, #20]
+ 1054 09e0 187088E2 		add	r7, r8, #24
+ 1055              	.LVL44:
+ 1056              	.LBB72:
+ 1057              	.LBB73:
+ 1058              	.LM159:
+ 1059 09e4 086097E5 		ldr	r6, [r7, #8]	@ float
+ 1060 09e8 0610A0E1 		mov	r1, r6
+ 1061 09ec 0600A0E1 		mov	r0, r6
+ 1062 09f0 FEFFFFEB 		bl	__mulsf3
+ 1063 09f4 0C4097E5 		ldr	r4, [r7, #12]	@ float
+ 1064              	.LVL45:
+ 1065 09f8 0050A0E1 		mov	r5, r0
+ 1066 09fc 0410A0E1 		mov	r1, r4
+ 1067 0a00 0400A0E1 		mov	r0, r4
+ 1068 0a04 FEFFFFEB 		bl	__mulsf3
+ 1069 0a08 0010A0E1 		mov	r1, r0
+ 1070 0a0c 0500A0E1 		mov	r0, r5
+ 1071 0a10 FEFFFFEB 		bl	__addsf3
+ 1072 0a14 FEFFFFEB 		bl	__extendsfdf2
+ 1073 0a18 0321A0E3 		mov	r2, #-1073741824
+ 1074 0a1c 0030A0E3 		mov	r3, #0
+ 1075 0a20 FEFFFFEB 		bl	__muldf3
+ 1076 0a24 FF25A0E3 		mov	r2, #1069547520
+ 1077 0a28 032682E2 		add	r2, r2, #3145728
+ 1078 0a2c 0030A0E3 		mov	r3, #0
+ 1079 0a30 FEFFFFEB 		bl	__adddf3
+ 1080 0a34 FEFFFFEB 		bl	__truncdfsf2
+ 1081              	.LM160:
+ 1082 0a38 181098E5 		ldr	r1, [r8, #24]	@ float
+ 1083              	.LM161:
+ 1084 0a3c 00A0A0E1 		mov	sl, r0
+ 1085              	.LVL46:
+ 1086              	.LM162:
+ 1087 0a40 0400A0E1 		mov	r0, r4
+ 1088 0a44 FEFFFFEB 		bl	__mulsf3
+ 1089 0a48 041097E5 		ldr	r1, [r7, #4]	@ float
+ 1090 0a4c 0040A0E1 		mov	r4, r0
+ 1091 0a50 0600A0E1 		mov	r0, r6
+ 1092 0a54 FEFFFFEB 		bl	__mulsf3
+ 1093 0a58 0010A0E1 		mov	r1, r0
+ 1094 0a5c 0400A0E1 		mov	r0, r4
+ 1095 0a60 FEFFFFEB 		bl	__addsf3
+ 1096 0a64 0010A0E1 		mov	r1, r0
+ 1097 0a68 FEFFFFEB 		bl	__addsf3
+ 1098 0a6c 0060A0E1 		mov	r6, r0
+ 1099              	.LVL47:
+ 1100              	.LM163:
+ 1101 0a70 0201C0E3 		bic	r0, r0, #-2147483648
+ 1102 0a74 FEFFFFEB 		bl	__extendsfdf2
+ 1103 0a78 322E8FE2 		adr	r2, .L80
+ 1104 0a7c 0C0092E8 		ldmia	r2, {r2-r3}
+ 1105 0a80 FEFFFFEB 		bl	__adddf3
+ 1106 0a84 FEFFFFEB 		bl	__truncdfsf2
+ 1107              	.LM164:
+ 1108 0a88 0010A0E3 		mov	r1, #0
+ 1109              	.LM165:
+ 1110 0a8c 0050A0E1 		mov	r5, r0
+ 1111              	.LVL48:
+ 1112              	.LM166:
+ 1113 0a90 0A00A0E1 		mov	r0, sl
+ 1114 0a94 FEFFFFEB 		bl	__gesf2
+ 1115 0a98 000050E3 		cmp	r0, #0
+ 1116 0a9c 660000BA 		blt	.L66
+ 1117              	.LM167:
+ 1118 0aa0 0510A0E1 		mov	r1, r5
+ 1119 0aa4 0A00A0E1 		mov	r0, sl
+ 1120 0aa8 FEFFFFEB 		bl	__subsf3
+ 1121 0aac 0510A0E1 		mov	r1, r5
+ 1122 0ab0 0040A0E1 		mov	r4, r0
+ 1123 0ab4 0A00A0E1 		mov	r0, sl
+ 1124 0ab8 FEFFFFEB 		bl	__addsf3
+ 1125 0abc 0010A0E1 		mov	r1, r0
+ 1126 0ac0 0400A0E1 		mov	r0, r4
+ 1127 0ac4 FEFFFFEB 		bl	__divsf3
+ 1128 0ac8 FEFFFFEB 		bl	__extendsfdf2
+ 1129 0acc B52F8FE2 		adr	r2, .L80+8
+ 1130 0ad0 0C0092E8 		ldmia	r2, {r2-r3}
+ 1131 0ad4 0040A0E1 		mov	r4, r0
+ 1132 0ad8 0150A0E1 		mov	r5, r1
+ 1133              	.LVL49:
+ 1134 0adc FEFFFFEB 		bl	__muldf3
+ 1135 0ae0 0020A0E1 		mov	r2, r0
+ 1136 0ae4 0130A0E1 		mov	r3, r1
+ 1137 0ae8 0400A0E1 		mov	r0, r4
+ 1138 0aec 0510A0E1 		mov	r1, r5
+ 1139 0af0 FEFFFFEB 		bl	__muldf3
+ 1140 0af4 AD2F8FE2 		adr	r2, .L80+16
+ 1141 0af8 0C0092E8 		ldmia	r2, {r2-r3}
+ 1142 0afc FEFFFFEB 		bl	__subdf3
+ 1143 0b00 0020A0E1 		mov	r2, r0
+ 1144 0b04 0130A0E1 		mov	r3, r1
+ 1145 0b08 0400A0E1 		mov	r0, r4
+ 1146 0b0c 0510A0E1 		mov	r1, r5
+ 1147 0b10 FEFFFFEB 		bl	__muldf3
+ 1148 0b14 A72F8FE2 		adr	r2, .L80+24
+ 1149 0b18 0C0092E8 		ldmia	r2, {r2-r3}
+ 1150 0b1c FEFFFFEB 		bl	__adddf3
+ 1151 0b20 FEFFFFEB 		bl	__truncdfsf2
+ 1152 0b24 0040A0E1 		mov	r4, r0
+ 1153              	.LVL50:
+ 1154              	.L69:
+ 1155              	.LM168:
+ 1156 0b28 0010A0E3 		mov	r1, #0
+ 1157 0b2c 0600A0E1 		mov	r0, r6
+ 1158 0b30 FEFFFFEB 		bl	__ltsf2
+ 1159 0b34 000050E3 		cmp	r0, #0
+ 1160              	.LM169:
+ 1161 0b38 023184B2 		addlt	r3, r4, #-2147483648
+ 1162 0b3c 0340A0B1 		movlt	r4, r3
+ 1163              	.LBE73:
+ 1164              	.LBE72:
+ 1165              	.LM170:
+ 1166 0b40 0400A0E1 		mov	r0, r4
+ 1167 0b44 0010A0E3 		mov	r1, #0
+ 1168 0b48 FEFFFFEB 		bl	__ltsf2
+ 1169 0b4c 000050E3 		cmp	r0, #0
+ 1170 0b50 685198E5 		ldr	r5, [r8, #360]
+ 1171 0b54 320000BA 		blt	.L79
+ 1172 0b58 0400A0E1 		mov	r0, r4
+ 1173 0b5c FEFFFFEB 		bl	__extendsfdf2
+ 1174              	.L78:
+ 1175 0b60 0121A0E3 		mov	r2, #1073741824
+ 1176 0b64 662882E2 		add	r2, r2, #6684672
+ 1177 0b68 022982E2 		add	r2, r2, #32768
+ 1178 0b6c 0030A0E3 		mov	r3, #0
+ 1179 0b70 FEFFFFEB 		bl	__muldf3
+ 1180 0b74 912F8FE2 		adr	r2, .L80+32
+ 1181 0b78 0C0092E8 		ldmia	r2, {r2-r3}
+ 1182 0b7c FEFFFFEB 		bl	__divdf3
+ 1183 0b80 0121A0E3 		mov	r2, #1073741824
+ 1184 0b84 8F2882E2 		add	r2, r2, #9371648
+ 1185 0b88 012982E2 		add	r2, r2, #16384
+ 1186 0b8c 0030A0E3 		mov	r3, #0
+ 1187 0b90 FEFFFFEB 		bl	__muldf3
+ 1188 0b94 FEFFFFEB 		bl	__fixdfsi
+ 1189 0b98 570A60E2 		rsb	r0, r0, #356352
+ 1190 0b9c 390D80E2 		add	r0, r0, #3648
+ 1191 0ba0 203CA0E1 		mov	r3, r0, lsr #24
+ 1192 0ba4 2024A0E1 		mov	r2, r0, lsr #8
+ 1193 0ba8 2018A0E1 		mov	r1, r0, lsr #16
+ 1194 0bac 0E10C5E5 		strb	r1, [r5, #14]
+ 1195 0bb0 0F30C5E5 		strb	r3, [r5, #15]
+ 1196 0bb4 0D20C5E5 		strb	r2, [r5, #13]
+ 1197 0bb8 0C00C5E5 		strb	r0, [r5, #12]
+ 1198              	.LM171:
+ 1199 0bbc 682198E5 		ldr	r2, [r8, #360]
+ 1200 0bc0 6410A0E3 		mov	r1, #100
+ 1201 0bc4 1810C2E5 		strb	r1, [r2, #24]
+ 1202              	.LM172:
+ 1203 0bc8 683198E5 		ldr	r3, [r8, #360]
+ 1204 0bcc 1910C3E5 		strb	r1, [r3, #25]
+ 1205              	.LM173:
+ 1206 0bd0 682198E5 		ldr	r2, [r8, #360]
+ 1207 0bd4 1A10C2E5 		strb	r1, [r2, #26]
+ 1208              	.LM174:
+ 1209 0bd8 683198E5 		ldr	r3, [r8, #360]
+ 1210 0bdc 1B10C3E5 		strb	r1, [r3, #27]
+ 1211              	.LM175:
+ 1212 0be0 682198E5 		ldr	r2, [r8, #360]
+ 1213 0be4 1C10C2E5 		strb	r1, [r2, #28]
+ 1214              	.LM176:
+ 1215 0be8 683198E5 		ldr	r3, [r8, #360]
+ 1216 0bec 1D10C3E5 		strb	r1, [r3, #29]
+ 1217              	.LM177:
+ 1218 0bf0 F045BDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, sl, lr}
+ 1219 0bf4 1EFF2FE1 		bx	lr
+ 1220              	.LVL51:
+ 1221              	.L38:
+ 1222              	.LM178:
+ 1223 0bf8 D9FEFF1A 		bne	.L40
+ 1224              	.LBB74:
+ 1225              	.LM179:
+ 1226 0bfc 0030A0E3 		mov	r3, #0
+ 1227              	.LBE74:
+ 1228              	.LM180:
+ 1229 0c00 012044E2 		sub	r2, r4, #1
+ 1230              	.LBB75:
+ 1231              	.LM181:
+ 1232 0c04 803180E5 		str	r3, [r0, #384]	@ float
+ 1233              	.LBE75:
+ 1234              	.LM182:
+ 1235 0c08 9C2180E5 		str	r2, [r0, #412]
+ 1236              	.LBB76:
+ 1237              	.LM183:
+ 1238 0c0c 6C3180E5 		str	r3, [r0, #364]	@ float
+ 1239 0c10 703180E5 		str	r3, [r0, #368]	@ float
+ 1240 0c14 743180E5 		str	r3, [r0, #372]	@ float
+ 1241 0c18 783180E5 		str	r3, [r0, #376]	@ float
+ 1242 0c1c 7C3180E5 		str	r3, [r0, #380]	@ float
+ 1243 0c20 CFFEFFEA 		b	.L40
+ 1244              	.LVL52:
+ 1245              	.L79:
+ 1246              	.LBE76:
+ 1247              	.LM184:
+ 1248 0c24 0400A0E1 		mov	r0, r4
+ 1249 0c28 FEFFFFEB 		bl	__extendsfdf2
+ 1250 0c2c 652F8FE2 		adr	r2, .L80+40
+ 1251 0c30 0C0092E8 		ldmia	r2, {r2-r3}
+ 1252 0c34 FEFFFFEB 		bl	__adddf3
+ 1253 0c38 C8FFFFEA 		b	.L78
+ 1254              	.LVL53:
+ 1255              	.L66:
+ 1256              	.LBB77:
+ 1257              	.LBB78:
+ 1258              	.LM185:
+ 1259 0c3c 0510A0E1 		mov	r1, r5
+ 1260 0c40 0A00A0E1 		mov	r0, sl
+ 1261 0c44 FEFFFFEB 		bl	__addsf3
+ 1262 0c48 0A10A0E1 		mov	r1, sl
+ 1263 0c4c 0040A0E1 		mov	r4, r0
+ 1264 0c50 0500A0E1 		mov	r0, r5
+ 1265 0c54 FEFFFFEB 		bl	__subsf3
+ 1266 0c58 0010A0E1 		mov	r1, r0
+ 1267 0c5c 0400A0E1 		mov	r0, r4
+ 1268 0c60 FEFFFFEB 		bl	__divsf3
+ 1269 0c64 FEFFFFEB 		bl	__extendsfdf2
+ 1270 0c68 4E2F8FE2 		adr	r2, .L80+8
+ 1271 0c6c 0C0092E8 		ldmia	r2, {r2-r3}
+ 1272 0c70 0040A0E1 		mov	r4, r0
+ 1273 0c74 0150A0E1 		mov	r5, r1
+ 1274              	.LVL54:
+ 1275 0c78 FEFFFFEB 		bl	__muldf3
+ 1276 0c7c 0020A0E1 		mov	r2, r0
+ 1277 0c80 0130A0E1 		mov	r3, r1
+ 1278 0c84 0400A0E1 		mov	r0, r4
+ 1279 0c88 0510A0E1 		mov	r1, r5
+ 1280 0c8c FEFFFFEB 		bl	__muldf3
+ 1281 0c90 462F8FE2 		adr	r2, .L80+16
+ 1282 0c94 0C0092E8 		ldmia	r2, {r2-r3}
+ 1283 0c98 FEFFFFEB 		bl	__subdf3
+ 1284 0c9c 0020A0E1 		mov	r2, r0
+ 1285 0ca0 0130A0E1 		mov	r3, r1
+ 1286 0ca4 0400A0E1 		mov	r0, r4
+ 1287 0ca8 0510A0E1 		mov	r1, r5
+ 1288 0cac FEFFFFEB 		bl	__muldf3
+ 1289 0cb0 462F8FE2 		adr	r2, .L80+48
+ 1290 0cb4 0C0092E8 		ldmia	r2, {r2-r3}
+ 1291 0cb8 FEFFFFEB 		bl	__adddf3
+ 1292 0cbc FEFFFFEB 		bl	__truncdfsf2
+ 1293 0cc0 0040A0E1 		mov	r4, r0
+ 1294              	.LVL55:
+ 1295 0cc4 97FFFFEA 		b	.L69
+ 1296              	.LVL56:
+ 1297              	.L62:
+ 1298              	.LBE78:
+ 1299              	.LBE77:
+ 1300              	.LBB79:
+ 1301              	.LBB80:
+ 1302              	.LM186:
+ 1303 0cc8 0400A0E1 		mov	r0, r4
+ 1304 0ccc FEFFFFEB 		bl	__extendsfdf2
+ 1305 0cd0 FF25A0E3 		mov	r2, #1069547520
+ 1306 0cd4 022682E2 		add	r2, r2, #2097152
+ 1307 0cd8 0030A0E3 		mov	r3, #0
+ 1308 0cdc FEFFFFEB 		bl	__subdf3
+ 1309 0ce0 FEFFFFEB 		bl	__fixdfsi
+ 1310 0ce4 0008A0E1 		mov	r0, r0, asl #16
+ 1311 0ce8 4008A0E1 		mov	r0, r0, asr #16
+ 1312 0cec 37FFFFEA 		b	.L65
+ 1313              	.LVL57:
+ 1314              	.L58:
+ 1315              	.LBE80:
+ 1316              	.LBE79:
+ 1317              	.LBB81:
+ 1318              	.LBB82:
+ 1319 0cf0 0400A0E1 		mov	r0, r4
+ 1320 0cf4 FEFFFFEB 		bl	__extendsfdf2
+ 1321 0cf8 FF25A0E3 		mov	r2, #1069547520
+ 1322 0cfc 022682E2 		add	r2, r2, #2097152
+ 1323 0d00 0030A0E3 		mov	r3, #0
+ 1324 0d04 FEFFFFEB 		bl	__subdf3
+ 1325 0d08 FEFFFFEB 		bl	__fixdfsi
+ 1326 0d0c 0008A0E1 		mov	r0, r0, asl #16
+ 1327 0d10 4008A0E1 		mov	r0, r0, asr #16
+ 1328 0d14 14FFFFEA 		b	.L61
+ 1329              	.LVL58:
+ 1330              	.L54:
+ 1331              	.LBE82:
+ 1332              	.LBE81:
+ 1333              	.LBB83:
+ 1334              	.LBB84:
+ 1335 0d18 0400A0E1 		mov	r0, r4
+ 1336 0d1c FEFFFFEB 		bl	__extendsfdf2
+ 1337 0d20 FF25A0E3 		mov	r2, #1069547520
+ 1338 0d24 022682E2 		add	r2, r2, #2097152
+ 1339 0d28 0030A0E3 		mov	r3, #0
+ 1340 0d2c FEFFFFEB 		bl	__subdf3
+ 1341 0d30 FEFFFFEB 		bl	__fixdfsi
+ 1342 0d34 0008A0E1 		mov	r0, r0, asl #16
+ 1343 0d38 4008A0E1 		mov	r0, r0, asr #16
+ 1344 0d3c F2FEFFEA 		b	.L57
+ 1345              	.LVL59:
+ 1346              	.L50:
+ 1347              	.LBE84:
+ 1348              	.LBE83:
+ 1349              	.LBB85:
+ 1350              	.LBB86:
+ 1351              	.LM187:
+ 1352 0d40 0400A0E1 		mov	r0, r4
+ 1353 0d44 FEFFFFEB 		bl	__extendsfdf2
+ 1354 0d48 FF25A0E3 		mov	r2, #1069547520
+ 1355 0d4c 022682E2 		add	r2, r2, #2097152
+ 1356 0d50 0030A0E3 		mov	r3, #0
+ 1357 0d54 FEFFFFEB 		bl	__subdf3
+ 1358 0d58 FEFFFFEB 		bl	__fixdfsi
+ 1359 0d5c CDFEFFEA 		b	.L53
+ 1360              	.LVL60:
+ 1361              	.L46:
+ 1362              	.LBE86:
+ 1363              	.LBE85:
+ 1364              	.LBB87:
+ 1365              	.LBB88:
+ 1366 0d60 0400A0E1 		mov	r0, r4
+ 1367 0d64 FEFFFFEB 		bl	__extendsfdf2
+ 1368 0d68 FF25A0E3 		mov	r2, #1069547520
+ 1369 0d6c 022682E2 		add	r2, r2, #2097152
+ 1370 0d70 0030A0E3 		mov	r3, #0
+ 1371 0d74 FEFFFFEB 		bl	__subdf3
+ 1372 0d78 FEFFFFEB 		bl	__fixdfsi
+ 1373 0d7c AAFEFFEA 		b	.L49
+ 1374              	.LVL61:
+ 1375              	.L42:
+ 1376              	.LBE88:
+ 1377              	.LBE87:
+ 1378              	.LBB89:
+ 1379              	.LBB90:
+ 1380 0d80 0400A0E1 		mov	r0, r4
+ 1381 0d84 FEFFFFEB 		bl	__extendsfdf2
+ 1382 0d88 FF25A0E3 		mov	r2, #1069547520
+ 1383 0d8c 022682E2 		add	r2, r2, #2097152
+ 1384 0d90 0030A0E3 		mov	r3, #0
+ 1385 0d94 FEFFFFEB 		bl	__subdf3
+ 1386 0d98 FEFFFFEB 		bl	__fixdfsi
+ 1387 0d9c 88FEFFEA 		b	.L45
+ 1388              	.L81:
+ 1389              		.align	2
+ 1390              	.L80:
+ 1391 0da0 DF7CDB3D 		.word	1037794527
+ 1392 0da4 BBBDD7D9 		.word	-640172613
+ 1393 0da8 5B20C93F 		.word	1070145627
+ 1394 0dac E3361AC0 		.word	-1072023837
+ 1395 0db0 166AEF3F 		.word	1072654870
+ 1396 0db4 60764F1E 		.word	508524128
+ 1397 0db8 FB21E93F 		.word	1072243195
+ 1398 0dbc 182D4454 		.word	1413754136
+ 1399 0dc0 FB210940 		.word	1074340347
+ 1400 0dc4 182D4454 		.word	1413754136
+ 1401 0dc8 FB211940 		.word	1075388923
+ 1402 0dcc 182D4454 		.word	1413754136
+ 1403 0dd0 7CD90240 		.word	1073928572
+ 1404 0dd4 D221337F 		.word	2134057426
+ 1405              	.LBE90:
+ 1406              	.LBE89:
+ 1407              	.LFE7:
+ 1409              		.global	__floatsisf
+ 1410              		.align	2
+ 1411              		.global	correctState
+ 1413              	correctState:
+ 1414              	.LFB6:
+ 1415              	.LM188:
+ 1416              		@ Function supports interworking.
+ 1417              		@ args = 0, pretend = 0, frame = 8
+ 1418              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1419              	.LVL62:
+ 1420 0dd8 F04F2DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 1421              	.LCFI8:
+ 1422 0ddc 0040A0E1 		mov	r4, r0
+ 1423 0de0 08D04DE2 		sub	sp, sp, #8
+ 1424              	.LCFI9:
+ 1425              	.LM189:
+ 1426 0de4 000090E5 		ldr	r0, [r0, #0]	@ float
+ 1427              	.LVL63:
+ 1428 0de8 181194E5 		ldr	r1, [r4, #280]	@ float
+ 1429 0dec FEFFFFEB 		bl	__addsf3
+ 1430              	.LM190:
+ 1431 0df0 1C1194E5 		ldr	r1, [r4, #284]	@ float
+ 1432              	.LM191:
+ 1433 0df4 000084E5 		str	r0, [r4, #0]	@ float
+ 1434              	.LM192:
+ 1435 0df8 040094E5 		ldr	r0, [r4, #4]	@ float
+ 1436 0dfc FEFFFFEB 		bl	__addsf3
+ 1437              	.LM193:
+ 1438 0e00 201194E5 		ldr	r1, [r4, #288]	@ float
+ 1439              	.LM194:
+ 1440 0e04 040084E5 		str	r0, [r4, #4]	@ float
+ 1441              	.LM195:
+ 1442 0e08 080094E5 		ldr	r0, [r4, #8]	@ float
+ 1443 0e0c FEFFFFEB 		bl	__addsf3
+ 1444              	.LM196:
+ 1445 0e10 241194E5 		ldr	r1, [r4, #292]	@ float
+ 1446              	.LM197:
+ 1447 0e14 080084E5 		str	r0, [r4, #8]	@ float
+ 1448              	.LM198:
+ 1449 0e18 0C0094E5 		ldr	r0, [r4, #12]	@ float
+ 1450 0e1c FEFFFFEB 		bl	__addsf3
+ 1451              	.LM199:
+ 1452 0e20 281194E5 		ldr	r1, [r4, #296]	@ float
+ 1453              	.LM200:
+ 1454 0e24 0C0084E5 		str	r0, [r4, #12]	@ float
+ 1455              	.LM201:
+ 1456 0e28 100094E5 		ldr	r0, [r4, #16]	@ float
+ 1457 0e2c FEFFFFEB 		bl	__addsf3
+ 1458              	.LM202:
+ 1459 0e30 2C1194E5 		ldr	r1, [r4, #300]	@ float
+ 1460              	.LM203:
+ 1461 0e34 100084E5 		str	r0, [r4, #16]	@ float
+ 1462              	.LM204:
+ 1463 0e38 140094E5 		ldr	r0, [r4, #20]	@ float
+ 1464 0e3c FEFFFFEB 		bl	__addsf3
+ 1465              	.LM205:
+ 1466 0e40 186094E5 		ldr	r6, [r4, #24]	@ float
+ 1467              	.LM206:
+ 1468 0e44 1C7094E5 		ldr	r7, [r4, #28]	@ float
+ 1469              	.LM207:
+ 1470 0e48 24A094E5 		ldr	sl, [r4, #36]	@ float
+ 1471              	.LM208:
+ 1472 0e4c 208094E5 		ldr	r8, [r4, #32]	@ float
+ 1473              	.LBB94:
+ 1474              	.LBB95:
+ 1475              	.LM209:
+ 1476 0e50 301194E5 		ldr	r1, [r4, #304]	@ float
+ 1477              	.LBE95:
+ 1478              	.LBE94:
+ 1479              	.LM210:
+ 1480 0e54 140084E5 		str	r0, [r4, #20]	@ float
+ 1481              	.LM211:
+ 1482 0e58 9C6084E5 		str	r6, [r4, #156]	@ float
+ 1483              	.LM212:
+ 1484 0e5c A07084E5 		str	r7, [r4, #160]	@ float
+ 1485              	.LM213:
+ 1486 0e60 A8A084E5 		str	sl, [r4, #168]	@ float
+ 1487              	.LBB96:
+ 1488              	.LBB97:
+ 1489              	.LM214:
+ 1490 0e64 0600A0E1 		mov	r0, r6
+ 1491              	.LBE97:
+ 1492              	.LBE96:
+ 1493              	.LM215:
+ 1494 0e68 A48084E5 		str	r8, [r4, #164]	@ float
+ 1495              	.LBB98:
+ 1496              	.LBB99:
+ 1497              	.LM216:
+ 1498 0e6c FEFFFFEB 		bl	__mulsf3
+ 1499 0e70 341194E5 		ldr	r1, [r4, #308]	@ float
+ 1500 0e74 0050A0E1 		mov	r5, r0
+ 1501 0e78 0700A0E1 		mov	r0, r7
+ 1502 0e7c FEFFFFEB 		bl	__mulsf3
+ 1503 0e80 0010A0E1 		mov	r1, r0
+ 1504 0e84 0500A0E1 		mov	r0, r5
+ 1505 0e88 FEFFFFEB 		bl	__subsf3
+ 1506 0e8c 381194E5 		ldr	r1, [r4, #312]	@ float
+ 1507 0e90 0050A0E1 		mov	r5, r0
+ 1508 0e94 0800A0E1 		mov	r0, r8
+ 1509 0e98 FEFFFFEB 		bl	__mulsf3
+ 1510 0e9c 0010A0E1 		mov	r1, r0
+ 1511 0ea0 0500A0E1 		mov	r0, r5
+ 1512 0ea4 FEFFFFEB 		bl	__subsf3
+ 1513 0ea8 3C1194E5 		ldr	r1, [r4, #316]	@ float
+ 1514 0eac 0050A0E1 		mov	r5, r0
+ 1515 0eb0 0A00A0E1 		mov	r0, sl
+ 1516 0eb4 FEFFFFEB 		bl	__mulsf3
+ 1517 0eb8 0010A0E1 		mov	r1, r0
+ 1518 0ebc 0500A0E1 		mov	r0, r5
+ 1519 0ec0 FEFFFFEB 		bl	__subsf3
+ 1520              	.LM217:
+ 1521 0ec4 341194E5 		ldr	r1, [r4, #308]	@ float
+ 1522              	.LM218:
+ 1523 0ec8 180084E5 		str	r0, [r4, #24]	@ float
+ 1524              	.LM219:
+ 1525 0ecc 0600A0E1 		mov	r0, r6
+ 1526 0ed0 FEFFFFEB 		bl	__mulsf3
+ 1527 0ed4 301194E5 		ldr	r1, [r4, #304]	@ float
+ 1528 0ed8 0050A0E1 		mov	r5, r0
+ 1529 0edc 0700A0E1 		mov	r0, r7
+ 1530 0ee0 FEFFFFEB 		bl	__mulsf3
+ 1531 0ee4 0010A0E1 		mov	r1, r0
+ 1532 0ee8 0500A0E1 		mov	r0, r5
+ 1533 0eec FEFFFFEB 		bl	__addsf3
+ 1534 0ef0 3C1194E5 		ldr	r1, [r4, #316]	@ float
+ 1535 0ef4 0050A0E1 		mov	r5, r0
+ 1536 0ef8 0800A0E1 		mov	r0, r8
+ 1537 0efc FEFFFFEB 		bl	__mulsf3
+ 1538 0f00 0010A0E1 		mov	r1, r0
+ 1539 0f04 0500A0E1 		mov	r0, r5
+ 1540 0f08 FEFFFFEB 		bl	__addsf3
+ 1541 0f0c 381194E5 		ldr	r1, [r4, #312]	@ float
+ 1542 0f10 0050A0E1 		mov	r5, r0
+ 1543 0f14 0A00A0E1 		mov	r0, sl
+ 1544 0f18 FEFFFFEB 		bl	__mulsf3
+ 1545 0f1c 0010A0E1 		mov	r1, r0
+ 1546 0f20 0500A0E1 		mov	r0, r5
+ 1547 0f24 FEFFFFEB 		bl	__subsf3
+ 1548              	.LBE99:
+ 1549              	.LBE98:
+ 1550              	.LM220:
+ 1551 0f28 186084E2 		add	r6, r4, #24
+ 1552              	.LVL64:
+ 1553              	.LBB100:
+ 1554              	.LBB101:
+ 1555              	.LM221:
+ 1556 0f2c 040086E5 		str	r0, [r6, #4]	@ float
+ 1557              	.LM222:
+ 1558 0f30 381194E5 		ldr	r1, [r4, #312]	@ float
+ 1559 0f34 9C0094E5 		ldr	r0, [r4, #156]	@ float
+ 1560 0f38 FEFFFFEB 		bl	__mulsf3
+ 1561 0f3c 301194E5 		ldr	r1, [r4, #304]	@ float
+ 1562 0f40 0050A0E1 		mov	r5, r0
+ 1563 0f44 A40094E5 		ldr	r0, [r4, #164]	@ float
+ 1564 0f48 FEFFFFEB 		bl	__mulsf3
+ 1565 0f4c 0010A0E1 		mov	r1, r0
+ 1566 0f50 0500A0E1 		mov	r0, r5
+ 1567 0f54 FEFFFFEB 		bl	__addsf3
+ 1568 0f58 3C1194E5 		ldr	r1, [r4, #316]	@ float
+ 1569 0f5c 0050A0E1 		mov	r5, r0
+ 1570 0f60 A00094E5 		ldr	r0, [r4, #160]	@ float
+ 1571 0f64 FEFFFFEB 		bl	__mulsf3
+ 1572 0f68 0010A0E1 		mov	r1, r0
+ 1573 0f6c 0500A0E1 		mov	r0, r5
+ 1574 0f70 FEFFFFEB 		bl	__subsf3
+ 1575 0f74 341194E5 		ldr	r1, [r4, #308]	@ float
+ 1576 0f78 0050A0E1 		mov	r5, r0
+ 1577 0f7c A80094E5 		ldr	r0, [r4, #168]	@ float
+ 1578 0f80 FEFFFFEB 		bl	__mulsf3
+ 1579 0f84 0010A0E1 		mov	r1, r0
+ 1580 0f88 0500A0E1 		mov	r0, r5
+ 1581 0f8c FEFFFFEB 		bl	__addsf3
+ 1582 0f90 080086E5 		str	r0, [r6, #8]	@ float
+ 1583              	.LM223:
+ 1584 0f94 3C1194E5 		ldr	r1, [r4, #316]	@ float
+ 1585 0f98 9C0094E5 		ldr	r0, [r4, #156]	@ float
+ 1586 0f9c FEFFFFEB 		bl	__mulsf3
+ 1587 0fa0 381194E5 		ldr	r1, [r4, #312]	@ float
+ 1588 0fa4 0050A0E1 		mov	r5, r0
+ 1589 0fa8 A00094E5 		ldr	r0, [r4, #160]	@ float
+ 1590 0fac FEFFFFEB 		bl	__mulsf3
+ 1591 0fb0 0010A0E1 		mov	r1, r0
+ 1592 0fb4 0500A0E1 		mov	r0, r5
+ 1593 0fb8 FEFFFFEB 		bl	__addsf3
+ 1594 0fbc 341194E5 		ldr	r1, [r4, #308]	@ float
+ 1595 0fc0 0050A0E1 		mov	r5, r0
+ 1596 0fc4 A40094E5 		ldr	r0, [r4, #164]	@ float
+ 1597 0fc8 FEFFFFEB 		bl	__mulsf3
+ 1598 0fcc 0010A0E1 		mov	r1, r0
+ 1599 0fd0 0500A0E1 		mov	r0, r5
+ 1600 0fd4 FEFFFFEB 		bl	__subsf3
+ 1601 0fd8 301194E5 		ldr	r1, [r4, #304]	@ float
+ 1602 0fdc 0050A0E1 		mov	r5, r0
+ 1603 0fe0 A80094E5 		ldr	r0, [r4, #168]	@ float
+ 1604 0fe4 FEFFFFEB 		bl	__mulsf3
+ 1605 0fe8 0010A0E1 		mov	r1, r0
+ 1606 0fec 0500A0E1 		mov	r0, r5
+ 1607 0ff0 FEFFFFEB 		bl	__addsf3
+ 1608 0ff4 0C0086E5 		str	r0, [r6, #12]	@ float
+ 1609              	.LBE101:
+ 1610              	.LBE100:
+ 1611              	.LM224:
+ 1612 0ff8 280094E5 		ldr	r0, [r4, #40]	@ float
+ 1613 0ffc 401194E5 		ldr	r1, [r4, #320]	@ float
+ 1614 1000 FEFFFFEB 		bl	__addsf3
+ 1615              	.LM225:
+ 1616 1004 441194E5 		ldr	r1, [r4, #324]	@ float
+ 1617              	.LM226:
+ 1618 1008 280084E5 		str	r0, [r4, #40]	@ float
+ 1619              	.LM227:
+ 1620 100c 2C0094E5 		ldr	r0, [r4, #44]	@ float
+ 1621 1010 FEFFFFEB 		bl	__addsf3
+ 1622              	.LM228:
+ 1623 1014 481194E5 		ldr	r1, [r4, #328]	@ float
+ 1624              	.LM229:
+ 1625 1018 2C0084E5 		str	r0, [r4, #44]	@ float
+ 1626              	.LM230:
+ 1627 101c 300094E5 		ldr	r0, [r4, #48]	@ float
+ 1628 1020 FEFFFFEB 		bl	__addsf3
+ 1629              	.LM231:
+ 1630 1024 4C1194E5 		ldr	r1, [r4, #332]	@ float
+ 1631              	.LM232:
+ 1632 1028 300084E5 		str	r0, [r4, #48]	@ float
+ 1633              	.LM233:
+ 1634 102c 340094E5 		ldr	r0, [r4, #52]	@ float
+ 1635 1030 FEFFFFEB 		bl	__addsf3
+ 1636              	.LM234:
+ 1637 1034 501194E5 		ldr	r1, [r4, #336]	@ float
+ 1638              	.LM235:
+ 1639 1038 340084E5 		str	r0, [r4, #52]	@ float
+ 1640              	.LM236:
+ 1641 103c 380094E5 		ldr	r0, [r4, #56]	@ float
+ 1642 1040 FEFFFFEB 		bl	__addsf3
+ 1643              	.LM237:
+ 1644 1044 541194E5 		ldr	r1, [r4, #340]	@ float
+ 1645              	.LM238:
+ 1646 1048 380084E5 		str	r0, [r4, #56]	@ float
+ 1647              	.LM239:
+ 1648 104c 3C0094E5 		ldr	r0, [r4, #60]	@ float
+ 1649 1050 FEFFFFEB 		bl	__addsf3
+ 1650              	.LM240:
+ 1651 1054 6430A0E3 		mov	r3, #100
+ 1652              	.LM241:
+ 1653 1058 3C0084E5 		str	r0, [r4, #60]	@ float
+ 1654              	.LM242:
+ 1655 105c 9C3184E5 		str	r3, [r4, #412]
+ 1656              	.LM243:
+ 1657 1060 000094E5 		ldr	r0, [r4, #0]	@ float
+ 1658 1064 FEFFFFEB 		bl	__extendsfdf2
+ 1659 1068 685194E5 		ldr	r5, [r4, #360]
+ 1660 106c 0060A0E1 		mov	r6, r0
+ 1661              	.LVL65:
+ 1662 1070 0130D5E5 		ldrb	r3, [r5, #1]	@ zero_extendqisi2
+ 1663 1074 0000D5E5 		ldrb	r0, [r5, #0]	@ zero_extendqisi2
+ 1664 1078 0170A0E1 		mov	r7, r1
+ 1665 107c 0210D5E5 		ldrb	r1, [r5, #2]	@ zero_extendqisi2
+ 1666 1080 0320D5E5 		ldrb	r2, [r5, #3]	@ zero_extendqisi2
+ 1667 1084 030480E1 		orr	r0, r0, r3, asl #8
+ 1668 1088 010880E1 		orr	r0, r0, r1, asl #16
+ 1669 108c 020C80E1 		orr	r0, r0, r2, asl #24
+ 1670 1090 FEFFFFEB 		bl	__floatsisf
+ 1671 1094 FEFFFFEB 		bl	__extendsfdf2
+ 1672 1098 272E8FE2 		adr	r2, .L84
+ 1673 109c 0C0092E8 		ldmia	r2, {r2-r3}
+ 1674 10a0 FEFFFFEB 		bl	__muldf3
+ 1675 10a4 0020A0E1 		mov	r2, r0
+ 1676 10a8 0130A0E1 		mov	r3, r1
+ 1677 10ac 0600A0E1 		mov	r0, r6
+ 1678 10b0 0710A0E1 		mov	r1, r7
+ 1679 10b4 FEFFFFEB 		bl	__adddf3
+ 1680 10b8 FEFFFFEB 		bl	__truncdfsf2
+ 1681 10bc 04008DE5 		str	r0, [sp, #4]	@ float
+ 1682 10c0 6C0184E5 		str	r0, [r4, #364]	@ float
+ 1683              	.LM244:
+ 1684 10c4 040094E5 		ldr	r0, [r4, #4]	@ float
+ 1685 10c8 FEFFFFEB 		bl	__extendsfdf2
+ 1686 10cc 0530D5E5 		ldrb	r3, [r5, #5]	@ zero_extendqisi2
+ 1687 10d0 0060A0E1 		mov	r6, r0
+ 1688 10d4 0400D5E5 		ldrb	r0, [r5, #4]	@ zero_extendqisi2
+ 1689 10d8 0170A0E1 		mov	r7, r1
+ 1690 10dc 0610D5E5 		ldrb	r1, [r5, #6]	@ zero_extendqisi2
+ 1691 10e0 0720D5E5 		ldrb	r2, [r5, #7]	@ zero_extendqisi2
+ 1692 10e4 030480E1 		orr	r0, r0, r3, asl #8
+ 1693 10e8 010880E1 		orr	r0, r0, r1, asl #16
+ 1694 10ec 020C80E1 		orr	r0, r0, r2, asl #24
+ 1695 10f0 FEFFFFEB 		bl	__floatsisf
+ 1696 10f4 020180E2 		add	r0, r0, #-2147483648
+ 1697 10f8 FEFFFFEB 		bl	__extendsfdf2
+ 1698 10fc 832F8FE2 		adr	r2, .L84
+ 1699 1100 0C0092E8 		ldmia	r2, {r2-r3}
+ 1700 1104 FEFFFFEB 		bl	__muldf3
+ 1701 1108 0020A0E1 		mov	r2, r0
+ 1702 110c 0130A0E1 		mov	r3, r1
+ 1703 1110 0600A0E1 		mov	r0, r6
+ 1704 1114 0710A0E1 		mov	r1, r7
+ 1705 1118 FEFFFFEB 		bl	__adddf3
+ 1706 111c FEFFFFEB 		bl	__truncdfsf2
+ 1707 1120 00008DE5 		str	r0, [sp, #0]	@ float
+ 1708 1124 700184E5 		str	r0, [r4, #368]	@ float
+ 1709              	.LM245:
+ 1710 1128 080094E5 		ldr	r0, [r4, #8]	@ float
+ 1711 112c FEFFFFEB 		bl	__extendsfdf2
+ 1712 1130 0930D5E5 		ldrb	r3, [r5, #9]	@ zero_extendqisi2
+ 1713 1134 0060A0E1 		mov	r6, r0
+ 1714 1138 0800D5E5 		ldrb	r0, [r5, #8]	@ zero_extendqisi2
+ 1715 113c 0170A0E1 		mov	r7, r1
+ 1716 1140 0A10D5E5 		ldrb	r1, [r5, #10]	@ zero_extendqisi2
+ 1717 1144 0B20D5E5 		ldrb	r2, [r5, #11]	@ zero_extendqisi2
+ 1718 1148 030480E1 		orr	r0, r0, r3, asl #8
+ 1719 114c 010880E1 		orr	r0, r0, r1, asl #16
+ 1720 1150 020C80E1 		orr	r0, r0, r2, asl #24
+ 1721 1154 FEFFFFEB 		bl	__floatsisf
+ 1722 1158 020180E2 		add	r0, r0, #-2147483648
+ 1723 115c FEFFFFEB 		bl	__extendsfdf2
+ 1724 1160 6A2F8FE2 		adr	r2, .L84
+ 1725 1164 0C0092E8 		ldmia	r2, {r2-r3}
+ 1726 1168 FEFFFFEB 		bl	__muldf3
+ 1727 116c 0020A0E1 		mov	r2, r0
+ 1728 1170 0130A0E1 		mov	r3, r1
+ 1729 1174 0600A0E1 		mov	r0, r6
+ 1730 1178 0710A0E1 		mov	r1, r7
+ 1731 117c FEFFFFEB 		bl	__adddf3
+ 1732 1180 FEFFFFEB 		bl	__truncdfsf2
+ 1733 1184 0090A0E1 		mov	r9, r0
+ 1734 1188 740184E5 		str	r0, [r4, #372]	@ float
+ 1735              	.LM246:
+ 1736 118c 0C0094E5 		ldr	r0, [r4, #12]	@ float
+ 1737 1190 FEFFFFEB 		bl	__extendsfdf2
+ 1738 1194 1130D5E5 		ldrb	r3, [r5, #17]	@ zero_extendqisi2
+ 1739 1198 0060A0E1 		mov	r6, r0
+ 1740 119c 1000D5E5 		ldrb	r0, [r5, #16]	@ zero_extendqisi2
+ 1741 11a0 030480E1 		orr	r0, r0, r3, asl #8
+ 1742 11a4 0008A0E1 		mov	r0, r0, asl #16
+ 1743 11a8 4008A0E1 		mov	r0, r0, asr #16
+ 1744 11ac 0170A0E1 		mov	r7, r1
+ 1745 11b0 FEFFFFEB 		bl	__floatsisf
+ 1746 11b4 FEFFFFEB 		bl	__extendsfdf2
+ 1747 11b8 152E8FE2 		adr	r2, .L84
+ 1748 11bc 0C0092E8 		ldmia	r2, {r2-r3}
+ 1749 11c0 FEFFFFEB 		bl	__muldf3
+ 1750 11c4 0020A0E1 		mov	r2, r0
+ 1751 11c8 0130A0E1 		mov	r3, r1
+ 1752 11cc 0600A0E1 		mov	r0, r6
+ 1753 11d0 0710A0E1 		mov	r1, r7
+ 1754 11d4 FEFFFFEB 		bl	__adddf3
+ 1755 11d8 FEFFFFEB 		bl	__truncdfsf2
+ 1756 11dc 00B0A0E1 		mov	fp, r0
+ 1757 11e0 780184E5 		str	r0, [r4, #376]	@ float
+ 1758              	.LM247:
+ 1759 11e4 100094E5 		ldr	r0, [r4, #16]	@ float
+ 1760 11e8 FEFFFFEB 		bl	__extendsfdf2
+ 1761 11ec 1330D5E5 		ldrb	r3, [r5, #19]	@ zero_extendqisi2
+ 1762 11f0 0060A0E1 		mov	r6, r0
+ 1763 11f4 1200D5E5 		ldrb	r0, [r5, #18]	@ zero_extendqisi2
+ 1764 11f8 030480E1 		orr	r0, r0, r3, asl #8
+ 1765 11fc 0008A0E1 		mov	r0, r0, asl #16
+ 1766 1200 4008A0E1 		mov	r0, r0, asr #16
+ 1767 1204 0170A0E1 		mov	r7, r1
+ 1768 1208 FEFFFFEB 		bl	__floatsisf
+ 1769 120c 020180E2 		add	r0, r0, #-2147483648
+ 1770 1210 FEFFFFEB 		bl	__extendsfdf2
+ 1771 1214 F4208FE2 		adr	r2, .L84
+ 1772 1218 0C0092E8 		ldmia	r2, {r2-r3}
+ 1773 121c FEFFFFEB 		bl	__muldf3
+ 1774 1220 0020A0E1 		mov	r2, r0
+ 1775 1224 0130A0E1 		mov	r3, r1
+ 1776 1228 0600A0E1 		mov	r0, r6
+ 1777 122c 0710A0E1 		mov	r1, r7
+ 1778 1230 FEFFFFEB 		bl	__adddf3
+ 1779 1234 FEFFFFEB 		bl	__truncdfsf2
+ 1780 1238 00A0A0E1 		mov	sl, r0
+ 1781 123c 7C0184E5 		str	r0, [r4, #380]	@ float
+ 1782              	.LM248:
+ 1783 1240 140094E5 		ldr	r0, [r4, #20]	@ float
+ 1784 1244 FEFFFFEB 		bl	__extendsfdf2
+ 1785 1248 1530D5E5 		ldrb	r3, [r5, #21]	@ zero_extendqisi2
+ 1786 124c 0060A0E1 		mov	r6, r0
+ 1787 1250 1400D5E5 		ldrb	r0, [r5, #20]	@ zero_extendqisi2
+ 1788 1254 030480E1 		orr	r0, r0, r3, asl #8
+ 1789 1258 0008A0E1 		mov	r0, r0, asl #16
+ 1790 125c 4008A0E1 		mov	r0, r0, asr #16
+ 1791 1260 0170A0E1 		mov	r7, r1
+ 1792 1264 FEFFFFEB 		bl	__floatsisf
+ 1793 1268 020180E2 		add	r0, r0, #-2147483648
+ 1794 126c FEFFFFEB 		bl	__extendsfdf2
+ 1795 1270 98208FE2 		adr	r2, .L84
+ 1796 1274 0C0092E8 		ldmia	r2, {r2-r3}
+ 1797 1278 FEFFFFEB 		bl	__muldf3
+ 1798 127c 0020A0E1 		mov	r2, r0
+ 1799 1280 0130A0E1 		mov	r3, r1
+ 1800 1284 0600A0E1 		mov	r0, r6
+ 1801 1288 0710A0E1 		mov	r1, r7
+ 1802 128c FEFFFFEB 		bl	__adddf3
+ 1803 1290 FEFFFFEB 		bl	__truncdfsf2
+ 1804              	.LBB102:
+ 1805              	.LM249:
+ 1806 1294 4254A0E3 		mov	r5, #1107296256
+ 1807 1298 325785E2 		add	r5, r5, #13107200
+ 1808              	.LBE102:
+ 1809              	.LM250:
+ 1810 129c 0060A0E1 		mov	r6, r0
+ 1811 12a0 800184E5 		str	r0, [r4, #384]	@ float
+ 1812              	.LBB103:
+ 1813              	.LM251:
+ 1814 12a4 0510A0E1 		mov	r1, r5
+ 1815 12a8 04009DE5 		ldr	r0, [sp, #4]	@ float
+ 1816 12ac FEFFFFEB 		bl	__divsf3
+ 1817 12b0 0510A0E1 		mov	r1, r5
+ 1818 12b4 840184E5 		str	r0, [r4, #388]	@ float
+ 1819 12b8 00009DE5 		ldr	r0, [sp, #0]	@ float
+ 1820 12bc FEFFFFEB 		bl	__divsf3
+ 1821 12c0 0510A0E1 		mov	r1, r5
+ 1822 12c4 880184E5 		str	r0, [r4, #392]	@ float
+ 1823 12c8 0900A0E1 		mov	r0, r9
+ 1824 12cc FEFFFFEB 		bl	__divsf3
+ 1825 12d0 0510A0E1 		mov	r1, r5
+ 1826 12d4 8C0184E5 		str	r0, [r4, #396]	@ float
+ 1827 12d8 0B00A0E1 		mov	r0, fp
+ 1828 12dc FEFFFFEB 		bl	__divsf3
+ 1829 12e0 0510A0E1 		mov	r1, r5
+ 1830 12e4 900184E5 		str	r0, [r4, #400]	@ float
+ 1831 12e8 0A00A0E1 		mov	r0, sl
+ 1832 12ec FEFFFFEB 		bl	__divsf3
+ 1833 12f0 0510A0E1 		mov	r1, r5
+ 1834 12f4 940184E5 		str	r0, [r4, #404]	@ float
+ 1835 12f8 0600A0E1 		mov	r0, r6
+ 1836 12fc FEFFFFEB 		bl	__divsf3
+ 1837 1300 980184E5 		str	r0, [r4, #408]	@ float
+ 1838              	.LBE103:
+ 1839              	.LM252:
+ 1840 1304 08D08DE2 		add	sp, sp, #8
+ 1841 1308 F04FBDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 1842 130c 1EFF2FE1 		bx	lr
+ 1843              	.L85:
+ 1844              		.align	2
+ 1845              	.L84:
+ 1846 1310 4D6250BF 		.word	-1085250995
+ 1847 1314 FCA9F1D2 		.word	-755914244
+ 1848              	.LFE6:
+ 1850              		.global	__floatdisf
+ 1851              		.align	2
+ 1852              		.global	DEKF_step
+ 1854              	DEKF_step:
+ 1855              	.LFB4:
+ 1856              	.LM253:
+ 1857              		@ Function supports interworking.
+ 1858              		@ args = 0, pretend = 0, frame = 12
+ 1859              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1860              	.LVL66:
+ 1861 1318 F04F2DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 1862              	.LCFI10:
+ 1863              	.LM254:
+ 1864 131c A43190E5 		ldr	r3, [r0, #420]
+ 1865              	.LM255:
+ 1866 1320 164E80E2 		add	r4, r0, #352
+ 1867 1324 300094E8 		ldmia	r4, {r4-r5}
+ 1868              	.LVL67:
+ 1869              	.LM256:
+ 1870 1328 0270A0E1 		mov	r7, r2
+ 1871 132c 0160A0E1 		mov	r6, r1
+ 1872              	.LM257:
+ 1873 1330 018083E2 		add	r8, r3, #1
+ 1874              	.LM258:
+ 1875 1334 044056E0 		subs	r4, r6, r4
+ 1876 1338 0550C7E0 		sbc	r5, r7, r5
+ 1877              	.LVL68:
+ 1878              	.LM259:
+ 1879 133c 10D04DE2 		sub	sp, sp, #16
+ 1880              	.LCFI11:
+ 1881              	.LM260:
+ 1882 1340 00B0A0E1 		mov	fp, r0
+ 1883              	.LM261:
+ 1884 1344 A48180E5 		str	r8, [r0, #420]
+ 1885              	.LVL69:
+ 1886              	.LM262:
+ 1887 1348 0510A0E1 		mov	r1, r5
+ 1888              	.LVL70:
+ 1889 134c 0400A0E1 		mov	r0, r4
+ 1890              	.LVL71:
+ 1891 1350 FEFFFFEB 		bl	__floatdisf
+ 1892              	.LVL72:
+ 1893 1354 FEFFFFEB 		bl	__extendsfdf2
+ 1894 1358 F8208FE2 		adr	r2, .L189
+ 1895 135c 0C0092E8 		ldmia	r2, {r2-r3}
+ 1896 1360 FEFFFFEB 		bl	__muldf3
+ 1897 1364 FEFFFFEB 		bl	__truncdfsf2
+ 1898              	.LM263:
+ 1899 1368 000055E3 		cmp	r5, #0
+ 1900              	.LM264:
+ 1901 136c 98008BE5 		str	r0, [fp, #152]	@ float
+ 1902              	.LM265:
+ 1903 1370 60618BE5 		str	r6, [fp, #352]
+ 1904 1374 64718BE5 		str	r7, [fp, #356]
+ 1905              	.LM266:
+ 1906 1378 A001008A 		bhi	.L178
+ 1907 137c A201000A 		beq	.L183
+ 1908              	.L89:
+ 1909              	.LM267:
+ 1910 1380 273CA0E3 		mov	r3, #9984
+ 1911 1384 103083E2 		add	r3, r3, #16
+ 1912 1388 030058E1 		cmp	r8, r3
+ 1913              	.LM268:
+ 1914 138c CC409FE5 		ldr	r4, .L189+8
+ 1915              	.LVL73:
+ 1916              	.LM269:
+ 1917 1390 A4318B85 		strhi	r3, [fp, #420]
+ 1918              	.LM270:
+ 1919 1394 0030A083 		movhi	r3, #0
+ 1920 1398 A0318B85 		strhi	r3, [fp, #416]
+ 1921              	.LM271:
+ 1922 139c F002D4E1 		ldrsh	r0, [r4, #32]
+ 1923 13a0 FEFFFFEB 		bl	__floatsisf
+ 1924 13a4 B8109FE5 		ldr	r1, .L189+12
+ 1925 13a8 FEFFFFEB 		bl	__mulsf3
+ 1926 13ac 80008BE5 		str	r0, [fp, #128]	@ float
+ 1927              	.LM272:
+ 1928 13b0 F202D4E1 		ldrsh	r0, [r4, #34]
+ 1929 13b4 FEFFFFEB 		bl	__floatsisf
+ 1930 13b8 A8109FE5 		ldr	r1, .L189+16
+ 1931 13bc FEFFFFEB 		bl	__mulsf3
+ 1932 13c0 84008BE5 		str	r0, [fp, #132]	@ float
+ 1933              	.LM273:
+ 1934 13c4 F402D4E1 		ldrsh	r0, [r4, #36]
+ 1935 13c8 FEFFFFEB 		bl	__floatsisf
+ 1936 13cc 94109FE5 		ldr	r1, .L189+16
+ 1937 13d0 FEFFFFEB 		bl	__mulsf3
+ 1938 13d4 88008BE5 		str	r0, [fp, #136]	@ float
+ 1939              	.LM274:
+ 1940 13d8 FA00D4E1 		ldrsh	r0, [r4, #10]
+ 1941 13dc FEFFFFEB 		bl	__floatsisf
+ 1942 13e0 84109FE5 		ldr	r1, .L189+20
+ 1943 13e4 FEFFFFEB 		bl	__mulsf3
+ 1944 13e8 8C008BE5 		str	r0, [fp, #140]	@ float
+ 1945              	.LM275:
+ 1946 13ec F800D4E1 		ldrsh	r0, [r4, #8]
+ 1947 13f0 FEFFFFEB 		bl	__floatsisf
+ 1948 13f4 74109FE5 		ldr	r1, .L189+24
+ 1949 13f8 FEFFFFEB 		bl	__mulsf3
+ 1950 13fc 90008BE5 		str	r0, [fp, #144]	@ float
+ 1951              	.LM276:
+ 1952 1400 FC00D4E1 		ldrsh	r0, [r4, #12]
+ 1953 1404 FEFFFFEB 		bl	__floatsisf
+ 1954 1408 60109FE5 		ldr	r1, .L189+24
+ 1955 140c FEFFFFEB 		bl	__mulsf3
+ 1956              	.LM277:
+ 1957 1410 A0319BE5 		ldr	r3, [fp, #416]
+ 1958 1414 010053E3 		cmp	r3, #1
+ 1959              	.LM278:
+ 1960 1418 0030A013 		movne	r3, #0
+ 1961              	.LM279:
+ 1962 141c 94008BE5 		str	r0, [fp, #148]	@ float
+ 1963              	.LM280:
+ 1964 1420 14308B15 		strne	r3, [fp, #20]	@ float
+ 1965              	.LM281:
+ 1966 1424 0C308B15 		strne	r3, [fp, #12]	@ float
+ 1967              	.LM282:
+ 1968 1428 10308B15 		strne	r3, [fp, #16]	@ float
+ 1969              	.LM283:
+ 1970 142c 4703000A 		beq	.L184
+ 1971              	.L94:
+ 1972              	.LM284:
+ 1973 1430 00A0A0E3 		mov	sl, #0
+ 1974              	.LM285:
+ 1975 1434 5C219BE5 		ldr	r2, [fp, #348]
+ 1976              	.LM286:
+ 1977 1438 A8A1CBE5 		strb	sl, [fp, #424]
+ 1978              	.LM287:
+ 1979 143c 0830D2E5 		ldrb	r3, [r2, #8]	@ zero_extendqisi2
+ 1980 1440 0A0053E1 		cmp	r3, sl
+ 1981 1444 18208B02 		addeq	r2, fp, #24
+ 1982 1448 68919B05 		ldreq	r9, [fp, #360]
+ 1983 144c 04208D05 		streq	r2, [sp, #4]
+ 1984 1450 7801001A 		bne	.L185
+ 1985 1454 0A0000EA 		b	.L190
+ 1986              	.L191:
+ 1987              		.align	2
+ 1988              	.L189:
+ 1989 1458 F7C6B03E 		.word	1051772663
+ 1990 145c 8DEDB5A0 		.word	-1598689907
+ 1991 1460 00000000 		.word	LL_1khz_attitude_data
+ 1992 1464 1FBA203C 		.word	1008777759
+ 1993 1468 1FBA20BC 		.word	-1138705889
+ 1994 146c 1E428939 		.word	965296670
+ 1995 1470 1E4289B9 		.word	-1182186978
+ 1996 1474 DF7CDB3D 		.word	1037794527
+ 1997 1478 BBBDD7D9 		.word	-640172613
+ 1998 147c 5B20C93F 		.word	1070145627
+ 1999 1480 E3361AC0 		.word	-1072023837
+ 2000              	.L190:
+ 2001              	.LVL74:
+ 2002              	.L95:
+ 2003              	.LBB148:
+ 2004              	.LBB149:
+ 2005              	.LM288:
+ 2006 1484 9C419BE5 		ldr	r4, [fp, #412]
+ 2007              	.LVL75:
+ 2008 1488 000054E3 		cmp	r4, #0
+ 2009 148c 240300DA 		ble	.L139
+ 2010              	.LBB150:
+ 2011              	.LM289:
+ 2012 1490 6C019BE5 		ldr	r0, [fp, #364]	@ float
+ 2013 1494 84119BE5 		ldr	r1, [fp, #388]	@ float
+ 2014 1498 FEFFFFEB 		bl	__subsf3
+ 2015 149c 88119BE5 		ldr	r1, [fp, #392]	@ float
+ 2016 14a0 6C018BE5 		str	r0, [fp, #364]	@ float
+ 2017 14a4 70019BE5 		ldr	r0, [fp, #368]	@ float
+ 2018 14a8 FEFFFFEB 		bl	__subsf3
+ 2019 14ac 8C119BE5 		ldr	r1, [fp, #396]	@ float
+ 2020 14b0 70018BE5 		str	r0, [fp, #368]	@ float
+ 2021 14b4 74019BE5 		ldr	r0, [fp, #372]	@ float
+ 2022 14b8 FEFFFFEB 		bl	__subsf3
+ 2023 14bc 90119BE5 		ldr	r1, [fp, #400]	@ float
+ 2024 14c0 74018BE5 		str	r0, [fp, #372]	@ float
+ 2025 14c4 78019BE5 		ldr	r0, [fp, #376]	@ float
+ 2026 14c8 FEFFFFEB 		bl	__subsf3
+ 2027 14cc 94119BE5 		ldr	r1, [fp, #404]	@ float
+ 2028 14d0 78018BE5 		str	r0, [fp, #376]	@ float
+ 2029 14d4 7C019BE5 		ldr	r0, [fp, #380]	@ float
+ 2030 14d8 FEFFFFEB 		bl	__subsf3
+ 2031 14dc 98119BE5 		ldr	r1, [fp, #408]	@ float
+ 2032 14e0 7C018BE5 		str	r0, [fp, #380]	@ float
+ 2033 14e4 80019BE5 		ldr	r0, [fp, #384]	@ float
+ 2034 14e8 FEFFFFEB 		bl	__subsf3
+ 2035              	.LBE150:
+ 2036              	.LM290:
+ 2037 14ec 013044E2 		sub	r3, r4, #1
+ 2038              	.LBB151:
+ 2039              	.LM291:
+ 2040 14f0 80018BE5 		str	r0, [fp, #384]	@ float
+ 2041              	.LBE151:
+ 2042              	.LM292:
+ 2043 14f4 9C318BE5 		str	r3, [fp, #412]
+ 2044              	.L141:
+ 2045              	.LM293:
+ 2046 14f8 0030A0E3 		mov	r3, #0
+ 2047 14fc 0120A0E3 		mov	r2, #1
+ 2048 1500 1730C9E5 		strb	r3, [r9, #23]
+ 2049 1504 1620C9E5 		strb	r2, [r9, #22]
+ 2050              	.LM294:
+ 2051 1508 6C119BE5 		ldr	r1, [fp, #364]	@ float
+ 2052 150c 00009BE5 		ldr	r0, [fp, #0]	@ float
+ 2053 1510 FEFFFFEB 		bl	__subsf3
+ 2054 1514 1113A0E3 		mov	r1, #1140850688
+ 2055 1518 7A1881E2 		add	r1, r1, #7995392
+ 2056 151c FEFFFFEB 		bl	__mulsf3
+ 2057              	.LBB152:
+ 2058              	.LBB153:
+ 2059              	.LM295:
+ 2060 1520 0010A0E3 		mov	r1, #0
+ 2061              	.LBE153:
+ 2062              	.LBE152:
+ 2063              	.LM296:
+ 2064 1524 0040A0E1 		mov	r4, r0
+ 2065              	.LVL76:
+ 2066              	.LBB154:
+ 2067              	.LBB155:
+ 2068              	.LM297:
+ 2069 1528 FEFFFFEB 		bl	__gesf2
+ 2070 152c 000050E3 		cmp	r0, #0
+ 2071              	.LBE155:
+ 2072              	.LBE154:
+ 2073              	.LM298:
+ 2074 1530 68519BE5 		ldr	r5, [fp, #360]
+ 2075              	.LVL77:
+ 2076              	.LBB156:
+ 2077              	.LBB157:
+ 2078              	.LM299:
+ 2079 1534 F20200BA 		blt	.L143
+ 2080 1538 0400A0E1 		mov	r0, r4
+ 2081 153c FEFFFFEB 		bl	__extendsfdf2
+ 2082 1540 FF25A0E3 		mov	r2, #1069547520
+ 2083 1544 022682E2 		add	r2, r2, #2097152
+ 2084 1548 0030A0E3 		mov	r3, #0
+ 2085 154c FEFFFFEB 		bl	__adddf3
+ 2086 1550 FEFFFFEB 		bl	__fixdfsi
+ 2087              	.L146:
+ 2088              	.LBE157:
+ 2089              	.LBE156:
+ 2090              	.LM300:
+ 2091 1554 203CA0E1 		mov	r3, r0, lsr #24
+ 2092 1558 2024A0E1 		mov	r2, r0, lsr #8
+ 2093 155c 2018A0E1 		mov	r1, r0, lsr #16
+ 2094 1560 0330C5E5 		strb	r3, [r5, #3]
+ 2095 1564 0120C5E5 		strb	r2, [r5, #1]
+ 2096 1568 0210C5E5 		strb	r1, [r5, #2]
+ 2097 156c 0000C5E5 		strb	r0, [r5, #0]
+ 2098              	.LM301:
+ 2099 1570 70119BE5 		ldr	r1, [fp, #368]	@ float
+ 2100 1574 04009BE5 		ldr	r0, [fp, #4]	@ float
+ 2101 1578 FEFFFFEB 		bl	__subsf3
+ 2102 157c 1113A0E3 		mov	r1, #1140850688
+ 2103 1580 7A1881E2 		add	r1, r1, #7995392
+ 2104 1584 FEFFFFEB 		bl	__mulsf3
+ 2105              	.LBB158:
+ 2106              	.LBB159:
+ 2107              	.LM302:
+ 2108 1588 0010A0E3 		mov	r1, #0
+ 2109              	.LBE159:
+ 2110              	.LBE158:
+ 2111              	.LM303:
+ 2112 158c 0040A0E1 		mov	r4, r0
+ 2113              	.LVL78:
+ 2114              	.LBB160:
+ 2115              	.LBB161:
+ 2116              	.LM304:
+ 2117 1590 FEFFFFEB 		bl	__gesf2
+ 2118 1594 000050E3 		cmp	r0, #0
+ 2119              	.LBE161:
+ 2120              	.LBE160:
+ 2121              	.LM305:
+ 2122 1598 68519BE5 		ldr	r5, [fp, #360]
+ 2123              	.LBB162:
+ 2124              	.LBB163:
+ 2125              	.LM306:
+ 2126 159c D00200BA 		blt	.L147
+ 2127 15a0 0400A0E1 		mov	r0, r4
+ 2128 15a4 FEFFFFEB 		bl	__extendsfdf2
+ 2129 15a8 FF25A0E3 		mov	r2, #1069547520
+ 2130 15ac 022682E2 		add	r2, r2, #2097152
+ 2131 15b0 0030A0E3 		mov	r3, #0
+ 2132 15b4 FEFFFFEB 		bl	__adddf3
+ 2133 15b8 FEFFFFEB 		bl	__fixdfsi
+ 2134              	.L150:
+ 2135              	.LBE163:
+ 2136              	.LBE162:
+ 2137              	.LM307:
+ 2138 15bc 003060E2 		rsb	r3, r0, #0
+ 2139 15c0 2314A0E1 		mov	r1, r3, lsr #8
+ 2140 15c4 2308A0E1 		mov	r0, r3, lsr #16
+ 2141 15c8 232CA0E1 		mov	r2, r3, lsr #24
+ 2142 15cc 0720C5E5 		strb	r2, [r5, #7]
+ 2143 15d0 0430C5E5 		strb	r3, [r5, #4]
+ 2144 15d4 0510C5E5 		strb	r1, [r5, #5]
+ 2145 15d8 0600C5E5 		strb	r0, [r5, #6]
+ 2146              	.LM308:
+ 2147 15dc 74119BE5 		ldr	r1, [fp, #372]	@ float
+ 2148 15e0 08009BE5 		ldr	r0, [fp, #8]	@ float
+ 2149 15e4 FEFFFFEB 		bl	__subsf3
+ 2150 15e8 1113A0E3 		mov	r1, #1140850688
+ 2151 15ec 7A1881E2 		add	r1, r1, #7995392
+ 2152 15f0 FEFFFFEB 		bl	__mulsf3
+ 2153              	.LBB164:
+ 2154              	.LBB165:
+ 2155              	.LM309:
+ 2156 15f4 0010A0E3 		mov	r1, #0
+ 2157              	.LBE165:
+ 2158              	.LBE164:
+ 2159              	.LM310:
+ 2160 15f8 0040A0E1 		mov	r4, r0
+ 2161              	.LVL79:
+ 2162              	.LBB166:
+ 2163              	.LBB167:
+ 2164              	.LM311:
+ 2165 15fc FEFFFFEB 		bl	__gesf2
+ 2166 1600 000050E3 		cmp	r0, #0
+ 2167              	.LBE167:
+ 2168              	.LBE166:
+ 2169              	.LM312:
+ 2170 1604 68519BE5 		ldr	r5, [fp, #360]
+ 2171              	.LBB168:
+ 2172              	.LBB169:
+ 2173              	.LM313:
+ 2174 1608 AD0200BA 		blt	.L151
+ 2175 160c 0400A0E1 		mov	r0, r4
+ 2176 1610 FEFFFFEB 		bl	__extendsfdf2
+ 2177 1614 FF25A0E3 		mov	r2, #1069547520
+ 2178 1618 022682E2 		add	r2, r2, #2097152
+ 2179 161c 0030A0E3 		mov	r3, #0
+ 2180 1620 FEFFFFEB 		bl	__adddf3
+ 2181 1624 FEFFFFEB 		bl	__fixdfsi
+ 2182              	.L154:
+ 2183              	.LBE169:
+ 2184              	.LBE168:
+ 2185              	.LM314:
+ 2186 1628 003060E2 		rsb	r3, r0, #0
+ 2187 162c 2314A0E1 		mov	r1, r3, lsr #8
+ 2188 1630 2308A0E1 		mov	r0, r3, lsr #16
+ 2189 1634 232CA0E1 		mov	r2, r3, lsr #24
+ 2190 1638 0B20C5E5 		strb	r2, [r5, #11]
+ 2191 163c 0830C5E5 		strb	r3, [r5, #8]
+ 2192 1640 0910C5E5 		strb	r1, [r5, #9]
+ 2193 1644 0A00C5E5 		strb	r0, [r5, #10]
+ 2194              	.LM315:
+ 2195 1648 78119BE5 		ldr	r1, [fp, #376]	@ float
+ 2196 164c 0C009BE5 		ldr	r0, [fp, #12]	@ float
+ 2197 1650 FEFFFFEB 		bl	__subsf3
+ 2198 1654 1113A0E3 		mov	r1, #1140850688
+ 2199 1658 7A1881E2 		add	r1, r1, #7995392
+ 2200 165c FEFFFFEB 		bl	__mulsf3
+ 2201              	.LBB170:
+ 2202              	.LBB171:
+ 2203              	.LM316:
+ 2204 1660 0010A0E3 		mov	r1, #0
+ 2205              	.LBE171:
+ 2206              	.LBE170:
+ 2207              	.LM317:
+ 2208 1664 0040A0E1 		mov	r4, r0
+ 2209              	.LVL80:
+ 2210              	.LBB172:
+ 2211              	.LBB173:
+ 2212              	.LM318:
+ 2213 1668 FEFFFFEB 		bl	__gesf2
+ 2214 166c 000050E3 		cmp	r0, #0
+ 2215              	.LBE173:
+ 2216              	.LBE172:
+ 2217              	.LM319:
+ 2218 1670 68519BE5 		ldr	r5, [fp, #360]
+ 2219              	.LBB174:
+ 2220              	.LBB175:
+ 2221              	.LM320:
+ 2222 1674 880200BA 		blt	.L155
+ 2223 1678 0400A0E1 		mov	r0, r4
+ 2224 167c FEFFFFEB 		bl	__extendsfdf2
+ 2225 1680 FF25A0E3 		mov	r2, #1069547520
+ 2226 1684 022682E2 		add	r2, r2, #2097152
+ 2227 1688 0030A0E3 		mov	r3, #0
+ 2228 168c FEFFFFEB 		bl	__adddf3
+ 2229 1690 FEFFFFEB 		bl	__fixdfsi
+ 2230 1694 0008A0E1 		mov	r0, r0, asl #16
+ 2231 1698 4008A0E1 		mov	r0, r0, asr #16
+ 2232              	.L158:
+ 2233              	.LBE175:
+ 2234              	.LBE174:
+ 2235              	.LM321:
+ 2236 169c 2034A0E1 		mov	r3, r0, lsr #8
+ 2237 16a0 1130C5E5 		strb	r3, [r5, #17]
+ 2238 16a4 1000C5E5 		strb	r0, [r5, #16]
+ 2239              	.LM322:
+ 2240 16a8 7C119BE5 		ldr	r1, [fp, #380]	@ float
+ 2241 16ac 10009BE5 		ldr	r0, [fp, #16]	@ float
+ 2242 16b0 FEFFFFEB 		bl	__subsf3
+ 2243 16b4 1113A0E3 		mov	r1, #1140850688
+ 2244 16b8 7A1881E2 		add	r1, r1, #7995392
+ 2245 16bc FEFFFFEB 		bl	__mulsf3
+ 2246              	.LBB176:
+ 2247              	.LBB177:
+ 2248              	.LM323:
+ 2249 16c0 0010A0E3 		mov	r1, #0
+ 2250              	.LBE177:
+ 2251              	.LBE176:
+ 2252              	.LM324:
+ 2253 16c4 0040A0E1 		mov	r4, r0
+ 2254              	.LVL81:
+ 2255              	.LBB178:
+ 2256              	.LBB179:
+ 2257              	.LM325:
+ 2258 16c8 FEFFFFEB 		bl	__gesf2
+ 2259 16cc 000050E3 		cmp	r0, #0
+ 2260              	.LBE179:
+ 2261              	.LBE178:
+ 2262              	.LM326:
+ 2263 16d0 68519BE5 		ldr	r5, [fp, #360]
+ 2264              	.LBB180:
+ 2265              	.LBB181:
+ 2266              	.LM327:
+ 2267 16d4 660200BA 		blt	.L159
+ 2268 16d8 0400A0E1 		mov	r0, r4
+ 2269 16dc FEFFFFEB 		bl	__extendsfdf2
+ 2270 16e0 FF25A0E3 		mov	r2, #1069547520
+ 2271 16e4 022682E2 		add	r2, r2, #2097152
+ 2272 16e8 0030A0E3 		mov	r3, #0
+ 2273 16ec FEFFFFEB 		bl	__adddf3
+ 2274 16f0 FEFFFFEB 		bl	__fixdfsi
+ 2275 16f4 0008A0E1 		mov	r0, r0, asl #16
+ 2276 16f8 4008A0E1 		mov	r0, r0, asr #16
+ 2277              	.L162:
+ 2278              	.LBE181:
+ 2279              	.LBE180:
+ 2280              	.LM328:
+ 2281 16fc 002060E2 		rsb	r2, r0, #0
+ 2282 1700 2234A0E1 		mov	r3, r2, lsr #8
+ 2283 1704 1330C5E5 		strb	r3, [r5, #19]
+ 2284 1708 1220C5E5 		strb	r2, [r5, #18]
+ 2285              	.LM329:
+ 2286 170c 80119BE5 		ldr	r1, [fp, #384]	@ float
+ 2287 1710 14009BE5 		ldr	r0, [fp, #20]	@ float
+ 2288 1714 FEFFFFEB 		bl	__subsf3
+ 2289 1718 1113A0E3 		mov	r1, #1140850688
+ 2290 171c 7A1881E2 		add	r1, r1, #7995392
+ 2291 1720 FEFFFFEB 		bl	__mulsf3
+ 2292              	.LBB182:
+ 2293              	.LBB183:
+ 2294              	.LM330:
+ 2295 1724 0010A0E3 		mov	r1, #0
+ 2296              	.LBE183:
+ 2297              	.LBE182:
+ 2298              	.LM331:
+ 2299 1728 0040A0E1 		mov	r4, r0
+ 2300              	.LVL82:
+ 2301              	.LBB184:
+ 2302              	.LBB185:
+ 2303              	.LM332:
+ 2304 172c FEFFFFEB 		bl	__gesf2
+ 2305 1730 000050E3 		cmp	r0, #0
+ 2306              	.LBE185:
+ 2307              	.LBE184:
+ 2308              	.LM333:
+ 2309 1734 68519BE5 		ldr	r5, [fp, #360]
+ 2310              	.LBB186:
+ 2311              	.LBB187:
+ 2312              	.LM334:
+ 2313 1738 430200BA 		blt	.L163
+ 2314 173c 0400A0E1 		mov	r0, r4
+ 2315 1740 FEFFFFEB 		bl	__extendsfdf2
+ 2316 1744 FF25A0E3 		mov	r2, #1069547520
+ 2317 1748 022682E2 		add	r2, r2, #2097152
+ 2318 174c 0030A0E3 		mov	r3, #0
+ 2319 1750 FEFFFFEB 		bl	__adddf3
+ 2320 1754 FEFFFFEB 		bl	__fixdfsi
+ 2321 1758 0008A0E1 		mov	r0, r0, asl #16
+ 2322 175c 4008A0E1 		mov	r0, r0, asr #16
+ 2323              	.L166:
+ 2324              	.LBE187:
+ 2325              	.LBE186:
+ 2326              	.LM335:
+ 2327 1760 002060E2 		rsb	r2, r0, #0
+ 2328 1764 2234A0E1 		mov	r3, r2, lsr #8
+ 2329 1768 1530C5E5 		strb	r3, [r5, #21]
+ 2330 176c 1420C5E5 		strb	r2, [r5, #20]
+ 2331              	.LBB188:
+ 2332              	.LBB189:
+ 2333              	.LM336:
+ 2334 1770 04909DE5 		ldr	r9, [sp, #4]
+ 2335 1774 086099E5 		ldr	r6, [r9, #8]	@ float
+ 2336              	.LVL83:
+ 2337 1778 0610A0E1 		mov	r1, r6
+ 2338 177c 0600A0E1 		mov	r0, r6
+ 2339 1780 FEFFFFEB 		bl	__mulsf3
+ 2340 1784 0C4099E5 		ldr	r4, [r9, #12]	@ float
+ 2341              	.LVL84:
+ 2342 1788 0050A0E1 		mov	r5, r0
+ 2343 178c 0410A0E1 		mov	r1, r4
+ 2344 1790 0400A0E1 		mov	r0, r4
+ 2345 1794 FEFFFFEB 		bl	__mulsf3
+ 2346 1798 0010A0E1 		mov	r1, r0
+ 2347 179c 0500A0E1 		mov	r0, r5
+ 2348 17a0 FEFFFFEB 		bl	__addsf3
+ 2349 17a4 FEFFFFEB 		bl	__extendsfdf2
+ 2350 17a8 0321A0E3 		mov	r2, #-1073741824
+ 2351 17ac 0030A0E3 		mov	r3, #0
+ 2352 17b0 FEFFFFEB 		bl	__muldf3
+ 2353 17b4 FF25A0E3 		mov	r2, #1069547520
+ 2354 17b8 032682E2 		add	r2, r2, #3145728
+ 2355 17bc 0030A0E3 		mov	r3, #0
+ 2356 17c0 FEFFFFEB 		bl	__adddf3
+ 2357 17c4 FEFFFFEB 		bl	__truncdfsf2
+ 2358              	.LM337:
+ 2359 17c8 18109BE5 		ldr	r1, [fp, #24]	@ float
+ 2360              	.LM338:
+ 2361 17cc 0070A0E1 		mov	r7, r0
+ 2362              	.LVL85:
+ 2363              	.LM339:
+ 2364 17d0 0400A0E1 		mov	r0, r4
+ 2365 17d4 FEFFFFEB 		bl	__mulsf3
+ 2366 17d8 041099E5 		ldr	r1, [r9, #4]	@ float
+ 2367 17dc 0040A0E1 		mov	r4, r0
+ 2368 17e0 0600A0E1 		mov	r0, r6
+ 2369 17e4 FEFFFFEB 		bl	__mulsf3
+ 2370 17e8 0010A0E1 		mov	r1, r0
+ 2371 17ec 0400A0E1 		mov	r0, r4
+ 2372 17f0 FEFFFFEB 		bl	__addsf3
+ 2373 17f4 0010A0E1 		mov	r1, r0
+ 2374 17f8 FEFFFFEB 		bl	__addsf3
+ 2375 17fc 0060A0E1 		mov	r6, r0
+ 2376              	.LVL86:
+ 2377              	.LM340:
+ 2378 1800 0201C0E3 		bic	r0, r0, #-2147483648
+ 2379 1804 FEFFFFEB 		bl	__extendsfdf2
+ 2380 1808 E72F4FE2 		adr	r2, .L189+28
+ 2381 180c 0C0092E8 		ldmia	r2, {r2-r3}
+ 2382 1810 FEFFFFEB 		bl	__adddf3
+ 2383 1814 FEFFFFEB 		bl	__truncdfsf2
+ 2384              	.LM341:
+ 2385 1818 0010A0E3 		mov	r1, #0
+ 2386              	.LM342:
+ 2387 181c 0050A0E1 		mov	r5, r0
+ 2388              	.LVL87:
+ 2389              	.LM343:
+ 2390 1820 0700A0E1 		mov	r0, r7
+ 2391 1824 FEFFFFEB 		bl	__gesf2
+ 2392 1828 000050E3 		cmp	r0, #0
+ 2393 182c E30100BA 		blt	.L167
+ 2394              	.LM344:
+ 2395 1830 0510A0E1 		mov	r1, r5
+ 2396 1834 0700A0E1 		mov	r0, r7
+ 2397 1838 FEFFFFEB 		bl	__subsf3
+ 2398 183c 0510A0E1 		mov	r1, r5
+ 2399 1840 0040A0E1 		mov	r4, r0
+ 2400 1844 0700A0E1 		mov	r0, r7
+ 2401 1848 FEFFFFEB 		bl	__addsf3
+ 2402 184c 0010A0E1 		mov	r1, r0
+ 2403 1850 0400A0E1 		mov	r0, r4
+ 2404 1854 FEFFFFEB 		bl	__divsf3
+ 2405 1858 FEFFFFEB 		bl	__extendsfdf2
+ 2406 185c FA2F4FE2 		adr	r2, .L189+36
+ 2407 1860 0C0092E8 		ldmia	r2, {r2-r3}
+ 2408 1864 0040A0E1 		mov	r4, r0
+ 2409 1868 0150A0E1 		mov	r5, r1
+ 2410              	.LVL88:
+ 2411 186c FEFFFFEB 		bl	__muldf3
+ 2412 1870 0020A0E1 		mov	r2, r0
+ 2413 1874 0130A0E1 		mov	r3, r1
+ 2414 1878 0400A0E1 		mov	r0, r4
+ 2415 187c 0510A0E1 		mov	r1, r5
+ 2416 1880 FEFFFFEB 		bl	__muldf3
+ 2417 1884 652F8FE2 		adr	r2, .L192
+ 2418 1888 0C0092E8 		ldmia	r2, {r2-r3}
+ 2419 188c FEFFFFEB 		bl	__subdf3
+ 2420 1890 0020A0E1 		mov	r2, r0
+ 2421 1894 0130A0E1 		mov	r3, r1
+ 2422 1898 0400A0E1 		mov	r0, r4
+ 2423 189c 0510A0E1 		mov	r1, r5
+ 2424 18a0 FEFFFFEB 		bl	__muldf3
+ 2425 18a4 5F2F8FE2 		adr	r2, .L192+8
+ 2426 18a8 0C0092E8 		ldmia	r2, {r2-r3}
+ 2427 18ac FEFFFFEB 		bl	__adddf3
+ 2428 18b0 FEFFFFEB 		bl	__truncdfsf2
+ 2429 18b4 0040A0E1 		mov	r4, r0
+ 2430              	.LVL89:
+ 2431              	.L170:
+ 2432              	.LM345:
+ 2433 18b8 0010A0E3 		mov	r1, #0
+ 2434 18bc 0600A0E1 		mov	r0, r6
+ 2435 18c0 FEFFFFEB 		bl	__ltsf2
+ 2436 18c4 000050E3 		cmp	r0, #0
+ 2437              	.LM346:
+ 2438 18c8 023184B2 		addlt	r3, r4, #-2147483648
+ 2439 18cc 0340A0B1 		movlt	r4, r3
+ 2440              	.LBE189:
+ 2441              	.LBE188:
+ 2442              	.LM347:
+ 2443 18d0 0400A0E1 		mov	r0, r4
+ 2444 18d4 0010A0E3 		mov	r1, #0
+ 2445 18d8 FEFFFFEB 		bl	__ltsf2
+ 2446 18dc 000050E3 		cmp	r0, #0
+ 2447 18e0 68519BE5 		ldr	r5, [fp, #360]
+ 2448 18e4 AF0100BA 		blt	.L186
+ 2449 18e8 0400A0E1 		mov	r0, r4
+ 2450 18ec FEFFFFEB 		bl	__extendsfdf2
+ 2451              	.L182:
+ 2452 18f0 0121A0E3 		mov	r2, #1073741824
+ 2453 18f4 662882E2 		add	r2, r2, #6684672
+ 2454 18f8 022982E2 		add	r2, r2, #32768
+ 2455 18fc 0030A0E3 		mov	r3, #0
+ 2456 1900 FEFFFFEB 		bl	__muldf3
+ 2457 1904 492F8FE2 		adr	r2, .L192+16
+ 2458 1908 0C0092E8 		ldmia	r2, {r2-r3}
+ 2459 190c FEFFFFEB 		bl	__divdf3
+ 2460 1910 0121A0E3 		mov	r2, #1073741824
+ 2461 1914 8F2882E2 		add	r2, r2, #9371648
+ 2462 1918 012982E2 		add	r2, r2, #16384
+ 2463 191c 0030A0E3 		mov	r3, #0
+ 2464 1920 FEFFFFEB 		bl	__muldf3
+ 2465 1924 FEFFFFEB 		bl	__fixdfsi
+ 2466 1928 570A60E2 		rsb	r0, r0, #356352
+ 2467 192c 390D80E2 		add	r0, r0, #3648
+ 2468 1930 203CA0E1 		mov	r3, r0, lsr #24
+ 2469 1934 2024A0E1 		mov	r2, r0, lsr #8
+ 2470 1938 2018A0E1 		mov	r1, r0, lsr #16
+ 2471 193c 0E10C5E5 		strb	r1, [r5, #14]
+ 2472 1940 0F30C5E5 		strb	r3, [r5, #15]
+ 2473 1944 0D20C5E5 		strb	r2, [r5, #13]
+ 2474 1948 0C00C5E5 		strb	r0, [r5, #12]
+ 2475              	.LM348:
+ 2476 194c 68219BE5 		ldr	r2, [fp, #360]
+ 2477 1950 6410A0E3 		mov	r1, #100
+ 2478 1954 1810C2E5 		strb	r1, [r2, #24]
+ 2479              	.LM349:
+ 2480 1958 68319BE5 		ldr	r3, [fp, #360]
+ 2481 195c 1910C3E5 		strb	r1, [r3, #25]
+ 2482              	.LM350:
+ 2483 1960 68219BE5 		ldr	r2, [fp, #360]
+ 2484 1964 1A10C2E5 		strb	r1, [r2, #26]
+ 2485              	.LM351:
+ 2486 1968 68319BE5 		ldr	r3, [fp, #360]
+ 2487 196c 1B10C3E5 		strb	r1, [r3, #27]
+ 2488              	.LM352:
+ 2489 1970 68219BE5 		ldr	r2, [fp, #360]
+ 2490 1974 1C10C2E5 		strb	r1, [r2, #28]
+ 2491              	.LM353:
+ 2492 1978 68319BE5 		ldr	r3, [fp, #360]
+ 2493 197c 1D10C3E5 		strb	r1, [r3, #29]
+ 2494              	.LBE149:
+ 2495              	.LBE148:
+ 2496              	.LM354:
+ 2497 1980 00209BE5 		ldr	r2, [fp, #0]	@ float
+ 2498 1984 04309BE5 		ldr	r3, [fp, #4]	@ float
+ 2499 1988 08109BE5 		ldr	r1, [fp, #8]	@ float
+ 2500 198c 0C009BE5 		ldr	r0, [fp, #12]	@ float
+ 2501 1990 10C09BE5 		ldr	ip, [fp, #16]	@ float
+ 2502 1994 14E09BE5 		ldr	lr, [fp, #20]	@ float
+ 2503 1998 18409BE5 		ldr	r4, [fp, #24]	@ float
+ 2504              	.LVL90:
+ 2505 199c 1C509BE5 		ldr	r5, [fp, #28]	@ float
+ 2506 19a0 20609BE5 		ldr	r6, [fp, #32]	@ float
+ 2507              	.LVL91:
+ 2508 19a4 40208BE5 		str	r2, [fp, #64]	@ float
+ 2509 19a8 44308BE5 		str	r3, [fp, #68]	@ float
+ 2510 19ac 48108BE5 		str	r1, [fp, #72]	@ float
+ 2511 19b0 4C008BE5 		str	r0, [fp, #76]	@ float
+ 2512 19b4 50C08BE5 		str	ip, [fp, #80]	@ float
+ 2513 19b8 54E08BE5 		str	lr, [fp, #84]	@ float
+ 2514 19bc 58408BE5 		str	r4, [fp, #88]	@ float
+ 2515 19c0 5C508BE5 		str	r5, [fp, #92]	@ float
+ 2516 19c4 60608BE5 		str	r6, [fp, #96]	@ float
+ 2517 19c8 24209BE5 		ldr	r2, [fp, #36]	@ float
+ 2518 19cc 28109BE5 		ldr	r1, [fp, #40]	@ float
+ 2519 19d0 2C009BE5 		ldr	r0, [fp, #44]	@ float
+ 2520 19d4 30C09BE5 		ldr	ip, [fp, #48]	@ float
+ 2521 19d8 34E09BE5 		ldr	lr, [fp, #52]	@ float
+ 2522 19dc 38409BE5 		ldr	r4, [fp, #56]	@ float
+ 2523 19e0 3C309BE5 		ldr	r3, [fp, #60]	@ float
+ 2524 19e4 64208BE5 		str	r2, [fp, #100]	@ float
+ 2525 19e8 7C308BE5 		str	r3, [fp, #124]	@ float
+ 2526 19ec 68108BE5 		str	r1, [fp, #104]	@ float
+ 2527 19f0 6C008BE5 		str	r0, [fp, #108]	@ float
+ 2528 19f4 70C08BE5 		str	ip, [fp, #112]	@ float
+ 2529 19f8 74E08BE5 		str	lr, [fp, #116]	@ float
+ 2530 19fc 78408BE5 		str	r4, [fp, #120]	@ float
+ 2531              	.LVL92:
+ 2532              	.L178:
+ 2533              	.LM355:
+ 2534 1a00 10D08DE2 		add	sp, sp, #16
+ 2535 1a04 F04FBDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 2536 1a08 1EFF2FE1 		bx	lr
+ 2537              	.LVL93:
+ 2538              	.L183:
+ 2539              	.LM356:
+ 2540 1a0c 613BA0E3 		mov	r3, #99328
+ 2541 1a10 2A3E83E2 		add	r3, r3, #672
+ 2542 1a14 030054E1 		cmp	r4, r3
+ 2543 1a18 F8FFFF8A 		bhi	.L178
+ 2544 1a1c 57FEFFEA 		b	.L89
+ 2545              	.L193:
+ 2546              		.align	2
+ 2547              	.L192:
+ 2548 1a20 166AEF3F 		.word	1072654870
+ 2549 1a24 60764F1E 		.word	508524128
+ 2550 1a28 FB21E93F 		.word	1072243195
+ 2551 1a2c 182D4454 		.word	1413754136
+ 2552 1a30 FB210940 		.word	1074340347
+ 2553 1a34 182D4454 		.word	1413754136
+ 2554              	.LVL94:
+ 2555              	.L185:
+ 2556              	.LM357:
+ 2557 1a38 08A0C2E5 		strb	sl, [r2, #8]
+ 2558              	.LM358:
+ 2559 1a3c 58319BE5 		ldr	r3, [fp, #344]
+ 2560              	.LM359:
+ 2561 1a40 0120A0E3 		mov	r2, #1
+ 2562              	.LM360:
+ 2563 1a44 030053E3 		cmp	r3, #3
+ 2564              	.LM361:
+ 2565 1a48 A0218BE5 		str	r2, [fp, #416]
+ 2566              	.LM362:
+ 2567 1a4c A4A18BE5 		str	sl, [fp, #420]
+ 2568              	.LM363:
+ 2569 1a50 D501000A 		beq	.L187
+ 2570              	.LM364:
+ 2571 1a54 020053E3 		cmp	r3, #2
+ 2572 1a58 18308B12 		addne	r3, fp, #24
+ 2573 1a5c 68919B15 		ldrne	r9, [fp, #360]
+ 2574 1a60 04308D15 		strne	r3, [sp, #4]
+ 2575 1a64 86FEFF1A 		bne	.L95
+ 2576              	.LBB190:
+ 2577              	.LBB191:
+ 2578              	.LBB192:
+ 2579              	.LM365:
+ 2580 1a68 1C219BE5 		ldr	r2, [fp, #284]	@ float
+ 2581 1a6c 18319BE5 		ldr	r3, [fp, #280]	@ float
+ 2582 1a70 04208BE5 		str	r2, [fp, #4]	@ float
+ 2583 1a74 40219BE5 		ldr	r2, [fp, #320]	@ float
+ 2584 1a78 48919BE5 		ldr	r9, [fp, #328]	@ float
+ 2585 1a7c 00308BE5 		str	r3, [fp, #0]	@ float
+ 2586 1a80 44319BE5 		ldr	r3, [fp, #324]	@ float
+ 2587 1a84 28208BE5 		str	r2, [fp, #40]	@ float
+ 2588 1a88 4C219BE5 		ldr	r2, [fp, #332]	@ float
+ 2589 1a8c 28C19BE5 		ldr	ip, [fp, #296]	@ float
+ 2590 1a90 2CE19BE5 		ldr	lr, [fp, #300]	@ float
+ 2591 1a94 20119BE5 		ldr	r1, [fp, #288]	@ float
+ 2592 1a98 24019BE5 		ldr	r0, [fp, #292]	@ float
+ 2593 1a9c 30519BE5 		ldr	r5, [fp, #304]	@ float
+ 2594              	.LVL95:
+ 2595 1aa0 34619BE5 		ldr	r6, [fp, #308]	@ float
+ 2596              	.LVL96:
+ 2597 1aa4 38719BE5 		ldr	r7, [fp, #312]	@ float
+ 2598              	.LVL97:
+ 2599 1aa8 3C819BE5 		ldr	r8, [fp, #316]	@ float
+ 2600 1aac 2C308BE5 		str	r3, [fp, #44]	@ float
+ 2601 1ab0 30908BE5 		str	r9, [fp, #48]	@ float
+ 2602 1ab4 50319BE5 		ldr	r3, [fp, #336]	@ float
+ 2603 1ab8 54919BE5 		ldr	r9, [fp, #340]	@ float
+ 2604              	.LBE192:
+ 2605              	.LBE191:
+ 2606              	.LBE190:
+ 2607              	.LBB193:
+ 2608              	.LBB194:
+ 2609              	.LBB195:
+ 2610              	.LM366:
+ 2611 1abc 0040A0E3 		mov	r4, #0
+ 2612              	.LBE195:
+ 2613              	.LBE194:
+ 2614              	.LBE193:
+ 2615              	.LBB196:
+ 2616              	.LBB197:
+ 2617              	.LBB198:
+ 2618              	.LM367:
+ 2619 1ac0 34208BE5 		str	r2, [fp, #52]	@ float
+ 2620              	.LBE198:
+ 2621              	.LBE197:
+ 2622              	.LBE196:
+ 2623              	.LM368:
+ 2624 1ac4 0120A0E3 		mov	r2, #1
+ 2625              	.LBB199:
+ 2626              	.LBB200:
+ 2627              	.LBB201:
+ 2628              	.LM369:
+ 2629 1ac8 10C08BE5 		str	ip, [fp, #16]	@ float
+ 2630 1acc 14E08BE5 		str	lr, [fp, #20]	@ float
+ 2631 1ad0 08108BE5 		str	r1, [fp, #8]	@ float
+ 2632 1ad4 0C008BE5 		str	r0, [fp, #12]	@ float
+ 2633 1ad8 18508BE5 		str	r5, [fp, #24]	@ float
+ 2634 1adc 38308BE5 		str	r3, [fp, #56]	@ float
+ 2635              	.LBE201:
+ 2636              	.LBE200:
+ 2637              	.LBE199:
+ 2638              	.LM370:
+ 2639 1ae0 A821CBE5 		strb	r2, [fp, #424]
+ 2640              	.LBB202:
+ 2641              	.LBB203:
+ 2642              	.LM371:
+ 2643 1ae4 0030E0E3 		mvn	r3, #0
+ 2644              	.LBE203:
+ 2645              	.LBE202:
+ 2646              	.LBB204:
+ 2647              	.LBB205:
+ 2648              	.LBB206:
+ 2649              	.LM372:
+ 2650 1ae8 1C608BE5 		str	r6, [fp, #28]	@ float
+ 2651 1aec 20708BE5 		str	r7, [fp, #32]	@ float
+ 2652 1af0 24808BE5 		str	r8, [fp, #36]	@ float
+ 2653 1af4 3C908BE5 		str	r9, [fp, #60]	@ float
+ 2654              	.LBE206:
+ 2655              	.LBE205:
+ 2656              	.LBE204:
+ 2657              	.LBB207:
+ 2658              	.LBB208:
+ 2659              	.LBB209:
+ 2660              	.LM373:
+ 2661 1af8 6C418BE5 		str	r4, [fp, #364]	@ float
+ 2662              	.LBE209:
+ 2663              	.LM374:
+ 2664 1afc 68219BE5 		ldr	r2, [fp, #360]
+ 2665              	.LM375:
+ 2666 1b00 9C318BE5 		str	r3, [fp, #412]
+ 2667              	.LM376:
+ 2668 1b04 0130A0E3 		mov	r3, #1
+ 2669              	.LBB210:
+ 2670              	.LM377:
+ 2671 1b08 70418BE5 		str	r4, [fp, #368]	@ float
+ 2672 1b0c 74418BE5 		str	r4, [fp, #372]	@ float
+ 2673 1b10 78418BE5 		str	r4, [fp, #376]	@ float
+ 2674 1b14 7C418BE5 		str	r4, [fp, #380]	@ float
+ 2675 1b18 80418BE5 		str	r4, [fp, #384]	@ float
+ 2676              	.LBE210:
+ 2677              	.LM378:
+ 2678 1b1c 17A0C2E5 		strb	sl, [r2, #23]
+ 2679 1b20 1630C2E5 		strb	r3, [r2, #22]
+ 2680              	.LM379:
+ 2681 1b24 6C119BE5 		ldr	r1, [fp, #364]	@ float
+ 2682 1b28 00009BE5 		ldr	r0, [fp, #0]	@ float
+ 2683 1b2c FEFFFFEB 		bl	__subsf3
+ 2684 1b30 1113A0E3 		mov	r1, #1140850688
+ 2685 1b34 7A1881E2 		add	r1, r1, #7995392
+ 2686 1b38 FEFFFFEB 		bl	__mulsf3
+ 2687              	.LBB211:
+ 2688              	.LBB212:
+ 2689              	.LM380:
+ 2690 1b3c 0410A0E1 		mov	r1, r4
+ 2691              	.LBE212:
+ 2692              	.LBE211:
+ 2693              	.LM381:
+ 2694 1b40 0050A0E1 		mov	r5, r0
+ 2695              	.LVL98:
+ 2696              	.LBB213:
+ 2697              	.LBB214:
+ 2698              	.LM382:
+ 2699 1b44 FEFFFFEB 		bl	__gesf2
+ 2700 1b48 000050E3 		cmp	r0, #0
+ 2701              	.LBE214:
+ 2702              	.LBE213:
+ 2703              	.LM383:
+ 2704 1b4c 68419BE5 		ldr	r4, [fp, #360]
+ 2705              	.LBB215:
+ 2706              	.LBB216:
+ 2707              	.LM384:
+ 2708 1b50 E40200BA 		blt	.L104
+ 2709 1b54 0500A0E1 		mov	r0, r5
+ 2710 1b58 FEFFFFEB 		bl	__extendsfdf2
+ 2711 1b5c FF25A0E3 		mov	r2, #1069547520
+ 2712 1b60 022682E2 		add	r2, r2, #2097152
+ 2713 1b64 0030A0E3 		mov	r3, #0
+ 2714 1b68 FEFFFFEB 		bl	__adddf3
+ 2715 1b6c FEFFFFEB 		bl	__fixdfsi
+ 2716              	.L107:
+ 2717              	.LBE216:
+ 2718              	.LBE215:
+ 2719              	.LM385:
+ 2720 1b70 203CA0E1 		mov	r3, r0, lsr #24
+ 2721 1b74 2024A0E1 		mov	r2, r0, lsr #8
+ 2722 1b78 2018A0E1 		mov	r1, r0, lsr #16
+ 2723 1b7c 0330C4E5 		strb	r3, [r4, #3]
+ 2724 1b80 0120C4E5 		strb	r2, [r4, #1]
+ 2725 1b84 0210C4E5 		strb	r1, [r4, #2]
+ 2726 1b88 0000C4E5 		strb	r0, [r4, #0]
+ 2727              	.LM386:
+ 2728 1b8c 70119BE5 		ldr	r1, [fp, #368]	@ float
+ 2729 1b90 04009BE5 		ldr	r0, [fp, #4]	@ float
+ 2730 1b94 FEFFFFEB 		bl	__subsf3
+ 2731 1b98 1113A0E3 		mov	r1, #1140850688
+ 2732 1b9c 7A1881E2 		add	r1, r1, #7995392
+ 2733 1ba0 FEFFFFEB 		bl	__mulsf3
+ 2734              	.LBB217:
+ 2735              	.LBB218:
+ 2736              	.LM387:
+ 2737 1ba4 0010A0E3 		mov	r1, #0
+ 2738              	.LBE218:
+ 2739              	.LBE217:
+ 2740              	.LM388:
+ 2741 1ba8 0040A0E1 		mov	r4, r0
+ 2742              	.LVL99:
+ 2743              	.LBB219:
+ 2744              	.LBB220:
+ 2745              	.LM389:
+ 2746 1bac FEFFFFEB 		bl	__gesf2
+ 2747 1bb0 000050E3 		cmp	r0, #0
+ 2748              	.LBE220:
+ 2749              	.LBE219:
+ 2750              	.LM390:
+ 2751 1bb4 68519BE5 		ldr	r5, [fp, #360]
+ 2752              	.LVL100:
+ 2753              	.LBB221:
+ 2754              	.LBB222:
+ 2755              	.LM391:
+ 2756 1bb8 210300BA 		blt	.L108
+ 2757 1bbc 0400A0E1 		mov	r0, r4
+ 2758 1bc0 FEFFFFEB 		bl	__extendsfdf2
+ 2759 1bc4 FF25A0E3 		mov	r2, #1069547520
+ 2760 1bc8 022682E2 		add	r2, r2, #2097152
+ 2761 1bcc 0030A0E3 		mov	r3, #0
+ 2762 1bd0 FEFFFFEB 		bl	__adddf3
+ 2763 1bd4 FEFFFFEB 		bl	__fixdfsi
+ 2764              	.L111:
+ 2765              	.LBE222:
+ 2766              	.LBE221:
+ 2767              	.LM392:
+ 2768 1bd8 003060E2 		rsb	r3, r0, #0
+ 2769 1bdc 2314A0E1 		mov	r1, r3, lsr #8
+ 2770 1be0 2308A0E1 		mov	r0, r3, lsr #16
+ 2771 1be4 232CA0E1 		mov	r2, r3, lsr #24
+ 2772 1be8 0720C5E5 		strb	r2, [r5, #7]
+ 2773 1bec 0430C5E5 		strb	r3, [r5, #4]
+ 2774 1bf0 0510C5E5 		strb	r1, [r5, #5]
+ 2775 1bf4 0600C5E5 		strb	r0, [r5, #6]
+ 2776              	.LM393:
+ 2777 1bf8 74119BE5 		ldr	r1, [fp, #372]	@ float
+ 2778 1bfc 08009BE5 		ldr	r0, [fp, #8]	@ float
+ 2779 1c00 FEFFFFEB 		bl	__subsf3
+ 2780 1c04 1113A0E3 		mov	r1, #1140850688
+ 2781 1c08 7A1881E2 		add	r1, r1, #7995392
+ 2782 1c0c FEFFFFEB 		bl	__mulsf3
+ 2783              	.LBB223:
+ 2784              	.LBB224:
+ 2785              	.LM394:
+ 2786 1c10 0010A0E3 		mov	r1, #0
+ 2787              	.LBE224:
+ 2788              	.LBE223:
+ 2789              	.LM395:
+ 2790 1c14 0040A0E1 		mov	r4, r0
+ 2791              	.LVL101:
+ 2792              	.LBB225:
+ 2793              	.LBB226:
+ 2794              	.LM396:
+ 2795 1c18 FEFFFFEB 		bl	__gesf2
+ 2796 1c1c 000050E3 		cmp	r0, #0
+ 2797              	.LBE226:
+ 2798              	.LBE225:
+ 2799              	.LM397:
+ 2800 1c20 68519BE5 		ldr	r5, [fp, #360]
+ 2801              	.LBB227:
+ 2802              	.LBB228:
+ 2803              	.LM398:
+ 2804 1c24 FE0200BA 		blt	.L112
+ 2805 1c28 0400A0E1 		mov	r0, r4
+ 2806 1c2c FEFFFFEB 		bl	__extendsfdf2
+ 2807 1c30 FF25A0E3 		mov	r2, #1069547520
+ 2808 1c34 022682E2 		add	r2, r2, #2097152
+ 2809 1c38 0030A0E3 		mov	r3, #0
+ 2810 1c3c FEFFFFEB 		bl	__adddf3
+ 2811 1c40 FEFFFFEB 		bl	__fixdfsi
+ 2812              	.L115:
+ 2813              	.LBE228:
+ 2814              	.LBE227:
+ 2815              	.LM399:
+ 2816 1c44 003060E2 		rsb	r3, r0, #0
+ 2817 1c48 2314A0E1 		mov	r1, r3, lsr #8
+ 2818 1c4c 2308A0E1 		mov	r0, r3, lsr #16
+ 2819 1c50 232CA0E1 		mov	r2, r3, lsr #24
+ 2820 1c54 0B20C5E5 		strb	r2, [r5, #11]
+ 2821 1c58 0830C5E5 		strb	r3, [r5, #8]
+ 2822 1c5c 0910C5E5 		strb	r1, [r5, #9]
+ 2823 1c60 0A00C5E5 		strb	r0, [r5, #10]
+ 2824              	.LM400:
+ 2825 1c64 78119BE5 		ldr	r1, [fp, #376]	@ float
+ 2826 1c68 0C009BE5 		ldr	r0, [fp, #12]	@ float
+ 2827 1c6c FEFFFFEB 		bl	__subsf3
+ 2828 1c70 1113A0E3 		mov	r1, #1140850688
+ 2829 1c74 7A1881E2 		add	r1, r1, #7995392
+ 2830 1c78 FEFFFFEB 		bl	__mulsf3
+ 2831              	.LBB229:
+ 2832              	.LBB230:
+ 2833              	.LM401:
+ 2834 1c7c 0010A0E3 		mov	r1, #0
+ 2835              	.LBE230:
+ 2836              	.LBE229:
+ 2837              	.LM402:
+ 2838 1c80 0040A0E1 		mov	r4, r0
+ 2839              	.LVL102:
+ 2840              	.LBB231:
+ 2841              	.LBB232:
+ 2842              	.LM403:
+ 2843 1c84 FEFFFFEB 		bl	__gesf2
+ 2844 1c88 000050E3 		cmp	r0, #0
+ 2845              	.LBE232:
+ 2846              	.LBE231:
+ 2847              	.LM404:
+ 2848 1c8c 68519BE5 		ldr	r5, [fp, #360]
+ 2849              	.LBB233:
+ 2850              	.LBB234:
+ 2851              	.LM405:
+ 2852 1c90 D90200BA 		blt	.L116
+ 2853 1c94 0400A0E1 		mov	r0, r4
+ 2854 1c98 FEFFFFEB 		bl	__extendsfdf2
+ 2855 1c9c FF25A0E3 		mov	r2, #1069547520
+ 2856 1ca0 022682E2 		add	r2, r2, #2097152
+ 2857 1ca4 0030A0E3 		mov	r3, #0
+ 2858 1ca8 FEFFFFEB 		bl	__adddf3
+ 2859 1cac FEFFFFEB 		bl	__fixdfsi
+ 2860 1cb0 0008A0E1 		mov	r0, r0, asl #16
+ 2861 1cb4 4008A0E1 		mov	r0, r0, asr #16
+ 2862              	.L119:
+ 2863              	.LBE234:
+ 2864              	.LBE233:
+ 2865              	.LM406:
+ 2866 1cb8 2034A0E1 		mov	r3, r0, lsr #8
+ 2867 1cbc 1130C5E5 		strb	r3, [r5, #17]
+ 2868 1cc0 1000C5E5 		strb	r0, [r5, #16]
+ 2869              	.LM407:
+ 2870 1cc4 7C119BE5 		ldr	r1, [fp, #380]	@ float
+ 2871 1cc8 10009BE5 		ldr	r0, [fp, #16]	@ float
+ 2872 1ccc FEFFFFEB 		bl	__subsf3
+ 2873 1cd0 1113A0E3 		mov	r1, #1140850688
+ 2874 1cd4 7A1881E2 		add	r1, r1, #7995392
+ 2875 1cd8 FEFFFFEB 		bl	__mulsf3
+ 2876              	.LBB235:
+ 2877              	.LBB236:
+ 2878              	.LM408:
+ 2879 1cdc 0010A0E3 		mov	r1, #0
+ 2880              	.LBE236:
+ 2881              	.LBE235:
+ 2882              	.LM409:
+ 2883 1ce0 0040A0E1 		mov	r4, r0
+ 2884              	.LVL103:
+ 2885              	.LBB237:
+ 2886              	.LBB238:
+ 2887              	.LM410:
+ 2888 1ce4 FEFFFFEB 		bl	__gesf2
+ 2889 1ce8 000050E3 		cmp	r0, #0
+ 2890              	.LBE238:
+ 2891              	.LBE237:
+ 2892              	.LM411:
+ 2893 1cec 68519BE5 		ldr	r5, [fp, #360]
+ 2894              	.LBB239:
+ 2895              	.LBB240:
+ 2896              	.LM412:
+ 2897 1cf0 B70200BA 		blt	.L120
+ 2898 1cf4 0400A0E1 		mov	r0, r4
+ 2899 1cf8 FEFFFFEB 		bl	__extendsfdf2
+ 2900 1cfc FF25A0E3 		mov	r2, #1069547520
+ 2901 1d00 022682E2 		add	r2, r2, #2097152
+ 2902 1d04 0030A0E3 		mov	r3, #0
+ 2903 1d08 FEFFFFEB 		bl	__adddf3
+ 2904 1d0c FEFFFFEB 		bl	__fixdfsi
+ 2905 1d10 0008A0E1 		mov	r0, r0, asl #16
+ 2906 1d14 4008A0E1 		mov	r0, r0, asr #16
+ 2907              	.L123:
+ 2908              	.LBE240:
+ 2909              	.LBE239:
+ 2910              	.LM413:
+ 2911 1d18 002060E2 		rsb	r2, r0, #0
+ 2912 1d1c 2234A0E1 		mov	r3, r2, lsr #8
+ 2913 1d20 1330C5E5 		strb	r3, [r5, #19]
+ 2914 1d24 1220C5E5 		strb	r2, [r5, #18]
+ 2915              	.LM414:
+ 2916 1d28 80119BE5 		ldr	r1, [fp, #384]	@ float
+ 2917 1d2c 14009BE5 		ldr	r0, [fp, #20]	@ float
+ 2918 1d30 FEFFFFEB 		bl	__subsf3
+ 2919 1d34 1113A0E3 		mov	r1, #1140850688
+ 2920 1d38 7A1881E2 		add	r1, r1, #7995392
+ 2921 1d3c FEFFFFEB 		bl	__mulsf3
+ 2922              	.LBB241:
+ 2923              	.LBB242:
+ 2924              	.LM415:
+ 2925 1d40 0010A0E3 		mov	r1, #0
+ 2926              	.LBE242:
+ 2927              	.LBE241:
+ 2928              	.LM416:
+ 2929 1d44 0040A0E1 		mov	r4, r0
+ 2930              	.LVL104:
+ 2931              	.LBB243:
+ 2932              	.LBB244:
+ 2933              	.LM417:
+ 2934 1d48 FEFFFFEB 		bl	__gesf2
+ 2935 1d4c 000050E3 		cmp	r0, #0
+ 2936              	.LBE244:
+ 2937              	.LBE243:
+ 2938              	.LM418:
+ 2939 1d50 68519BE5 		ldr	r5, [fp, #360]
+ 2940              	.LBB245:
+ 2941              	.LBB246:
+ 2942              	.LM419:
+ 2943 1d54 940200BA 		blt	.L124
+ 2944 1d58 0400A0E1 		mov	r0, r4
+ 2945 1d5c FEFFFFEB 		bl	__extendsfdf2
+ 2946 1d60 FF25A0E3 		mov	r2, #1069547520
+ 2947 1d64 022682E2 		add	r2, r2, #2097152
+ 2948 1d68 0030A0E3 		mov	r3, #0
+ 2949 1d6c FEFFFFEB 		bl	__adddf3
+ 2950 1d70 FEFFFFEB 		bl	__fixdfsi
+ 2951 1d74 0008A0E1 		mov	r0, r0, asl #16
+ 2952 1d78 4008A0E1 		mov	r0, r0, asr #16
+ 2953              	.L127:
+ 2954              	.LBE246:
+ 2955              	.LBE245:
+ 2956              	.LM420:
+ 2957 1d7c 002060E2 		rsb	r2, r0, #0
+ 2958 1d80 2234A0E1 		mov	r3, r2, lsr #8
+ 2959 1d84 1530C5E5 		strb	r3, [r5, #21]
+ 2960 1d88 1420C5E5 		strb	r2, [r5, #20]
+ 2961 1d8c 18908BE2 		add	r9, fp, #24
+ 2962              	.LBB247:
+ 2963              	.LBB248:
+ 2964              	.LM421:
+ 2965 1d90 086099E5 		ldr	r6, [r9, #8]	@ float
+ 2966 1d94 0610A0E1 		mov	r1, r6
+ 2967 1d98 0600A0E1 		mov	r0, r6
+ 2968              	.LBE248:
+ 2969              	.LBE247:
+ 2970              	.LM422:
+ 2971 1d9c 04908DE5 		str	r9, [sp, #4]
+ 2972              	.LBB249:
+ 2973              	.LBB250:
+ 2974              	.LM423:
+ 2975 1da0 FEFFFFEB 		bl	__mulsf3
+ 2976 1da4 0C4099E5 		ldr	r4, [r9, #12]	@ float
+ 2977              	.LVL105:
+ 2978 1da8 0050A0E1 		mov	r5, r0
+ 2979 1dac 0410A0E1 		mov	r1, r4
+ 2980 1db0 0400A0E1 		mov	r0, r4
+ 2981 1db4 FEFFFFEB 		bl	__mulsf3
+ 2982 1db8 0010A0E1 		mov	r1, r0
+ 2983 1dbc 0500A0E1 		mov	r0, r5
+ 2984 1dc0 FEFFFFEB 		bl	__addsf3
+ 2985 1dc4 FEFFFFEB 		bl	__extendsfdf2
+ 2986 1dc8 0321A0E3 		mov	r2, #-1073741824
+ 2987 1dcc 0030A0E3 		mov	r3, #0
+ 2988 1dd0 FEFFFFEB 		bl	__muldf3
+ 2989 1dd4 FF25A0E3 		mov	r2, #1069547520
+ 2990 1dd8 032682E2 		add	r2, r2, #3145728
+ 2991 1ddc 0030A0E3 		mov	r3, #0
+ 2992 1de0 FEFFFFEB 		bl	__adddf3
+ 2993 1de4 FEFFFFEB 		bl	__truncdfsf2
+ 2994              	.LM424:
+ 2995 1de8 18109BE5 		ldr	r1, [fp, #24]	@ float
+ 2996              	.LM425:
+ 2997 1dec 0070A0E1 		mov	r7, r0
+ 2998              	.LVL106:
+ 2999              	.LM426:
+ 3000 1df0 0400A0E1 		mov	r0, r4
+ 3001 1df4 FEFFFFEB 		bl	__mulsf3
+ 3002 1df8 041099E5 		ldr	r1, [r9, #4]	@ float
+ 3003 1dfc 0040A0E1 		mov	r4, r0
+ 3004 1e00 0600A0E1 		mov	r0, r6
+ 3005 1e04 FEFFFFEB 		bl	__mulsf3
+ 3006 1e08 0010A0E1 		mov	r1, r0
+ 3007 1e0c 0400A0E1 		mov	r0, r4
+ 3008 1e10 FEFFFFEB 		bl	__addsf3
+ 3009 1e14 0010A0E1 		mov	r1, r0
+ 3010 1e18 FEFFFFEB 		bl	__addsf3
+ 3011 1e1c 0060A0E1 		mov	r6, r0
+ 3012              	.LVL107:
+ 3013              	.LM427:
+ 3014 1e20 0201C0E3 		bic	r0, r0, #-2147483648
+ 3015 1e24 FEFFFFEB 		bl	__extendsfdf2
+ 3016 1e28 CF2F8FE2 		adr	r2, .L194
+ 3017 1e2c 0C0092E8 		ldmia	r2, {r2-r3}
+ 3018 1e30 FEFFFFEB 		bl	__adddf3
+ 3019 1e34 FEFFFFEB 		bl	__truncdfsf2
+ 3020              	.LM428:
+ 3021 1e38 0010A0E3 		mov	r1, #0
+ 3022              	.LM429:
+ 3023 1e3c 0050A0E1 		mov	r5, r0
+ 3024              	.LVL108:
+ 3025              	.LM430:
+ 3026 1e40 0700A0E1 		mov	r0, r7
+ 3027 1e44 FEFFFFEB 		bl	__gesf2
+ 3028 1e48 000050E3 		cmp	r0, #0
+ 3029 1e4c 330200BA 		blt	.L128
+ 3030              	.LM431:
+ 3031 1e50 0510A0E1 		mov	r1, r5
+ 3032 1e54 0700A0E1 		mov	r0, r7
+ 3033 1e58 FEFFFFEB 		bl	__subsf3
+ 3034 1e5c 0510A0E1 		mov	r1, r5
+ 3035 1e60 0040A0E1 		mov	r4, r0
+ 3036 1e64 0700A0E1 		mov	r0, r7
+ 3037 1e68 FEFFFFEB 		bl	__addsf3
+ 3038 1e6c 0010A0E1 		mov	r1, r0
+ 3039 1e70 0400A0E1 		mov	r0, r4
+ 3040 1e74 FEFFFFEB 		bl	__divsf3
+ 3041 1e78 FEFFFFEB 		bl	__extendsfdf2
+ 3042 1e7c 2F2E8FE2 		adr	r2, .L194+8
+ 3043 1e80 0C0092E8 		ldmia	r2, {r2-r3}
+ 3044 1e84 0040A0E1 		mov	r4, r0
+ 3045 1e88 0150A0E1 		mov	r5, r1
+ 3046              	.LVL109:
+ 3047 1e8c FEFFFFEB 		bl	__muldf3
+ 3048 1e90 0020A0E1 		mov	r2, r0
+ 3049 1e94 0130A0E1 		mov	r3, r1
+ 3050 1e98 0400A0E1 		mov	r0, r4
+ 3051 1e9c 0510A0E1 		mov	r1, r5
+ 3052 1ea0 FEFFFFEB 		bl	__muldf3
+ 3053 1ea4 2D2E8FE2 		adr	r2, .L194+16
+ 3054 1ea8 0C0092E8 		ldmia	r2, {r2-r3}
+ 3055 1eac FEFFFFEB 		bl	__subdf3
+ 3056 1eb0 0020A0E1 		mov	r2, r0
+ 3057 1eb4 0130A0E1 		mov	r3, r1
+ 3058 1eb8 0400A0E1 		mov	r0, r4
+ 3059 1ebc 0510A0E1 		mov	r1, r5
+ 3060 1ec0 FEFFFFEB 		bl	__muldf3
+ 3061 1ec4 AE2F8FE2 		adr	r2, .L194+24
+ 3062 1ec8 0C0092E8 		ldmia	r2, {r2-r3}
+ 3063 1ecc FEFFFFEB 		bl	__adddf3
+ 3064 1ed0 FEFFFFEB 		bl	__truncdfsf2
+ 3065 1ed4 0040A0E1 		mov	r4, r0
+ 3066              	.LVL110:
+ 3067              	.L131:
+ 3068              	.LM432:
+ 3069 1ed8 0010A0E3 		mov	r1, #0
+ 3070 1edc 0600A0E1 		mov	r0, r6
+ 3071 1ee0 FEFFFFEB 		bl	__ltsf2
+ 3072 1ee4 000050E3 		cmp	r0, #0
+ 3073              	.LM433:
+ 3074 1ee8 023184B2 		addlt	r3, r4, #-2147483648
+ 3075 1eec 0340A0B1 		movlt	r4, r3
+ 3076              	.LBE250:
+ 3077              	.LBE249:
+ 3078              	.LM434:
+ 3079 1ef0 0400A0E1 		mov	r0, r4
+ 3080 1ef4 0010A0E3 		mov	r1, #0
+ 3081 1ef8 FEFFFFEB 		bl	__ltsf2
+ 3082 1efc 000050E3 		cmp	r0, #0
+ 3083 1f00 68519BE5 		ldr	r5, [fp, #360]
+ 3084 1f04 FF0100BA 		blt	.L188
+ 3085 1f08 0400A0E1 		mov	r0, r4
+ 3086 1f0c FEFFFFEB 		bl	__extendsfdf2
+ 3087              	.L181:
+ 3088 1f10 0121A0E3 		mov	r2, #1073741824
+ 3089 1f14 662882E2 		add	r2, r2, #6684672
+ 3090 1f18 022982E2 		add	r2, r2, #32768
+ 3091 1f1c 0030A0E3 		mov	r3, #0
+ 3092 1f20 FEFFFFEB 		bl	__muldf3
+ 3093 1f24 262E8FE2 		adr	r2, .L194+32
+ 3094 1f28 0C0092E8 		ldmia	r2, {r2-r3}
+ 3095 1f2c FEFFFFEB 		bl	__divdf3
+ 3096 1f30 0121A0E3 		mov	r2, #1073741824
+ 3097 1f34 8F2882E2 		add	r2, r2, #9371648
+ 3098 1f38 012982E2 		add	r2, r2, #16384
+ 3099 1f3c 0030A0E3 		mov	r3, #0
+ 3100 1f40 FEFFFFEB 		bl	__muldf3
+ 3101 1f44 FEFFFFEB 		bl	__fixdfsi
+ 3102 1f48 570A60E2 		rsb	r0, r0, #356352
+ 3103 1f4c 390D80E2 		add	r0, r0, #3648
+ 3104 1f50 203CA0E1 		mov	r3, r0, lsr #24
+ 3105 1f54 2024A0E1 		mov	r2, r0, lsr #8
+ 3106 1f58 2018A0E1 		mov	r1, r0, lsr #16
+ 3107 1f5c 0E10C5E5 		strb	r1, [r5, #14]
+ 3108 1f60 0F30C5E5 		strb	r3, [r5, #15]
+ 3109 1f64 0D20C5E5 		strb	r2, [r5, #13]
+ 3110 1f68 0C00C5E5 		strb	r0, [r5, #12]
+ 3111              	.LM435:
+ 3112 1f6c 68219BE5 		ldr	r2, [fp, #360]
+ 3113 1f70 6410A0E3 		mov	r1, #100
+ 3114 1f74 1810C2E5 		strb	r1, [r2, #24]
+ 3115              	.LM436:
+ 3116 1f78 68319BE5 		ldr	r3, [fp, #360]
+ 3117 1f7c 1910C3E5 		strb	r1, [r3, #25]
+ 3118              	.LM437:
+ 3119 1f80 68219BE5 		ldr	r2, [fp, #360]
+ 3120 1f84 1A10C2E5 		strb	r1, [r2, #26]
+ 3121              	.LM438:
+ 3122 1f88 68319BE5 		ldr	r3, [fp, #360]
+ 3123 1f8c 1B10C3E5 		strb	r1, [r3, #27]
+ 3124              	.LM439:
+ 3125 1f90 68219BE5 		ldr	r2, [fp, #360]
+ 3126 1f94 1C10C2E5 		strb	r1, [r2, #28]
+ 3127              	.LM440:
+ 3128 1f98 68319BE5 		ldr	r3, [fp, #360]
+ 3129 1f9c 1D10C3E5 		strb	r1, [r3, #29]
+ 3130 1fa0 68919BE5 		ldr	r9, [fp, #360]
+ 3131 1fa4 36FDFFEA 		b	.L95
+ 3132              	.LVL111:
+ 3133              	.L186:
+ 3134              	.LBE208:
+ 3135              	.LBE207:
+ 3136              	.LBB251:
+ 3137              	.LBB252:
+ 3138              	.LM441:
+ 3139 1fa8 0400A0E1 		mov	r0, r4
+ 3140 1fac FEFFFFEB 		bl	__extendsfdf2
+ 3141 1fb0 772F8FE2 		adr	r2, .L194+40
+ 3142 1fb4 0C0092E8 		ldmia	r2, {r2-r3}
+ 3143 1fb8 FEFFFFEB 		bl	__adddf3
+ 3144 1fbc 4BFEFFEA 		b	.L182
+ 3145              	.LVL112:
+ 3146              	.L167:
+ 3147              	.LBB253:
+ 3148              	.LBB254:
+ 3149              	.LM442:
+ 3150 1fc0 0510A0E1 		mov	r1, r5
+ 3151 1fc4 0700A0E1 		mov	r0, r7
+ 3152 1fc8 FEFFFFEB 		bl	__addsf3
+ 3153 1fcc 0710A0E1 		mov	r1, r7
+ 3154 1fd0 0040A0E1 		mov	r4, r0
+ 3155 1fd4 0500A0E1 		mov	r0, r5
+ 3156 1fd8 FEFFFFEB 		bl	__subsf3
+ 3157 1fdc 0010A0E1 		mov	r1, r0
+ 3158 1fe0 0400A0E1 		mov	r0, r4
+ 3159 1fe4 FEFFFFEB 		bl	__divsf3
+ 3160 1fe8 FEFFFFEB 		bl	__extendsfdf2
+ 3161 1fec 062D8FE2 		adr	r2, .L194+8
+ 3162 1ff0 0C0092E8 		ldmia	r2, {r2-r3}
+ 3163 1ff4 0040A0E1 		mov	r4, r0
+ 3164 1ff8 0150A0E1 		mov	r5, r1
+ 3165              	.LVL113:
+ 3166 1ffc FEFFFFEB 		bl	__muldf3
+ 3167 2000 0020A0E1 		mov	r2, r0
+ 3168 2004 0130A0E1 		mov	r3, r1
+ 3169 2008 0400A0E1 		mov	r0, r4
+ 3170 200c 0510A0E1 		mov	r1, r5
+ 3171 2010 FEFFFFEB 		bl	__muldf3
+ 3172 2014 162E8FE2 		adr	r2, .L194+16
+ 3173 2018 0C0092E8 		ldmia	r2, {r2-r3}
+ 3174 201c FEFFFFEB 		bl	__subdf3
+ 3175 2020 0020A0E1 		mov	r2, r0
+ 3176 2024 0130A0E1 		mov	r3, r1
+ 3177 2028 0400A0E1 		mov	r0, r4
+ 3178 202c 0510A0E1 		mov	r1, r5
+ 3179 2030 FEFFFFEB 		bl	__muldf3
+ 3180 2034 162E8FE2 		adr	r2, .L194+48
+ 3181 2038 0C0092E8 		ldmia	r2, {r2-r3}
+ 3182 203c FEFFFFEB 		bl	__adddf3
+ 3183 2040 FEFFFFEB 		bl	__truncdfsf2
+ 3184 2044 0040A0E1 		mov	r4, r0
+ 3185              	.LVL114:
+ 3186 2048 1AFEFFEA 		b	.L170
+ 3187              	.LVL115:
+ 3188              	.L163:
+ 3189              	.LBE254:
+ 3190              	.LBE253:
+ 3191              	.LBB255:
+ 3192              	.LBB256:
+ 3193              	.LM443:
+ 3194 204c 0400A0E1 		mov	r0, r4
+ 3195 2050 FEFFFFEB 		bl	__extendsfdf2
+ 3196 2054 FF25A0E3 		mov	r2, #1069547520
+ 3197 2058 022682E2 		add	r2, r2, #2097152
+ 3198 205c 0030A0E3 		mov	r3, #0
+ 3199 2060 FEFFFFEB 		bl	__subdf3
+ 3200 2064 FEFFFFEB 		bl	__fixdfsi
+ 3201 2068 0008A0E1 		mov	r0, r0, asl #16
+ 3202 206c 4008A0E1 		mov	r0, r0, asr #16
+ 3203 2070 BAFDFFEA 		b	.L166
+ 3204              	.LVL116:
+ 3205              	.L159:
+ 3206              	.LBE256:
+ 3207              	.LBE255:
+ 3208              	.LBB257:
+ 3209              	.LBB258:
+ 3210 2074 0400A0E1 		mov	r0, r4
+ 3211 2078 FEFFFFEB 		bl	__extendsfdf2
+ 3212 207c FF25A0E3 		mov	r2, #1069547520
+ 3213 2080 022682E2 		add	r2, r2, #2097152
+ 3214 2084 0030A0E3 		mov	r3, #0
+ 3215 2088 FEFFFFEB 		bl	__subdf3
+ 3216 208c FEFFFFEB 		bl	__fixdfsi
+ 3217 2090 0008A0E1 		mov	r0, r0, asl #16
+ 3218 2094 4008A0E1 		mov	r0, r0, asr #16
+ 3219 2098 97FDFFEA 		b	.L162
+ 3220              	.LVL117:
+ 3221              	.L155:
+ 3222              	.LBE258:
+ 3223              	.LBE257:
+ 3224              	.LBB259:
+ 3225              	.LBB260:
+ 3226 209c 0400A0E1 		mov	r0, r4
+ 3227 20a0 FEFFFFEB 		bl	__extendsfdf2
+ 3228 20a4 FF25A0E3 		mov	r2, #1069547520
+ 3229 20a8 022682E2 		add	r2, r2, #2097152
+ 3230 20ac 0030A0E3 		mov	r3, #0
+ 3231 20b0 FEFFFFEB 		bl	__subdf3
+ 3232 20b4 FEFFFFEB 		bl	__fixdfsi
+ 3233 20b8 0008A0E1 		mov	r0, r0, asl #16
+ 3234 20bc 4008A0E1 		mov	r0, r0, asr #16
+ 3235 20c0 75FDFFEA 		b	.L158
+ 3236              	.LVL118:
+ 3237              	.L151:
+ 3238              	.LBE260:
+ 3239              	.LBE259:
+ 3240              	.LBB261:
+ 3241              	.LBB262:
+ 3242              	.LM444:
+ 3243 20c4 0400A0E1 		mov	r0, r4
+ 3244 20c8 FEFFFFEB 		bl	__extendsfdf2
+ 3245 20cc FF25A0E3 		mov	r2, #1069547520
+ 3246 20d0 022682E2 		add	r2, r2, #2097152
+ 3247 20d4 0030A0E3 		mov	r3, #0
+ 3248 20d8 FEFFFFEB 		bl	__subdf3
+ 3249 20dc FEFFFFEB 		bl	__fixdfsi
+ 3250 20e0 50FDFFEA 		b	.L154
+ 3251              	.LVL119:
+ 3252              	.L147:
+ 3253              	.LBE262:
+ 3254              	.LBE261:
+ 3255              	.LBB263:
+ 3256              	.LBB264:
+ 3257 20e4 0400A0E1 		mov	r0, r4
+ 3258 20e8 FEFFFFEB 		bl	__extendsfdf2
+ 3259 20ec FF25A0E3 		mov	r2, #1069547520
+ 3260 20f0 022682E2 		add	r2, r2, #2097152
+ 3261 20f4 0030A0E3 		mov	r3, #0
+ 3262 20f8 FEFFFFEB 		bl	__subdf3
+ 3263 20fc FEFFFFEB 		bl	__fixdfsi
+ 3264 2100 2DFDFFEA 		b	.L150
+ 3265              	.LVL120:
+ 3266              	.L143:
+ 3267              	.LBE264:
+ 3268              	.LBE263:
+ 3269              	.LBB265:
+ 3270              	.LBB266:
+ 3271 2104 0400A0E1 		mov	r0, r4
+ 3272 2108 FEFFFFEB 		bl	__extendsfdf2
+ 3273 210c FF25A0E3 		mov	r2, #1069547520
+ 3274 2110 022682E2 		add	r2, r2, #2097152
+ 3275 2114 0030A0E3 		mov	r3, #0
+ 3276 2118 FEFFFFEB 		bl	__subdf3
+ 3277 211c FEFFFFEB 		bl	__fixdfsi
+ 3278 2120 0BFDFFEA 		b	.L146
+ 3279              	.LVL121:
+ 3280              	.L139:
+ 3281              	.LBE266:
+ 3282              	.LBE265:
+ 3283              	.LM445:
+ 3284 2124 F3FCFF1A 		bne	.L141
+ 3285              	.LBB267:
+ 3286              	.LM446:
+ 3287 2128 0030A0E3 		mov	r3, #0
+ 3288              	.LBE267:
+ 3289              	.LM447:
+ 3290 212c 012044E2 		sub	r2, r4, #1
+ 3291              	.LBB268:
+ 3292              	.LM448:
+ 3293 2130 80318BE5 		str	r3, [fp, #384]	@ float
+ 3294              	.LBE268:
+ 3295              	.LM449:
+ 3296 2134 9C218BE5 		str	r2, [fp, #412]
+ 3297              	.LBB269:
+ 3298              	.LM450:
+ 3299 2138 6C318BE5 		str	r3, [fp, #364]	@ float
+ 3300 213c 70318BE5 		str	r3, [fp, #368]	@ float
+ 3301 2140 74318BE5 		str	r3, [fp, #372]	@ float
+ 3302 2144 78318BE5 		str	r3, [fp, #376]	@ float
+ 3303 2148 7C318BE5 		str	r3, [fp, #380]	@ float
+ 3304 214c E9FCFFEA 		b	.L141
+ 3305              	.LVL122:
+ 3306              	.L184:
+ 3307              	.LBE269:
+ 3308              	.LBE252:
+ 3309              	.LBE251:
+ 3310              	.LM451:
+ 3311 2150 98309BE5 		ldr	r3, [fp, #152]	@ float
+ 3312 2154 40008BE2 		add	r0, fp, #64
+ 3313 2158 80108BE2 		add	r1, fp, #128
+ 3314 215c 8C208BE2 		add	r2, fp, #140
+ 3315 2160 00B08DE5 		str	fp, [sp, #0]
+ 3316 2164 FEFFFFEB 		bl	autogen_ekf_propagation
+ 3317 2168 B0FCFFEA 		b	.L94
+ 3318              	.L195:
+ 3319              		.align	2
+ 3320              	.L194:
+ 3321 216c DF7CDB3D 		.word	1037794527
+ 3322 2170 BBBDD7D9 		.word	-640172613
+ 3323 2174 5B20C93F 		.word	1070145627
+ 3324 2178 E3361AC0 		.word	-1072023837
+ 3325 217c 166AEF3F 		.word	1072654870
+ 3326 2180 60764F1E 		.word	508524128
+ 3327 2184 FB21E93F 		.word	1072243195
+ 3328 2188 182D4454 		.word	1413754136
+ 3329 218c FB210940 		.word	1074340347
+ 3330 2190 182D4454 		.word	1413754136
+ 3331 2194 FB211940 		.word	1075388923
+ 3332 2198 182D4454 		.word	1413754136
+ 3333 219c 7CD90240 		.word	1073928572
+ 3334 21a0 D221337F 		.word	2134057426
+ 3335 21a4 4D6250BF 		.word	-1085250995
+ 3336 21a8 FCA9F1D2 		.word	-755914244
+ 3337              	.L187:
+ 3338              	.LBB270:
+ 3339              	.LBB271:
+ 3340              	.LM452:
+ 3341 21ac 00009BE5 		ldr	r0, [fp, #0]	@ float
+ 3342 21b0 18119BE5 		ldr	r1, [fp, #280]	@ float
+ 3343 21b4 FEFFFFEB 		bl	__addsf3
+ 3344              	.LM453:
+ 3345 21b8 1C119BE5 		ldr	r1, [fp, #284]	@ float
+ 3346              	.LM454:
+ 3347 21bc 00008BE5 		str	r0, [fp, #0]	@ float
+ 3348              	.LM455:
+ 3349 21c0 04009BE5 		ldr	r0, [fp, #4]	@ float
+ 3350 21c4 FEFFFFEB 		bl	__addsf3
+ 3351              	.LM456:
+ 3352 21c8 20119BE5 		ldr	r1, [fp, #288]	@ float
+ 3353              	.LM457:
+ 3354 21cc 04008BE5 		str	r0, [fp, #4]	@ float
+ 3355              	.LM458:
+ 3356 21d0 08009BE5 		ldr	r0, [fp, #8]	@ float
+ 3357 21d4 FEFFFFEB 		bl	__addsf3
+ 3358              	.LM459:
+ 3359 21d8 24119BE5 		ldr	r1, [fp, #292]	@ float
+ 3360              	.LM460:
+ 3361 21dc 08008BE5 		str	r0, [fp, #8]	@ float
+ 3362              	.LM461:
+ 3363 21e0 0C009BE5 		ldr	r0, [fp, #12]	@ float
+ 3364 21e4 FEFFFFEB 		bl	__addsf3
+ 3365              	.LM462:
+ 3366 21e8 28119BE5 		ldr	r1, [fp, #296]	@ float
+ 3367              	.LM463:
+ 3368 21ec 0C008BE5 		str	r0, [fp, #12]	@ float
+ 3369              	.LM464:
+ 3370 21f0 10009BE5 		ldr	r0, [fp, #16]	@ float
+ 3371 21f4 FEFFFFEB 		bl	__addsf3
+ 3372              	.LM465:
+ 3373 21f8 2C119BE5 		ldr	r1, [fp, #300]	@ float
+ 3374              	.LM466:
+ 3375 21fc 10008BE5 		str	r0, [fp, #16]	@ float
+ 3376              	.LM467:
+ 3377 2200 14009BE5 		ldr	r0, [fp, #20]	@ float
+ 3378 2204 FEFFFFEB 		bl	__addsf3
+ 3379              	.LM468:
+ 3380 2208 18509BE5 		ldr	r5, [fp, #24]	@ float
+ 3381              	.LVL123:
+ 3382              	.LM469:
+ 3383 220c 1C609BE5 		ldr	r6, [fp, #28]	@ float
+ 3384              	.LVL124:
+ 3385              	.LM470:
+ 3386 2210 20709BE5 		ldr	r7, [fp, #32]	@ float
+ 3387              	.LVL125:
+ 3388              	.LM471:
+ 3389 2214 24809BE5 		ldr	r8, [fp, #36]	@ float
+ 3390              	.LBB272:
+ 3391              	.LBB273:
+ 3392              	.LM472:
+ 3393 2218 30119BE5 		ldr	r1, [fp, #304]	@ float
+ 3394              	.LBE273:
+ 3395              	.LBE272:
+ 3396              	.LM473:
+ 3397 221c 14008BE5 		str	r0, [fp, #20]	@ float
+ 3398              	.LM474:
+ 3399 2220 9C508BE5 		str	r5, [fp, #156]	@ float
+ 3400              	.LM475:
+ 3401 2224 A0608BE5 		str	r6, [fp, #160]	@ float
+ 3402              	.LM476:
+ 3403 2228 A4708BE5 		str	r7, [fp, #164]	@ float
+ 3404              	.LM477:
+ 3405 222c A8808BE5 		str	r8, [fp, #168]	@ float
+ 3406              	.LBB274:
+ 3407              	.LBB275:
+ 3408              	.LM478:
+ 3409 2230 0500A0E1 		mov	r0, r5
+ 3410 2234 FEFFFFEB 		bl	__mulsf3
+ 3411 2238 34119BE5 		ldr	r1, [fp, #308]	@ float
+ 3412 223c 0040A0E1 		mov	r4, r0
+ 3413 2240 0600A0E1 		mov	r0, r6
+ 3414 2244 FEFFFFEB 		bl	__mulsf3
+ 3415 2248 0010A0E1 		mov	r1, r0
+ 3416 224c 0400A0E1 		mov	r0, r4
+ 3417 2250 FEFFFFEB 		bl	__subsf3
+ 3418 2254 38119BE5 		ldr	r1, [fp, #312]	@ float
+ 3419 2258 0040A0E1 		mov	r4, r0
+ 3420 225c 0700A0E1 		mov	r0, r7
+ 3421 2260 FEFFFFEB 		bl	__mulsf3
+ 3422 2264 0010A0E1 		mov	r1, r0
+ 3423 2268 0400A0E1 		mov	r0, r4
+ 3424 226c FEFFFFEB 		bl	__subsf3
+ 3425 2270 3C119BE5 		ldr	r1, [fp, #316]	@ float
+ 3426 2274 0040A0E1 		mov	r4, r0
+ 3427 2278 0800A0E1 		mov	r0, r8
+ 3428 227c FEFFFFEB 		bl	__mulsf3
+ 3429 2280 0010A0E1 		mov	r1, r0
+ 3430 2284 0400A0E1 		mov	r0, r4
+ 3431 2288 FEFFFFEB 		bl	__subsf3
+ 3432              	.LM479:
+ 3433 228c 34119BE5 		ldr	r1, [fp, #308]	@ float
+ 3434              	.LM480:
+ 3435 2290 18008BE5 		str	r0, [fp, #24]	@ float
+ 3436              	.LM481:
+ 3437 2294 0500A0E1 		mov	r0, r5
+ 3438 2298 FEFFFFEB 		bl	__mulsf3
+ 3439 229c 30119BE5 		ldr	r1, [fp, #304]	@ float
+ 3440 22a0 0040A0E1 		mov	r4, r0
+ 3441 22a4 0600A0E1 		mov	r0, r6
+ 3442 22a8 FEFFFFEB 		bl	__mulsf3
+ 3443 22ac 0010A0E1 		mov	r1, r0
+ 3444 22b0 0400A0E1 		mov	r0, r4
+ 3445 22b4 FEFFFFEB 		bl	__addsf3
+ 3446 22b8 3C119BE5 		ldr	r1, [fp, #316]	@ float
+ 3447 22bc 0040A0E1 		mov	r4, r0
+ 3448 22c0 0700A0E1 		mov	r0, r7
+ 3449 22c4 FEFFFFEB 		bl	__mulsf3
+ 3450 22c8 0010A0E1 		mov	r1, r0
+ 3451 22cc 0400A0E1 		mov	r0, r4
+ 3452 22d0 FEFFFFEB 		bl	__addsf3
+ 3453 22d4 38119BE5 		ldr	r1, [fp, #312]	@ float
+ 3454 22d8 0040A0E1 		mov	r4, r0
+ 3455 22dc 0800A0E1 		mov	r0, r8
+ 3456 22e0 FEFFFFEB 		bl	__mulsf3
+ 3457 22e4 0010A0E1 		mov	r1, r0
+ 3458 22e8 0400A0E1 		mov	r0, r4
+ 3459 22ec FEFFFFEB 		bl	__subsf3
+ 3460              	.LBE275:
+ 3461              	.LBE274:
+ 3462              	.LM482:
+ 3463 22f0 18308BE2 		add	r3, fp, #24
+ 3464              	.LBB276:
+ 3465              	.LBB277:
+ 3466              	.LM483:
+ 3467 22f4 040083E5 		str	r0, [r3, #4]	@ float
+ 3468              	.LM484:
+ 3469 22f8 38119BE5 		ldr	r1, [fp, #312]	@ float
+ 3470 22fc 9C009BE5 		ldr	r0, [fp, #156]	@ float
+ 3471              	.LBE277:
+ 3472              	.LBE276:
+ 3473              	.LM485:
+ 3474 2300 04308DE5 		str	r3, [sp, #4]
+ 3475              	.LBB278:
+ 3476              	.LBB279:
+ 3477              	.LM486:
+ 3478 2304 FEFFFFEB 		bl	__mulsf3
+ 3479 2308 30119BE5 		ldr	r1, [fp, #304]	@ float
+ 3480 230c 0040A0E1 		mov	r4, r0
+ 3481 2310 A4009BE5 		ldr	r0, [fp, #164]	@ float
+ 3482 2314 FEFFFFEB 		bl	__mulsf3
+ 3483 2318 0010A0E1 		mov	r1, r0
+ 3484 231c 0400A0E1 		mov	r0, r4
+ 3485 2320 FEFFFFEB 		bl	__addsf3
+ 3486 2324 3C119BE5 		ldr	r1, [fp, #316]	@ float
+ 3487 2328 0040A0E1 		mov	r4, r0
+ 3488 232c A0009BE5 		ldr	r0, [fp, #160]	@ float
+ 3489 2330 FEFFFFEB 		bl	__mulsf3
+ 3490 2334 0010A0E1 		mov	r1, r0
+ 3491 2338 0400A0E1 		mov	r0, r4
+ 3492 233c FEFFFFEB 		bl	__subsf3
+ 3493 2340 34119BE5 		ldr	r1, [fp, #308]	@ float
+ 3494 2344 0040A0E1 		mov	r4, r0
+ 3495 2348 A8009BE5 		ldr	r0, [fp, #168]	@ float
+ 3496 234c FEFFFFEB 		bl	__mulsf3
+ 3497 2350 0010A0E1 		mov	r1, r0
+ 3498 2354 0400A0E1 		mov	r0, r4
+ 3499 2358 FEFFFFEB 		bl	__addsf3
+ 3500 235c 04909DE5 		ldr	r9, [sp, #4]
+ 3501 2360 080089E5 		str	r0, [r9, #8]	@ float
+ 3502              	.LM487:
+ 3503 2364 3C119BE5 		ldr	r1, [fp, #316]	@ float
+ 3504 2368 9C009BE5 		ldr	r0, [fp, #156]	@ float
+ 3505 236c FEFFFFEB 		bl	__mulsf3
+ 3506 2370 38119BE5 		ldr	r1, [fp, #312]	@ float
+ 3507 2374 0040A0E1 		mov	r4, r0
+ 3508 2378 A0009BE5 		ldr	r0, [fp, #160]	@ float
+ 3509 237c FEFFFFEB 		bl	__mulsf3
+ 3510 2380 0010A0E1 		mov	r1, r0
+ 3511 2384 0400A0E1 		mov	r0, r4
+ 3512 2388 FEFFFFEB 		bl	__addsf3
+ 3513 238c 34119BE5 		ldr	r1, [fp, #308]	@ float
+ 3514 2390 0040A0E1 		mov	r4, r0
+ 3515 2394 A4009BE5 		ldr	r0, [fp, #164]	@ float
+ 3516 2398 FEFFFFEB 		bl	__mulsf3
+ 3517 239c 0010A0E1 		mov	r1, r0
+ 3518 23a0 0400A0E1 		mov	r0, r4
+ 3519 23a4 FEFFFFEB 		bl	__subsf3
+ 3520 23a8 30119BE5 		ldr	r1, [fp, #304]	@ float
+ 3521 23ac 0040A0E1 		mov	r4, r0
+ 3522 23b0 A8009BE5 		ldr	r0, [fp, #168]	@ float
+ 3523 23b4 FEFFFFEB 		bl	__mulsf3
+ 3524 23b8 0010A0E1 		mov	r1, r0
+ 3525 23bc 0400A0E1 		mov	r0, r4
+ 3526 23c0 FEFFFFEB 		bl	__addsf3
+ 3527 23c4 0C0089E5 		str	r0, [r9, #12]	@ float
+ 3528              	.LBE279:
+ 3529              	.LBE278:
+ 3530              	.LM488:
+ 3531 23c8 28009BE5 		ldr	r0, [fp, #40]	@ float
+ 3532 23cc 40119BE5 		ldr	r1, [fp, #320]	@ float
+ 3533 23d0 FEFFFFEB 		bl	__addsf3
+ 3534              	.LM489:
+ 3535 23d4 44119BE5 		ldr	r1, [fp, #324]	@ float
+ 3536              	.LM490:
+ 3537 23d8 28008BE5 		str	r0, [fp, #40]	@ float
+ 3538              	.LM491:
+ 3539 23dc 2C009BE5 		ldr	r0, [fp, #44]	@ float
+ 3540 23e0 FEFFFFEB 		bl	__addsf3
+ 3541              	.LM492:
+ 3542 23e4 48119BE5 		ldr	r1, [fp, #328]	@ float
+ 3543              	.LM493:
+ 3544 23e8 2C008BE5 		str	r0, [fp, #44]	@ float
+ 3545              	.LM494:
+ 3546 23ec 30009BE5 		ldr	r0, [fp, #48]	@ float
+ 3547 23f0 FEFFFFEB 		bl	__addsf3
+ 3548              	.LM495:
+ 3549 23f4 4C119BE5 		ldr	r1, [fp, #332]	@ float
+ 3550              	.LM496:
+ 3551 23f8 30008BE5 		str	r0, [fp, #48]	@ float
+ 3552              	.LM497:
+ 3553 23fc 34009BE5 		ldr	r0, [fp, #52]	@ float
+ 3554 2400 FEFFFFEB 		bl	__addsf3
+ 3555              	.LM498:
+ 3556 2404 50119BE5 		ldr	r1, [fp, #336]	@ float
+ 3557              	.LM499:
+ 3558 2408 34008BE5 		str	r0, [fp, #52]	@ float
+ 3559              	.LM500:
+ 3560 240c 38009BE5 		ldr	r0, [fp, #56]	@ float
+ 3561 2410 FEFFFFEB 		bl	__addsf3
+ 3562              	.LM501:
+ 3563 2414 54119BE5 		ldr	r1, [fp, #340]	@ float
+ 3564              	.LM502:
+ 3565 2418 38008BE5 		str	r0, [fp, #56]	@ float
+ 3566              	.LM503:
+ 3567 241c 3C009BE5 		ldr	r0, [fp, #60]	@ float
+ 3568 2420 FEFFFFEB 		bl	__addsf3
+ 3569              	.LM504:
+ 3570 2424 6430A0E3 		mov	r3, #100
+ 3571              	.LM505:
+ 3572 2428 3C008BE5 		str	r0, [fp, #60]	@ float
+ 3573              	.LM506:
+ 3574 242c 9C318BE5 		str	r3, [fp, #412]
+ 3575              	.LM507:
+ 3576 2430 00009BE5 		ldr	r0, [fp, #0]	@ float
+ 3577 2434 FEFFFFEB 		bl	__extendsfdf2
+ 3578 2438 68919BE5 		ldr	r9, [fp, #360]
+ 3579 243c 0040A0E1 		mov	r4, r0
+ 3580 2440 0130D9E5 		ldrb	r3, [r9, #1]	@ zero_extendqisi2
+ 3581 2444 0000D9E5 		ldrb	r0, [r9, #0]	@ zero_extendqisi2
+ 3582 2448 0150A0E1 		mov	r5, r1
+ 3583 244c 0210D9E5 		ldrb	r1, [r9, #2]	@ zero_extendqisi2
+ 3584 2450 0320D9E5 		ldrb	r2, [r9, #3]	@ zero_extendqisi2
+ 3585 2454 030480E1 		orr	r0, r0, r3, asl #8
+ 3586 2458 010880E1 		orr	r0, r0, r1, asl #16
+ 3587 245c 020C80E1 		orr	r0, r0, r2, asl #24
+ 3588 2460 FEFFFFEB 		bl	__floatsisf
+ 3589 2464 FEFFFFEB 		bl	__extendsfdf2
+ 3590 2468 B32F4FE2 		adr	r2, .L194+56
+ 3591 246c 0C0092E8 		ldmia	r2, {r2-r3}
+ 3592 2470 FEFFFFEB 		bl	__muldf3
+ 3593 2474 0020A0E1 		mov	r2, r0
+ 3594 2478 0130A0E1 		mov	r3, r1
+ 3595 247c 0400A0E1 		mov	r0, r4
+ 3596 2480 0510A0E1 		mov	r1, r5
+ 3597 2484 FEFFFFEB 		bl	__adddf3
+ 3598 2488 FEFFFFEB 		bl	__truncdfsf2
+ 3599 248c 0C008DE5 		str	r0, [sp, #12]	@ float
+ 3600 2490 6C018BE5 		str	r0, [fp, #364]	@ float
+ 3601              	.LM508:
+ 3602 2494 04009BE5 		ldr	r0, [fp, #4]	@ float
+ 3603 2498 FEFFFFEB 		bl	__extendsfdf2
+ 3604 249c 0530D9E5 		ldrb	r3, [r9, #5]	@ zero_extendqisi2
+ 3605 24a0 0040A0E1 		mov	r4, r0
+ 3606 24a4 0400D9E5 		ldrb	r0, [r9, #4]	@ zero_extendqisi2
+ 3607 24a8 0150A0E1 		mov	r5, r1
+ 3608 24ac 0610D9E5 		ldrb	r1, [r9, #6]	@ zero_extendqisi2
+ 3609 24b0 0720D9E5 		ldrb	r2, [r9, #7]	@ zero_extendqisi2
+ 3610 24b4 030480E1 		orr	r0, r0, r3, asl #8
+ 3611 24b8 010880E1 		orr	r0, r0, r1, asl #16
+ 3612 24bc 020C80E1 		orr	r0, r0, r2, asl #24
+ 3613 24c0 FEFFFFEB 		bl	__floatsisf
+ 3614 24c4 020180E2 		add	r0, r0, #-2147483648
+ 3615 24c8 FEFFFFEB 		bl	__extendsfdf2
+ 3616 24cc 332E4FE2 		adr	r2, .L194+56
+ 3617 24d0 0C0092E8 		ldmia	r2, {r2-r3}
+ 3618 24d4 FEFFFFEB 		bl	__muldf3
+ 3619 24d8 0020A0E1 		mov	r2, r0
+ 3620 24dc 0130A0E1 		mov	r3, r1
+ 3621 24e0 0400A0E1 		mov	r0, r4
+ 3622 24e4 0510A0E1 		mov	r1, r5
+ 3623 24e8 FEFFFFEB 		bl	__adddf3
+ 3624 24ec FEFFFFEB 		bl	__truncdfsf2
+ 3625 24f0 08008DE5 		str	r0, [sp, #8]	@ float
+ 3626 24f4 70018BE5 		str	r0, [fp, #368]	@ float
+ 3627              	.LM509:
+ 3628 24f8 08009BE5 		ldr	r0, [fp, #8]	@ float
+ 3629 24fc FEFFFFEB 		bl	__extendsfdf2
+ 3630 2500 0930D9E5 		ldrb	r3, [r9, #9]	@ zero_extendqisi2
+ 3631 2504 0040A0E1 		mov	r4, r0
+ 3632 2508 0800D9E5 		ldrb	r0, [r9, #8]	@ zero_extendqisi2
+ 3633 250c 0150A0E1 		mov	r5, r1
+ 3634 2510 0A10D9E5 		ldrb	r1, [r9, #10]	@ zero_extendqisi2
+ 3635 2514 0B20D9E5 		ldrb	r2, [r9, #11]	@ zero_extendqisi2
+ 3636 2518 030480E1 		orr	r0, r0, r3, asl #8
+ 3637 251c 010880E1 		orr	r0, r0, r1, asl #16
+ 3638 2520 020C80E1 		orr	r0, r0, r2, asl #24
+ 3639 2524 FEFFFFEB 		bl	__floatsisf
+ 3640 2528 020180E2 		add	r0, r0, #-2147483648
+ 3641 252c FEFFFFEB 		bl	__extendsfdf2
+ 3642 2530 E52F4FE2 		adr	r2, .L194+56
+ 3643 2534 0C0092E8 		ldmia	r2, {r2-r3}
+ 3644 2538 FEFFFFEB 		bl	__muldf3
+ 3645 253c 0020A0E1 		mov	r2, r0
+ 3646 2540 0130A0E1 		mov	r3, r1
+ 3647 2544 0400A0E1 		mov	r0, r4
+ 3648 2548 0510A0E1 		mov	r1, r5
+ 3649 254c FEFFFFEB 		bl	__adddf3
+ 3650 2550 FEFFFFEB 		bl	__truncdfsf2
+ 3651 2554 0080A0E1 		mov	r8, r0
+ 3652 2558 74018BE5 		str	r0, [fp, #372]	@ float
+ 3653              	.LM510:
+ 3654 255c 0C009BE5 		ldr	r0, [fp, #12]	@ float
+ 3655 2560 FEFFFFEB 		bl	__extendsfdf2
+ 3656 2564 1130D9E5 		ldrb	r3, [r9, #17]	@ zero_extendqisi2
+ 3657 2568 0040A0E1 		mov	r4, r0
+ 3658 256c 1000D9E5 		ldrb	r0, [r9, #16]	@ zero_extendqisi2
+ 3659 2570 030480E1 		orr	r0, r0, r3, asl #8
+ 3660 2574 0008A0E1 		mov	r0, r0, asl #16
+ 3661 2578 4008A0E1 		mov	r0, r0, asr #16
+ 3662 257c 0150A0E1 		mov	r5, r1
+ 3663 2580 FEFFFFEB 		bl	__floatsisf
+ 3664 2584 FEFFFFEB 		bl	__extendsfdf2
+ 3665 2588 FB2F4FE2 		adr	r2, .L194+56
+ 3666 258c 0C0092E8 		ldmia	r2, {r2-r3}
+ 3667 2590 FEFFFFEB 		bl	__muldf3
+ 3668 2594 0020A0E1 		mov	r2, r0
+ 3669 2598 0130A0E1 		mov	r3, r1
+ 3670 259c 0400A0E1 		mov	r0, r4
+ 3671 25a0 0510A0E1 		mov	r1, r5
+ 3672 25a4 FEFFFFEB 		bl	__adddf3
+ 3673 25a8 FEFFFFEB 		bl	__truncdfsf2
+ 3674 25ac 0070A0E1 		mov	r7, r0
+ 3675 25b0 78018BE5 		str	r0, [fp, #376]	@ float
+ 3676              	.LM511:
+ 3677 25b4 10009BE5 		ldr	r0, [fp, #16]	@ float
+ 3678 25b8 FEFFFFEB 		bl	__extendsfdf2
+ 3679 25bc 1330D9E5 		ldrb	r3, [r9, #19]	@ zero_extendqisi2
+ 3680 25c0 0040A0E1 		mov	r4, r0
+ 3681 25c4 1200D9E5 		ldrb	r0, [r9, #18]	@ zero_extendqisi2
+ 3682 25c8 030480E1 		orr	r0, r0, r3, asl #8
+ 3683 25cc 0008A0E1 		mov	r0, r0, asl #16
+ 3684 25d0 4008A0E1 		mov	r0, r0, asr #16
+ 3685 25d4 0150A0E1 		mov	r5, r1
+ 3686 25d8 FEFFFFEB 		bl	__floatsisf
+ 3687 25dc 020180E2 		add	r0, r0, #-2147483648
+ 3688 25e0 FEFFFFEB 		bl	__extendsfdf2
+ 3689 25e4 9E2F8FE2 		adr	r2, .L196
+ 3690 25e8 0C0092E8 		ldmia	r2, {r2-r3}
+ 3691 25ec FEFFFFEB 		bl	__muldf3
+ 3692 25f0 0020A0E1 		mov	r2, r0
+ 3693 25f4 0130A0E1 		mov	r3, r1
+ 3694 25f8 0400A0E1 		mov	r0, r4
+ 3695 25fc 0510A0E1 		mov	r1, r5
+ 3696 2600 FEFFFFEB 		bl	__adddf3
+ 3697 2604 FEFFFFEB 		bl	__truncdfsf2
+ 3698 2608 0060A0E1 		mov	r6, r0
+ 3699 260c 7C018BE5 		str	r0, [fp, #380]	@ float
+ 3700              	.LM512:
+ 3701 2610 14009BE5 		ldr	r0, [fp, #20]	@ float
+ 3702 2614 FEFFFFEB 		bl	__extendsfdf2
+ 3703 2618 1530D9E5 		ldrb	r3, [r9, #21]	@ zero_extendqisi2
+ 3704 261c 0040A0E1 		mov	r4, r0
+ 3705 2620 1400D9E5 		ldrb	r0, [r9, #20]	@ zero_extendqisi2
+ 3706 2624 030480E1 		orr	r0, r0, r3, asl #8
+ 3707 2628 0008A0E1 		mov	r0, r0, asl #16
+ 3708 262c 4008A0E1 		mov	r0, r0, asr #16
+ 3709 2630 0150A0E1 		mov	r5, r1
+ 3710 2634 FEFFFFEB 		bl	__floatsisf
+ 3711 2638 020180E2 		add	r0, r0, #-2147483648
+ 3712 263c FEFFFFEB 		bl	__extendsfdf2
+ 3713 2640 872F8FE2 		adr	r2, .L196
+ 3714 2644 0C0092E8 		ldmia	r2, {r2-r3}
+ 3715 2648 FEFFFFEB 		bl	__muldf3
+ 3716 264c 0020A0E1 		mov	r2, r0
+ 3717 2650 0130A0E1 		mov	r3, r1
+ 3718 2654 0400A0E1 		mov	r0, r4
+ 3719 2658 0510A0E1 		mov	r1, r5
+ 3720 265c FEFFFFEB 		bl	__adddf3
+ 3721 2660 FEFFFFEB 		bl	__truncdfsf2
+ 3722              	.LBB280:
+ 3723              	.LM513:
+ 3724 2664 4214A0E3 		mov	r1, #1107296256
+ 3725              	.LBE280:
+ 3726              	.LM514:
+ 3727 2668 0040A0E1 		mov	r4, r0
+ 3728 266c 80018BE5 		str	r0, [fp, #384]	@ float
+ 3729              	.LBB281:
+ 3730              	.LM515:
+ 3731 2670 321781E2 		add	r1, r1, #13107200
+ 3732 2674 0C009DE5 		ldr	r0, [sp, #12]	@ float
+ 3733 2678 FEFFFFEB 		bl	__divsf3
+ 3734 267c 4214A0E3 		mov	r1, #1107296256
+ 3735 2680 84018BE5 		str	r0, [fp, #388]	@ float
+ 3736 2684 321781E2 		add	r1, r1, #13107200
+ 3737 2688 08009DE5 		ldr	r0, [sp, #8]	@ float
+ 3738 268c FEFFFFEB 		bl	__divsf3
+ 3739 2690 4214A0E3 		mov	r1, #1107296256
+ 3740 2694 88018BE5 		str	r0, [fp, #392]	@ float
+ 3741 2698 321781E2 		add	r1, r1, #13107200
+ 3742 269c 0800A0E1 		mov	r0, r8
+ 3743 26a0 FEFFFFEB 		bl	__divsf3
+ 3744 26a4 4214A0E3 		mov	r1, #1107296256
+ 3745 26a8 8C018BE5 		str	r0, [fp, #396]	@ float
+ 3746 26ac 321781E2 		add	r1, r1, #13107200
+ 3747 26b0 0700A0E1 		mov	r0, r7
+ 3748 26b4 FEFFFFEB 		bl	__divsf3
+ 3749 26b8 4214A0E3 		mov	r1, #1107296256
+ 3750 26bc 90018BE5 		str	r0, [fp, #400]	@ float
+ 3751 26c0 321781E2 		add	r1, r1, #13107200
+ 3752 26c4 0600A0E1 		mov	r0, r6
+ 3753 26c8 FEFFFFEB 		bl	__divsf3
+ 3754 26cc 4214A0E3 		mov	r1, #1107296256
+ 3755 26d0 94018BE5 		str	r0, [fp, #404]	@ float
+ 3756 26d4 321781E2 		add	r1, r1, #13107200
+ 3757 26d8 0400A0E1 		mov	r0, r4
+ 3758 26dc FEFFFFEB 		bl	__divsf3
+ 3759 26e0 98018BE5 		str	r0, [fp, #408]	@ float
+ 3760 26e4 66FBFFEA 		b	.L95
+ 3761              	.LVL126:
+ 3762              	.L104:
+ 3763              	.LBE281:
+ 3764              	.LBE271:
+ 3765              	.LBE270:
+ 3766              	.LBB282:
+ 3767              	.LBB283:
+ 3768              	.LBB284:
+ 3769              	.LBB285:
+ 3770              	.LM516:
+ 3771 26e8 0500A0E1 		mov	r0, r5
+ 3772 26ec FEFFFFEB 		bl	__extendsfdf2
+ 3773 26f0 FF25A0E3 		mov	r2, #1069547520
+ 3774 26f4 022682E2 		add	r2, r2, #2097152
+ 3775 26f8 0030A0E3 		mov	r3, #0
+ 3776 26fc FEFFFFEB 		bl	__subdf3
+ 3777 2700 FEFFFFEB 		bl	__fixdfsi
+ 3778 2704 19FDFFEA 		b	.L107
+ 3779              	.LVL127:
+ 3780              	.L188:
+ 3781              	.LBE285:
+ 3782              	.LBE284:
+ 3783              	.LM517:
+ 3784 2708 0400A0E1 		mov	r0, r4
+ 3785 270c FEFFFFEB 		bl	__extendsfdf2
+ 3786 2710 552F8FE2 		adr	r2, .L196+8
+ 3787 2714 0C0092E8 		ldmia	r2, {r2-r3}
+ 3788 2718 FEFFFFEB 		bl	__adddf3
+ 3789 271c FBFDFFEA 		b	.L181
+ 3790              	.LVL128:
+ 3791              	.L128:
+ 3792              	.LBB286:
+ 3793              	.LBB287:
+ 3794              	.LM518:
+ 3795 2720 0510A0E1 		mov	r1, r5
+ 3796 2724 0700A0E1 		mov	r0, r7
+ 3797 2728 FEFFFFEB 		bl	__addsf3
+ 3798 272c 0710A0E1 		mov	r1, r7
+ 3799 2730 0040A0E1 		mov	r4, r0
+ 3800 2734 0500A0E1 		mov	r0, r5
+ 3801 2738 FEFFFFEB 		bl	__subsf3
+ 3802 273c 0010A0E1 		mov	r1, r0
+ 3803 2740 0400A0E1 		mov	r0, r4
+ 3804 2744 FEFFFFEB 		bl	__divsf3
+ 3805 2748 FEFFFFEB 		bl	__extendsfdf2
+ 3806 274c 122E8FE2 		adr	r2, .L196+16
+ 3807 2750 0C0092E8 		ldmia	r2, {r2-r3}
+ 3808 2754 0040A0E1 		mov	r4, r0
+ 3809 2758 0150A0E1 		mov	r5, r1
+ 3810              	.LVL129:
+ 3811 275c FEFFFFEB 		bl	__muldf3
+ 3812 2760 0020A0E1 		mov	r2, r0
+ 3813 2764 0130A0E1 		mov	r3, r1
+ 3814 2768 0400A0E1 		mov	r0, r4
+ 3815 276c 0510A0E1 		mov	r1, r5
+ 3816 2770 FEFFFFEB 		bl	__muldf3
+ 3817 2774 012C8FE2 		adr	r2, .L196+24
+ 3818 2778 0C0092E8 		ldmia	r2, {r2-r3}
+ 3819 277c FEFFFFEB 		bl	__subdf3
+ 3820 2780 0020A0E1 		mov	r2, r0
+ 3821 2784 0130A0E1 		mov	r3, r1
+ 3822 2788 0400A0E1 		mov	r0, r4
+ 3823 278c 0510A0E1 		mov	r1, r5
+ 3824 2790 FEFFFFEB 		bl	__muldf3
+ 3825 2794 E8208FE2 		adr	r2, .L196+32
+ 3826 2798 0C0092E8 		ldmia	r2, {r2-r3}
+ 3827 279c FEFFFFEB 		bl	__adddf3
+ 3828 27a0 FEFFFFEB 		bl	__truncdfsf2
+ 3829 27a4 0040A0E1 		mov	r4, r0
+ 3830              	.LVL130:
+ 3831 27a8 CAFDFFEA 		b	.L131
+ 3832              	.LVL131:
+ 3833              	.L124:
+ 3834              	.LBE287:
+ 3835              	.LBE286:
+ 3836              	.LBB288:
+ 3837              	.LBB289:
+ 3838              	.LM519:
+ 3839 27ac 0400A0E1 		mov	r0, r4
+ 3840 27b0 FEFFFFEB 		bl	__extendsfdf2
+ 3841 27b4 FF25A0E3 		mov	r2, #1069547520
+ 3842 27b8 022682E2 		add	r2, r2, #2097152
+ 3843 27bc 0030A0E3 		mov	r3, #0
+ 3844 27c0 FEFFFFEB 		bl	__subdf3
+ 3845 27c4 FEFFFFEB 		bl	__fixdfsi
+ 3846 27c8 0008A0E1 		mov	r0, r0, asl #16
+ 3847 27cc 4008A0E1 		mov	r0, r0, asr #16
+ 3848 27d0 69FDFFEA 		b	.L127
+ 3849              	.LVL132:
+ 3850              	.L120:
+ 3851              	.LBE289:
+ 3852              	.LBE288:
+ 3853              	.LBB290:
+ 3854              	.LBB291:
+ 3855 27d4 0400A0E1 		mov	r0, r4
+ 3856 27d8 FEFFFFEB 		bl	__extendsfdf2
+ 3857 27dc FF25A0E3 		mov	r2, #1069547520
+ 3858 27e0 022682E2 		add	r2, r2, #2097152
+ 3859 27e4 0030A0E3 		mov	r3, #0
+ 3860 27e8 FEFFFFEB 		bl	__subdf3
+ 3861 27ec FEFFFFEB 		bl	__fixdfsi
+ 3862 27f0 0008A0E1 		mov	r0, r0, asl #16
+ 3863 27f4 4008A0E1 		mov	r0, r0, asr #16
+ 3864 27f8 46FDFFEA 		b	.L123
+ 3865              	.LVL133:
+ 3866              	.L116:
+ 3867              	.LBE291:
+ 3868              	.LBE290:
+ 3869              	.LBB292:
+ 3870              	.LBB293:
+ 3871 27fc 0400A0E1 		mov	r0, r4
+ 3872 2800 FEFFFFEB 		bl	__extendsfdf2
+ 3873 2804 FF25A0E3 		mov	r2, #1069547520
+ 3874 2808 022682E2 		add	r2, r2, #2097152
+ 3875 280c 0030A0E3 		mov	r3, #0
+ 3876 2810 FEFFFFEB 		bl	__subdf3
+ 3877 2814 FEFFFFEB 		bl	__fixdfsi
+ 3878 2818 0008A0E1 		mov	r0, r0, asl #16
+ 3879 281c 4008A0E1 		mov	r0, r0, asr #16
+ 3880 2820 24FDFFEA 		b	.L119
+ 3881              	.LVL134:
+ 3882              	.L112:
+ 3883              	.LBE293:
+ 3884              	.LBE292:
+ 3885              	.LBB294:
+ 3886              	.LBB295:
+ 3887              	.LM520:
+ 3888 2824 0400A0E1 		mov	r0, r4
+ 3889 2828 FEFFFFEB 		bl	__extendsfdf2
+ 3890 282c FF25A0E3 		mov	r2, #1069547520
+ 3891 2830 022682E2 		add	r2, r2, #2097152
+ 3892 2834 0030A0E3 		mov	r3, #0
+ 3893 2838 FEFFFFEB 		bl	__subdf3
+ 3894 283c FEFFFFEB 		bl	__fixdfsi
+ 3895 2840 FFFCFFEA 		b	.L115
+ 3896              	.LVL135:
+ 3897              	.L108:
+ 3898              	.LBE295:
+ 3899              	.LBE294:
+ 3900              	.LBB296:
+ 3901              	.LBB297:
+ 3902 2844 0400A0E1 		mov	r0, r4
+ 3903 2848 FEFFFFEB 		bl	__extendsfdf2
+ 3904 284c FF25A0E3 		mov	r2, #1069547520
+ 3905 2850 022682E2 		add	r2, r2, #2097152
+ 3906 2854 0030A0E3 		mov	r3, #0
+ 3907 2858 FEFFFFEB 		bl	__subdf3
+ 3908 285c FEFFFFEB 		bl	__fixdfsi
+ 3909 2860 DCFCFFEA 		b	.L111
+ 3910              	.L197:
+ 3911              		.align	2
+ 3912              	.L196:
+ 3913 2864 4D6250BF 		.word	-1085250995
+ 3914 2868 FCA9F1D2 		.word	-755914244
+ 3915 286c FB211940 		.word	1075388923
+ 3916 2870 182D4454 		.word	1413754136
+ 3917 2874 5B20C93F 		.word	1070145627
+ 3918 2878 E3361AC0 		.word	-1072023837
+ 3919 287c 166AEF3F 		.word	1072654870
+ 3920 2880 60764F1E 		.word	508524128
+ 3921 2884 7CD90240 		.word	1073928572
+ 3922 2888 D221337F 		.word	2134057426
+ 3923              	.LBE297:
+ 3924              	.LBE296:
+ 3925              	.LBE283:
+ 3926              	.LBE282:
+ 3927              	.LFE4:
+ 3929              		.global	DEKF_ASCTEC_ACC_TO_SI
+ 3930              		.section	.rodata
+ 3931              		.align	2
+ 3934              	DEKF_ASCTEC_ACC_TO_SI:
+ 3935 0000 1FBA203C 		.word	1008777759
+ 3936              		.global	DEKF_ASCTEC_OMEGA_TO_SI
+ 3937              		.align	2
+ 3940              	DEKF_ASCTEC_OMEGA_TO_SI:
+ 3941 0004 1E428939 		.word	965296670
+ 4216              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 dekf.c
+     /tmp/cc39AQ5l.s:10     .text:00000000 $a
+     /tmp/cc39AQ5l.s:13     .text:00000000 initState
+     /tmp/cc39AQ5l.s:69     .text:0000008c DEKF_getInitializeEvent
+     /tmp/cc39AQ5l.s:100    .text:00000094 yawFromQuaternion
+     /tmp/cc39AQ5l.s:264    .text:00000290 $d
+     /tmp/cc39AQ5l.s:276    .text:000002b8 $a
+     /tmp/cc39AQ5l.s:279    .text:000002b8 quaternionMultiplication
+     /tmp/cc39AQ5l.s:410    .text:00000460 float2Int
+     /tmp/cc39AQ5l.s:458    .text:000004bc float2Short
+     /tmp/cc39AQ5l.s:510    .text:00000528 DEKF_sendState
+     /tmp/cc39AQ5l.s:594    .text:00000610 $d
+     /tmp/cc39AQ5l.s:597    .text:00000614 $a
+     /tmp/cc39AQ5l.s:600    .text:00000614 DEKF_init
+     /tmp/cc39AQ5l.s:715    .text:000006e8 writeControllerOutput
+     /tmp/cc39AQ5l.s:1391   .text:00000da0 $d
+     /tmp/cc39AQ5l.s:1410   .text:00000dd8 $a
+     /tmp/cc39AQ5l.s:1413   .text:00000dd8 correctState
+     /tmp/cc39AQ5l.s:1846   .text:00001310 $d
+     /tmp/cc39AQ5l.s:1851   .text:00001318 $a
+     /tmp/cc39AQ5l.s:1854   .text:00001318 DEKF_step
+     /tmp/cc39AQ5l.s:1989   .text:00001458 $d
+     /tmp/cc39AQ5l.s:2006   .text:00001484 $a
+     /tmp/cc39AQ5l.s:2548   .text:00001a20 $d
+     /tmp/cc39AQ5l.s:2557   .text:00001a38 $a
+     /tmp/cc39AQ5l.s:3321   .text:0000216c $d
+     /tmp/cc39AQ5l.s:3341   .text:000021ac $a
+     /tmp/cc39AQ5l.s:3913   .text:00002864 $d
+     /tmp/cc39AQ5l.s:3934   .rodata:00000000 DEKF_ASCTEC_ACC_TO_SI
+     /tmp/cc39AQ5l.s:3931   .rodata:00000000 $d
+     /tmp/cc39AQ5l.s:3940   .rodata:00000004 DEKF_ASCTEC_OMEGA_TO_SI
+     /tmp/cc39AQ5l.s:3955   .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+__mulsf3
+__addsf3
+__extendsfdf2
+__muldf3
+__adddf3
+__truncdfsf2
+__gesf2
+__subsf3
+__divsf3
+__subdf3
+__ltsf2
+__fixdfsi
+writePacket2Ringbuffer
+LL_1khz_attitude_data
+autogen_ekf_propagation_initialize
+registerPacket
+__divdf3
+__floatsisf
+__floatdisf
+autogen_ekf_propagation

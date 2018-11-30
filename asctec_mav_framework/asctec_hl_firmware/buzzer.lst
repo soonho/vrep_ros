@@ -1,0 +1,665 @@
+   1              		.file	"buzzer.c"
+   9              	.Ltext0:
+  10              		.align	2
+  11              		.global	buzzer
+  13              	buzzer:
+  14              	.LFB3:
+  15              	.LM1:
+  16              		@ Function supports interworking.
+  17              		@ args = 0, pretend = 0, frame = 0
+  18              		@ frame_needed = 0, uses_anonymous_args = 0
+  19              		@ link register save eliminated.
+  20              	.LVL0:
+  21              	.LM2:
+  22 0000 FF0010E3 		tst	r0, #255
+  23              	.LM3:
+  24 0004 0E12A0E3 		mov	r1, #-536870912
+  25              	.LM4:
+  26 0008 0E22A0E3 		mov	r2, #-536870912
+  27              	.LM5:
+  28 000c 0A1981E2 		add	r1, r1, #163840
+  29              	.LM6:
+  30 0010 0A2982E2 		add	r2, r2, #163840
+  31 0014 0238A013 		movne	r3, #131072
+  32              	.LM7:
+  33 0018 0238A003 		moveq	r3, #131072
+  34              	.LM8:
+  35              		@ lr needed for prologue
+  36              	.LM9:
+  37 001c 14308215 		strne	r3, [r2, #20]
+  38              	.LM10:
+  39 0020 1C308105 		streq	r3, [r1, #28]
+  40 0024 1EFF2FE1 		bx	lr
+  41              	.LFE3:
+  43              		.align	2
+  44              		.global	buzzer_handler
+  46              	buzzer_handler:
+  47              	.LFB2:
+  48              	.LM11:
+  49              		@ Function supports interworking.
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52              	.LVL1:
+  53 0028 F0402DE9 		stmfd	sp!, {r4, r5, r6, r7, lr}
+  54              	.LCFI0:
+  55              	.LM12:
+  56 002c C8449FE5 		ldr	r4, .L185
+  57 0030 B030D4E1 		ldrh	r3, [r4, #0]
+  58 0034 013083E2 		add	r3, r3, #1
+  59 0038 0338A0E1 		mov	r3, r3, asl #16
+  60 003c 2338A0E1 		mov	r3, r3, lsr #16
+  61 0040 C70053E3 		cmp	r3, #199
+  62              	.LM13:
+  63 0044 B4C49FE5 		ldr	ip, .L185+4
+  64              	.LM14:
+  65 0048 B030C4E1 		strh	r3, [r4, #0]	@ movhi
+  66 004c 0030A083 		movhi	r3, #0	@ movhi
+  67 0050 B030C481 		strhih	r3, [r4, #0]	@ movhi
+  68              	.LM15:
+  69 0054 00309CE5 		ldr	r3, [ip, #0]
+  70 0058 013083E2 		add	r3, r3, #1
+  71 005c 640053E3 		cmp	r3, #100
+  72 0060 00308CE5 		str	r3, [ip, #0]
+  73 0064 64304302 		subeq	r3, r3, #100
+  74 0068 00308C05 		streq	r3, [ip, #0]
+  75              	.LM16:
+  76 006c 010050E1 		cmp	r0, r1
+  77 0070 690000AA 		bge	.L11
+  78              	.LM17:
+  79 0074 88249FE5 		ldr	r2, .L185+8
+  80 0078 003092E5 		ldr	r3, [r2, #0]
+  81 007c C70053E3 		cmp	r3, #199
+  82              	.LM18:
+  83 0080 80349FC5 		ldrgt	r3, .L185+12
+  84              	.LM19:
+  85 0084 013083D2 		addle	r3, r3, #1
+  86              	.LM20:
+  87 0088 0120A0C3 		movgt	r2, #1
+  88              	.LM21:
+  89 008c 003082D5 		strle	r3, [r2, #0]
+  90              	.LM22:
+  91 0090 0020C3C5 		strgtb	r2, [r3, #0]
+  92              	.LM23:
+  93 0094 660000DA 		ble	.L15
+  94              	.LVL2:
+  95              	.L16:
+  96              	.LVL3:
+  97              	.LM24:
+  98 0098 003061E0 		rsb	r3, r1, r0
+  99 009c 68249FE5 		ldr	r2, .L185+16
+ 100 00a0 FA3F83E2 		add	r3, r3, #1000
+ 101 00a4 9273C1E0 		smull	r7, r1, r2, r3
+ 102              	.LVL4:
+ 103 00a8 C33FA0E1 		mov	r3, r3, asr #31
+ 104 00ac 00209CE5 		ldr	r2, [ip, #0]
+ 105 00b0 413163E0 		rsb	r3, r3, r1, asr #2
+ 106 00b4 020053E1 		cmp	r3, r2
+ 107 00b8 1000A0B3 		movlt	r0, #16
+ 108              	.LVL5:
+ 109 00bc 0010A0B1 		movlt	r1, r0
+ 110              	.LVL6:
+ 111 00c0 0000A0A3 		movge	r0, #0
+ 112 00c4 1010A0A3 		movge	r1, #16
+ 113              	.L19:
+ 114              	.LM25:
+ 115 00c8 40349FE5 		ldr	r3, .L185+20
+ 116 00cc B225D3E1 		ldrh	r2, [r3, #82]
+ 117 00d0 0258A0E1 		mov	r5, r2, asl #16
+ 118 00d4 25C8A0E1 		mov	ip, r5, lsr #16
+ 119 00d8 020C1CE3 		tst	ip, #512
+ 120 00dc 30649F05 		ldreq	r6, .L185+24
+ 121 00e0 0300000A 		beq	.L23
+ 122 00e4 28649FE5 		ldr	r6, .L185+24
+ 123 00e8 0030D6E5 		ldrb	r3, [r6, #0]	@ zero_extendqisi2
+ 124 00ec 000053E3 		cmp	r3, #0
+ 125 00f0 B800001A 		bne	.L177
+ 126              	.L23:
+ 127              	.LM26:
+ 128 00f4 0210C1E3 		bic	r1, r1, #2
+ 129              	.LVL7:
+ 130              	.L162:
+ 131              	.LM27:
+ 132 00f8 0220C0E3 		bic	r2, r0, #2
+ 133              	.LVL8:
+ 134              	.L28:
+ 135              	.LM28:
+ 136 00fc 010B1CE3 		tst	ip, #1024
+ 137 0100 0200000A 		beq	.L33
+ 138 0104 0030D6E5 		ldrb	r3, [r6, #0]	@ zero_extendqisi2
+ 139 0108 000053E3 		cmp	r3, #0
+ 140 010c A300001A 		bne	.L178
+ 141              	.L33:
+ 142              	.LM29:
+ 143 0110 0410C1E3 		bic	r1, r1, #4
+ 144              	.LVL9:
+ 145              	.L164:
+ 146              	.LM30:
+ 147 0114 0420C2E3 		bic	r2, r2, #4
+ 148              	.LVL10:
+ 149              	.L38:
+ 150              	.LM31:
+ 151 0118 020B1CE3 		tst	ip, #2048
+ 152 011c 0200000A 		beq	.L47
+ 153 0120 0030D6E5 		ldrb	r3, [r6, #0]	@ zero_extendqisi2
+ 154 0124 000053E3 		cmp	r3, #0
+ 155 0128 8A00001A 		bne	.L179
+ 156              	.L47:
+ 157              	.LM32:
+ 158 012c 08E0C1E3 		bic	lr, r1, #8
+ 159              	.LVL11:
+ 160              	.L167:
+ 161              	.LM33:
+ 162 0130 0800C2E3 		bic	r0, r2, #8
+ 163              	.LVL12:
+ 164              	.L52:
+ 165              	.LM34:
+ 166 0134 10001CE3 		tst	ip, #16
+ 167 0138 0200000A 		beq	.L65
+ 168 013c 0030D6E5 		ldrb	r3, [r6, #0]	@ zero_extendqisi2
+ 169 0140 000053E3 		cmp	r3, #0
+ 170 0144 5F00001A 		bne	.L180
+ 171              	.L65:
+ 172              	.LM35:
+ 173 0148 20E0CEE3 		bic	lr, lr, #32
+ 174              	.LVL13:
+ 175              	.L170:
+ 176              	.LM36:
+ 177 014c 2000C0E3 		bic	r0, r0, #32
+ 178              	.LVL14:
+ 179              	.L71:
+ 180              	.LM37:
+ 181 0150 01091CE3 		tst	ip, #16384
+ 182 0154 0200000A 		beq	.L90
+ 183 0158 0030D6E5 		ldrb	r3, [r6, #0]	@ zero_extendqisi2
+ 184 015c 000053E3 		cmp	r3, #0
+ 185 0160 3C00001A 		bne	.L181
+ 186              	.L90:
+ 187              	.LM38:
+ 188 0164 40C0CEE3 		bic	ip, lr, #64
+ 189              	.LVL15:
+ 190              	.L172:
+ 191              	.LM39:
+ 192 0168 4000C0E3 		bic	r0, r0, #64
+ 193              	.LVL16:
+ 194              	.L96:
+ 195              	.LM40:
+ 196 016c 000055E3 		cmp	r5, #0
+ 197 0170 BE0000BA 		blt	.L182
+ 198              	.L107:
+ 199              	.LM41:
+ 200 0174 80C0CCE3 		bic	ip, ip, #128
+ 201              	.LVL17:
+ 202              	.L174:
+ 203              	.LM42:
+ 204 0178 8000C0E3 		bic	r0, r0, #128
+ 205              	.LVL18:
+ 206              	.L113:
+ 207              	.LM43:
+ 208 017c 0030D6E5 		ldrb	r3, [r6, #0]	@ zero_extendqisi2
+ 209 0180 000053E3 		cmp	r3, #0
+ 210              	.LM44:
+ 211 0184 0120C013 		bicne	r2, r0, #1
+ 212              	.LVL19:
+ 213              	.LM45:
+ 214 0188 0130CC13 		bicne	r3, ip, #1
+ 215              	.LVL20:
+ 216              	.LM46:
+ 217 018c 1000001A 		bne	.L132
+ 218              	.LM47:
+ 219 0190 B010D4E1 		ldrh	r1, [r4, #0]
+ 220              	.LVL21:
+ 221 0194 7C239FE5 		ldr	r2, .L185+28
+ 222              	.LVL22:
+ 223 0198 927183E0 		umull	r7, r3, r2, r1
+ 224              	.LVL23:
+ 225 019c A332A0E1 		mov	r3, r3, lsr #5
+ 226 01a0 033183E0 		add	r3, r3, r3, asl #2
+ 227 01a4 033183E0 		add	r3, r3, r3, asl #2
+ 228 01a8 031141E0 		sub	r1, r1, r3, asl #2
+ 229 01ac 0118A0E1 		mov	r1, r1, asl #16
+ 230 01b0 2118A0E1 		mov	r1, r1, lsr #16
+ 231 01b4 040051E3 		cmp	r1, #4
+ 232              	.LM48:
+ 233 01b8 01308CE3 		orr	r3, ip, #1
+ 234              	.LVL24:
+ 235              	.LM49:
+ 236 01bc 2300009A 		bls	.L175
+ 237              	.LM50:
+ 238 01c0 090051E3 		cmp	r1, #9
+ 239 01c4 0100009A 		bls	.L135
+ 240              	.LM51:
+ 241 01c8 0E0051E3 		cmp	r1, #14
+ 242 01cc 1F00009A 		bls	.L175
+ 243              	.L135:
+ 244              	.LM52:
+ 245 01d0 0120C0E3 		bic	r2, r0, #1
+ 246              	.LVL25:
+ 247              	.L132:
+ 248              	.LBB7:
+ 249              	.LM53:
+ 250 01d4 010013E3 		tst	r3, #1
+ 251 01d8 0130A013 		movne	r3, #1
+ 252              	.LVL26:
+ 253 01dc 0200001A 		bne	.L139
+ 254              	.LVL27:
+ 255 01e0 020013E3 		tst	r3, #2
+ 256 01e4 0230A013 		movne	r3, #2
+ 257              	.LVL28:
+ 258 01e8 8A00000A 		beq	.L183
+ 259              	.L139:
+ 260              	.LM54:
+ 261 01ec 032002E0 		and	r2, r2, r3
+ 262              	.LVL29:
+ 263              	.L154:
+ 264              	.LBE7:
+ 265              	.LM55:
+ 266 01f0 000052E3 		cmp	r2, #0
+ 267              	.LBB8:
+ 268              	.LBB9:
+ 269              	.LM56:
+ 270 01f4 0E32A013 		movne	r3, #-536870912
+ 271              	.LVL30:
+ 272              	.LBE9:
+ 273              	.LBE8:
+ 274              	.LBB10:
+ 275              	.LBB11:
+ 276              	.LM57:
+ 277 01f8 0E32A003 		moveq	r3, #-536870912
+ 278              	.LBE11:
+ 279              	.LBE10:
+ 280              	.LBB12:
+ 281              	.LBB13:
+ 282              	.LM58:
+ 283 01fc 0A398312 		addne	r3, r3, #163840
+ 284 0200 0228A013 		movne	r2, #131072
+ 285              	.LVL31:
+ 286              	.LBE13:
+ 287              	.LBE12:
+ 288              	.LBB14:
+ 289              	.LBB15:
+ 290              	.LM59:
+ 291 0204 0A398302 		addeq	r3, r3, #163840
+ 292 0208 0228A003 		moveq	r2, #131072
+ 293              	.LBE15:
+ 294              	.LBE14:
+ 295              	.LBB16:
+ 296              	.LBB17:
+ 297              	.LM60:
+ 298 020c 14208315 		strne	r2, [r3, #20]
+ 299              	.LBE17:
+ 300              	.LBE16:
+ 301              	.LBB18:
+ 302              	.LBB19:
+ 303              	.LM61:
+ 304 0210 1C208305 		streq	r2, [r3, #28]
+ 305              	.LBE19:
+ 306              	.LBE18:
+ 307              	.LM62:
+ 308 0214 F040BDE8 		ldmfd	sp!, {r4, r5, r6, r7, lr}
+ 309 0218 1EFF2FE1 		bx	lr
+ 310              	.LVL32:
+ 311              	.L11:
+ 312              	.LM63:
+ 313 021c E0229FE5 		ldr	r2, .L185+8
+ 314 0220 003092E5 		ldr	r3, [r2, #0]
+ 315 0224 0A0053E3 		cmp	r3, #10
+ 316 0228 023043C2 		subgt	r3, r3, #2
+ 317 022c 003082C5 		strgt	r3, [r2, #0]
+ 318 0230 720000DA 		ble	.L184
+ 319              	.L15:
+ 320              	.LM64:
+ 321 0234 CC329FE5 		ldr	r3, .L185+12
+ 322 0238 0020D3E5 		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 323 023c 000052E3 		cmp	r2, #0
+ 324 0240 0200A001 		moveq	r0, r2
+ 325              	.LVL33:
+ 326 0244 0010A001 		moveq	r1, r0
+ 327              	.LVL34:
+ 328 0248 9EFFFF0A 		beq	.L19
+ 329 024c 91FFFFEA 		b	.L16
+ 330              	.LVL35:
+ 331              	.L175:
+ 332              	.LM65:
+ 333 0250 012080E3 		orr	r2, r0, #1
+ 334              	.LVL36:
+ 335 0254 DEFFFFEA 		b	.L132
+ 336              	.LVL37:
+ 337              	.L181:
+ 338              	.LM66:
+ 339 0258 BC229FE5 		ldr	r2, .L185+32
+ 340              	.LVL38:
+ 341 025c B030D2E1 		ldrh	r3, [r2, #0]
+ 342 0260 190E53E3 		cmp	r3, #400
+ 343 0264 013083E2 		add	r3, r3, #1
+ 344 0268 B030C2E1 		strh	r3, [r2, #0]	@ movhi
+ 345 026c BCFFFF2A 		bcs	.L90
+ 346              	.LM67:
+ 347 0270 B010D4E1 		ldrh	r1, [r4, #0]
+ 348              	.LVL39:
+ 349 0274 9C229FE5 		ldr	r2, .L185+28
+ 350 0278 92C183E0 		umull	ip, r3, r2, r1
+ 351 027c A332A0E1 		mov	r3, r3, lsr #5
+ 352 0280 033183E0 		add	r3, r3, r3, asl #2
+ 353 0284 033183E0 		add	r3, r3, r3, asl #2
+ 354 0288 031141E0 		sub	r1, r1, r3, asl #2
+ 355 028c 0118A0E1 		mov	r1, r1, asl #16
+ 356 0290 2118A0E1 		mov	r1, r1, lsr #16
+ 357 0294 040051E3 		cmp	r1, #4
+ 358              	.LM68:
+ 359 0298 40C08EE3 		orr	ip, lr, #64
+ 360              	.LVL40:
+ 361              	.LM69:
+ 362 029c 0700009A 		bls	.L171
+ 363              	.LM70:
+ 364 02a0 090051E3 		cmp	r1, #9
+ 365 02a4 AFFFFF9A 		bls	.L172
+ 366              	.LM71:
+ 367 02a8 0E0051E3 		cmp	r1, #14
+ 368 02ac 0300009A 		bls	.L171
+ 369              	.LM72:
+ 370 02b0 130051E3 		cmp	r1, #19
+ 371 02b4 ABFFFF9A 		bls	.L172
+ 372              	.LM73:
+ 373 02b8 180051E3 		cmp	r1, #24
+ 374 02bc A9FFFF8A 		bhi	.L172
+ 375              	.L171:
+ 376 02c0 400080E3 		orr	r0, r0, #64
+ 377              	.LVL41:
+ 378 02c4 A8FFFFEA 		b	.L96
+ 379              	.LVL42:
+ 380              	.L180:
+ 381              	.LM74:
+ 382 02c8 50229FE5 		ldr	r2, .L185+36
+ 383              	.LVL43:
+ 384 02cc B030D2E1 		ldrh	r3, [r2, #0]
+ 385 02d0 190E53E3 		cmp	r3, #400
+ 386 02d4 013083E2 		add	r3, r3, #1
+ 387 02d8 B030C2E1 		strh	r3, [r2, #0]	@ movhi
+ 388 02dc 99FFFF2A 		bcs	.L65
+ 389              	.LM75:
+ 390 02e0 B010D4E1 		ldrh	r1, [r4, #0]
+ 391              	.LVL44:
+ 392 02e4 2C229FE5 		ldr	r2, .L185+28
+ 393 02e8 927183E0 		umull	r7, r3, r2, r1
+ 394 02ec A332A0E1 		mov	r3, r3, lsr #5
+ 395 02f0 033183E0 		add	r3, r3, r3, asl #2
+ 396 02f4 033183E0 		add	r3, r3, r3, asl #2
+ 397 02f8 031141E0 		sub	r1, r1, r3, asl #2
+ 398 02fc 0118A0E1 		mov	r1, r1, asl #16
+ 399 0300 2118A0E1 		mov	r1, r1, lsr #16
+ 400 0304 040051E3 		cmp	r1, #4
+ 401              	.LM76:
+ 402 0308 20E08EE3 		orr	lr, lr, #32
+ 403              	.LVL45:
+ 404              	.LM77:
+ 405 030c 0F00009A 		bls	.L169
+ 406              	.LM78:
+ 407 0310 090051E3 		cmp	r1, #9
+ 408 0314 8CFFFF9A 		bls	.L170
+ 409              	.LM79:
+ 410 0318 0E0051E3 		cmp	r1, #14
+ 411 031c 0B00009A 		bls	.L169
+ 412              	.LM80:
+ 413 0320 130051E3 		cmp	r1, #19
+ 414 0324 88FFFF9A 		bls	.L170
+ 415              	.LM81:
+ 416 0328 180051E3 		cmp	r1, #24
+ 417 032c 0700009A 		bls	.L169
+ 418              	.LM82:
+ 419 0330 1D0051E3 		cmp	r1, #29
+ 420 0334 84FFFF9A 		bls	.L170
+ 421              	.LM83:
+ 422 0338 220051E3 		cmp	r1, #34
+ 423 033c 0300009A 		bls	.L169
+ 424              	.LM84:
+ 425 0340 270051E3 		cmp	r1, #39
+ 426 0344 80FFFF9A 		bls	.L170
+ 427              	.LM85:
+ 428 0348 2C0051E3 		cmp	r1, #44
+ 429 034c 7EFFFF8A 		bhi	.L170
+ 430              	.L169:
+ 431 0350 200080E3 		orr	r0, r0, #32
+ 432              	.LVL46:
+ 433 0354 7DFFFFEA 		b	.L71
+ 434              	.LVL47:
+ 435              	.L179:
+ 436              	.LM86:
+ 437 0358 B030D4E1 		ldrh	r3, [r4, #0]
+ 438 035c 860053E3 		cmp	r3, #134
+ 439              	.LM87:
+ 440 0360 08E081E3 		orr	lr, r1, #8
+ 441              	.LVL48:
+ 442              	.LM88:
+ 443 0364 0B00009A 		bls	.L168
+ 444              	.LM89:
+ 445 0368 8B0053E3 		cmp	r3, #139
+ 446 036c 6FFFFF9A 		bls	.L167
+ 447              	.LM90:
+ 448 0370 900053E3 		cmp	r3, #144
+ 449 0374 0700009A 		bls	.L168
+ 450              	.LM91:
+ 451 0378 950053E3 		cmp	r3, #149
+ 452 037c 6BFFFF9A 		bls	.L167
+ 453              	.LM92:
+ 454 0380 9A0053E3 		cmp	r3, #154
+ 455 0384 0300009A 		bls	.L168
+ 456              	.LM93:
+ 457 0388 9F0053E3 		cmp	r3, #159
+ 458 038c 67FFFF9A 		bls	.L167
+ 459              	.LM94:
+ 460 0390 A40053E3 		cmp	r3, #164
+ 461 0394 65FFFF8A 		bhi	.L167
+ 462              	.L168:
+ 463 0398 080082E3 		orr	r0, r2, #8
+ 464              	.LVL49:
+ 465 039c 64FFFFEA 		b	.L52
+ 466              	.LVL50:
+ 467              	.L178:
+ 468              	.LM95:
+ 469 03a0 B030D4E1 		ldrh	r3, [r4, #0]
+ 470 03a4 900053E3 		cmp	r3, #144
+ 471              	.LM96:
+ 472 03a8 041081E3 		orr	r1, r1, #4
+ 473              	.LVL51:
+ 474              	.LM97:
+ 475 03ac 0700009A 		bls	.L165
+ 476              	.LM98:
+ 477 03b0 950053E3 		cmp	r3, #149
+ 478 03b4 56FFFF9A 		bls	.L164
+ 479              	.LM99:
+ 480 03b8 9A0053E3 		cmp	r3, #154
+ 481 03bc 0300009A 		bls	.L165
+ 482              	.LM100:
+ 483 03c0 9F0053E3 		cmp	r3, #159
+ 484 03c4 52FFFF9A 		bls	.L164
+ 485              	.LM101:
+ 486 03c8 A40053E3 		cmp	r3, #164
+ 487 03cc 50FFFF8A 		bhi	.L164
+ 488              	.L165:
+ 489 03d0 042082E3 		orr	r2, r2, #4
+ 490              	.LVL52:
+ 491 03d4 4FFFFFEA 		b	.L38
+ 492              	.LVL53:
+ 493              	.L177:
+ 494              	.LM102:
+ 495 03d8 B030D4E1 		ldrh	r3, [r4, #0]
+ 496 03dc 9A0053E3 		cmp	r3, #154
+ 497              	.LM103:
+ 498 03e0 021081E3 		orr	r1, r1, #2
+ 499              	.LVL54:
+ 500              	.LM104:
+ 501 03e4 0300009A 		bls	.L161
+ 502              	.LM105:
+ 503 03e8 9F0053E3 		cmp	r3, #159
+ 504 03ec 41FFFF9A 		bls	.L162
+ 505              	.LM106:
+ 506 03f0 A40053E3 		cmp	r3, #164
+ 507 03f4 3FFFFF8A 		bhi	.L162
+ 508              	.L161:
+ 509 03f8 022080E3 		orr	r2, r0, #2
+ 510              	.LVL55:
+ 511 03fc 3EFFFFEA 		b	.L28
+ 512              	.LVL56:
+ 513              	.L184:
+ 514              	.LM107:
+ 515 0400 0020A0E3 		mov	r2, #0
+ 516 0404 FC309FE5 		ldr	r3, .L185+12
+ 517 0408 0200A0E1 		mov	r0, r2
+ 518              	.LVL57:
+ 519 040c 0210A0E1 		mov	r1, r2
+ 520              	.LVL58:
+ 521 0410 0020C3E5 		strb	r2, [r3, #0]
+ 522 0414 2BFFFFEA 		b	.L19
+ 523              	.LVL59:
+ 524              	.L183:
+ 525              	.LVL60:
+ 526              	.LBB20:
+ 527              	.LM108:
+ 528 0418 040013E3 		tst	r3, #4
+ 529 041c 0430A013 		movne	r3, #4
+ 530              	.LVL61:
+ 531 0420 71FFFF1A 		bne	.L139
+ 532              	.LVL62:
+ 533 0424 080013E3 		tst	r3, #8
+ 534 0428 0830A013 		movne	r3, #8
+ 535              	.LVL63:
+ 536 042c 6EFFFF1A 		bne	.L139
+ 537              	.LVL64:
+ 538 0430 100013E3 		tst	r3, #16
+ 539 0434 1030A013 		movne	r3, #16
+ 540              	.LVL65:
+ 541 0438 6BFFFF1A 		bne	.L139
+ 542              	.LVL66:
+ 543 043c 200013E3 		tst	r3, #32
+ 544 0440 2030A013 		movne	r3, #32
+ 545              	.LVL67:
+ 546 0444 68FFFF1A 		bne	.L139
+ 547              	.LVL68:
+ 548 0448 400013E3 		tst	r3, #64
+ 549 044c 4030A013 		movne	r3, #64
+ 550              	.LVL69:
+ 551 0450 65FFFF1A 		bne	.L139
+ 552              	.LVL70:
+ 553 0454 800013E3 		tst	r3, #128
+ 554 0458 8030A013 		movne	r3, #128
+ 555              	.LVL71:
+ 556 045c 62FFFF1A 		bne	.L139
+ 557              	.LVL72:
+ 558 0460 010C13E3 		tst	r3, #256
+ 559 0464 61FFFF0A 		beq	.L154
+ 560 0468 013CA0E3 		mov	r3, #256
+ 561              	.LVL73:
+ 562 046c 5EFFFFEA 		b	.L139
+ 563              	.LVL74:
+ 564              	.L182:
+ 565              	.LBE20:
+ 566              	.LM109:
+ 567 0470 0030D6E5 		ldrb	r3, [r6, #0]	@ zero_extendqisi2
+ 568 0474 000053E3 		cmp	r3, #0
+ 569 0478 3DFFFF0A 		beq	.L107
+ 570 047c A0209FE5 		ldr	r2, .L185+40
+ 571              	.LVL75:
+ 572 0480 B030D2E1 		ldrh	r3, [r2, #0]
+ 573 0484 190E53E3 		cmp	r3, #400
+ 574 0488 013083E2 		add	r3, r3, #1
+ 575 048c B030C2E1 		strh	r3, [r2, #0]	@ movhi
+ 576 0490 37FFFF2A 		bcs	.L107
+ 577              	.LM110:
+ 578 0494 B010D4E1 		ldrh	r1, [r4, #0]
+ 579              	.LVL76:
+ 580 0498 78209FE5 		ldr	r2, .L185+28
+ 581 049c 92E183E0 		umull	lr, r3, r2, r1
+ 582              	.LVL77:
+ 583 04a0 A332A0E1 		mov	r3, r3, lsr #5
+ 584 04a4 033183E0 		add	r3, r3, r3, asl #2
+ 585 04a8 033183E0 		add	r3, r3, r3, asl #2
+ 586 04ac 031141E0 		sub	r1, r1, r3, asl #2
+ 587 04b0 0118A0E1 		mov	r1, r1, asl #16
+ 588 04b4 2118A0E1 		mov	r1, r1, lsr #16
+ 589 04b8 040051E3 		cmp	r1, #4
+ 590              	.LM111:
+ 591 04bc 80C08CE3 		orr	ip, ip, #128
+ 592              	.LVL78:
+ 593              	.LM112:
+ 594 04c0 0B00009A 		bls	.L173
+ 595              	.LM113:
+ 596 04c4 090051E3 		cmp	r1, #9
+ 597 04c8 2AFFFF9A 		bls	.L174
+ 598              	.LM114:
+ 599 04cc 0E0051E3 		cmp	r1, #14
+ 600 04d0 0700009A 		bls	.L173
+ 601              	.LM115:
+ 602 04d4 130051E3 		cmp	r1, #19
+ 603 04d8 26FFFF9A 		bls	.L174
+ 604              	.LM116:
+ 605 04dc 180051E3 		cmp	r1, #24
+ 606 04e0 0300009A 		bls	.L173
+ 607              	.LM117:
+ 608 04e4 1D0051E3 		cmp	r1, #29
+ 609 04e8 22FFFF9A 		bls	.L174
+ 610              	.LM118:
+ 611 04ec 220051E3 		cmp	r1, #34
+ 612 04f0 20FFFF8A 		bhi	.L174
+ 613              	.L173:
+ 614 04f4 800080E3 		orr	r0, r0, #128
+ 615              	.LVL79:
+ 616 04f8 1FFFFFEA 		b	.L113
+ 617              	.L186:
+ 618              		.align	2
+ 619              	.L185:
+ 620 04fc 0C000000 		.word	buz_cnt.1430
+ 621 0500 08000000 		.word	bat_cnt.1431
+ 622 0504 04000000 		.word	bat_warning.1432
+ 623 0508 00000000 		.word	bat_warning_enabled.1433
+ 624 050c 67666666 		.word	1717986919
+ 625 0510 00000000 		.word	LL_1khz_attitude_data
+ 626 0514 00000000 		.word	SYSTEM_initialized
+ 627 0518 1F85EB51 		.word	1374389535
+ 628 051c 12000000 		.word	error_cnt_mag_fs.1426
+ 629 0520 0E000000 		.word	error_cnt_compass.1428
+ 630 0524 10000000 		.word	error_cnt_mag_inc.1427
+ 631              	.LFE2:
+ 633              		.bss
+ 634              	bat_warning_enabled.1433:
+ 635 0000 00       		.space	1
+ 636 0001 000000   		.align	2
+ 637              	bat_warning.1432:
+ 638 0004 00000000 		.space	4
+ 639              		.align	2
+ 640              	bat_cnt.1431:
+ 641 0008 00000000 		.space	4
+ 642              		.align	1
+ 643              	buz_cnt.1430:
+ 644 000c 0000     		.space	2
+ 645              		.align	1
+ 646              	error_cnt_compass.1428:
+ 647 000e 0000     		.space	2
+ 648              		.align	1
+ 649              	error_cnt_mag_inc.1427:
+ 650 0010 0000     		.space	2
+ 651              		.align	1
+ 652              	error_cnt_mag_fs.1426:
+ 653 0012 0000     		.space	2
+ 654              		.comm	GPS_timeout,4,4
+ 655              		.comm	SYSTEM_initialized,1,1
+ 702              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 buzzer.c
+     /tmp/ccjklG6l.s:10     .text:00000000 $a
+     /tmp/ccjklG6l.s:13     .text:00000000 buzzer
+     /tmp/ccjklG6l.s:46     .text:00000028 buzzer_handler
+     /tmp/ccjklG6l.s:620    .text:000004fc $d
+     /tmp/ccjklG6l.s:643    .bss:0000000c buz_cnt.1430
+     /tmp/ccjklG6l.s:640    .bss:00000008 bat_cnt.1431
+     /tmp/ccjklG6l.s:637    .bss:00000004 bat_warning.1432
+     /tmp/ccjklG6l.s:634    .bss:00000000 bat_warning_enabled.1433
+                            *COM*:00000001 SYSTEM_initialized
+     /tmp/ccjklG6l.s:652    .bss:00000012 error_cnt_mag_fs.1426
+     /tmp/ccjklG6l.s:646    .bss:0000000e error_cnt_compass.1428
+     /tmp/ccjklG6l.s:649    .bss:00000010 error_cnt_mag_inc.1427
+     /tmp/ccjklG6l.s:635    .bss:00000000 $d
+                            *COM*:00000004 GPS_timeout
+     /tmp/ccjklG6l.s:669    .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+LL_1khz_attitude_data

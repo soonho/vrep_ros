@@ -1,0 +1,120 @@
+   1              		.file	"gpsmath.c"
+   9              	.Ltext0:
+  10              		.global	__divdf3
+  11              		.global	__muldf3
+  12              		.global	__adddf3
+  13              		.align	2
+  14              		.global	xy2latlon
+  16              	xy2latlon:
+  17              	.LFB2:
+  18              	.LM1:
+  19              		@ Function supports interworking.
+  20              		@ args = 24, pretend = 0, frame = 8
+  21              		@ frame_needed = 0, uses_anonymous_args = 0
+  22              	.LVL0:
+  23 0000 F04F2DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  24              	.LCFI0:
+  25              	.LM2:
+  26 0004 F4409FE5 		ldr	r4, .L3+16
+  27 0008 0161A0E3 		mov	r6, #1073741824
+  28              	.LM3:
+  29 000c 08D04DE2 		sub	sp, sp, #8
+  30              	.LCFI1:
+  31              	.LM4:
+  32 0010 0151A0E3 		mov	r5, #1073741824
+  33 0014 766886E2 		add	r6, r6, #7733248
+  34 0018 D0808FE2 		adr	r8, .L3
+  35 001c 000398E8 		ldmia	r8, {r8-r9}
+  36              	.LM5:
+  37 0020 00A0A0E1 		mov	sl, r0
+  38              	.LVL1:
+  39 0024 01B0A0E1 		mov	fp, r1
+  40 0028 0C008DE8 		stmia	sp, {r2-r3}
+  41              	.LM6:
+  42 002c 34008DE2 		add	r0, sp, #52
+  43 0030 030090E8 		ldmia	r0, {r0-r1}
+  44              	.LVL2:
+  45 0034 0420A0E1 		mov	r2, r4
+  46              	.LVL3:
+  47 0038 0530A0E1 		mov	r3, r5
+  48 003c 026986E2 		add	r6, r6, #32768
+  49 0040 0070A0E3 		mov	r7, #0
+  50 0044 FEFFFFEB 		bl	__divdf3
+  51              	.LVL4:
+  52 0048 0620A0E1 		mov	r2, r6
+  53 004c 0730A0E1 		mov	r3, r7
+  54 0050 FEFFFFEB 		bl	__muldf3
+  55 0054 0820A0E1 		mov	r2, r8
+  56 0058 0930A0E1 		mov	r3, r9
+  57 005c FEFFFFEB 		bl	__divdf3
+  58 0060 0A20A0E1 		mov	r2, sl
+  59 0064 0B30A0E1 		mov	r3, fp
+  60 0068 FEFFFFEB 		bl	__adddf3
+  61 006c 3C309DE5 		ldr	r3, [sp, #60]
+  62 0070 030083E8 		stmia	r3, {r0-r1}
+  63              	.LM7:
+  64 0074 0420A0E1 		mov	r2, r4
+  65 0078 0530A0E1 		mov	r3, r5
+  66 007c 2C008DE2 		add	r0, sp, #44
+  67 0080 030090E8 		ldmia	r0, {r0-r1}
+  68 0084 FEFFFFEB 		bl	__divdf3
+  69 0088 0620A0E1 		mov	r2, r6
+  70 008c 0730A0E1 		mov	r3, r7
+  71 0090 FEFFFFEB 		bl	__muldf3
+  72 0094 0820A0E1 		mov	r2, r8
+  73 0098 0930A0E1 		mov	r3, r9
+  74 009c FEFFFFEB 		bl	__divdf3
+  75 00a0 50208FE2 		adr	r2, .L3+8
+  76 00a4 0C0092E8 		ldmia	r2, {r2-r3}
+  77 00a8 0040A0E1 		mov	r4, r0
+  78 00ac 0150A0E1 		mov	r5, r1
+  79 00b0 0A00A0E1 		mov	r0, sl
+  80 00b4 0B10A0E1 		mov	r1, fp
+  81 00b8 FEFFFFEB 		bl	__muldf3
+  82 00bc FEFFFFEB 		bl	cos
+  83 00c0 0020A0E1 		mov	r2, r0
+  84 00c4 0130A0E1 		mov	r3, r1
+  85 00c8 0400A0E1 		mov	r0, r4
+  86 00cc 0510A0E1 		mov	r1, r5
+  87 00d0 FEFFFFEB 		bl	__divdf3
+  88 00d4 0C009DE8 		ldmia	sp, {r2-r3}
+  89 00d8 FEFFFFEB 		bl	__adddf3
+  90 00dc 40309DE5 		ldr	r3, [sp, #64]
+  91 00e0 030083E8 		stmia	r3, {r0-r1}
+  92              	.LM8:
+  93 00e4 08D08DE2 		add	sp, sp, #8
+  94 00e8 F04FBDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  95 00ec 1EFF2FE1 		bx	lr
+  96              	.L4:
+  97              		.align	2
+  98              	.L3:
+  99 00f0 FB210940 		.word	1074340347
+ 100 00f4 182D4454 		.word	1413754136
+ 101 00f8 46DF913F 		.word	1066524486
+ 102 00fc 399D52A2 		.word	-1571644103
+ 103 0100 A6546841 		.word	1097356454
+ 104              	.LFE2:
+ 106              		.global	gpsDataOkTrigger
+ 107              		.bss
+ 108              		.align	2
+ 111              	gpsDataOkTrigger:
+ 112 0000 00000000 		.space	4
+ 113              		.comm	GPS_Data,44,4
+ 114              		.comm	gps_data_temp,44,4
+ 165              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpsmath.c
+     /tmp/cc58lqKr.s:13     .text:00000000 $a
+     /tmp/cc58lqKr.s:16     .text:00000000 xy2latlon
+     /tmp/cc58lqKr.s:99     .text:000000f0 $d
+     /tmp/cc58lqKr.s:111    .bss:00000000 gpsDataOkTrigger
+     /tmp/cc58lqKr.s:108    .bss:00000000 $d
+                            *COM*:0000002c GPS_Data
+                            *COM*:0000002c gps_data_temp
+     /tmp/cc58lqKr.s:128    .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+__divdf3
+__muldf3
+__adddf3
+cos

@@ -1,0 +1,22 @@
+fcu/serial_port:            /dev/ttyUSB1
+#fcu/baudrate:               9600
+#fcu/baudrate:               14400
+#fcu/baudrate:               19200
+#fcu/baudrate:               38400
+#fcu/baudrate:               57600
+#fcu/baudrate:               115200
+#fcu/baudrate:               230400
+fcu/baudrate:               460800
+#fcu/baudrate:               921600
+fcu/frame_id:               fcu
+fcu/packet_rate_imu:        100.0
+fcu/packet_rate_rc:         60.0
+fcu/packet_rate_gps:        60.0
+fcu/packet_rate_ssdk_debug: 50.0
+fcu/packet_rate_ekf_state:  100.0
+fcu/max_velocity_xy:        0.5
+fcu/max_velocity_z:         0.5
+
+fcu/state_estimation:       HighLevel_SSDK
+#fcu/position_control:       HighLevel
+fcu/position_control:       off

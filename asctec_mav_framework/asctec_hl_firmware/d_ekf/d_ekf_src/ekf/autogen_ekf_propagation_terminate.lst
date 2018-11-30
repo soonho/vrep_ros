@@ -1,0 +1,23 @@
+   1              		.file	"autogen_ekf_propagation_terminate.c"
+   9              	.Ltext0:
+  10              		.align	2
+  11              		.global	autogen_ekf_propagation_terminate
+  13              	autogen_ekf_propagation_terminate:
+  14              	.LFB2:
+  15              	.LM1:
+  16              		@ Function supports interworking.
+  17              		@ args = 0, pretend = 0, frame = 0
+  18              		@ frame_needed = 0, uses_anonymous_args = 0
+  19              		@ link register save eliminated.
+  20              		@ lr needed for prologue
+  21              	.LM2:
+  22 0000 1EFF2FE1 		bx	lr
+  23              	.LFE2:
+  49              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 autogen_ekf_propagation_terminate.c
+     /tmp/cctSHwC6.s:10     .text:00000000 $a
+     /tmp/cctSHwC6.s:13     .text:00000000 autogen_ekf_propagation_terminate
+     /tmp/cctSHwC6.s:38     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

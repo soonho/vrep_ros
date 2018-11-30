@@ -1,0 +1,335 @@
+   1              		.file	"syscalls.c"
+   9              	.Ltext0:
+  10              		.align	2
+  11              		.global	_read_r
+  13              	_read_r:
+  14              	.LFB2:
+  15              	.LM1:
+  16              		@ Function supports interworking.
+  17              		@ args = 0, pretend = 0, frame = 32
+  18              		@ frame_needed = 1, uses_anonymous_args = 0
+  19 0000 0DC0A0E1 		mov	ip, sp
+  20              	.LCFI0:
+  21 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+  22              	.LCFI1:
+  23 0008 04B04CE2 		sub	fp, ip, #4
+  24              	.LCFI2:
+  25 000c 20D04DE2 		sub	sp, sp, #32
+  26              	.LCFI3:
+  27 0010 1C000BE5 		str	r0, [fp, #-28]
+  28 0014 20100BE5 		str	r1, [fp, #-32]
+  29 0018 24200BE5 		str	r2, [fp, #-36]
+  30 001c 28300BE5 		str	r3, [fp, #-40]
+  31              	.LM2:
+  32 0020 24301BE5 		ldr	r3, [fp, #-36]
+  33 0024 10300BE5 		str	r3, [fp, #-16]
+  34              	.LM3:
+  35 0028 0030A0E3 		mov	r3, #0
+  36 002c 14300BE5 		str	r3, [fp, #-20]
+  37 0030 1F0000EA 		b	.L2
+  38              	.L3:
+  39              	.LM4:
+  40 0034 FEFFFFEB 		bl	UARTReadChar
+  41 0038 0030A0E1 		mov	r3, r0
+  42 003c 15304BE5 		strb	r3, [fp, #-21]
+  43              	.LM5:
+  44 0040 10201BE5 		ldr	r2, [fp, #-16]
+  45 0044 15305BE5 		ldrb	r3, [fp, #-21]
+  46 0048 0030C2E5 		strb	r3, [r2, #0]
+  47 004c 10301BE5 		ldr	r3, [fp, #-16]
+  48 0050 013083E2 		add	r3, r3, #1
+  49 0054 10300BE5 		str	r3, [fp, #-16]
+  50              	.LM6:
+  51 0058 15305BE5 		ldrb	r3, [fp, #-21]	@ zero_extendqisi2
+  52 005c 0300A0E1 		mov	r0, r3
+  53 0060 FEFFFFEB 		bl	UARTWriteChar
+  54              	.LM7:
+  55 0064 15305BE5 		ldrb	r3, [fp, #-21]	@ zero_extendqisi2
+  56 0068 0D0053E3 		cmp	r3, #13
+  57 006c 0D00001A 		bne	.L4
+  58 0070 14301BE5 		ldr	r3, [fp, #-20]
+  59 0074 28201BE5 		ldr	r2, [fp, #-40]
+  60 0078 022042E2 		sub	r2, r2, #2
+  61 007c 020053E1 		cmp	r3, r2
+  62 0080 0800008A 		bhi	.L4
+  63              	.LM8:
+  64 0084 10201BE5 		ldr	r2, [fp, #-16]
+  65 0088 0A30A0E3 		mov	r3, #10
+  66 008c 0030C2E5 		strb	r3, [r2, #0]
+  67              	.LM9:
+  68 0090 0A00A0E3 		mov	r0, #10
+  69 0094 FEFFFFEB 		bl	UARTWriteChar
+  70              	.LM10:
+  71 0098 14301BE5 		ldr	r3, [fp, #-20]
+  72 009c 023083E2 		add	r3, r3, #2
+  73 00a0 2C300BE5 		str	r3, [fp, #-44]
+  74 00a4 080000EA 		b	.L7
+  75              	.L4:
+  76              	.LM11:
+  77 00a8 14301BE5 		ldr	r3, [fp, #-20]
+  78 00ac 013083E2 		add	r3, r3, #1
+  79 00b0 14300BE5 		str	r3, [fp, #-20]
+  80              	.L2:
+  81 00b4 14201BE5 		ldr	r2, [fp, #-20]
+  82 00b8 28301BE5 		ldr	r3, [fp, #-40]
+  83 00bc 030052E1 		cmp	r2, r3
+  84 00c0 DBFFFF3A 		bcc	.L3
+  85              	.LM12:
+  86 00c4 14301BE5 		ldr	r3, [fp, #-20]
+  87 00c8 2C300BE5 		str	r3, [fp, #-44]
+  88              	.L7:
+  89 00cc 2C301BE5 		ldr	r3, [fp, #-44]
+  90              	.LM13:
+  91 00d0 0300A0E1 		mov	r0, r3
+  92 00d4 0CD04BE2 		sub	sp, fp, #12
+  93 00d8 00689DE8 		ldmfd	sp, {fp, sp, lr}
+  94 00dc 1EFF2FE1 		bx	lr
+  95              	.LFE2:
+  97              		.align	2
+  98              		.global	_write_r
+ 100              	_write_r:
+ 101              	.LFB3:
+ 102              	.LM14:
+ 103              		@ Function supports interworking.
+ 104              		@ args = 0, pretend = 0, frame = 24
+ 105              		@ frame_needed = 1, uses_anonymous_args = 0
+ 106 00e0 0DC0A0E1 		mov	ip, sp
+ 107              	.LCFI4:
+ 108 00e4 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 109              	.LCFI5:
+ 110 00e8 04B04CE2 		sub	fp, ip, #4
+ 111              	.LCFI6:
+ 112 00ec 18D04DE2 		sub	sp, sp, #24
+ 113              	.LCFI7:
+ 114 00f0 18000BE5 		str	r0, [fp, #-24]
+ 115 00f4 1C100BE5 		str	r1, [fp, #-28]
+ 116 00f8 20200BE5 		str	r2, [fp, #-32]
+ 117 00fc 24300BE5 		str	r3, [fp, #-36]
+ 118              	.LM15:
+ 119 0100 20301BE5 		ldr	r3, [fp, #-32]
+ 120 0104 10300BE5 		str	r3, [fp, #-16]
+ 121              	.LM16:
+ 122 0108 0030A0E3 		mov	r3, #0
+ 123 010c 14300BE5 		str	r3, [fp, #-20]
+ 124 0110 100000EA 		b	.L11
+ 125              	.L12:
+ 126              	.LM17:
+ 127 0114 10301BE5 		ldr	r3, [fp, #-16]
+ 128 0118 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 129 011c 0A0053E3 		cmp	r3, #10
+ 130 0120 0100001A 		bne	.L13
+ 131 0124 0D00A0E3 		mov	r0, #13
+ 132 0128 FEFFFFEB 		bl	UARTWriteChar
+ 133              	.L13:
+ 134              	.LM18:
+ 135 012c 10301BE5 		ldr	r3, [fp, #-16]
+ 136 0130 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 137 0134 0320A0E1 		mov	r2, r3
+ 138 0138 10301BE5 		ldr	r3, [fp, #-16]
+ 139 013c 013083E2 		add	r3, r3, #1
+ 140 0140 10300BE5 		str	r3, [fp, #-16]
+ 141 0144 0200A0E1 		mov	r0, r2
+ 142 0148 FEFFFFEB 		bl	UARTWriteChar
+ 143              	.LM19:
+ 144 014c 14301BE5 		ldr	r3, [fp, #-20]
+ 145 0150 013083E2 		add	r3, r3, #1
+ 146 0154 14300BE5 		str	r3, [fp, #-20]
+ 147              	.L11:
+ 148 0158 14201BE5 		ldr	r2, [fp, #-20]
+ 149 015c 24301BE5 		ldr	r3, [fp, #-36]
+ 150 0160 030052E1 		cmp	r2, r3
+ 151 0164 EAFFFF3A 		bcc	.L12
+ 152              	.LM20:
+ 153 0168 24301BE5 		ldr	r3, [fp, #-36]
+ 154              	.LM21:
+ 155 016c 0300A0E1 		mov	r0, r3
+ 156 0170 0CD04BE2 		sub	sp, fp, #12
+ 157 0174 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 158 0178 1EFF2FE1 		bx	lr
+ 159              	.LFE3:
+ 161              		.align	2
+ 162              		.global	_close_r
+ 164              	_close_r:
+ 165              	.LFB4:
+ 166              	.LM22:
+ 167              		@ Function supports interworking.
+ 168              		@ args = 0, pretend = 0, frame = 8
+ 169              		@ frame_needed = 1, uses_anonymous_args = 0
+ 170 017c 0DC0A0E1 		mov	ip, sp
+ 171              	.LCFI8:
+ 172 0180 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 173              	.LCFI9:
+ 174 0184 04B04CE2 		sub	fp, ip, #4
+ 175              	.LCFI10:
+ 176 0188 08D04DE2 		sub	sp, sp, #8
+ 177              	.LCFI11:
+ 178 018c 10000BE5 		str	r0, [fp, #-16]
+ 179 0190 14100BE5 		str	r1, [fp, #-20]
+ 180              	.LM23:
+ 181 0194 0030A0E3 		mov	r3, #0
+ 182              	.LM24:
+ 183 0198 0300A0E1 		mov	r0, r3
+ 184 019c 0CD04BE2 		sub	sp, fp, #12
+ 185 01a0 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 186 01a4 1EFF2FE1 		bx	lr
+ 187              	.LFE4:
+ 189              		.align	2
+ 190              		.global	_lseek_r
+ 192              	_lseek_r:
+ 193              	.LFB5:
+ 194              	.LM25:
+ 195              		@ Function supports interworking.
+ 196              		@ args = 0, pretend = 0, frame = 16
+ 197              		@ frame_needed = 1, uses_anonymous_args = 0
+ 198 01a8 0DC0A0E1 		mov	ip, sp
+ 199              	.LCFI12:
+ 200 01ac 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 201              	.LCFI13:
+ 202 01b0 04B04CE2 		sub	fp, ip, #4
+ 203              	.LCFI14:
+ 204 01b4 10D04DE2 		sub	sp, sp, #16
+ 205              	.LCFI15:
+ 206 01b8 10000BE5 		str	r0, [fp, #-16]
+ 207 01bc 14100BE5 		str	r1, [fp, #-20]
+ 208 01c0 18200BE5 		str	r2, [fp, #-24]
+ 209 01c4 1C300BE5 		str	r3, [fp, #-28]
+ 210              	.LM26:
+ 211 01c8 0030A0E3 		mov	r3, #0
+ 212              	.LM27:
+ 213 01cc 0300A0E1 		mov	r0, r3
+ 214 01d0 0CD04BE2 		sub	sp, fp, #12
+ 215 01d4 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 216 01d8 1EFF2FE1 		bx	lr
+ 217              	.LFE5:
+ 219              		.align	2
+ 220              		.global	_fstat_r
+ 222              	_fstat_r:
+ 223              	.LFB6:
+ 224              	.LM28:
+ 225              		@ Function supports interworking.
+ 226              		@ args = 0, pretend = 0, frame = 12
+ 227              		@ frame_needed = 1, uses_anonymous_args = 0
+ 228 01dc 0DC0A0E1 		mov	ip, sp
+ 229              	.LCFI16:
+ 230 01e0 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 231              	.LCFI17:
+ 232 01e4 04B04CE2 		sub	fp, ip, #4
+ 233              	.LCFI18:
+ 234 01e8 0CD04DE2 		sub	sp, sp, #12
+ 235              	.LCFI19:
+ 236 01ec 10000BE5 		str	r0, [fp, #-16]
+ 237 01f0 14100BE5 		str	r1, [fp, #-20]
+ 238 01f4 18200BE5 		str	r2, [fp, #-24]
+ 239              	.LM29:
+ 240 01f8 18201BE5 		ldr	r2, [fp, #-24]
+ 241 01fc 023AA0E3 		mov	r3, #8192
+ 242 0200 043082E5 		str	r3, [r2, #4]
+ 243              	.LM30:
+ 244 0204 0030A0E3 		mov	r3, #0
+ 245              	.LM31:
+ 246 0208 0300A0E1 		mov	r0, r3
+ 247 020c 0CD04BE2 		sub	sp, fp, #12
+ 248 0210 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 249 0214 1EFF2FE1 		bx	lr
+ 250              	.LFE6:
+ 252              		.align	2
+ 253              		.global	isatty
+ 255              	isatty:
+ 256              	.LFB7:
+ 257              	.LM32:
+ 258              		@ Function supports interworking.
+ 259              		@ args = 0, pretend = 0, frame = 4
+ 260              		@ frame_needed = 1, uses_anonymous_args = 0
+ 261 0218 0DC0A0E1 		mov	ip, sp
+ 262              	.LCFI20:
+ 263 021c 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 264              	.LCFI21:
+ 265 0220 04B04CE2 		sub	fp, ip, #4
+ 266              	.LCFI22:
+ 267 0224 04D04DE2 		sub	sp, sp, #4
+ 268              	.LCFI23:
+ 269 0228 10000BE5 		str	r0, [fp, #-16]
+ 270              	.LM33:
+ 271 022c 0130A0E3 		mov	r3, #1
+ 272              	.LM34:
+ 273 0230 0300A0E1 		mov	r0, r3
+ 274 0234 0CD04BE2 		sub	sp, fp, #12
+ 275 0238 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 276 023c 1EFF2FE1 		bx	lr
+ 277              	.LFE7:
+ 279              		.align	2
+ 280              		.global	_sbrk_r
+ 282              	_sbrk_r:
+ 283              	.LFB8:
+ 284              	.LM35:
+ 285              		@ Function supports interworking.
+ 286              		@ args = 0, pretend = 0, frame = 12
+ 287              		@ frame_needed = 1, uses_anonymous_args = 0
+ 288 0240 0DC0A0E1 		mov	ip, sp
+ 289              	.LCFI24:
+ 290 0244 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 291              	.LCFI25:
+ 292 0248 04B04CE2 		sub	fp, ip, #4
+ 293              	.LCFI26:
+ 294 024c 0CD04DE2 		sub	sp, sp, #12
+ 295              	.LCFI27:
+ 296 0250 14000BE5 		str	r0, [fp, #-20]
+ 297 0254 18100BE5 		str	r1, [fp, #-24]
+ 298              	.LM36:
+ 299 0258 4C309FE5 		ldr	r3, .L29
+ 300 025c 003093E5 		ldr	r3, [r3, #0]
+ 301 0260 000053E3 		cmp	r3, #0
+ 302 0264 0200001A 		bne	.L26
+ 303              	.LM37:
+ 304 0268 3C209FE5 		ldr	r2, .L29
+ 305 026c 3C309FE5 		ldr	r3, .L29+4
+ 306 0270 003082E5 		str	r3, [r2, #0]
+ 307              	.L26:
+ 308              	.LM38:
+ 309 0274 30309FE5 		ldr	r3, .L29
+ 310 0278 003093E5 		ldr	r3, [r3, #0]
+ 311 027c 10300BE5 		str	r3, [fp, #-16]
+ 312              	.LM39:
+ 313 0280 24309FE5 		ldr	r3, .L29
+ 314 0284 002093E5 		ldr	r2, [r3, #0]
+ 315 0288 18301BE5 		ldr	r3, [fp, #-24]
+ 316 028c 032082E0 		add	r2, r2, r3
+ 317 0290 14309FE5 		ldr	r3, .L29
+ 318 0294 002083E5 		str	r2, [r3, #0]
+ 319              	.LM40:
+ 320 0298 10301BE5 		ldr	r3, [fp, #-16]
+ 321              	.LM41:
+ 322 029c 0300A0E1 		mov	r0, r3
+ 323 02a0 0CD04BE2 		sub	sp, fp, #12
+ 324 02a4 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 325 02a8 1EFF2FE1 		bx	lr
+ 326              	.L30:
+ 327              		.align	2
+ 328              	.L29:
+ 329 02ac 00000000 		.word	heap_ptr
+ 330 02b0 00000000 		.word	_end
+ 331              	.LFE8:
+ 333              		.bss
+ 334              		.align	2
+ 335              	heap_ptr:
+ 336 0000 00000000 		.space	4
+ 528              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 syscalls.c
+     /tmp/ccOrdqmi.s:10     .text:00000000 $a
+     /tmp/ccOrdqmi.s:13     .text:00000000 _read_r
+     /tmp/ccOrdqmi.s:100    .text:000000e0 _write_r
+     /tmp/ccOrdqmi.s:164    .text:0000017c _close_r
+     /tmp/ccOrdqmi.s:192    .text:000001a8 _lseek_r
+     /tmp/ccOrdqmi.s:222    .text:000001dc _fstat_r
+     /tmp/ccOrdqmi.s:255    .text:00000218 isatty
+     /tmp/ccOrdqmi.s:282    .text:00000240 _sbrk_r
+     /tmp/ccOrdqmi.s:329    .text:000002ac $d
+     /tmp/ccOrdqmi.s:335    .bss:00000000 heap_ptr
+     /tmp/ccOrdqmi.s:334    .bss:00000000 $d
+     /tmp/ccOrdqmi.s:350    .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+UARTReadChar
+UARTWriteChar
+_end

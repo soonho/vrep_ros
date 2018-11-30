@@ -1,0 +1,606 @@
+   1              		.file	"LPC2k_ee.c"
+   9              	.Ltext0:
+  10              		.align	2
+  11              		.global	ee_erase
+  13              	ee_erase:
+  14              	.LFB2:
+  15              	.LM1:
+  16              		@ Function supports interworking.
+  17              		@ args = 0, pretend = 0, frame = 44
+  18              		@ frame_needed = 1, uses_anonymous_args = 0
+  19 0000 0DC0A0E1 		mov	ip, sp
+  20              	.LCFI0:
+  21 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+  22              	.LCFI1:
+  23 0008 04B04CE2 		sub	fp, ip, #4
+  24              	.LCFI2:
+  25 000c 2CD04DE2 		sub	sp, sp, #44
+  26              	.LCFI3:
+  27 0010 34000BE5 		str	r0, [fp, #-52]
+  28 0014 38100BE5 		str	r1, [fp, #-56]
+  29              	.LM2:
+  30 0018 0030A0E3 		mov	r3, #0
+  31 001c FF3E43E2 		sub	r3, r3, #4080
+  32 0020 003093E5 		ldr	r3, [r3, #0]
+  33 0024 10300BE5 		str	r3, [fp, #-16]
+  34              	.LM3:
+  35 0028 FE3EE0E3 		mvn	r3, #4064
+  36 002c 0B3043E2 		sub	r3, r3, #11
+  37 0030 10201BE5 		ldr	r2, [fp, #-16]
+  38 0034 002083E5 		str	r2, [r3, #0]
+  39              	.LM4:
+  40 0038 3230A0E3 		mov	r3, #50
+  41 003c 24300BE5 		str	r3, [fp, #-36]
+  42              	.LM5:
+  43 0040 0E30A0E3 		mov	r3, #14
+  44 0044 20300BE5 		str	r3, [fp, #-32]
+  45              	.LM6:
+  46 0048 0E30A0E3 		mov	r3, #14
+  47 004c 1C300BE5 		str	r3, [fp, #-28]
+  48              	.LM7:
+  49 0050 E0209FE5 		ldr	r2, .L3
+  50 0054 3A31E0E3 		mvn	r3, #-2147483634
+  51 0058 003082E5 		str	r3, [r2, #0]
+  52              	.LM8:
+  53 005c D4309FE5 		ldr	r3, .L3
+  54 0060 00C093E5 		ldr	ip, [r3, #0]
+  55 0064 24304BE2 		sub	r3, fp, #36
+  56 0068 30204BE2 		sub	r2, fp, #48
+  57 006c 0300A0E1 		mov	r0, r3
+  58 0070 0210A0E1 		mov	r1, r2
+  59 0074 0FE0A0E1 		mov	lr, pc
+  60 0078 1CFF2FE1 		bx	ip
+  61              	.LM9:
+  62 007c 3430A0E3 		mov	r3, #52
+  63 0080 24300BE5 		str	r3, [fp, #-36]
+  64              	.LM10:
+  65 0084 0E30A0E3 		mov	r3, #14
+  66 0088 20300BE5 		str	r3, [fp, #-32]
+  67              	.LM11:
+  68 008c 0E30A0E3 		mov	r3, #14
+  69 0090 1C300BE5 		str	r3, [fp, #-28]
+  70              	.LM12:
+  71 0094 EA3CA0E3 		mov	r3, #59904
+  72 0098 603083E2 		add	r3, r3, #96
+  73 009c 18300BE5 		str	r3, [fp, #-24]
+  74              	.LM13:
+  75 00a0 90209FE5 		ldr	r2, .L3
+  76 00a4 3A31E0E3 		mvn	r3, #-2147483634
+  77 00a8 003082E5 		str	r3, [r2, #0]
+  78              	.LM14:
+  79 00ac 84309FE5 		ldr	r3, .L3
+  80 00b0 00C093E5 		ldr	ip, [r3, #0]
+  81 00b4 24304BE2 		sub	r3, fp, #36
+  82 00b8 30204BE2 		sub	r2, fp, #48
+  83 00bc 0300A0E1 		mov	r0, r3
+  84 00c0 0210A0E1 		mov	r1, r2
+  85 00c4 0FE0A0E1 		mov	lr, pc
+  86 00c8 1CFF2FE1 		bx	ip
+  87              	.LM15:
+  88 00cc 3530A0E3 		mov	r3, #53
+  89 00d0 24300BE5 		str	r3, [fp, #-36]
+  90              	.LM16:
+  91 00d4 0E30A0E3 		mov	r3, #14
+  92 00d8 20300BE5 		str	r3, [fp, #-32]
+  93              	.LM17:
+  94 00dc 0E30A0E3 		mov	r3, #14
+  95 00e0 1C300BE5 		str	r3, [fp, #-28]
+  96              	.LM18:
+  97 00e4 4C209FE5 		ldr	r2, .L3
+  98 00e8 3A31E0E3 		mvn	r3, #-2147483634
+  99 00ec 003082E5 		str	r3, [r2, #0]
+ 100              	.LM19:
+ 101 00f0 40309FE5 		ldr	r3, .L3
+ 102 00f4 00C093E5 		ldr	ip, [r3, #0]
+ 103 00f8 24304BE2 		sub	r3, fp, #36
+ 104 00fc 30204BE2 		sub	r2, fp, #48
+ 105 0100 0300A0E1 		mov	r0, r3
+ 106 0104 0210A0E1 		mov	r1, r2
+ 107 0108 0FE0A0E1 		mov	lr, pc
+ 108 010c 1CFF2FE1 		bx	ip
+ 109              	.LM20:
+ 110 0110 0030A0E3 		mov	r3, #0
+ 111 0114 FF3E43E2 		sub	r3, r3, #4080
+ 112 0118 10201BE5 		ldr	r2, [fp, #-16]
+ 113 011c 002083E5 		str	r2, [r3, #0]
+ 114              	.LM21:
+ 115 0120 30201BE5 		ldr	r2, [fp, #-48]
+ 116 0124 38301BE5 		ldr	r3, [fp, #-56]
+ 117 0128 002083E5 		str	r2, [r3, #0]
+ 118              	.LM22:
+ 119 012c 0CD04BE2 		sub	sp, fp, #12
+ 120 0130 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 121 0134 1EFF2FE1 		bx	lr
+ 122              	.L4:
+ 123              		.align	2
+ 124              	.L3:
+ 125 0138 00000000 		.word	iap_entry
+ 126              	.LFE2:
+ 128              		.align	2
+ 129              		.global	ee_write
+ 131              	ee_write:
+ 132              	.LFB3:
+ 133              	.LM23:
+ 134              		@ Function supports interworking.
+ 135              		@ args = 0, pretend = 0, frame = 316
+ 136              		@ frame_needed = 1, uses_anonymous_args = 0
+ 137 013c 0DC0A0E1 		mov	ip, sp
+ 138              	.LCFI4:
+ 139 0140 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 140              	.LCFI5:
+ 141 0144 04B04CE2 		sub	fp, ip, #4
+ 142              	.LCFI6:
+ 143 0148 4FDF4DE2 		sub	sp, sp, #316
+ 144              	.LCFI7:
+ 145 014c 44010BE5 		str	r0, [fp, #-324]
+ 146 0150 48110BE5 		str	r1, [fp, #-328]
+ 147              	.LM24:
+ 148 0154 FEFFFFEB 		bl	ee_locate
+ 149 0158 0030A0E1 		mov	r3, r0
+ 150 015c 20300BE5 		str	r3, [fp, #-32]
+ 151              	.LM25:
+ 152 0160 20301BE5 		ldr	r3, [fp, #-32]
+ 153 0164 010073E3 		cmn	r3, #1
+ 154 0168 0400001A 		bne	.L6
+ 155              	.LM26:
+ 156 016c 48211BE5 		ldr	r2, [fp, #-328]
+ 157 0170 7D3FA0E3 		mov	r3, #500
+ 158 0174 013083E2 		add	r3, r3, #1
+ 159 0178 003082E5 		str	r3, [r2, #0]
+ 160 017c 730000EA 		b	.L15
+ 161              	.L6:
+ 162              	.LM27:
+ 163 0180 0030A0E3 		mov	r3, #0
+ 164 0184 14300BE5 		str	r3, [fp, #-20]
+ 165 0188 0A0000EA 		b	.L9
+ 166              	.L10:
+ 167 018c 14201BE5 		ldr	r2, [fp, #-20]
+ 168 0190 BB34A0E3 		mov	r3, #-1157627904
+ 169 0194 433BA0E1 		mov	r3, r3, asr #22
+ 170 0198 0C104BE2 		sub	r1, fp, #12
+ 171 019c 022081E0 		add	r2, r1, r2
+ 172 01a0 032082E0 		add	r2, r2, r3
+ 173 01a4 0030E0E3 		mvn	r3, #0
+ 174 01a8 0030C2E5 		strb	r3, [r2, #0]
+ 175 01ac 14301BE5 		ldr	r3, [fp, #-20]
+ 176 01b0 013083E2 		add	r3, r3, #1
+ 177 01b4 14300BE5 		str	r3, [fp, #-20]
+ 178              	.L9:
+ 179 01b8 14301BE5 		ldr	r3, [fp, #-20]
+ 180 01bc FF0053E3 		cmp	r3, #255
+ 181 01c0 F1FFFF9A 		bls	.L10
+ 182              	.LM28:
+ 183 01c4 123E4BE2 		sub	r3, fp, #288
+ 184 01c8 18300BE5 		str	r3, [fp, #-24]
+ 185              	.LM29:
+ 186 01cc 44311BE5 		ldr	r3, [fp, #-324]
+ 187 01d0 1C300BE5 		str	r3, [fp, #-28]
+ 188              	.LM30:
+ 189 01d4 0030A0E3 		mov	r3, #0
+ 190 01d8 14300BE5 		str	r3, [fp, #-20]
+ 191 01dc 0E0000EA 		b	.L12
+ 192              	.L13:
+ 193 01e0 14301BE5 		ldr	r3, [fp, #-20]
+ 194 01e4 0331A0E1 		mov	r3, r3, asl #2
+ 195 01e8 0320A0E1 		mov	r2, r3
+ 196 01ec 18301BE5 		ldr	r3, [fp, #-24]
+ 197 01f0 031082E0 		add	r1, r2, r3
+ 198 01f4 14301BE5 		ldr	r3, [fp, #-20]
+ 199 01f8 0331A0E1 		mov	r3, r3, asl #2
+ 200 01fc 0320A0E1 		mov	r2, r3
+ 201 0200 1C301BE5 		ldr	r3, [fp, #-28]
+ 202 0204 033082E0 		add	r3, r2, r3
+ 203 0208 003093E5 		ldr	r3, [r3, #0]
+ 204 020c 003081E5 		str	r3, [r1, #0]
+ 205 0210 14301BE5 		ldr	r3, [fp, #-20]
+ 206 0214 013083E2 		add	r3, r3, #1
+ 207 0218 14300BE5 		str	r3, [fp, #-20]
+ 208              	.L12:
+ 209 021c 14301BE5 		ldr	r3, [fp, #-20]
+ 210 0220 400053E3 		cmp	r3, #64
+ 211 0224 EDFFFF1A 		bne	.L13
+ 212              	.LM31:
+ 213 0228 0030A0E3 		mov	r3, #0
+ 214 022c FF3E43E2 		sub	r3, r3, #4080
+ 215 0230 003093E5 		ldr	r3, [r3, #0]
+ 216 0234 10300BE5 		str	r3, [fp, #-16]
+ 217              	.LM32:
+ 218 0238 FE3EE0E3 		mvn	r3, #4064
+ 219 023c 0B3043E2 		sub	r3, r3, #11
+ 220 0240 10201BE5 		ldr	r2, [fp, #-16]
+ 221 0244 002083E5 		str	r2, [r3, #0]
+ 222              	.LM33:
+ 223 0248 3230A0E3 		mov	r3, #50
+ 224 024c 34310BE5 		str	r3, [fp, #-308]
+ 225              	.LM34:
+ 226 0250 0E30A0E3 		mov	r3, #14
+ 227 0254 30310BE5 		str	r3, [fp, #-304]
+ 228              	.LM35:
+ 229 0258 0E30A0E3 		mov	r3, #14
+ 230 025c 2C310BE5 		str	r3, [fp, #-300]
+ 231              	.LM36:
+ 232 0260 F4209FE5 		ldr	r2, .L16
+ 233 0264 3A31E0E3 		mvn	r3, #-2147483634
+ 234 0268 003082E5 		str	r3, [r2, #0]
+ 235              	.LM37:
+ 236 026c E8309FE5 		ldr	r3, .L16
+ 237 0270 00C093E5 		ldr	ip, [r3, #0]
+ 238 0274 4D3F4BE2 		sub	r3, fp, #308
+ 239 0278 052D4BE2 		sub	r2, fp, #320
+ 240 027c 0300A0E1 		mov	r0, r3
+ 241 0280 0210A0E1 		mov	r1, r2
+ 242 0284 0FE0A0E1 		mov	lr, pc
+ 243 0288 1CFF2FE1 		bx	ip
+ 244              	.LM38:
+ 245 028c 3330A0E3 		mov	r3, #51
+ 246 0290 34310BE5 		str	r3, [fp, #-308]
+ 247              	.LM39:
+ 248 0294 20301BE5 		ldr	r3, [fp, #-32]
+ 249 0298 FF30C3E3 		bic	r3, r3, #255
+ 250 029c 30310BE5 		str	r3, [fp, #-304]
+ 251              	.LM40:
+ 252 02a0 123E4BE2 		sub	r3, fp, #288
+ 253 02a4 2C310BE5 		str	r3, [fp, #-300]
+ 254              	.LM41:
+ 255 02a8 013CA0E3 		mov	r3, #256
+ 256 02ac 28310BE5 		str	r3, [fp, #-296]
+ 257              	.LM42:
+ 258 02b0 EA3CA0E3 		mov	r3, #59904
+ 259 02b4 603083E2 		add	r3, r3, #96
+ 260 02b8 24310BE5 		str	r3, [fp, #-292]
+ 261              	.LM43:
+ 262 02bc 98209FE5 		ldr	r2, .L16
+ 263 02c0 3A31E0E3 		mvn	r3, #-2147483634
+ 264 02c4 003082E5 		str	r3, [r2, #0]
+ 265              	.LM44:
+ 266 02c8 8C309FE5 		ldr	r3, .L16
+ 267 02cc 00C093E5 		ldr	ip, [r3, #0]
+ 268 02d0 4D3F4BE2 		sub	r3, fp, #308
+ 269 02d4 052D4BE2 		sub	r2, fp, #320
+ 270 02d8 0300A0E1 		mov	r0, r3
+ 271 02dc 0210A0E1 		mov	r1, r2
+ 272 02e0 0FE0A0E1 		mov	lr, pc
+ 273 02e4 1CFF2FE1 		bx	ip
+ 274              	.LM45:
+ 275 02e8 3830A0E3 		mov	r3, #56
+ 276 02ec 34310BE5 		str	r3, [fp, #-308]
+ 277              	.LM46:
+ 278 02f0 1C301BE5 		ldr	r3, [fp, #-28]
+ 279 02f4 30310BE5 		str	r3, [fp, #-304]
+ 280              	.LM47:
+ 281 02f8 20301BE5 		ldr	r3, [fp, #-32]
+ 282 02fc 2C310BE5 		str	r3, [fp, #-300]
+ 283              	.LM48:
+ 284 0300 013CA0E3 		mov	r3, #256
+ 285 0304 28310BE5 		str	r3, [fp, #-296]
+ 286              	.LM49:
+ 287 0308 4C209FE5 		ldr	r2, .L16
+ 288 030c 3A31E0E3 		mvn	r3, #-2147483634
+ 289 0310 003082E5 		str	r3, [r2, #0]
+ 290              	.LM50:
+ 291 0314 40309FE5 		ldr	r3, .L16
+ 292 0318 00C093E5 		ldr	ip, [r3, #0]
+ 293 031c 4D3F4BE2 		sub	r3, fp, #308
+ 294 0320 052D4BE2 		sub	r2, fp, #320
+ 295 0324 0300A0E1 		mov	r0, r3
+ 296 0328 0210A0E1 		mov	r1, r2
+ 297 032c 0FE0A0E1 		mov	lr, pc
+ 298 0330 1CFF2FE1 		bx	ip
+ 299              	.LM51:
+ 300 0334 0030A0E3 		mov	r3, #0
+ 301 0338 FF3E43E2 		sub	r3, r3, #4080
+ 302 033c 10201BE5 		ldr	r2, [fp, #-16]
+ 303 0340 002083E5 		str	r2, [r3, #0]
+ 304              	.LM52:
+ 305 0344 40211BE5 		ldr	r2, [fp, #-320]
+ 306 0348 48311BE5 		ldr	r3, [fp, #-328]
+ 307 034c 002083E5 		str	r2, [r3, #0]
+ 308              	.L15:
+ 309              	.LM53:
+ 310 0350 0CD04BE2 		sub	sp, fp, #12
+ 311 0354 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 312 0358 1EFF2FE1 		bx	lr
+ 313              	.L17:
+ 314              		.align	2
+ 315              	.L16:
+ 316 035c 00000000 		.word	iap_entry
+ 317              	.LFE3:
+ 319              		.align	2
+ 320              		.global	ee_read
+ 322              	ee_read:
+ 323              	.LFB4:
+ 324              	.LM54:
+ 325              		@ Function supports interworking.
+ 326              		@ args = 0, pretend = 0, frame = 12
+ 327              		@ frame_needed = 1, uses_anonymous_args = 0
+ 328 0360 0DC0A0E1 		mov	ip, sp
+ 329              	.LCFI8:
+ 330 0364 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 331              	.LCFI9:
+ 332 0368 04B04CE2 		sub	fp, ip, #4
+ 333              	.LCFI10:
+ 334 036c 0CD04DE2 		sub	sp, sp, #12
+ 335              	.LCFI11:
+ 336 0370 14000BE5 		str	r0, [fp, #-20]
+ 337 0374 18100BE5 		str	r1, [fp, #-24]
+ 338              	.LM55:
+ 339 0378 FEFFFFEB 		bl	ee_locate
+ 340 037c 0030A0E1 		mov	r3, r0
+ 341 0380 10300BE5 		str	r3, [fp, #-16]
+ 342              	.LM56:
+ 343 0384 10301BE5 		ldr	r3, [fp, #-16]
+ 344 0388 0E0953E3 		cmp	r3, #229376
+ 345 038c 0300001A 		bne	.L19
+ 346              	.LM57:
+ 347 0390 18201BE5 		ldr	r2, [fp, #-24]
+ 348 0394 7D3FA0E3 		mov	r3, #500
+ 349 0398 003082E5 		str	r3, [r2, #0]
+ 350 039c 100000EA 		b	.L24
+ 351              	.L19:
+ 352              	.LM58:
+ 353 03a0 18301BE5 		ldr	r3, [fp, #-24]
+ 354 03a4 0020A0E3 		mov	r2, #0
+ 355 03a8 002083E5 		str	r2, [r3, #0]
+ 356              	.LM59:
+ 357 03ac 10301BE5 		ldr	r3, [fp, #-16]
+ 358 03b0 010073E3 		cmn	r3, #1
+ 359 03b4 0500001A 		bne	.L22
+ 360              	.LM60:
+ 361 03b8 18301BE5 		ldr	r3, [fp, #-24]
+ 362 03bc 042083E2 		add	r2, r3, #4
+ 363 03c0 FF3BA0E3 		mov	r3, #261120
+ 364 03c4 033C83E2 		add	r3, r3, #768
+ 365 03c8 003082E5 		str	r3, [r2, #0]
+ 366 03cc 040000EA 		b	.L24
+ 367              	.L22:
+ 368              	.LM61:
+ 369 03d0 18301BE5 		ldr	r3, [fp, #-24]
+ 370 03d4 042083E2 		add	r2, r3, #4
+ 371 03d8 10301BE5 		ldr	r3, [fp, #-16]
+ 372 03dc 013C43E2 		sub	r3, r3, #256
+ 373 03e0 003082E5 		str	r3, [r2, #0]
+ 374              	.L24:
+ 375              	.LM62:
+ 376 03e4 0CD04BE2 		sub	sp, fp, #12
+ 377 03e8 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 378 03ec 1EFF2FE1 		bx	lr
+ 379              	.LFE4:
+ 381              		.align	2
+ 382              		.global	ee_readn
+ 384              	ee_readn:
+ 385              	.LFB5:
+ 386              	.LM63:
+ 387              		@ Function supports interworking.
+ 388              		@ args = 0, pretend = 0, frame = 8
+ 389              		@ frame_needed = 1, uses_anonymous_args = 0
+ 390 03f0 0DC0A0E1 		mov	ip, sp
+ 391              	.LCFI12:
+ 392 03f4 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 393              	.LCFI13:
+ 394 03f8 04B04CE2 		sub	fp, ip, #4
+ 395              	.LCFI14:
+ 396 03fc 08D04DE2 		sub	sp, sp, #8
+ 397              	.LCFI15:
+ 398 0400 10000BE5 		str	r0, [fp, #-16]
+ 399 0404 14100BE5 		str	r1, [fp, #-20]
+ 400              	.LM64:
+ 401 0408 10301BE5 		ldr	r3, [fp, #-16]
+ 402 040c 800053E3 		cmp	r3, #128
+ 403 0410 0400009A 		bls	.L26
+ 404              	.LM65:
+ 405 0414 14201BE5 		ldr	r2, [fp, #-20]
+ 406 0418 7D3FA0E3 		mov	r3, #500
+ 407 041c 023083E2 		add	r3, r3, #2
+ 408 0420 003082E5 		str	r3, [r2, #0]
+ 409 0424 080000EA 		b	.L29
+ 410              	.L26:
+ 411              	.LM66:
+ 412 0428 14201BE5 		ldr	r2, [fp, #-20]
+ 413 042c 0030A0E3 		mov	r3, #0
+ 414 0430 003082E5 		str	r3, [r2, #0]
+ 415              	.LM67:
+ 416 0434 14301BE5 		ldr	r3, [fp, #-20]
+ 417 0438 042083E2 		add	r2, r3, #4
+ 418 043c 10301BE5 		ldr	r3, [fp, #-16]
+ 419 0440 0334A0E1 		mov	r3, r3, asl #8
+ 420 0444 0E3983E2 		add	r3, r3, #229376
+ 421 0448 003082E5 		str	r3, [r2, #0]
+ 422              	.L29:
+ 423              	.LM68:
+ 424 044c 0CD04BE2 		sub	sp, fp, #12
+ 425 0450 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 426 0454 1EFF2FE1 		bx	lr
+ 427              	.LFE5:
+ 429              		.align	2
+ 430              		.global	ee_count
+ 432              	ee_count:
+ 433              	.LFB6:
+ 434              	.LM69:
+ 435              		@ Function supports interworking.
+ 436              		@ args = 0, pretend = 0, frame = 12
+ 437              		@ frame_needed = 1, uses_anonymous_args = 0
+ 438 0458 0DC0A0E1 		mov	ip, sp
+ 439              	.LCFI16:
+ 440 045c 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 441              	.LCFI17:
+ 442 0460 04B04CE2 		sub	fp, ip, #4
+ 443              	.LCFI18:
+ 444 0464 0CD04DE2 		sub	sp, sp, #12
+ 445              	.LCFI19:
+ 446 0468 14000BE5 		str	r0, [fp, #-20]
+ 447 046c 18100BE5 		str	r1, [fp, #-24]
+ 448              	.LM70:
+ 449 0470 18201BE5 		ldr	r2, [fp, #-24]
+ 450 0474 0030A0E3 		mov	r3, #0
+ 451 0478 003082E5 		str	r3, [r2, #0]
+ 452              	.LM71:
+ 453 047c FEFFFFEB 		bl	ee_locate
+ 454 0480 0030A0E1 		mov	r3, r0
+ 455 0484 10300BE5 		str	r3, [fp, #-16]
+ 456              	.LM72:
+ 457 0488 10301BE5 		ldr	r3, [fp, #-16]
+ 458 048c 010073E3 		cmn	r3, #1
+ 459 0490 0100001A 		bne	.L31
+ 460 0494 0137A0E3 		mov	r3, #262144
+ 461 0498 10300BE5 		str	r3, [fp, #-16]
+ 462              	.L31:
+ 463              	.LM73:
+ 464 049c 18301BE5 		ldr	r3, [fp, #-24]
+ 465 04a0 041083E2 		add	r1, r3, #4
+ 466 04a4 10301BE5 		ldr	r3, [fp, #-16]
+ 467 04a8 0E3943E2 		sub	r3, r3, #229376
+ 468 04ac FF2083E2 		add	r2, r3, #255
+ 469 04b0 000053E3 		cmp	r3, #0
+ 470 04b4 0230A0B1 		movlt	r3, r2
+ 471 04b8 4334A0E1 		mov	r3, r3, asr #8
+ 472 04bc 003081E5 		str	r3, [r1, #0]
+ 473              	.LM74:
+ 474 04c0 0CD04BE2 		sub	sp, fp, #12
+ 475 04c4 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 476 04c8 1EFF2FE1 		bx	lr
+ 477              	.LFE6:
+ 479              		.align	2
+ 480              		.global	ee_locate
+ 482              	ee_locate:
+ 483              	.LFB7:
+ 484              	.LM75:
+ 485              		@ Function supports interworking.
+ 486              		@ args = 0, pretend = 0, frame = 24
+ 487              		@ frame_needed = 1, uses_anonymous_args = 0
+ 488 04cc 0DC0A0E1 		mov	ip, sp
+ 489              	.LCFI20:
+ 490 04d0 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 491              	.LCFI21:
+ 492 04d4 04B04CE2 		sub	fp, ip, #4
+ 493              	.LCFI22:
+ 494 04d8 18D04DE2 		sub	sp, sp, #24
+ 495              	.LCFI23:
+ 496              	.LM76:
+ 497 04dc 0E39A0E3 		mov	r3, #229376
+ 498 04e0 20300BE5 		str	r3, [fp, #-32]
+ 499              	.LM77:
+ 500 04e4 20301BE5 		ldr	r3, [fp, #-32]
+ 501 04e8 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 502 04ec FF0053E3 		cmp	r3, #255
+ 503 04f0 0200001A 		bne	.L35
+ 504 04f4 20301BE5 		ldr	r3, [fp, #-32]
+ 505 04f8 24300BE5 		str	r3, [fp, #-36]
+ 506 04fc 3F0000EA 		b	.L37
+ 507              	.L35:
+ 508              	.LM78:
+ 509 0500 0137A0E3 		mov	r3, #262144
+ 510 0504 18300BE5 		str	r3, [fp, #-24]
+ 511              	.LM79:
+ 512 0508 18301BE5 		ldr	r3, [fp, #-24]
+ 513 050c 013C43E2 		sub	r3, r3, #256
+ 514 0510 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 515 0514 AA0053E3 		cmp	r3, #170
+ 516 0518 0200001A 		bne	.L38
+ 517 051c 0030E0E3 		mvn	r3, #0
+ 518 0520 24300BE5 		str	r3, [fp, #-36]
+ 519 0524 350000EA 		b	.L37
+ 520              	.L38:
+ 521              	.LM80:
+ 522 0528 18201BE5 		ldr	r2, [fp, #-24]
+ 523 052c 20301BE5 		ldr	r3, [fp, #-32]
+ 524 0530 023063E0 		rsb	r3, r3, r2
+ 525 0534 14300BE5 		str	r3, [fp, #-20]
+ 526              	.LM81:
+ 527 0538 FF30A0E3 		mov	r3, #255
+ 528 053c 10300BE5 		str	r3, [fp, #-16]
+ 529              	.LM82:
+ 530 0540 290000EA 		b	.L40
+ 531              	.L41:
+ 532              	.LM83:
+ 533 0544 18201BE5 		ldr	r2, [fp, #-24]
+ 534 0548 20301BE5 		ldr	r3, [fp, #-32]
+ 535 054c 033082E0 		add	r3, r2, r3
+ 536 0550 A330A0E1 		mov	r3, r3, lsr #1
+ 537 0554 1C300BE5 		str	r3, [fp, #-28]
+ 538              	.LM84:
+ 539 0558 1C201BE5 		ldr	r2, [fp, #-28]
+ 540 055c 10301BE5 		ldr	r3, [fp, #-16]
+ 541 0560 033002E0 		and	r3, r2, r3
+ 542 0564 000053E3 		cmp	r3, #0
+ 543 0568 1300000A 		beq	.L42
+ 544              	.LM85:
+ 545 056c 18301BE5 		ldr	r3, [fp, #-24]
+ 546 0570 013C43E2 		sub	r3, r3, #256
+ 547 0574 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 548 0578 FF0053E3 		cmp	r3, #255
+ 549 057c 0300001A 		bne	.L44
+ 550              	.LM86:
+ 551 0580 18301BE5 		ldr	r3, [fp, #-24]
+ 552 0584 013C43E2 		sub	r3, r3, #256
+ 553 0588 18300BE5 		str	r3, [fp, #-24]
+ 554 058c 020000EA 		b	.L46
+ 555              	.L44:
+ 556              	.LM87:
+ 557 0590 20301BE5 		ldr	r3, [fp, #-32]
+ 558 0594 013C83E2 		add	r3, r3, #256
+ 559 0598 20300BE5 		str	r3, [fp, #-32]
+ 560              	.L46:
+ 561              	.LM88:
+ 562 059c 18201BE5 		ldr	r2, [fp, #-24]
+ 563 05a0 20301BE5 		ldr	r3, [fp, #-32]
+ 564 05a4 033082E0 		add	r3, r2, r3
+ 565 05a8 A330A0E1 		mov	r3, r3, lsr #1
+ 566 05ac 1C300BE5 		str	r3, [fp, #-28]
+ 567              	.LM89:
+ 568 05b0 14301BE5 		ldr	r3, [fp, #-20]
+ 569 05b4 013C43E2 		sub	r3, r3, #256
+ 570 05b8 14300BE5 		str	r3, [fp, #-20]
+ 571              	.L42:
+ 572              	.LM90:
+ 573 05bc 1C301BE5 		ldr	r3, [fp, #-28]
+ 574 05c0 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 575 05c4 FF0053E3 		cmp	r3, #255
+ 576 05c8 0200001A 		bne	.L47
+ 577              	.LM91:
+ 578 05cc 1C301BE5 		ldr	r3, [fp, #-28]
+ 579 05d0 18300BE5 		str	r3, [fp, #-24]
+ 580 05d4 010000EA 		b	.L49
+ 581              	.L47:
+ 582              	.LM92:
+ 583 05d8 1C301BE5 		ldr	r3, [fp, #-28]
+ 584 05dc 20300BE5 		str	r3, [fp, #-32]
+ 585              	.L49:
+ 586              	.LM93:
+ 587 05e0 14301BE5 		ldr	r3, [fp, #-20]
+ 588 05e4 A330A0E1 		mov	r3, r3, lsr #1
+ 589 05e8 14300BE5 		str	r3, [fp, #-20]
+ 590              	.L40:
+ 591              	.LM94:
+ 592 05ec 14301BE5 		ldr	r3, [fp, #-20]
+ 593 05f0 010C53E3 		cmp	r3, #256
+ 594 05f4 D2FFFF1A 		bne	.L41
+ 595              	.LM95:
+ 596 05f8 18301BE5 		ldr	r3, [fp, #-24]
+ 597 05fc 24300BE5 		str	r3, [fp, #-36]
+ 598              	.L37:
+ 599 0600 24301BE5 		ldr	r3, [fp, #-36]
+ 600              	.LM96:
+ 601 0604 0300A0E1 		mov	r0, r3
+ 602 0608 0CD04BE2 		sub	sp, fp, #12
+ 603 060c 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 604 0610 1EFF2FE1 		bx	lr
+ 605              	.LFE7:
+ 607              		.comm	iap_entry,4,4
+ 774              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 LPC2k_ee.c
+     /tmp/ccOusgIQ.s:10     .text:00000000 $a
+     /tmp/ccOusgIQ.s:13     .text:00000000 ee_erase
+     /tmp/ccOusgIQ.s:125    .text:00000138 $d
+                            *COM*:00000004 iap_entry
+     /tmp/ccOusgIQ.s:128    .text:0000013c $a
+     /tmp/ccOusgIQ.s:131    .text:0000013c ee_write
+     /tmp/ccOusgIQ.s:482    .text:000004cc ee_locate
+     /tmp/ccOusgIQ.s:316    .text:0000035c $d
+     /tmp/ccOusgIQ.s:319    .text:00000360 $a
+     /tmp/ccOusgIQ.s:322    .text:00000360 ee_read
+     /tmp/ccOusgIQ.s:384    .text:000003f0 ee_readn
+     /tmp/ccOusgIQ.s:432    .text:00000458 ee_count
+     /tmp/ccOusgIQ.s:621    .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

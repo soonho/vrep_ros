@@ -1,0 +1,255 @@
+   1              		.file	"mymath.c"
+   9              	.Ltext0:
+  10              		.global	__mulsf3
+  11              		.global	__addsf3
+  12              		.global	__subsf3
+  13              		.align	2
+  14              		.global	cos_52s
+  16              	cos_52s:
+  17              	.LFB2:
+  18              	.LM1:
+  19              		@ Function supports interworking.
+  20              		@ args = 0, pretend = 0, frame = 0
+  21              		@ frame_needed = 0, uses_anonymous_args = 0
+  22              	.LVL0:
+  23 0000 10402DE9 		stmfd	sp!, {r4, lr}
+  24              	.LCFI0:
+  25              	.LM2:
+  26 0004 0010A0E1 		mov	r1, r0
+  27 0008 FEFFFFEB 		bl	__mulsf3
+  28              	.LVL1:
+  29 000c 48109FE5 		ldr	r1, .L3
+  30 0010 0040A0E1 		mov	r4, r0
+  31 0014 FEFFFFEB 		bl	__mulsf3
+  32 0018 40109FE5 		ldr	r1, .L3+4
+  33 001c FEFFFFEB 		bl	__addsf3
+  34 0020 0010A0E1 		mov	r1, r0
+  35 0024 0400A0E1 		mov	r0, r4
+  36              	.LVL2:
+  37 0028 FEFFFFEB 		bl	__mulsf3
+  38              	.LVL3:
+  39 002c C114E0E3 		mvn	r1, #-1056964608
+  40 0030 B71E41E2 		sub	r1, r1, #2928
+  41 0034 091041E2 		sub	r1, r1, #9
+  42 0038 FEFFFFEB 		bl	__subsf3
+  43 003c 0010A0E1 		mov	r1, r0
+  44 0040 0400A0E1 		mov	r0, r4
+  45              	.LVL4:
+  46 0044 FEFFFFEB 		bl	__mulsf3
+  47              	.LVL5:
+  48 0048 FE15A0E3 		mov	r1, #1065353216
+  49 004c 701041E2 		sub	r1, r1, #112
+  50 0050 FEFFFFEB 		bl	__addsf3
+  51              	.LM3:
+  52 0054 1040BDE8 		ldmfd	sp!, {r4, lr}
+  53 0058 1EFF2FE1 		bx	lr
+  54              	.L4:
+  55              		.align	2
+  56              	.L3:
+  57 005c B69EA6BA 		.word	-1163485514
+  58 0060 0EEF293D 		.word	1026158350
+  59              	.LFE2:
+  61              		.global	__extendsfdf2
+  62              		.global	__truncdfsf2
+  63              		.global	__ltsf2
+  64              		.global	__divdf3
+  65              		.global	__fixdfsi
+  66              		.global	__subdf3
+  67              		.align	2
+  68              		.global	approxCos
+  70              	approxCos:
+  71              	.LFB3:
+  72              	.LM4:
+  73              		@ Function supports interworking.
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              	.LVL6:
+  77 0064 70402DE9 		stmfd	sp!, {r4, r5, r6, lr}
+  78              	.LCFI1:
+  79              	.LM5:
+  80 0068 FEFFFFEB 		bl	__extendsfdf2
+  81              	.LVL7:
+  82 006c 572F8FE2 		adr	r2, .L20
+  83 0070 0C0092E8 		ldmia	r2, {r2-r3}
+  84 0074 FEFFFFEB 		bl	fmod
+  85 0078 FEFFFFEB 		bl	__truncdfsf2
+  86              	.LM6:
+  87 007c 0010A0E3 		mov	r1, #0
+  88              	.LM7:
+  89 0080 0060A0E1 		mov	r6, r0
+  90              	.LVL8:
+  91              	.LM8:
+  92 0084 FEFFFFEB 		bl	__ltsf2
+  93 0088 000050E3 		cmp	r0, #0
+  94              	.LM9:
+  95 008c 023186B2 		addlt	r3, r6, #-2147483648
+  96 0090 0360A0B1 		movlt	r6, r3
+  97              	.LM10:
+  98 0094 0600A0E1 		mov	r0, r6
+  99 0098 FEFFFFEB 		bl	__extendsfdf2
+ 100              	.LM11:
+ 101 009c 4D2F8FE2 		adr	r2, .L20+8
+ 102 00a0 0C0092E8 		ldmia	r2, {r2-r3}
+ 103              	.LM12:
+ 104 00a4 0040A0E1 		mov	r4, r0
+ 105 00a8 0150A0E1 		mov	r5, r1
+ 106              	.LM13:
+ 107 00ac FEFFFFEB 		bl	__divdf3
+ 108 00b0 FEFFFFEB 		bl	__fixdfsi
+ 109 00b4 030050E3 		cmp	r0, #3
+ 110 00b8 00F19F97 		ldrls	pc, [pc, r0, asl #2]
+ 111 00bc 030000EA 		b	.L9
+ 112              		.align	2
+ 113              	.L14:
+ 114 00c0 D8000000 		.word	.L10
+ 115 00c4 30010000 		.word	.L11
+ 116 00c8 A0010000 		.word	.L12
+ 117 00cc B4010000 		.word	.L13
+ 118              	.L9:
+ 119              	.L5:
+ 120              	.LM14:
+ 121 00d0 7040BDE8 		ldmfd	sp!, {r4, r5, r6, lr}
+ 122 00d4 1EFF2FE1 		bx	lr
+ 123              	.L10:
+ 124              	.LBB10:
+ 125              	.LBB11:
+ 126              	.LM15:
+ 127 00d8 0600A0E1 		mov	r0, r6
+ 128              	.L17:
+ 129              	.LVL9:
+ 130              	.LBE11:
+ 131              	.LBE10:
+ 132              	.LBB12:
+ 133              	.LBB13:
+ 134 00dc 0010A0E1 		mov	r1, r0
+ 135 00e0 FEFFFFEB 		bl	__mulsf3
+ 136              	.LVL10:
+ 137              	.LM16:
+ 138 00e4 FC109FE5 		ldr	r1, .L20+24
+ 139              	.LM17:
+ 140 00e8 0040A0E1 		mov	r4, r0
+ 141              	.LM18:
+ 142 00ec FEFFFFEB 		bl	__mulsf3
+ 143 00f0 F4109FE5 		ldr	r1, .L20+28
+ 144 00f4 FEFFFFEB 		bl	__addsf3
+ 145 00f8 0010A0E1 		mov	r1, r0
+ 146 00fc 0400A0E1 		mov	r0, r4
+ 147              	.LVL11:
+ 148 0100 FEFFFFEB 		bl	__mulsf3
+ 149              	.LVL12:
+ 150 0104 C114E0E3 		mvn	r1, #-1056964608
+ 151 0108 B71E41E2 		sub	r1, r1, #2928
+ 152 010c 091041E2 		sub	r1, r1, #9
+ 153 0110 FEFFFFEB 		bl	__subsf3
+ 154 0114 0010A0E1 		mov	r1, r0
+ 155 0118 0400A0E1 		mov	r0, r4
+ 156              	.LVL13:
+ 157 011c FEFFFFEB 		bl	__mulsf3
+ 158              	.LVL14:
+ 159 0120 FE15A0E3 		mov	r1, #1065353216
+ 160 0124 701041E2 		sub	r1, r1, #112
+ 161 0128 FEFFFFEB 		bl	__addsf3
+ 162 012c E7FFFFEA 		b	.L5
+ 163              	.L11:
+ 164              	.LBE13:
+ 165              	.LBE12:
+ 166              	.LM19:
+ 167 0130 A8008FE2 		adr	r0, .L20+16
+ 168 0134 030090E8 		ldmia	r0, {r0-r1}
+ 169 0138 0420A0E1 		mov	r2, r4
+ 170 013c 0530A0E1 		mov	r3, r5
+ 171              	.L18:
+ 172              	.LM20:
+ 173 0140 FEFFFFEB 		bl	__subdf3
+ 174 0144 FEFFFFEB 		bl	__truncdfsf2
+ 175              	.LVL15:
+ 176              	.LBB14:
+ 177              	.LBB15:
+ 178              	.LM21:
+ 179 0148 0010A0E1 		mov	r1, r0
+ 180 014c FEFFFFEB 		bl	__mulsf3
+ 181              	.LVL16:
+ 182              	.LBE15:
+ 183              	.LBE14:
+ 184              	.LM22:
+ 185 0150 90109FE5 		ldr	r1, .L20+24
+ 186              	.LBB16:
+ 187              	.LBB17:
+ 188              	.LM23:
+ 189 0154 0040A0E1 		mov	r4, r0
+ 190              	.LBE17:
+ 191              	.LBE16:
+ 192              	.LM24:
+ 193 0158 FEFFFFEB 		bl	__mulsf3
+ 194 015c 88109FE5 		ldr	r1, .L20+28
+ 195 0160 FEFFFFEB 		bl	__addsf3
+ 196 0164 0010A0E1 		mov	r1, r0
+ 197 0168 0400A0E1 		mov	r0, r4
+ 198              	.LVL17:
+ 199 016c FEFFFFEB 		bl	__mulsf3
+ 200              	.LVL18:
+ 201 0170 C114E0E3 		mvn	r1, #-1056964608
+ 202 0174 B71E41E2 		sub	r1, r1, #2928
+ 203 0178 091041E2 		sub	r1, r1, #9
+ 204 017c FEFFFFEB 		bl	__subsf3
+ 205 0180 0010A0E1 		mov	r1, r0
+ 206 0184 0400A0E1 		mov	r0, r4
+ 207              	.LVL19:
+ 208 0188 FEFFFFEB 		bl	__mulsf3
+ 209              	.LVL20:
+ 210 018c FE15A0E3 		mov	r1, #1065353216
+ 211 0190 701041E2 		sub	r1, r1, #112
+ 212 0194 FEFFFFEB 		bl	__addsf3
+ 213 0198 020180E2 		add	r0, r0, #-2147483648
+ 214 019c CBFFFFEA 		b	.L5
+ 215              	.L12:
+ 216 01a0 38208FE2 		adr	r2, .L20+16
+ 217 01a4 0C0092E8 		ldmia	r2, {r2-r3}
+ 218 01a8 0400A0E1 		mov	r0, r4
+ 219 01ac 0510A0E1 		mov	r1, r5
+ 220 01b0 E2FFFFEA 		b	.L18
+ 221              	.L13:
+ 222              	.LM25:
+ 223 01b4 0420A0E1 		mov	r2, r4
+ 224 01b8 0530A0E1 		mov	r3, r5
+ 225 01bc 0C008FE2 		adr	r0, .L20
+ 226 01c0 030090E8 		ldmia	r0, {r0-r1}
+ 227 01c4 FEFFFFEB 		bl	__subdf3
+ 228 01c8 FEFFFFEB 		bl	__truncdfsf2
+ 229 01cc C2FFFFEA 		b	.L17
+ 230              	.L21:
+ 231              		.align	2
+ 232              	.L20:
+ 233 01d0 FB211940 		.word	1075388923
+ 234 01d4 182D4454 		.word	1413754136
+ 235 01d8 FB21F93F 		.word	1073291771
+ 236 01dc 182D4454 		.word	1413754136
+ 237 01e0 FB210940 		.word	1074340347
+ 238 01e4 182D4454 		.word	1413754136
+ 239 01e8 B69EA6BA 		.word	-1163485514
+ 240 01ec 0EEF293D 		.word	1026158350
+ 241              	.LFE3:
+ 295              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 mymath.c
+     /tmp/ccPV30lh.s:13     .text:00000000 $a
+     /tmp/ccPV30lh.s:16     .text:00000000 cos_52s
+     /tmp/ccPV30lh.s:57     .text:0000005c $d
+     /tmp/ccPV30lh.s:67     .text:00000064 $a
+     /tmp/ccPV30lh.s:70     .text:00000064 approxCos
+     /tmp/ccPV30lh.s:114    .text:000000c0 $d
+     /tmp/ccPV30lh.s:121    .text:000000d0 $a
+     /tmp/ccPV30lh.s:233    .text:000001d0 $d
+     /tmp/ccPV30lh.s:256    .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+__mulsf3
+__addsf3
+__subsf3
+__extendsfdf2
+__truncdfsf2
+__ltsf2
+__divdf3
+__fixdfsi
+__subdf3
+fmod

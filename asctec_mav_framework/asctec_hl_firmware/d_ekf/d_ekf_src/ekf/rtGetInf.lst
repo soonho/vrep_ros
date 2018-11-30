@@ -1,0 +1,217 @@
+   1              		.file	"rtGetInf.c"
+   9              	.Ltext0:
+  10              		.align	2
+  11              		.global	rtGetInfF
+  13              	rtGetInfF:
+  14              	.LFB3:
+  15              	.LM1:
+  16              		@ Function supports interworking.
+  17              		@ args = 0, pretend = 0, frame = 0
+  18              		@ frame_needed = 0, uses_anonymous_args = 0
+  19              		@ link register save eliminated.
+  20              	.LM2:
+  21 0000 7F04A0E3 		mov	r0, #2130706432
+  22 0004 020580E2 		add	r0, r0, #8388608
+  23              	.LM3:
+  24              		@ lr needed for prologue
+  25              	.LM4:
+  26 0008 1EFF2FE1 		bx	lr
+  27              	.LFE3:
+  29              		.align	2
+  30              		.global	rtGetMinusInfF
+  32              	rtGetMinusInfF:
+  33              	.LFB5:
+  34              	.LM5:
+  35              		@ Function supports interworking.
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 0, uses_anonymous_args = 0
+  38              		@ link register save eliminated.
+  39              	.LM6:
+  40 000c 0201A0E3 		mov	r0, #-2147483648
+  41 0010 4004A0E1 		mov	r0, r0, asr #8
+  42              	.LM7:
+  43              		@ lr needed for prologue
+  44              	.LM8:
+  45 0014 1EFF2FE1 		bx	lr
+  46              	.LFE5:
+  48              		.align	2
+  49              		.global	rtGetMinusInf
+  51              	rtGetMinusInf:
+  52              	.LFB4:
+  53              	.LM9:
+  54              		@ Function supports interworking.
+  55              		@ args = 0, pretend = 0, frame = 4
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		@ link register save eliminated.
+  58 0018 70002DE9 		stmfd	sp!, {r4, r5, r6}
+  59              	.LCFI0:
+  60              	.LBB7:
+  61              	.LM10:
+  62 001c 0130A0E3 		mov	r3, #1	@ movhi
+  63              	.LBE7:
+  64              	.LM11:
+  65 0020 04D04DE2 		sub	sp, sp, #4
+  66              	.LCFI1:
+  67              	.LBB8:
+  68              	.LM12:
+  69 0024 B230CDE1 		strh	r3, [sp, #2]	@ movhi
+  70              	.LVL0:
+  71              	.LM13:
+  72 0028 0230DDE5 		ldrb	r3, [sp, #2]	@ zero_extendqisi2
+  73              	.LBB9:
+  74              	.LM14:
+  75 002c 0241A0E3 		mov	r4, #-2147483648
+  76              	.LVL1:
+  77              	.LBE9:
+  78              	.LM15:
+  79 0030 012053E2 		subs	r2, r3, #1
+  80 0034 0120A013 		movne	r2, #1
+  81              	.LBB10:
+  82              	.LM16:
+  83 0038 C445A0E1 		mov	r4, r4, asr #11
+  84              	.LBE10:
+  85              	.LM17:
+  86 003c 000052E3 		cmp	r2, #0
+  87              	.LBE8:
+  88              	.LM18:
+  89              		@ lr needed for prologue
+  90 0040 0050A0E3 		mov	r5, #0
+  91              	.LVL2:
+  92 0044 0060A0E3 		mov	r6, #0
+  93              	.LVL3:
+  94              	.LBB11:
+  95              	.LBB12:
+  96              	.LM19:
+  97 0048 0200A0E1 		mov	r0, r2
+  98              	.LVL4:
+  99 004c 0410A0E1 		mov	r1, r4
+ 100              	.LVL5:
+ 101              	.LBE12:
+ 102              	.LM20:
+ 103 0050 0700000A 		beq	.L9
+ 104              	.LBB13:
+ 105              	.LM21:
+ 106 0054 0251A0E3 		mov	r5, #-2147483648
+ 107              	.LVL6:
+ 108              	.LBE13:
+ 109              	.LM22:
+ 110 0058 010052E3 		cmp	r2, #1
+ 111              	.LBB14:
+ 112              	.LM23:
+ 113 005c C555A0E1 		mov	r5, r5, asr #11
+ 114              	.LM24:
+ 115 0060 0060A0E3 		mov	r6, #0
+ 116              	.LBE14:
+ 117              	.LM25:
+ 118 0064 0000A0E3 		mov	r0, #0
+ 119 0068 0010A0E3 		mov	r1, #0
+ 120              	.LBB15:
+ 121              	.LM26:
+ 122 006c 0500A001 		moveq	r0, r5
+ 123 0070 0610A001 		moveq	r1, r6
+ 124              	.LVL7:
+ 125              	.L9:
+ 126              	.LVL8:
+ 127              	.LBE15:
+ 128              	.LBE11:
+ 129              	.LM27:
+ 130 0074 04D08DE2 		add	sp, sp, #4
+ 131 0078 7000BDE8 		ldmfd	sp!, {r4, r5, r6}
+ 132 007c 1EFF2FE1 		bx	lr
+ 133              	.LFE4:
+ 135              		.align	2
+ 136              		.global	rtGetInf
+ 138              	rtGetInf:
+ 139              	.LFB2:
+ 140              	.LM28:
+ 141              		@ Function supports interworking.
+ 142              		@ args = 0, pretend = 0, frame = 4
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              		@ link register save eliminated.
+ 145 0080 70002DE9 		stmfd	sp!, {r4, r5, r6}
+ 146              	.LCFI2:
+ 147              	.LBB21:
+ 148              	.LM29:
+ 149 0084 0130A0E3 		mov	r3, #1	@ movhi
+ 150              	.LBE21:
+ 151              	.LM30:
+ 152 0088 04D04DE2 		sub	sp, sp, #4
+ 153              	.LCFI3:
+ 154              	.LBB22:
+ 155              	.LM31:
+ 156 008c B230CDE1 		strh	r3, [sp, #2]	@ movhi
+ 157              	.LVL9:
+ 158              	.LM32:
+ 159 0090 0230DDE5 		ldrb	r3, [sp, #2]	@ zero_extendqisi2
+ 160              	.LBB23:
+ 161              	.LM33:
+ 162 0094 7F44A0E3 		mov	r4, #2130706432
+ 163              	.LVL10:
+ 164              	.LBE23:
+ 165              	.LM34:
+ 166 0098 012053E2 		subs	r2, r3, #1
+ 167 009c 0120A013 		movne	r2, #1
+ 168              	.LBB24:
+ 169              	.LM35:
+ 170 00a0 0F4684E2 		add	r4, r4, #15728640
+ 171              	.LBE24:
+ 172              	.LM36:
+ 173 00a4 000052E3 		cmp	r2, #0
+ 174              	.LBE22:
+ 175              	.LM37:
+ 176              		@ lr needed for prologue
+ 177 00a8 0050A0E3 		mov	r5, #0
+ 178              	.LVL11:
+ 179 00ac 0060A0E3 		mov	r6, #0
+ 180              	.LVL12:
+ 181              	.LBB25:
+ 182              	.LBB26:
+ 183              	.LM38:
+ 184 00b0 0200A0E1 		mov	r0, r2
+ 185              	.LVL13:
+ 186 00b4 0410A0E1 		mov	r1, r4
+ 187              	.LVL14:
+ 188              	.LBE26:
+ 189              	.LM39:
+ 190 00b8 0700000A 		beq	.L16
+ 191              	.LBB27:
+ 192              	.LM40:
+ 193 00bc 7F54A0E3 		mov	r5, #2130706432
+ 194              	.LVL15:
+ 195              	.LBE27:
+ 196              	.LM41:
+ 197 00c0 010052E3 		cmp	r2, #1
+ 198              	.LBB28:
+ 199              	.LM42:
+ 200 00c4 0F5685E2 		add	r5, r5, #15728640
+ 201              	.LM43:
+ 202 00c8 0060A0E3 		mov	r6, #0
+ 203              	.LBE28:
+ 204              	.LM44:
+ 205 00cc 0000A0E3 		mov	r0, #0
+ 206 00d0 0010A0E3 		mov	r1, #0
+ 207              	.LBB29:
+ 208              	.LM45:
+ 209 00d4 0500A001 		moveq	r0, r5
+ 210 00d8 0610A001 		moveq	r1, r6
+ 211              	.LVL16:
+ 212              	.L16:
+ 213              	.LVL17:
+ 214              	.LBE29:
+ 215              	.LBE25:
+ 216              	.LM46:
+ 217 00dc 04D08DE2 		add	sp, sp, #4
+ 218 00e0 7000BDE8 		ldmfd	sp!, {r4, r5, r6}
+ 219 00e4 1EFF2FE1 		bx	lr
+ 220              	.LFE2:
+ 298              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 rtGetInf.c
+     /tmp/ccmOuOrE.s:10     .text:00000000 $a
+     /tmp/ccmOuOrE.s:13     .text:00000000 rtGetInfF
+     /tmp/ccmOuOrE.s:32     .text:0000000c rtGetMinusInfF
+     /tmp/ccmOuOrE.s:51     .text:00000018 rtGetMinusInf
+     /tmp/ccmOuOrE.s:138    .text:00000080 rtGetInf
+     /tmp/ccmOuOrE.s:235    .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

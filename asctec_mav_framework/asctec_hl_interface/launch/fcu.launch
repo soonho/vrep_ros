@@ -1,0 +1,13 @@
+<launch>
+  <node name="master_disco" pkg="master_discovery_fkie" type="master_discovery" output="screen">
+    <param name="mcast_group" value="224.0.0.1"/>
+  </node>
+  <node name="master_synchro" pkg="master_sync_fkie" type="master_sync" output="screen">
+  </node>
+  <node name="fcu" pkg="asctec_hl_interface" type="hl_node" output="screen" clear_params="true">
+    <rosparam file="$(find asctec_hl_interface)/launch/fcu_parameters.yaml" />
+    <rosparam file="$(find asctec_hl_interface)/launch/ssdk_parameters.yaml" />
+  </node>
+  <node name="soonho_test" pkg="asctec_hl_interface" type="soonho_ctrl_test" output="screen">
+  </node>
+</launch>

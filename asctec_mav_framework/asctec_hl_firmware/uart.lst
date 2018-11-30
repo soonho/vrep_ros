@@ -1,0 +1,2316 @@
+   1              		.file	"uart.c"
+   9              	.Ltext0:
+  10              		.align	2
+  11              		.global	Fifo_initialize
+  13              	Fifo_initialize:
+  14              	.LFB3:
+  15              	.LM1:
+  16              		@ Function supports interworking.
+  17              		@ args = 0, pretend = 0, frame = 0
+  18              		@ frame_needed = 0, uses_anonymous_args = 0
+  19              		@ link register save eliminated.
+  20              	.LVL0:
+  21              	.LM2:
+  22 0000 0030A0E3 		mov	r3, #0
+  23              	.LM3:
+  24 0004 01C042E2 		sub	ip, r2, #1
+  25              	.LM4:
+  26 0008 001080E5 		str	r1, [r0, #0]
+  27              	.LM5:
+  28              		@ lr needed for prologue
+  29              	.LM6:
+  30 000c 082080E5 		str	r2, [r0, #8]
+  31              	.LM7:
+  32 0010 0C3080E5 		str	r3, [r0, #12]
+  33              	.LM8:
+  34 0014 103080E5 		str	r3, [r0, #16]
+  35              	.LM9:
+  36 0018 143080E5 		str	r3, [r0, #20]
+  37              	.LM10:
+  38 001c 18C080E5 		str	ip, [r0, #24]
+  39              	.LM11:
+  40 0020 0430C0E5 		strb	r3, [r0, #4]
+  41              	.LM12:
+  42 0024 1EFF2FE1 		bx	lr
+  43              	.LFE3:
+  45              		.align	2
+  46              		.global	Fifo_writeByte
+  48              	Fifo_writeByte:
+  49              	.LFB4:
+  50              	.LM13:
+  51              		@ Function supports interworking.
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54              		@ link register save eliminated.
+  55              	.LVL1:
+  56              	.LM14:
+  57 0028 103090E5 		ldr	r3, [r0, #16]
+  58 002c 182090E5 		ldr	r2, [r0, #24]
+  59 0030 013083E2 		add	r3, r3, #1
+  60 0034 023003E0 		and	r3, r3, r2
+  61 0038 143080E5 		str	r3, [r0, #20]
+  62              	.LM15:
+  63 003c 0C2090E5 		ldr	r2, [r0, #12]
+  64 0040 143090E5 		ldr	r3, [r0, #20]
+  65 0044 030052E1 		cmp	r2, r3
+  66              	.LM16:
+  67              		@ lr needed for prologue
+  68              	.LM17:
+  69 0048 0030A0E3 		mov	r3, #0
+  70              	.LM18:
+  71 004c FF1001E2 		and	r1, r1, #255
+  72              	.LM19:
+  73 0050 0500000A 		beq	.L6
+  74              	.LM20:
+  75 0054 003090E5 		ldr	r3, [r0, #0]
+  76 0058 102090E5 		ldr	r2, [r0, #16]
+  77 005c 0210C3E7 		strb	r1, [r3, r2]
+  78              	.LM21:
+  79 0060 141090E5 		ldr	r1, [r0, #20]
+  80              	.LVL2:
+  81 0064 101080E5 		str	r1, [r0, #16]
+  82 0068 0130A0E3 		mov	r3, #1
+  83              	.LVL3:
+  84              	.L6:
+  85              	.LM22:
+  86 006c 0300A0E1 		mov	r0, r3
+  87              	.LVL4:
+  88 0070 1EFF2FE1 		bx	lr
+  89              	.LFE4:
+  91              		.align	2
+  92              		.global	Fifo_writeBlock
+  94              	Fifo_writeBlock:
+  95              	.LFB5:
+  96              	.LM23:
+  97              		@ Function supports interworking.
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              	.LVL5:
+ 101              	.LBB12:
+ 102              	.LBB13:
+ 103              	.LM24:
+ 104 0074 0C3090E5 		ldr	r3, [r0, #12]
+ 105              	.LBE13:
+ 106              	.LBE12:
+ 107              	.LM25:
+ 108 0078 10402DE9 		stmfd	sp!, {r4, lr}
+ 109              	.LCFI0:
+ 110              	.LM26:
+ 111 007c 00E0A0E1 		mov	lr, r0
+ 112              	.LBB14:
+ 113              	.LBB15:
+ 114              	.LM27:
+ 115 0080 100090E5 		ldr	r0, [r0, #16]
+ 116              	.LVL6:
+ 117 0084 18C09EE5 		ldr	ip, [lr, #24]
+ 118              	.LBE15:
+ 119              	.LBE14:
+ 120              	.LM28:
+ 121 0088 033060E0 		rsb	r3, r0, r3
+ 122 008c 013043E2 		sub	r3, r3, #1
+ 123 0090 0C3003E0 		and	r3, r3, ip
+ 124 0094 0338A0E1 		mov	r3, r3, asl #16
+ 125 0098 230852E1 		cmp	r2, r3, lsr #16
+ 126 009c 0000A023 		movcs	r0, #0
+ 127 00a0 0F00002A 		bcs	.L12
+ 128              	.LM29:
+ 129 00a4 000052E3 		cmp	r2, #0
+ 130 00a8 0C00000A 		beq	.L13
+ 131              	.LM30:
+ 132 00ac 01C0A0E1 		mov	ip, r1
+ 133              	.LVL7:
+ 134 00b0 014082E0 		add	r4, r2, r1
+ 135              	.LVL8:
+ 136              	.L15:
+ 137              	.LM31:
+ 138 00b4 00009EE5 		ldr	r0, [lr, #0]
+ 139 00b8 0110DCE4 		ldrb	r1, [ip], #1	@ zero_extendqisi2
+ 140              	.LVL9:
+ 141 00bc 10209EE5 		ldr	r2, [lr, #16]
+ 142              	.LVL10:
+ 143 00c0 0210C0E7 		strb	r1, [r0, r2]
+ 144              	.LM32:
+ 145 00c4 10309EE5 		ldr	r3, [lr, #16]
+ 146 00c8 18209EE5 		ldr	r2, [lr, #24]
+ 147 00cc 013083E2 		add	r3, r3, #1
+ 148 00d0 023003E0 		and	r3, r3, r2
+ 149              	.LM33:
+ 150 00d4 04005CE1 		cmp	ip, r4
+ 151              	.LM34:
+ 152 00d8 10308EE5 		str	r3, [lr, #16]
+ 153              	.LM35:
+ 154 00dc F4FFFF1A 		bne	.L15
+ 155              	.LVL11:
+ 156              	.L13:
+ 157 00e0 0100A0E3 		mov	r0, #1
+ 158              	.L12:
+ 159              	.LM36:
+ 160 00e4 1040BDE8 		ldmfd	sp!, {r4, lr}
+ 161 00e8 1EFF2FE1 		bx	lr
+ 162              	.LFE5:
+ 164              		.align	2
+ 165              		.global	Fifo_readByte
+ 167              	Fifo_readByte:
+ 168              	.LFB6:
+ 169              	.LM37:
+ 170              		@ Function supports interworking.
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173              		@ link register save eliminated.
+ 174              	.LVL12:
+ 175              	.LM38:
+ 176 00ec 0C2090E5 		ldr	r2, [r0, #12]
+ 177 00f0 103090E5 		ldr	r3, [r0, #16]
+ 178 00f4 030052E1 		cmp	r2, r3
+ 179              	.LM39:
+ 180              		@ lr needed for prologue
+ 181              	.LM40:
+ 182 00f8 0030A0E3 		mov	r3, #0
+ 183              	.LM41:
+ 184 00fc 01C0A0E1 		mov	ip, r1
+ 185              	.LM42:
+ 186 0100 0900000A 		beq	.L21
+ 187              	.LVL13:
+ 188              	.LM43:
+ 189 0104 001090E5 		ldr	r1, [r0, #0]
+ 190 0108 0C3090E5 		ldr	r3, [r0, #12]
+ 191 010c 0320D1E7 		ldrb	r2, [r1, r3]	@ zero_extendqisi2
+ 192 0110 0020CCE5 		strb	r2, [ip, #0]
+ 193              	.LM44:
+ 194 0114 0C3090E5 		ldr	r3, [r0, #12]
+ 195 0118 182090E5 		ldr	r2, [r0, #24]
+ 196 011c 013083E2 		add	r3, r3, #1
+ 197 0120 023003E0 		and	r3, r3, r2
+ 198 0124 0C3080E5 		str	r3, [r0, #12]
+ 199 0128 0130A0E3 		mov	r3, #1
+ 200              	.LVL14:
+ 201              	.L21:
+ 202              	.LM45:
+ 203 012c 0300A0E1 		mov	r0, r3
+ 204              	.LVL15:
+ 205 0130 1EFF2FE1 		bx	lr
+ 206              	.LFE6:
+ 208              		.align	2
+ 209              		.global	Fifo_availableMemory
+ 211              	Fifo_availableMemory:
+ 212              	.LFB7:
+ 213              	.LM46:
+ 214              		@ Function supports interworking.
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217              		@ link register save eliminated.
+ 218              	.LVL16:
+ 219 0134 0030A0E1 		mov	r3, r0
+ 220              	.LM47:
+ 221 0138 0C0090E5 		ldr	r0, [r0, #12]
+ 222              	.LVL17:
+ 223 013c 102093E5 		ldr	r2, [r3, #16]
+ 224 0140 181093E5 		ldr	r1, [r3, #24]
+ 225 0144 000062E0 		rsb	r0, r2, r0
+ 226 0148 010040E2 		sub	r0, r0, #1
+ 227 014c 010000E0 		and	r0, r0, r1
+ 228 0150 0008A0E1 		mov	r0, r0, asl #16
+ 229              	.LM48:
+ 230 0154 2008A0E1 		mov	r0, r0, lsr #16
+ 231              	.LM49:
+ 232              		@ lr needed for prologue
+ 233              	.LM50:
+ 234 0158 1EFF2FE1 		bx	lr
+ 235              	.LFE7:
+ 237              		.align	2
+ 238              		.global	Fifo_reset
+ 240              	Fifo_reset:
+ 241              	.LFB8:
+ 242              	.LM51:
+ 243              		@ Function supports interworking.
+ 244              		@ args = 0, pretend = 0, frame = 0
+ 245              		@ frame_needed = 0, uses_anonymous_args = 0
+ 246              		@ link register save eliminated.
+ 247              	.LVL18:
+ 248              	.LM52:
+ 249 015c 0030A0E3 		mov	r3, #0
+ 250 0160 103080E5 		str	r3, [r0, #16]
+ 251              	.LM53:
+ 252              		@ lr needed for prologue
+ 253              	.LM54:
+ 254 0164 0C3080E5 		str	r3, [r0, #12]
+ 255              	.LM55:
+ 256 0168 1EFF2FE1 		bx	lr
+ 257              	.LFE8:
+ 259              		.align	2
+ 260              		.global	registerPacket
+ 262              	registerPacket:
+ 263              	.LFB9:
+ 264              	.LM56:
+ 265              		@ Function supports interworking.
+ 266              		@ args = 0, pretend = 0, frame = 0
+ 267              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268              	.LVL19:
+ 269 016c F0402DE9 		stmfd	sp!, {r4, r5, r6, r7, lr}
+ 270              	.LCFI1:
+ 271              	.LM57:
+ 272 0170 3C709FE5 		ldr	r7, .L29
+ 273 0174 003097E5 		ldr	r3, [r7, #0]
+ 274 0178 38E09FE5 		ldr	lr, .L29+4
+ 275 017c 83C083E0 		add	ip, r3, r3, asl #1
+ 276              	.LM58:
+ 277 0180 013083E2 		add	r3, r3, #1
+ 278              	.LM59:
+ 279 0184 0CC1A0E1 		mov	ip, ip, asl #2
+ 280              	.LM60:
+ 281 0188 0C604EE2 		sub	r6, lr, #12
+ 282 018c 835083E0 		add	r5, r3, r3, asl #1
+ 283              	.LM61:
+ 284 0190 0E408CE0 		add	r4, ip, lr
+ 285              	.LM62:
+ 286 0194 0E00CCE7 		strb	r0, [ip, lr]
+ 287              	.LM63:
+ 288 0198 0020A0E3 		mov	r2, #0
+ 289              	.LM64:
+ 290 019c 050186E0 		add	r0, r6, r5, asl #2
+ 291              	.LVL20:
+ 292              	.LM65:
+ 293 01a0 0820C4E5 		strb	r2, [r4, #8]
+ 294              	.LM66:
+ 295 01a4 041084E5 		str	r1, [r4, #4]
+ 296              	.LM67:
+ 297 01a8 003087E5 		str	r3, [r7, #0]
+ 298              	.LM68:
+ 299 01ac F040BDE8 		ldmfd	sp!, {r4, r5, r6, r7, lr}
+ 300 01b0 1EFF2FE1 		bx	lr
+ 301              	.L30:
+ 302              		.align	2
+ 303              	.L29:
+ 304 01b4 00000000 		.word	registeredPacketCnt
+ 305 01b8 00000000 		.word	packetInfo
+ 306              	.LFE9:
+ 308              		.align	2
+ 309              		.global	UART0_writeFifo
+ 311              	UART0_writeFifo:
+ 312              	.LFB12:
+ 313              	.LM69:
+ 314              		@ Function supports interworking.
+ 315              		@ args = 0, pretend = 0, frame = 0
+ 316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 317              	.LVL21:
+ 318 01bc 10402DE9 		stmfd	sp!, {r4, lr}
+ 319              	.LCFI2:
+ 320              	.LBB16:
+ 321              	.LBB17:
+ 322              	.LBB18:
+ 323              	.LBB19:
+ 324              	.LM70:
+ 325 01c0 A0E09FE5 		ldr	lr, .L42
+ 326 01c4 0C309EE5 		ldr	r3, [lr, #12]
+ 327 01c8 10209EE5 		ldr	r2, [lr, #16]
+ 328 01cc 18C09EE5 		ldr	ip, [lr, #24]
+ 329              	.LBE19:
+ 330              	.LBE18:
+ 331              	.LM71:
+ 332 01d0 033062E0 		rsb	r3, r2, r3
+ 333 01d4 013043E2 		sub	r3, r3, #1
+ 334 01d8 0C3003E0 		and	r3, r3, ip
+ 335 01dc 0338A0E1 		mov	r3, r3, asl #16
+ 336 01e0 230851E1 		cmp	r1, r3, lsr #16
+ 337 01e4 0040A023 		movcs	r4, #0
+ 338 01e8 0F00002A 		bcs	.L34
+ 339              	.LM72:
+ 340 01ec 000051E3 		cmp	r1, #0
+ 341 01f0 0C00000A 		beq	.L35
+ 342              	.LM73:
+ 343 01f4 00C0A0E1 		mov	ip, r0
+ 344              	.LVL22:
+ 345 01f8 014080E0 		add	r4, r0, r1
+ 346              	.LVL23:
+ 347              	.L37:
+ 348              	.LM74:
+ 349 01fc 00009EE5 		ldr	r0, [lr, #0]
+ 350              	.LVL24:
+ 351 0200 0110DCE4 		ldrb	r1, [ip], #1	@ zero_extendqisi2
+ 352              	.LVL25:
+ 353 0204 10209EE5 		ldr	r2, [lr, #16]
+ 354 0208 0210C0E7 		strb	r1, [r0, r2]
+ 355              	.LM75:
+ 356 020c 10309EE5 		ldr	r3, [lr, #16]
+ 357 0210 18209EE5 		ldr	r2, [lr, #24]
+ 358 0214 013083E2 		add	r3, r3, #1
+ 359 0218 023003E0 		and	r3, r3, r2
+ 360              	.LM76:
+ 361 021c 0C0054E1 		cmp	r4, ip
+ 362              	.LM77:
+ 363 0220 10308EE5 		str	r3, [lr, #16]
+ 364              	.LM78:
+ 365 0224 F4FFFF1A 		bne	.L37
+ 366              	.LVL26:
+ 367              	.L35:
+ 368 0228 0140A0E3 		mov	r4, #1
+ 369              	.L34:
+ 370              	.LBE17:
+ 371              	.LBE16:
+ 372              	.LBB20:
+ 373              	.LBB21:
+ 374              	.LM79:
+ 375 022c 0C309EE5 		ldr	r3, [lr, #12]
+ 376 0230 10209EE5 		ldr	r2, [lr, #16]
+ 377              	.LBE21:
+ 378              	.LBE20:
+ 379              	.LM80:
+ 380 0234 30C09FE5 		ldr	ip, .L42+4
+ 381              	.LVL27:
+ 382              	.LBB22:
+ 383              	.LBB23:
+ 384              	.LM81:
+ 385 0238 18109EE5 		ldr	r1, [lr, #24]
+ 386              	.LVL28:
+ 387              	.LBE23:
+ 388              	.LBE22:
+ 389              	.LM82:
+ 390 023c 033062E0 		rsb	r3, r2, r3
+ 391 0240 013043E2 		sub	r3, r3, #1
+ 392              	.LM83:
+ 393 0244 B020DCE1 		ldrh	r2, [ip, #0]
+ 394              	.LM84:
+ 395 0248 013003E0 		and	r3, r3, r1
+ 396 024c 0338A0E1 		mov	r3, r3, asl #16
+ 397              	.LM85:
+ 398 0250 2308A0E1 		mov	r0, r3, lsr #16
+ 399              	.LVL29:
+ 400 0254 020853E1 		cmp	r3, r2, asl #16
+ 401              	.LM86:
+ 402 0258 B000CCB1 		strlth	r0, [ip, #0]	@ movhi
+ 403              	.LM87:
+ 404 025c 0400A0E1 		mov	r0, r4
+ 405              	.LVL30:
+ 406 0260 1040BDE8 		ldmfd	sp!, {r4, lr}
+ 407 0264 1EFF2FE1 		bx	lr
+ 408              	.L43:
+ 409              		.align	2
+ 410              	.L42:
+ 411 0268 00000000 		.word	txFifo
+ 412 026c 00000000 		.word	uart0_min_tx_buffer
+ 413              	.LFE12:
+ 415              		.align	2
+ 416              		.global	startAutoBaud
+ 418              	startAutoBaud:
+ 419              	.LFB14:
+ 420              	.LM88:
+ 421              		@ Function supports interworking.
+ 422              		@ args = 0, pretend = 0, frame = 0
+ 423              		@ frame_needed = 0, uses_anonymous_args = 0
+ 424              		@ link register save eliminated.
+ 425              	.LM89:
+ 426 0270 0E12A0E3 		mov	r1, #-536870912
+ 427 0274 031981E2 		add	r1, r1, #49152
+ 428 0278 203091E5 		ldr	r3, [r1, #32]
+ 429 027c 010013E3 		tst	r3, #1
+ 430              	.LM90:
+ 431 0280 0520A003 		moveq	r2, #5
+ 432 0284 20208105 		streq	r2, [r1, #32]
+ 433              	.LM91:
+ 434 0288 04309105 		ldreq	r3, [r1, #4]
+ 435 028c 033C8303 		orreq	r3, r3, #768
+ 436              	.LM92:
+ 437              		@ lr needed for prologue
+ 438              	.LM93:
+ 439 0290 04308105 		streq	r3, [r1, #4]
+ 440 0294 1EFF2FE1 		bx	lr
+ 441              	.LFE14:
+ 443              		.align	2
+ 444              		.global	UART0_txFlush
+ 446              	UART0_txFlush:
+ 447              	.LFB16:
+ 448              	.LM94:
+ 449              		@ Function supports interworking.
+ 450              		@ args = 0, pretend = 0, frame = 0
+ 451              		@ frame_needed = 0, uses_anonymous_args = 0
+ 452              		@ link register save eliminated.
+ 453              	.LM95:
+ 454 0298 0E22A0E3 		mov	r2, #-536870912
+ 455 029c 032982E2 		add	r2, r2, #49152
+ 456 02a0 083092E5 		ldr	r3, [r2, #8]
+ 457 02a4 043083E3 		orr	r3, r3, #4
+ 458              	.LM96:
+ 459              		@ lr needed for prologue
+ 460              	.LM97:
+ 461 02a8 083082E5 		str	r3, [r2, #8]
+ 462              	.LM98:
+ 463 02ac 1EFF2FE1 		bx	lr
+ 464              	.LFE16:
+ 466              		.align	2
+ 467              		.global	UART0_txEmpty
+ 469              	UART0_txEmpty:
+ 470              	.LFB17:
+ 471              	.LM99:
+ 472              		@ Function supports interworking.
+ 473              		@ args = 0, pretend = 0, frame = 0
+ 474              		@ frame_needed = 0, uses_anonymous_args = 0
+ 475              		@ link register save eliminated.
+ 476              	.LM100:
+ 477 02b0 0E32A0E3 		mov	r3, #-536870912
+ 478 02b4 033983E2 		add	r3, r3, #49152
+ 479 02b8 140093E5 		ldr	r0, [r3, #20]
+ 480 02bc 600000E2 		and	r0, r0, #96
+ 481              	.LM101:
+ 482 02c0 600050E3 		cmp	r0, #96
+ 483 02c4 0000A013 		movne	r0, #0
+ 484 02c8 0100A003 		moveq	r0, #1
+ 485              	.LM102:
+ 486              		@ lr needed for prologue
+ 487              	.LM103:
+ 488 02cc 1EFF2FE1 		bx	lr
+ 489              	.LFE17:
+ 491              		.align	2
+ 492              		.global	UARTWriteChar
+ 494              	UARTWriteChar:
+ 495              	.LFB18:
+ 496              	.LM104:
+ 497              		@ Function supports interworking.
+ 498              		@ args = 0, pretend = 0, frame = 0
+ 499              		@ frame_needed = 0, uses_anonymous_args = 0
+ 500              		@ link register save eliminated.
+ 501              	.LVL31:
+ 502 02d0 0E22A0E3 		mov	r2, #-536870912
+ 503              		@ lr needed for prologue
+ 504              	.LM105:
+ 505 02d4 FF0000E2 		and	r0, r0, #255
+ 506 02d8 032982E2 		add	r2, r2, #49152
+ 507              	.L54:
+ 508              	.LM106:
+ 509 02dc 143092E5 		ldr	r3, [r2, #20]
+ 510 02e0 200013E3 		tst	r3, #32
+ 511 02e4 FCFFFF0A 		beq	.L54
+ 512              	.LM107:
+ 513 02e8 000082E5 		str	r0, [r2, #0]
+ 514              	.LM108:
+ 515 02ec 1EFF2FE1 		bx	lr
+ 516              	.LFE18:
+ 518              		.align	2
+ 519              		.global	UARTReadChar
+ 521              	UARTReadChar:
+ 522              	.LFB19:
+ 523              	.LM109:
+ 524              		@ Function supports interworking.
+ 525              		@ args = 0, pretend = 0, frame = 0
+ 526              		@ frame_needed = 0, uses_anonymous_args = 0
+ 527              		@ link register save eliminated.
+ 528 02f0 0E22A0E3 		mov	r2, #-536870912
+ 529              		@ lr needed for prologue
+ 530 02f4 032982E2 		add	r2, r2, #49152
+ 531              	.L61:
+ 532              	.LM110:
+ 533 02f8 143092E5 		ldr	r3, [r2, #20]
+ 534 02fc 010013E3 		tst	r3, #1
+ 535 0300 FCFFFF0A 		beq	.L61
+ 536              	.LM111:
+ 537 0304 000092E5 		ldr	r0, [r2, #0]
+ 538 0308 FF0000E2 		and	r0, r0, #255
+ 539              	.LM112:
+ 540 030c 1EFF2FE1 		bx	lr
+ 541              	.LFE19:
+ 543              		.align	2
+ 544              		.global	UART_send
+ 546              	UART_send:
+ 547              	.LFB21:
+ 548              	.LM113:
+ 549              		@ Function supports interworking.
+ 550              		@ args = 0, pretend = 0, frame = 0
+ 551              		@ frame_needed = 0, uses_anonymous_args = 0
+ 552              	.LVL32:
+ 553 0310 04E02DE5 		str	lr, [sp, #-4]!
+ 554              	.LCFI3:
+ 555 0314 0E22A0E3 		mov	r2, #-536870912
+ 556              	.LM114:
+ 557 0318 FF1001E2 		and	r1, r1, #255
+ 558 031c 032982E2 		add	r2, r2, #49152
+ 559              	.L67:
+ 560              	.LM115:
+ 561 0320 143092E5 		ldr	r3, [r2, #20]
+ 562 0324 200013E3 		tst	r3, #32
+ 563 0328 FCFFFF0A 		beq	.L67
+ 564 032c 0EE2A0E3 		mov	lr, #-536870912
+ 565 0330 03E98EE2 		add	lr, lr, #49152
+ 566 0334 00C0A0E3 		mov	ip, #0
+ 567              	.LVL33:
+ 568              	.L82:
+ 569              	.LM116:
+ 570 0338 013041E2 		sub	r3, r1, #1
+ 571 033c FF1003E2 		and	r1, r3, #255
+ 572 0340 FF0051E3 		cmp	r1, #255
+ 573 0344 0E00000A 		beq	.L83
+ 574              	.L70:
+ 575              	.LM117:
+ 576 0348 01308CE2 		add	r3, ip, #1
+ 577 034c 0020DCE7 		ldrb	r2, [ip, r0]	@ zero_extendqisi2
+ 578 0350 FFC003E2 		and	ip, r3, #255
+ 579              	.LM118:
+ 580 0354 0F005CE3 		cmp	ip, #15
+ 581              	.LM119:
+ 582 0358 00208EE5 		str	r2, [lr, #0]
+ 583              	.LM120:
+ 584 035c F5FFFF9A 		bls	.L82
+ 585 0360 0E22A0E3 		mov	r2, #-536870912
+ 586 0364 032982E2 		add	r2, r2, #49152
+ 587              	.L71:
+ 588              	.LM121:
+ 589 0368 143092E5 		ldr	r3, [r2, #20]
+ 590 036c 200013E3 		tst	r3, #32
+ 591 0370 FCFFFF0A 		beq	.L71
+ 592              	.LM122:
+ 593 0374 013041E2 		sub	r3, r1, #1
+ 594 0378 FF1003E2 		and	r1, r3, #255
+ 595 037c FF0051E3 		cmp	r1, #255
+ 596 0380 F0FFFF1A 		bne	.L70
+ 597              	.L83:
+ 598              	.LM123:
+ 599 0384 04E09DE4 		ldr	lr, [sp], #4
+ 600 0388 1EFF2FE1 		bx	lr
+ 601              	.LFE21:
+ 603              		.align	2
+ 604              		.global	crc_update
+ 606              	crc_update:
+ 607              	.LFB23:
+ 608              	.LM124:
+ 609              		@ Function supports interworking.
+ 610              		@ args = 0, pretend = 0, frame = 0
+ 611              		@ frame_needed = 0, uses_anonymous_args = 0
+ 612              		@ link register save eliminated.
+ 613              	.LVL34:
+ 614 038c 0008A0E1 		mov	r0, r0, asl #16
+ 615              	.LVL35:
+ 616              	.LM125:
+ 617 0390 201821E0 		eor	r1, r1, r0, lsr #16
+ 618              	.LVL36:
+ 619 0394 FF1001E2 		and	r1, r1, #255
+ 620              	.LVL37:
+ 621              	.LM126:
+ 622 0398 011221E0 		eor	r1, r1, r1, asl #4
+ 623              	.LVL38:
+ 624 039c FF1001E2 		and	r1, r1, #255
+ 625              	.LVL39:
+ 626              	.LM127:
+ 627 03a0 8131A0E1 		mov	r3, r1, asl #3
+ 628 03a4 200CA0E1 		mov	r0, r0, lsr #24
+ 629 03a8 213223E0 		eor	r3, r3, r1, lsr #4
+ 630 03ac 010480E1 		orr	r0, r0, r1, asl #8
+ 631              	.LM128:
+ 632 03b0 030020E0 		eor	r0, r0, r3
+ 633              	.LM129:
+ 634              		@ lr needed for prologue
+ 635              	.LM130:
+ 636 03b4 1EFF2FE1 		bx	lr
+ 637              	.LFE23:
+ 639              		.align	2
+ 640              		.global	crc16
+ 642              	crc16:
+ 643              	.LFB24:
+ 644              	.LM131:
+ 645              		@ Function supports interworking.
+ 646              		@ args = 0, pretend = 0, frame = 0
+ 647              		@ frame_needed = 0, uses_anonymous_args = 0
+ 648              	.LVL40:
+ 649 03b8 0118A0E1 		mov	r1, r1, asl #16
+ 650              	.LVL41:
+ 651 03bc 10402DE9 		stmfd	sp!, {r4, lr}
+ 652              	.LCFI4:
+ 653              	.LM132:
+ 654 03c0 2148A0E1 		mov	r4, r1, lsr #16
+ 655              	.LVL42:
+ 656 03c4 0228A0E1 		mov	r2, r2, asl #16
+ 657              	.LVL43:
+ 658              	.LM133:
+ 659 03c8 000054E3 		cmp	r4, #0
+ 660              	.LM134:
+ 661 03cc 00E0A0E1 		mov	lr, r0
+ 662 03d0 2208A0E1 		mov	r0, r2, lsr #16
+ 663              	.LVL44:
+ 664              	.LM135:
+ 665 03d4 0E0000DA 		ble	.L87
+ 666              	.LM136:
+ 667 03d8 00C0A0E3 		mov	ip, #0
+ 668              	.LVL45:
+ 669              	.L89:
+ 670              	.LBB24:
+ 671              	.LBB25:
+ 672              	.LM137:
+ 673 03dc 0E30DCE7 		ldrb	r3, [ip, lr]	@ zero_extendqisi2
+ 674              	.LBE25:
+ 675              	.LBE24:
+ 676              	.LM138:
+ 677 03e0 0018A0E1 		mov	r1, r0, asl #16
+ 678              	.LBB26:
+ 679              	.LBB27:
+ 680              	.LM139:
+ 681 03e4 213823E0 		eor	r3, r3, r1, lsr #16
+ 682 03e8 FF3003E2 		and	r3, r3, #255
+ 683              	.LVL46:
+ 684              	.LM140:
+ 685 03ec 033223E0 		eor	r3, r3, r3, asl #4
+ 686              	.LVL47:
+ 687 03f0 FF3003E2 		and	r3, r3, #255
+ 688              	.LVL48:
+ 689              	.LBE27:
+ 690              	.LBE26:
+ 691              	.LM141:
+ 692 03f4 211CA0E1 		mov	r1, r1, lsr #24
+ 693              	.LM142:
+ 694 03f8 01C08CE2 		add	ip, ip, #1
+ 695              	.LM143:
+ 696 03fc 8321A0E1 		mov	r2, r3, asl #3
+ 697 0400 232222E0 		eor	r2, r2, r3, lsr #4
+ 698 0404 031481E1 		orr	r1, r1, r3, asl #8
+ 699              	.LM144:
+ 700 0408 04005CE1 		cmp	ip, r4
+ 701              	.LM145:
+ 702 040c 020021E0 		eor	r0, r1, r2
+ 703              	.LM146:
+ 704 0410 F1FFFF1A 		bne	.L89
+ 705              	.L87:
+ 706              	.LVL49:
+ 707              	.LM147:
+ 708 0414 1040BDE8 		ldmfd	sp!, {r4, lr}
+ 709 0418 1EFF2FE1 		bx	lr
+ 710              	.LFE24:
+ 712              		.align	2
+ 713              		.global	__putchar
+ 715              	__putchar:
+ 716              	.LFB20:
+ 717              	.LM148:
+ 718              		@ Function supports interworking.
+ 719              		@ args = 0, pretend = 0, frame = 0
+ 720              		@ frame_needed = 0, uses_anonymous_args = 0
+ 721              		@ link register save eliminated.
+ 722              	.LVL50:
+ 723              	.LM149:
+ 724 041c 0A0050E3 		cmp	r0, #10
+ 725              	.LM150:
+ 726              		@ lr needed for prologue
+ 727              	.LM151:
+ 728 0420 0800000A 		beq	.L103
+ 729              	.L93:
+ 730 0424 0E22A0E3 		mov	r2, #-536870912
+ 731              	.LM152:
+ 732 0428 FF0000E2 		and	r0, r0, #255
+ 733              	.LVL51:
+ 734 042c 032982E2 		add	r2, r2, #49152
+ 735              	.L96:
+ 736              	.LBB32:
+ 737              	.LBB33:
+ 738              	.LM153:
+ 739 0430 143092E5 		ldr	r3, [r2, #20]
+ 740 0434 200013E3 		tst	r3, #32
+ 741 0438 FCFFFF0A 		beq	.L96
+ 742              	.LM154:
+ 743 043c FF3000E2 		and	r3, r0, #255
+ 744 0440 003082E5 		str	r3, [r2, #0]
+ 745              	.LBE33:
+ 746              	.LBE32:
+ 747              	.LM155:
+ 748 0444 1EFF2FE1 		bx	lr
+ 749              	.LVL52:
+ 750              	.L103:
+ 751 0448 0E22A0E3 		mov	r2, #-536870912
+ 752 044c 032982E2 		add	r2, r2, #49152
+ 753              	.L94:
+ 754              	.LBB34:
+ 755              	.LBB35:
+ 756              	.LM156:
+ 757 0450 143092E5 		ldr	r3, [r2, #20]
+ 758 0454 200013E3 		tst	r3, #32
+ 759 0458 FCFFFF0A 		beq	.L94
+ 760              	.LM157:
+ 761 045c 0D30A0E3 		mov	r3, #13
+ 762 0460 003082E5 		str	r3, [r2, #0]
+ 763 0464 EEFFFFEA 		b	.L93
+ 764              	.LBE35:
+ 765              	.LBE34:
+ 766              	.LFE20:
+ 768              		.align	2
+ 769              		.global	UART_send_ringbuffer
+ 771              	UART_send_ringbuffer:
+ 772              	.LFB22:
+ 773              	.LM158:
+ 774              		@ Function supports interworking.
+ 775              		@ args = 0, pretend = 0, frame = 0
+ 776              		@ frame_needed = 0, uses_anonymous_args = 0
+ 777 0468 04E02DE5 		str	lr, [sp, #-4]!
+ 778              	.LCFI5:
+ 779              	.LM159:
+ 780 046c 6CE09FE5 		ldr	lr, .L113
+ 781 0470 0030DEE5 		ldrb	r3, [lr, #0]	@ zero_extendqisi2
+ 782 0474 000053E3 		cmp	r3, #0
+ 783 0478 1600001A 		bne	.L110
+ 784              	.LBB40:
+ 785              	.LBB41:
+ 786              	.LM160:
+ 787 047c 60C09FE5 		ldr	ip, .L113+4
+ 788 0480 0C209CE5 		ldr	r2, [ip, #12]
+ 789 0484 10309CE5 		ldr	r3, [ip, #16]
+ 790 0488 030052E1 		cmp	r2, r3
+ 791 048c 1100000A 		beq	.L110
+ 792              	.LM161:
+ 793 0490 00109CE5 		ldr	r1, [ip, #0]
+ 794 0494 0C209CE5 		ldr	r2, [ip, #12]
+ 795 0498 0200D1E7 		ldrb	r0, [r1, r2]	@ zero_extendqisi2
+ 796              	.LM162:
+ 797 049c 0C309CE5 		ldr	r3, [ip, #12]
+ 798 04a0 18209CE5 		ldr	r2, [ip, #24]
+ 799 04a4 013083E2 		add	r3, r3, #1
+ 800 04a8 023003E0 		and	r3, r3, r2
+ 801              	.LBE41:
+ 802              	.LBE40:
+ 803              	.LM163:
+ 804 04ac 0120A0E3 		mov	r2, #1
+ 805              	.LBB42:
+ 806              	.LBB43:
+ 807              	.LM164:
+ 808 04b0 0C308CE5 		str	r3, [ip, #12]
+ 809              	.LBE43:
+ 810              	.LBE42:
+ 811              	.LM165:
+ 812 04b4 0020CEE5 		strb	r2, [lr, #0]
+ 813 04b8 122242E2 		sub	r2, r2, #536870913
+ 814              	.LBB44:
+ 815              	.LBB45:
+ 816              	.LM166:
+ 817 04bc FF0000E2 		and	r0, r0, #255
+ 818              	.LVL53:
+ 819 04c0 032982E2 		add	r2, r2, #49152
+ 820              	.L108:
+ 821              	.LBE45:
+ 822              	.LBE44:
+ 823              	.LBB46:
+ 824              	.LBB47:
+ 825              	.LM167:
+ 826 04c4 143092E5 		ldr	r3, [r2, #20]
+ 827 04c8 200013E3 		tst	r3, #32
+ 828 04cc FCFFFF0A 		beq	.L108
+ 829              	.LM168:
+ 830 04d0 FF3000E2 		and	r3, r0, #255
+ 831 04d4 003082E5 		str	r3, [r2, #0]
+ 832              	.L110:
+ 833              	.LBE47:
+ 834              	.LBE46:
+ 835              	.LM169:
+ 836 04d8 04E09DE4 		ldr	lr, [sp], #4
+ 837 04dc 1EFF2FE1 		bx	lr
+ 838              	.L114:
+ 839              		.align	2
+ 840              	.L113:
+ 841 04e0 00000000 		.word	transmission_running
+ 842 04e4 00000000 		.word	txFifo
+ 843              	.LFE22:
+ 845              		.global	__udivsi3
+ 846              		.align	2
+ 847              		.global	UARTInitialize
+ 849              	UARTInitialize:
+ 850              	.LFB13:
+ 851              	.LM170:
+ 852              		@ Function supports interworking.
+ 853              		@ args = 0, pretend = 0, frame = 0
+ 854              		@ frame_needed = 0, uses_anonymous_args = 0
+ 855              	.LVL54:
+ 856 04e8 F0412DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, lr}
+ 857              	.LCFI6:
+ 858              	.LM171:
+ 859 04ec 0050A0E1 		mov	r5, r0
+ 860              	.LM172:
+ 861 04f0 FEFFFFEB 		bl	disableIRQ
+ 862              	.LVL55:
+ 863 04f4 0E42A0E3 		mov	r4, #-536870912
+ 864 04f8 034984E2 		add	r4, r4, #49152
+ 865 04fc 043094E5 		ldr	r3, [r4, #4]
+ 866 0500 F4709FE5 		ldr	r7, .L117
+ 867 0504 0130C3E3 		bic	r3, r3, #1
+ 868 0508 043084E5 		str	r3, [r4, #4]
+ 869 050c 000087E5 		str	r0, [r7, #0]
+ 870 0510 FEFFFFEB 		bl	restoreIRQ
+ 871              	.LM173:
+ 872 0514 FEFFFFEB 		bl	disableIRQ
+ 873 0518 043094E5 		ldr	r3, [r4, #4]
+ 874 051c DC809FE5 		ldr	r8, .L117+4
+ 875 0520 0230C3E3 		bic	r3, r3, #2
+ 876 0524 043084E5 		str	r3, [r4, #4]
+ 877 0528 000088E5 		str	r0, [r8, #0]
+ 878 052c FEFFFFEB 		bl	restoreIRQ
+ 879              	.LM174:
+ 880 0530 FEFFFFEB 		bl	peripheralClockFrequency
+ 881 0534 0512A0E1 		mov	r1, r5, asl #4
+ 882 0538 FEFFFFEB 		bl	__udivsi3
+ 883              	.LM175:
+ 884 053c 2024A0E1 		mov	r2, r0, lsr #8
+ 885 0540 FF2002E2 		and	r2, r2, #255
+ 886              	.LM176:
+ 887 0544 FF0000E2 		and	r0, r0, #255
+ 888              	.LM177:
+ 889 0548 8330A0E3 		mov	r3, #131
+ 890 054c 0C3084E5 		str	r3, [r4, #12]
+ 891              	.LM178:
+ 892 0550 000084E5 		str	r0, [r4, #0]
+ 893              	.LM179:
+ 894 0554 042084E5 		str	r2, [r4, #4]
+ 895              	.LM180:
+ 896 0558 0CC094E5 		ldr	ip, [r4, #12]
+ 897              	.LM181:
+ 898 055c 043083E2 		add	r3, r3, #4
+ 899              	.LM182:
+ 900 0560 80C0CCE3 		bic	ip, ip, #128
+ 901 0564 0CC084E5 		str	ip, [r4, #12]
+ 902              	.LBB52:
+ 903              	.LBB53:
+ 904              	.LM183:
+ 905 0568 94109FE5 		ldr	r1, .L117+8
+ 906              	.LBE53:
+ 907              	.LBE52:
+ 908              	.LM184:
+ 909 056c 083084E5 		str	r3, [r4, #8]
+ 910              	.LBB54:
+ 911              	.LBB55:
+ 912              	.LM185:
+ 913 0570 90509FE5 		ldr	r5, .L117+12
+ 914              	.LVL56:
+ 915              	.LBE55:
+ 916              	.LBE54:
+ 917              	.LBB56:
+ 918              	.LBB57:
+ 919 0574 90209FE5 		ldr	r2, .L117+16
+ 920              	.LBE57:
+ 921              	.LBE56:
+ 922              	.LBB58:
+ 923              	.LBB59:
+ 924 0578 90309FE5 		ldr	r3, .L117+20
+ 925              	.LBE59:
+ 926              	.LBE58:
+ 927              	.LBB60:
+ 928              	.LBB61:
+ 929              	.LM186:
+ 930 057c 7FEFA0E3 		mov	lr, #508
+ 931              	.LM187:
+ 932 0580 0000A0E3 		mov	r0, #0
+ 933              	.LM188:
+ 934 0584 03E08EE2 		add	lr, lr, #3
+ 935              	.LM189:
+ 936 0588 026CA0E3 		mov	r6, #512
+ 937              	.LM190:
+ 938 058c 002081E5 		str	r2, [r1, #0]
+ 939              	.LM191:
+ 940 0590 086081E5 		str	r6, [r1, #8]
+ 941              	.LM192:
+ 942 0594 0C0081E5 		str	r0, [r1, #12]
+ 943              	.LM193:
+ 944 0598 100081E5 		str	r0, [r1, #16]
+ 945              	.LM194:
+ 946 059c 140081E5 		str	r0, [r1, #20]
+ 947              	.LM195:
+ 948 05a0 18E081E5 		str	lr, [r1, #24]
+ 949              	.LM196:
+ 950 05a4 0400C1E5 		strb	r0, [r1, #4]
+ 951              	.LBE61:
+ 952              	.LBE60:
+ 953              	.LBB62:
+ 954              	.LBB63:
+ 955              	.LM197:
+ 956 05a8 003085E5 		str	r3, [r5, #0]
+ 957              	.LM198:
+ 958 05ac 086085E5 		str	r6, [r5, #8]
+ 959              	.LM199:
+ 960 05b0 0C0085E5 		str	r0, [r5, #12]
+ 961              	.LM200:
+ 962 05b4 100085E5 		str	r0, [r5, #16]
+ 963              	.LM201:
+ 964 05b8 140085E5 		str	r0, [r5, #20]
+ 965              	.LM202:
+ 966 05bc 18E085E5 		str	lr, [r5, #24]
+ 967              	.LM203:
+ 968 05c0 0400C5E5 		strb	r0, [r5, #4]
+ 969              	.LBE63:
+ 970              	.LBE62:
+ 971              	.LM204:
+ 972 05c4 FEFFFFEB 		bl	disableIRQ
+ 973 05c8 043094E5 		ldr	r3, [r4, #4]
+ 974 05cc 013083E3 		orr	r3, r3, #1
+ 975 05d0 043084E5 		str	r3, [r4, #4]
+ 976 05d4 000087E5 		str	r0, [r7, #0]
+ 977 05d8 FEFFFFEB 		bl	restoreIRQ
+ 978              	.LM205:
+ 979 05dc FEFFFFEB 		bl	disableIRQ
+ 980 05e0 043094E5 		ldr	r3, [r4, #4]
+ 981 05e4 023083E3 		orr	r3, r3, #2
+ 982 05e8 043084E5 		str	r3, [r4, #4]
+ 983 05ec 000088E5 		str	r0, [r8, #0]
+ 984 05f0 FEFFFFEB 		bl	restoreIRQ
+ 985              	.LM206:
+ 986 05f4 F041BDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, lr}
+ 987 05f8 1EFF2FE1 		bx	lr
+ 988              	.L118:
+ 989              		.align	2
+ 990              	.L117:
+ 991 05fc 00000000 		.word	uart0_rx_cpsr
+ 992 0600 00000000 		.word	uart0_tx_cpsr
+ 993 0604 00000000 		.word	rxFifo
+ 994 0608 00000000 		.word	txFifo
+ 995 060c 00000000 		.word	rxBuffer
+ 996 0610 00000000 		.word	txBuffer
+ 997              	.LFE13:
+ 999              		.align	2
+ 1000              		.global	UART0_rxFlush
+ 1002              	UART0_rxFlush:
+ 1003              	.LFB15:
+ 1004              	.LM207:
+ 1005              		@ Function supports interworking.
+ 1006              		@ args = 0, pretend = 0, frame = 0
+ 1007              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1008              		@ link register save eliminated.
+ 1009              	.LM208:
+ 1010 0614 0E22A0E3 		mov	r2, #-536870912
+ 1011 0618 032982E2 		add	r2, r2, #49152
+ 1012 061c 083092E5 		ldr	r3, [r2, #8]
+ 1013              	.LBB66:
+ 1014              	.LBB67:
+ 1015              	.LM209:
+ 1016 0620 14009FE5 		ldr	r0, .L121
+ 1017 0624 0010A0E3 		mov	r1, #0
+ 1018              	.LBE67:
+ 1019              	.LBE66:
+ 1020              	.LM210:
+ 1021 0628 023083E3 		orr	r3, r3, #2
+ 1022 062c 083082E5 		str	r3, [r2, #8]
+ 1023              	.LM211:
+ 1024              		@ lr needed for prologue
+ 1025              	.LBB68:
+ 1026              	.LBB69:
+ 1027              	.LM212:
+ 1028 0630 101080E5 		str	r1, [r0, #16]
+ 1029              	.LM213:
+ 1030 0634 0C1080E5 		str	r1, [r0, #12]
+ 1031              	.LBE69:
+ 1032              	.LBE68:
+ 1033              	.LM214:
+ 1034 0638 1EFF2FE1 		bx	lr
+ 1035              	.L122:
+ 1036              		.align	2
+ 1037              	.L121:
+ 1038 063c 00000000 		.word	rxFifo
+ 1039              	.LFE15:
+ 1041              		.align	2
+ 1042              		.global	uart0ISR
+ 1044              	uart0ISR:
+ 1045              	.LFB2:
+ 1046              	.LM215:
+ 1047              		@ Function supports interworking.
+ 1048              		@ args = 0, pretend = 0, frame = 0
+ 1049              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1050 0640 F0472DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
+ 1051              	.LCFI7:
+ 1052 0644 0EE2A0E3 		mov	lr, #-536870912
+ 1053 0648 18729FE5 		ldr	r7, .L158
+ 1054 064c 03E98EE2 		add	lr, lr, #49152
+ 1055 0650 01A0A0E3 		mov	sl, #1
+ 1056 0654 0090A0E3 		mov	r9, #0
+ 1057              	.L155:
+ 1058              	.LM216:
+ 1059 0658 08309EE5 		ldr	r3, [lr, #8]
+ 1060 065c 0338A0E1 		mov	r3, r3, asl #16
+ 1061 0660 2318A0E1 		mov	r1, r3, lsr #16
+ 1062 0664 010011E2 		ands	r0, r1, #1
+ 1063 0668 4900001A 		bne	.L156
+ 1064              	.L125:
+ 1065              	.LM217:
+ 1066 066c 010C11E3 		tst	r1, #256
+ 1067 0670 0A00000A 		beq	.L126
+ 1068              	.LM218:
+ 1069 0674 00A0C7E5 		strb	sl, [r7, #0]
+ 1070              	.LM219:
+ 1071 0678 20309EE5 		ldr	r3, [lr, #32]
+ 1072 067c 013C83E3 		orr	r3, r3, #256
+ 1073 0680 20308EE5 		str	r3, [lr, #32]
+ 1074              	.LM220:
+ 1075 0684 20209EE5 		ldr	r2, [lr, #32]
+ 1076 0688 0120C2E3 		bic	r2, r2, #1
+ 1077 068c 20208EE5 		str	r2, [lr, #32]
+ 1078              	.LM221:
+ 1079 0690 04309EE5 		ldr	r3, [lr, #4]
+ 1080 0694 033CC3E3 		bic	r3, r3, #768
+ 1081 0698 04308EE5 		str	r3, [lr, #4]
+ 1082              	.LM222:
+ 1083 069c 0000C7E5 		strb	r0, [r7, #0]
+ 1084              	.L126:
+ 1085              	.LM223:
+ 1086 06a0 020C11E3 		tst	r1, #512
+ 1087              	.LM224:
+ 1088 06a4 00A0C715 		strneb	sl, [r7, #0]
+ 1089              	.LM225:
+ 1090 06a8 20309E15 		ldrne	r3, [lr, #32]
+ 1091 06ac 023C8313 		orrne	r3, r3, #512
+ 1092 06b0 20308E15 		strne	r3, [lr, #32]
+ 1093              	.LM226:
+ 1094 06b4 0E3001E2 		and	r3, r1, #14
+ 1095 06b8 023043E2 		sub	r3, r3, #2
+ 1096              	.LM227:
+ 1097 06bc 0000C715 		strneb	r0, [r7, #0]
+ 1098              	.LM228:
+ 1099 06c0 0A0053E3 		cmp	r3, #10
+ 1100 06c4 03F19F97 		ldrls	pc, [pc, r3, asl #2]
+ 1101 06c8 380000EA 		b	.L130
+ 1102              		.align	2
+ 1103              	.L134:
+ 1104 06cc F8060000 		.word	.L131
+ 1105 06d0 B0070000 		.word	.L130
+ 1106 06d4 BC070000 		.word	.L132
+ 1107 06d8 B0070000 		.word	.L130
+ 1108 06dc A8070000 		.word	.L133
+ 1109 06e0 B0070000 		.word	.L130
+ 1110 06e4 B0070000 		.word	.L130
+ 1111 06e8 B0070000 		.word	.L130
+ 1112 06ec B0070000 		.word	.L130
+ 1113 06f0 B0070000 		.word	.L130
+ 1114 06f4 BC070000 		.word	.L132
+ 1115              	.L131:
+ 1116              	.LM229:
+ 1117 06f8 0E32A0E3 		mov	r3, #-536870912
+ 1118 06fc 0A3983E2 		add	r3, r3, #163840
+ 1119 0700 002093E5 		ldr	r2, [r3, #0]
+ 1120 0704 010512E3 		tst	r2, #4194304
+ 1121 0708 D2FFFF1A 		bne	.L155
+ 1122              	.LM230:
+ 1123 070c 58C19FE5 		ldr	ip, .L158+4
+ 1124 0710 04A0CCE5 		strb	sl, [ip, #4]
+ 1125              	.LM231:
+ 1126 0714 14309EE5 		ldr	r3, [lr, #20]
+ 1127 0718 200013E3 		tst	r3, #32
+ 1128 071c 1600000A 		beq	.L142
+ 1129              	.LBB76:
+ 1130              	.LBB77:
+ 1131              	.LM232:
+ 1132 0720 0C209CE5 		ldr	r2, [ip, #12]
+ 1133 0724 10309CE5 		ldr	r3, [ip, #16]
+ 1134 0728 030052E1 		cmp	r2, r3
+ 1135 072c 0400001A 		bne	.L153
+ 1136 0730 480000EA 		b	.L144
+ 1137              	.LVL57:
+ 1138              	.L143:
+ 1139 0734 0C2093E5 		ldr	r2, [r3, #12]
+ 1140 0738 103093E5 		ldr	r3, [r3, #16]
+ 1141 073c 030052E1 		cmp	r2, r3
+ 1142 0740 4400000A 		beq	.L144
+ 1143              	.L153:
+ 1144              	.LM233:
+ 1145 0744 00009CE5 		ldr	r0, [ip, #0]
+ 1146 0748 0C209CE5 		ldr	r2, [ip, #12]
+ 1147 074c 0210D0E7 		ldrb	r1, [r0, r2]	@ zero_extendqisi2
+ 1148              	.LVL58:
+ 1149              	.LM234:
+ 1150 0750 0C309CE5 		ldr	r3, [ip, #12]
+ 1151 0754 18209CE5 		ldr	r2, [ip, #24]
+ 1152 0758 013083E2 		add	r3, r3, #1
+ 1153 075c 023003E0 		and	r3, r3, r2
+ 1154              	.LM235:
+ 1155 0760 FF1001E2 		and	r1, r1, #255
+ 1156              	.LVL59:
+ 1157              	.LM236:
+ 1158 0764 0C308CE5 		str	r3, [ip, #12]
+ 1159              	.LBE77:
+ 1160              	.LBE76:
+ 1161              	.LM237:
+ 1162 0768 00108EE5 		str	r1, [lr, #0]
+ 1163              	.LM238:
+ 1164 076c 14309EE5 		ldr	r3, [lr, #20]
+ 1165 0770 200013E3 		tst	r3, #32
+ 1166              	.LBB78:
+ 1167              	.LBB79:
+ 1168              	.LM239:
+ 1169 0774 F0309FE5 		ldr	r3, .L158+4
+ 1170              	.LBE79:
+ 1171              	.LBE78:
+ 1172              	.LM240:
+ 1173 0778 EDFFFF1A 		bne	.L143
+ 1174              	.L142:
+ 1175              	.LM241:
+ 1176 077c 0490CCE5 		strb	r9, [ip, #4]
+ 1177              	.L157:
+ 1178              	.LM242:
+ 1179 0780 08309EE5 		ldr	r3, [lr, #8]
+ 1180 0784 0338A0E1 		mov	r3, r3, asl #16
+ 1181 0788 2318A0E1 		mov	r1, r3, lsr #16
+ 1182              	.LVL60:
+ 1183 078c 010011E2 		ands	r0, r1, #1
+ 1184 0790 B5FFFF0A 		beq	.L125
+ 1185              	.L156:
+ 1186              	.LM243:
+ 1187 0794 0020A0E3 		mov	r2, #0
+ 1188 0798 0030E0E3 		mvn	r3, #0
+ 1189 079c CF2F03E5 		str	r2, [r3, #-4047]
+ 1190              	.LM244:
+ 1191 07a0 F047BDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
+ 1192 07a4 1EFF2FE1 		bx	lr
+ 1193              	.L133:
+ 1194              	.LM245:
+ 1195 07a8 14309EE5 		ldr	r3, [lr, #20]
+ 1196 07ac A9FFFFEA 		b	.L155
+ 1197              	.L130:
+ 1198              	.LM246:
+ 1199 07b0 14309EE5 		ldr	r3, [lr, #20]
+ 1200              	.LM247:
+ 1201 07b4 00209EE5 		ldr	r2, [lr, #0]
+ 1202 07b8 A6FFFFEA 		b	.L155
+ 1203              	.L132:
+ 1204              	.LM248:
+ 1205 07bc ACC09FE5 		ldr	ip, .L158+8
+ 1206 07c0 AC609FE5 		ldr	r6, .L158+12
+ 1207 07c4 0E52A0E3 		mov	r5, #-536870912
+ 1208 07c8 04A0CCE5 		strb	sl, [ip, #4]
+ 1209 07cc 035985E2 		add	r5, r5, #49152
+ 1210 07d0 0C00A0E1 		mov	r0, ip
+ 1211 07d4 0680A0E1 		mov	r8, r6
+ 1212              	.L135:
+ 1213              	.LM249:
+ 1214 07d8 002095E5 		ldr	r2, [r5, #0]
+ 1215              	.LBB80:
+ 1216              	.LBB81:
+ 1217              	.LM250:
+ 1218 07dc 0C309CE5 		ldr	r3, [ip, #12]
+ 1219              	.LBE81:
+ 1220              	.LBE80:
+ 1221              	.LBB82:
+ 1222              	.LBB83:
+ 1223              	.LM251:
+ 1224 07e0 FF4002E2 		and	r4, r2, #255
+ 1225              	.LBE83:
+ 1226              	.LBE82:
+ 1227              	.LBB84:
+ 1228              	.LBB85:
+ 1229              	.LM252:
+ 1230 07e4 10209CE5 		ldr	r2, [ip, #16]
+ 1231 07e8 18109CE5 		ldr	r1, [ip, #24]
+ 1232              	.LBE85:
+ 1233              	.LBE84:
+ 1234              	.LM253:
+ 1235 07ec 033062E0 		rsb	r3, r2, r3
+ 1236 07f0 013043E2 		sub	r3, r3, #1
+ 1237              	.LM254:
+ 1238 07f4 B020D6E1 		ldrh	r2, [r6, #0]
+ 1239              	.LM255:
+ 1240 07f8 013003E0 		and	r3, r3, r1
+ 1241 07fc 0338A0E1 		mov	r3, r3, asl #16
+ 1242              	.LM256:
+ 1243 0800 020853E1 		cmp	r3, r2, asl #16
+ 1244 0804 2338A0E1 		mov	r3, r3, lsr #16
+ 1245              	.LVL61:
+ 1246              	.LM257:
+ 1247 0808 B030C8B1 		strlth	r3, [r8, #0]	@ movhi
+ 1248              	.LBB86:
+ 1249              	.LBB87:
+ 1250              	.LM258:
+ 1251 080c 103090E5 		ldr	r3, [r0, #16]
+ 1252              	.LVL62:
+ 1253 0810 182090E5 		ldr	r2, [r0, #24]
+ 1254 0814 013083E2 		add	r3, r3, #1
+ 1255 0818 023003E0 		and	r3, r3, r2
+ 1256 081c 143080E5 		str	r3, [r0, #20]
+ 1257              	.LM259:
+ 1258 0820 0C2090E5 		ldr	r2, [r0, #12]
+ 1259 0824 143090E5 		ldr	r3, [r0, #20]
+ 1260 0828 030052E1 		cmp	r2, r3
+ 1261 082c 0700000A 		beq	.L138
+ 1262              	.LM260:
+ 1263 0830 001090E5 		ldr	r1, [r0, #0]
+ 1264 0834 103090E5 		ldr	r3, [r0, #16]
+ 1265 0838 0340C1E7 		strb	r4, [r1, r3]
+ 1266              	.LM261:
+ 1267 083c 142090E5 		ldr	r2, [r0, #20]
+ 1268 0840 102080E5 		str	r2, [r0, #16]
+ 1269              	.LBE87:
+ 1270              	.LBE86:
+ 1271              	.LM262:
+ 1272 0844 143095E5 		ldr	r3, [r5, #20]
+ 1273 0848 010013E3 		tst	r3, #1
+ 1274 084c E1FFFF1A 		bne	.L135
+ 1275              	.L138:
+ 1276              	.LM263:
+ 1277 0850 0490C0E5 		strb	r9, [r0, #4]
+ 1278 0854 7FFFFFEA 		b	.L155
+ 1279              	.LVL63:
+ 1280              	.L144:
+ 1281              	.LM264:
+ 1282 0858 18309FE5 		ldr	r3, .L158+16
+ 1283 085c 0090C3E5 		strb	r9, [r3, #0]
+ 1284              	.LM265:
+ 1285 0860 0490CCE5 		strb	r9, [ip, #4]
+ 1286 0864 C5FFFFEA 		b	.L157
+ 1287              	.L159:
+ 1288              		.align	2
+ 1289              	.L158:
+ 1290 0868 00000000 		.word	autobaud_in_progress
+ 1291 086c 00000000 		.word	txFifo
+ 1292 0870 00000000 		.word	rxFifo
+ 1293 0874 00000000 		.word	uart0_min_rx_buffer
+ 1294 0878 00000000 		.word	transmission_running
+ 1295              	.LFE2:
+ 1297              		.align	2
+ 1298              		.global	writePacket2Ringbuffer
+ 1300              	writePacket2Ringbuffer:
+ 1301              	.LFB11:
+ 1302              	.LM266:
+ 1303              		@ Function supports interworking.
+ 1304              		@ args = 0, pretend = 0, frame = 4
+ 1305              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1306              	.LVL64:
+ 1307 087c FF0000E2 		and	r0, r0, #255
+ 1308              	.LBB120:
+ 1309              	.LBB121:
+ 1310              	.LBB122:
+ 1311              	.LBB123:
+ 1312              	.LM267:
+ 1313 0880 0030E0E1 		mvn	r3, r0
+ 1314 0884 FF3003E2 		and	r3, r3, #255
+ 1315              	.LVL65:
+ 1316              	.LBE123:
+ 1317              	.LBE122:
+ 1318              	.LBE121:
+ 1319              	.LBE120:
+ 1320              	.LM268:
+ 1321 0888 F0452DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, sl, lr}
+ 1322              	.LCFI8:
+ 1323              	.LBB124:
+ 1324              	.LBB125:
+ 1325              	.LBB126:
+ 1326              	.LBB127:
+ 1327              	.LM269:
+ 1328 088c 033223E0 		eor	r3, r3, r3, asl #4
+ 1329              	.LVL66:
+ 1330 0890 FF3003E2 		and	r3, r3, #255
+ 1331              	.LVL67:
+ 1332              	.LBE127:
+ 1333              	.LBE126:
+ 1334              	.LBE125:
+ 1335              	.LBE124:
+ 1336              	.LM270:
+ 1337 0894 23C2A0E1 		mov	ip, r3, lsr #4
+ 1338 0898 03C48CE1 		orr	ip, ip, r3, asl #8
+ 1339 089c 83C12CE0 		eor	ip, ip, r3, asl #3
+ 1340              	.LM271:
+ 1341 08a0 FF6002E2 		and	r6, r2, #255
+ 1342              	.LM272:
+ 1343 08a4 A4729FE5 		ldr	r7, .L184
+ 1344              	.LM273:
+ 1345 08a8 04D04DE2 		sub	sp, sp, #4
+ 1346              	.LCFI9:
+ 1347              	.LM274:
+ 1348 08ac 0C38A0E1 		mov	r3, ip, asl #16
+ 1349              	.LVL68:
+ 1350              	.LBB128:
+ 1351              	.LBB129:
+ 1352              	.LM275:
+ 1353 08b0 000056E3 		cmp	r6, #0
+ 1354              	.LBE129:
+ 1355              	.LBE128:
+ 1356              	.LM276:
+ 1357 08b4 B2C0CDE1 		strh	ip, [sp, #2]	@ movhi
+ 1358              	.LVL69:
+ 1359              	.LM277:
+ 1360 08b8 0180A0E1 		mov	r8, r1
+ 1361              	.LM278:
+ 1362 08bc 0260C7E5 		strb	r6, [r7, #2]
+ 1363              	.LM279:
+ 1364 08c0 0300C7E5 		strb	r0, [r7, #3]
+ 1365              	.LM280:
+ 1366 08c4 23C8A0E1 		mov	ip, r3, lsr #16
+ 1367              	.LVL70:
+ 1368              	.LBB130:
+ 1369              	.LBB131:
+ 1370              	.LM281:
+ 1371 08c8 0150A0E1 		mov	r5, r1
+ 1372              	.LVL71:
+ 1373              	.LM282:
+ 1374 08cc 0E00000A 		beq	.L161
+ 1375              	.LVL72:
+ 1376              	.LVL73:
+ 1377 08d0 0100A0E1 		mov	r0, r1
+ 1378              	.LVL74:
+ 1379 08d4 06E081E0 		add	lr, r1, r6
+ 1380              	.LVL75:
+ 1381              	.L163:
+ 1382              	.LM283:
+ 1383 08d8 0130D0E4 		ldrb	r3, [r0], #1	@ zero_extendqisi2
+ 1384 08dc 0C18A0E1 		mov	r1, ip, asl #16
+ 1385              	.LVL76:
+ 1386              	.LBB132:
+ 1387              	.LBB133:
+ 1388              	.LM284:
+ 1389 08e0 213823E0 		eor	r3, r3, r1, lsr #16
+ 1390 08e4 FF3003E2 		and	r3, r3, #255
+ 1391              	.LVL77:
+ 1392              	.LM285:
+ 1393 08e8 033223E0 		eor	r3, r3, r3, asl #4
+ 1394              	.LVL78:
+ 1395 08ec FF3003E2 		and	r3, r3, #255
+ 1396              	.LVL79:
+ 1397              	.LBE133:
+ 1398              	.LBE132:
+ 1399              	.LM286:
+ 1400 08f0 211CA0E1 		mov	r1, r1, lsr #24
+ 1401 08f4 8321A0E1 		mov	r2, r3, asl #3
+ 1402 08f8 232222E0 		eor	r2, r2, r3, lsr #4
+ 1403 08fc 031481E1 		orr	r1, r1, r3, asl #8
+ 1404              	.LM287:
+ 1405 0900 00005EE1 		cmp	lr, r0
+ 1406              	.LM288:
+ 1407 0904 02C021E0 		eor	ip, r1, r2
+ 1408              	.LM289:
+ 1409 0908 F2FFFF1A 		bne	.L163
+ 1410              	.LVL80:
+ 1411              	.L161:
+ 1412              	.LBE131:
+ 1413              	.LBE130:
+ 1414              	.LBB134:
+ 1415              	.LBB135:
+ 1416              	.LBB136:
+ 1417              	.LBB137:
+ 1418              	.LBB138:
+ 1419              	.LBB139:
+ 1420              	.LM290:
+ 1421 090c 40429FE5 		ldr	r4, .L184+4
+ 1422 0910 0C3094E5 		ldr	r3, [r4, #12]
+ 1423              	.LVL81:
+ 1424 0914 102094E5 		ldr	r2, [r4, #16]
+ 1425 0918 181094E5 		ldr	r1, [r4, #24]
+ 1426              	.LBE139:
+ 1427              	.LBE138:
+ 1428              	.LM291:
+ 1429 091c 033062E0 		rsb	r3, r2, r3
+ 1430 0920 013043E2 		sub	r3, r3, #1
+ 1431 0924 013003E0 		and	r3, r3, r1
+ 1432 0928 0338A0E1 		mov	r3, r3, asl #16
+ 1433 092c 010753E3 		cmp	r3, #262144
+ 1434              	.LBE137:
+ 1435              	.LBE136:
+ 1436              	.LBE135:
+ 1437              	.LBE134:
+ 1438              	.LM292:
+ 1439 0930 B2C0CDE1 		strh	ip, [sp, #2]	@ movhi
+ 1440              	.LBB140:
+ 1441              	.LBB141:
+ 1442              	.LBB142:
+ 1443              	.LBB143:
+ 1444              	.LM293:
+ 1445 0934 00A0A093 		movls	sl, #0
+ 1446 0938 2400009A 		bls	.L166
+ 1447              	.LM294:
+ 1448 093c 000094E5 		ldr	r0, [r4, #0]
+ 1449              	.LVL82:
+ 1450 0940 0010D7E5 		ldrb	r1, [r7, #0]	@ zero_extendqisi2
+ 1451 0944 102094E5 		ldr	r2, [r4, #16]
+ 1452 0948 0210C0E7 		strb	r1, [r0, r2]
+ 1453              	.LM295:
+ 1454 094c 103094E5 		ldr	r3, [r4, #16]
+ 1455 0950 182094E5 		ldr	r2, [r4, #24]
+ 1456 0954 013083E2 		add	r3, r3, #1
+ 1457 0958 023003E0 		and	r3, r3, r2
+ 1458 095c 103084E5 		str	r3, [r4, #16]
+ 1459              	.LM296:
+ 1460 0960 0100D7E5 		ldrb	r0, [r7, #1]	@ zero_extendqisi2
+ 1461 0964 001094E5 		ldr	r1, [r4, #0]
+ 1462 0968 102094E5 		ldr	r2, [r4, #16]
+ 1463 096c 0200C1E7 		strb	r0, [r1, r2]
+ 1464              	.LM297:
+ 1465 0970 103094E5 		ldr	r3, [r4, #16]
+ 1466 0974 182094E5 		ldr	r2, [r4, #24]
+ 1467 0978 013083E2 		add	r3, r3, #1
+ 1468 097c 023003E0 		and	r3, r3, r2
+ 1469 0980 103084E5 		str	r3, [r4, #16]
+ 1470              	.LM298:
+ 1471 0984 0200D7E5 		ldrb	r0, [r7, #2]	@ zero_extendqisi2
+ 1472 0988 001094E5 		ldr	r1, [r4, #0]
+ 1473 098c 102094E5 		ldr	r2, [r4, #16]
+ 1474 0990 0200C1E7 		strb	r0, [r1, r2]
+ 1475              	.LM299:
+ 1476 0994 103094E5 		ldr	r3, [r4, #16]
+ 1477 0998 182094E5 		ldr	r2, [r4, #24]
+ 1478 099c 013083E2 		add	r3, r3, #1
+ 1479 09a0 023003E0 		and	r3, r3, r2
+ 1480 09a4 103084E5 		str	r3, [r4, #16]
+ 1481              	.LM300:
+ 1482 09a8 0300D7E5 		ldrb	r0, [r7, #3]	@ zero_extendqisi2
+ 1483 09ac 001094E5 		ldr	r1, [r4, #0]
+ 1484 09b0 102094E5 		ldr	r2, [r4, #16]
+ 1485 09b4 0200C1E7 		strb	r0, [r1, r2]
+ 1486              	.LM301:
+ 1487 09b8 103094E5 		ldr	r3, [r4, #16]
+ 1488 09bc 182094E5 		ldr	r2, [r4, #24]
+ 1489 09c0 013083E2 		add	r3, r3, #1
+ 1490 09c4 023003E0 		and	r3, r3, r2
+ 1491 09c8 103084E5 		str	r3, [r4, #16]
+ 1492 09cc 01A0A0E3 		mov	sl, #1
+ 1493              	.LVL83:
+ 1494              	.L166:
+ 1495              	.LBE143:
+ 1496              	.LBE142:
+ 1497              	.LBB144:
+ 1498              	.LBB145:
+ 1499              	.LM302:
+ 1500 09d0 0C3094E5 		ldr	r3, [r4, #12]
+ 1501 09d4 102094E5 		ldr	r2, [r4, #16]
+ 1502              	.LBE145:
+ 1503              	.LBE144:
+ 1504              	.LM303:
+ 1505 09d8 78719FE5 		ldr	r7, .L184+8
+ 1506              	.LBB146:
+ 1507              	.LBB147:
+ 1508              	.LM304:
+ 1509 09dc 181094E5 		ldr	r1, [r4, #24]
+ 1510              	.LBE147:
+ 1511              	.LBE146:
+ 1512              	.LM305:
+ 1513 09e0 033062E0 		rsb	r3, r2, r3
+ 1514 09e4 013043E2 		sub	r3, r3, #1
+ 1515              	.LM306:
+ 1516 09e8 B020D7E1 		ldrh	r2, [r7, #0]
+ 1517              	.LM307:
+ 1518 09ec 013003E0 		and	r3, r3, r1
+ 1519 09f0 0338A0E1 		mov	r3, r3, asl #16
+ 1520              	.LM308:
+ 1521 09f4 020853E1 		cmp	r3, r2, asl #16
+ 1522 09f8 2338A0E1 		mov	r3, r3, lsr #16
+ 1523              	.LVL84:
+ 1524              	.LM309:
+ 1525 09fc B030C7B1 		strlth	r3, [r7, #0]	@ movhi
+ 1526              	.LBB148:
+ 1527              	.LBB149:
+ 1528              	.LM310:
+ 1529 0a00 4C119FE5 		ldr	r1, .L184+4
+ 1530              	.LBE149:
+ 1531              	.LBE148:
+ 1532              	.LBE141:
+ 1533              	.LBE140:
+ 1534              	.LBB150:
+ 1535              	.LBB151:
+ 1536              	.LBB152:
+ 1537              	.LBB153:
+ 1538              	.LBB154:
+ 1539              	.LBB155:
+ 1540 0a04 0C3091E5 		ldr	r3, [r1, #12]
+ 1541              	.LVL85:
+ 1542 0a08 102091E5 		ldr	r2, [r1, #16]
+ 1543 0a0c 181091E5 		ldr	r1, [r1, #24]
+ 1544              	.LBE155:
+ 1545              	.LBE154:
+ 1546              	.LM311:
+ 1547 0a10 033062E0 		rsb	r3, r2, r3
+ 1548 0a14 013043E2 		sub	r3, r3, #1
+ 1549 0a18 013003E0 		and	r3, r3, r1
+ 1550 0a1c 0338A0E1 		mov	r3, r3, asl #16
+ 1551 0a20 230856E1 		cmp	r6, r3, lsr #16
+ 1552 0a24 00E0A023 		movcs	lr, #0
+ 1553 0a28 0E00002A 		bcs	.L171
+ 1554              	.LM312:
+ 1555 0a2c 000056E3 		cmp	r6, #0
+ 1556 0a30 0B00000A 		beq	.L172
+ 1557 0a34 06E088E0 		add	lr, r8, r6
+ 1558              	.L173:
+ 1559              	.LM313:
+ 1560 0a38 000094E5 		ldr	r0, [r4, #0]
+ 1561              	.LVL86:
+ 1562 0a3c 0110D5E4 		ldrb	r1, [r5], #1	@ zero_extendqisi2
+ 1563 0a40 102094E5 		ldr	r2, [r4, #16]
+ 1564 0a44 0210C0E7 		strb	r1, [r0, r2]
+ 1565              	.LM314:
+ 1566 0a48 103094E5 		ldr	r3, [r4, #16]
+ 1567 0a4c 182094E5 		ldr	r2, [r4, #24]
+ 1568 0a50 013083E2 		add	r3, r3, #1
+ 1569 0a54 023003E0 		and	r3, r3, r2
+ 1570              	.LM315:
+ 1571 0a58 05005EE1 		cmp	lr, r5
+ 1572              	.LM316:
+ 1573 0a5c 103084E5 		str	r3, [r4, #16]
+ 1574              	.LM317:
+ 1575 0a60 F4FFFF1A 		bne	.L173
+ 1576              	.LVL87:
+ 1577              	.L172:
+ 1578 0a64 01E0A0E3 		mov	lr, #1
+ 1579              	.L171:
+ 1580              	.LBE153:
+ 1581              	.LBE152:
+ 1582              	.LBB156:
+ 1583              	.LBB157:
+ 1584              	.LM318:
+ 1585 0a68 0C3094E5 		ldr	r3, [r4, #12]
+ 1586 0a6c 102094E5 		ldr	r2, [r4, #16]
+ 1587 0a70 181094E5 		ldr	r1, [r4, #24]
+ 1588              	.LBE157:
+ 1589              	.LBE156:
+ 1590              	.LM319:
+ 1591 0a74 033062E0 		rsb	r3, r2, r3
+ 1592 0a78 013043E2 		sub	r3, r3, #1
+ 1593              	.LM320:
+ 1594 0a7c B020D7E1 		ldrh	r2, [r7, #0]
+ 1595              	.LM321:
+ 1596 0a80 013003E0 		and	r3, r3, r1
+ 1597 0a84 0338A0E1 		mov	r3, r3, asl #16
+ 1598              	.LM322:
+ 1599 0a88 020853E1 		cmp	r3, r2, asl #16
+ 1600 0a8c 2328A0E1 		mov	r2, r3, lsr #16
+ 1601              	.LVL88:
+ 1602              	.LM323:
+ 1603 0a90 C0309FB5 		ldrlt	r3, .L184+8
+ 1604              	.LBB158:
+ 1605              	.LBB159:
+ 1606              	.LM324:
+ 1607 0a94 B8C09FE5 		ldr	ip, .L184+4
+ 1608              	.LVL89:
+ 1609              	.LBE159:
+ 1610              	.LBE158:
+ 1611              	.LM325:
+ 1612 0a98 B020C3B1 		strlth	r2, [r3, #0]	@ movhi
+ 1613              	.LBE151:
+ 1614              	.LBE150:
+ 1615              	.LBB160:
+ 1616              	.LBB161:
+ 1617              	.LBB162:
+ 1618              	.LBB163:
+ 1619              	.LBB164:
+ 1620              	.LBB165:
+ 1621              	.LM326:
+ 1622 0a9c 0C309CE5 		ldr	r3, [ip, #12]
+ 1623 0aa0 10209CE5 		ldr	r2, [ip, #16]
+ 1624              	.LVL90:
+ 1625 0aa4 18109CE5 		ldr	r1, [ip, #24]
+ 1626              	.LBE165:
+ 1627              	.LBE164:
+ 1628              	.LM327:
+ 1629 0aa8 033062E0 		rsb	r3, r2, r3
+ 1630 0aac 013043E2 		sub	r3, r3, #1
+ 1631 0ab0 013003E0 		and	r3, r3, r1
+ 1632 0ab4 0338A0E1 		mov	r3, r3, asl #16
+ 1633 0ab8 020853E3 		cmp	r3, #131072
+ 1634 0abc 00C0A093 		movls	ip, #0
+ 1635 0ac0 1200009A 		bls	.L178
+ 1636              	.LM328:
+ 1637 0ac4 00009CE5 		ldr	r0, [ip, #0]
+ 1638              	.LVL91:
+ 1639 0ac8 0210DDE5 		ldrb	r1, [sp, #2]	@ zero_extendqisi2
+ 1640 0acc 10209CE5 		ldr	r2, [ip, #16]
+ 1641 0ad0 0210C0E7 		strb	r1, [r0, r2]
+ 1642              	.LM329:
+ 1643 0ad4 10309CE5 		ldr	r3, [ip, #16]
+ 1644 0ad8 18209CE5 		ldr	r2, [ip, #24]
+ 1645 0adc 013083E2 		add	r3, r3, #1
+ 1646 0ae0 023003E0 		and	r3, r3, r2
+ 1647 0ae4 10308CE5 		str	r3, [ip, #16]
+ 1648              	.LM330:
+ 1649 0ae8 00109CE5 		ldr	r1, [ip, #0]
+ 1650 0aec 0300DDE5 		ldrb	r0, [sp, #3]	@ zero_extendqisi2
+ 1651 0af0 10209CE5 		ldr	r2, [ip, #16]
+ 1652 0af4 0200C1E7 		strb	r0, [r1, r2]
+ 1653              	.LM331:
+ 1654 0af8 10309CE5 		ldr	r3, [ip, #16]
+ 1655 0afc 18209CE5 		ldr	r2, [ip, #24]
+ 1656 0b00 013083E2 		add	r3, r3, #1
+ 1657 0b04 023003E0 		and	r3, r3, r2
+ 1658 0b08 10308CE5 		str	r3, [ip, #16]
+ 1659 0b0c 0AC00EE0 		and	ip, lr, sl
+ 1660              	.LVL92:
+ 1661              	.L178:
+ 1662              	.LBE163:
+ 1663              	.LBE162:
+ 1664              	.LBB166:
+ 1665              	.LBB167:
+ 1666              	.LM332:
+ 1667 0b10 0C3094E5 		ldr	r3, [r4, #12]
+ 1668 0b14 102094E5 		ldr	r2, [r4, #16]
+ 1669 0b18 181094E5 		ldr	r1, [r4, #24]
+ 1670              	.LBE167:
+ 1671              	.LBE166:
+ 1672              	.LM333:
+ 1673 0b1c 033062E0 		rsb	r3, r2, r3
+ 1674 0b20 013043E2 		sub	r3, r3, #1
+ 1675              	.LM334:
+ 1676 0b24 B020D7E1 		ldrh	r2, [r7, #0]
+ 1677              	.LM335:
+ 1678 0b28 013003E0 		and	r3, r3, r1
+ 1679 0b2c 0338A0E1 		mov	r3, r3, asl #16
+ 1680              	.LM336:
+ 1681 0b30 020853E1 		cmp	r3, r2, asl #16
+ 1682 0b34 2308A0E1 		mov	r0, r3, lsr #16
+ 1683              	.LVL93:
+ 1684              	.LM337:
+ 1685 0b38 18309FB5 		ldrlt	r3, .L184+8
+ 1686 0b3c B000C3B1 		strlth	r0, [r3, #0]	@ movhi
+ 1687              	.LBE161:
+ 1688              	.LBE160:
+ 1689              	.LM338:
+ 1690 0b40 0C00A0E1 		mov	r0, ip
+ 1691              	.LVL94:
+ 1692 0b44 04D08DE2 		add	sp, sp, #4
+ 1693 0b48 F045BDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, sl, lr}
+ 1694 0b4c 1EFF2FE1 		bx	lr
+ 1695              	.L185:
+ 1696              		.align	2
+ 1697              	.L184:
+ 1698 0b50 04000000 		.word	header.2271
+ 1699 0b54 00000000 		.word	txFifo
+ 1700 0b58 00000000 		.word	uart0_min_tx_buffer
+ 1701              	.LFE11:
+ 1703              		.align	2
+ 1704              		.global	parseRxFifo
+ 1706              	parseRxFifo:
+ 1707              	.LFB10:
+ 1708              	.LM339:
+ 1709              		@ Function supports interworking.
+ 1710              		@ args = 0, pretend = 0, frame = 8
+ 1711              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1712 0b5c F04F2DE9 		stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 1713              	.LCFI10:
+ 1714              	.LM340:
+ 1715 0b60 2C839FE5 		ldr	r8, .L248
+ 1716 0b64 0430D8E5 		ldrb	r3, [r8, #4]	@ zero_extendqisi2
+ 1717 0b68 010053E3 		cmp	r3, #1
+ 1718              	.LM341:
+ 1719 0b6c 08D04DE2 		sub	sp, sp, #8
+ 1720              	.LCFI11:
+ 1721              	.LM342:
+ 1722 0b70 2300000A 		beq	.L230
+ 1723 0b74 1C939FE5 		ldr	r9, .L248+4
+ 1724 0b78 1CB39FE5 		ldr	fp, .L248+8
+ 1725 0b7c 1CA39FE5 		ldr	sl, .L248+12
+ 1726 0b80 0070A0E3 		mov	r7, #0
+ 1727              	.LVL95:
+ 1728              	.L239:
+ 1729              	.LBB182:
+ 1730              	.LBB183:
+ 1731              	.LM343:
+ 1732 0b84 0C2098E5 		ldr	r2, [r8, #12]
+ 1733 0b88 103098E5 		ldr	r3, [r8, #16]
+ 1734 0b8c 030052E1 		cmp	r2, r3
+ 1735 0b90 FCC29FE5 		ldr	ip, .L248
+ 1736 0b94 1A00000A 		beq	.L230
+ 1737              	.L241:
+ 1738              	.LM344:
+ 1739 0b98 00109CE5 		ldr	r1, [ip, #0]
+ 1740              	.LVL96:
+ 1741 0b9c 0C209CE5 		ldr	r2, [ip, #12]
+ 1742              	.LBE183:
+ 1743              	.LBE182:
+ 1744              	.LM345:
+ 1745 0ba0 FC629FE5 		ldr	r6, .L248+16
+ 1746              	.LBB184:
+ 1747              	.LBB185:
+ 1748              	.LM346:
+ 1749 0ba4 0200D1E7 		ldrb	r0, [r1, r2]	@ zero_extendqisi2
+ 1750              	.LVL97:
+ 1751              	.LM347:
+ 1752 0ba8 0C309CE5 		ldr	r3, [ip, #12]
+ 1753              	.LBE185:
+ 1754              	.LBE184:
+ 1755              	.LM348:
+ 1756 0bac 001096E5 		ldr	r1, [r6, #0]
+ 1757              	.LBB186:
+ 1758              	.LBB187:
+ 1759              	.LM349:
+ 1760 0bb0 18209CE5 		ldr	r2, [ip, #24]
+ 1761 0bb4 013083E2 		add	r3, r3, #1
+ 1762 0bb8 023003E0 		and	r3, r3, r2
+ 1763              	.LBE187:
+ 1764              	.LBE186:
+ 1765              	.LM350:
+ 1766 0bbc 000051E3 		cmp	r1, #0
+ 1767              	.LBB188:
+ 1768              	.LBB189:
+ 1769              	.LM351:
+ 1770 0bc0 0C308CE5 		str	r3, [ip, #12]
+ 1771              	.LM352:
+ 1772 0bc4 FF5000E2 		and	r5, r0, #255
+ 1773              	.LBE189:
+ 1774              	.LBE188:
+ 1775              	.LM353:
+ 1776 0bc8 1000001A 		bne	.L240
+ 1777              	.LM354:
+ 1778 0bcc 610055E3 		cmp	r5, #97
+ 1779              	.LM355:
+ 1780 0bd0 0130A003 		moveq	r3, #1
+ 1781 0bd4 00308605 		streq	r3, [r6, #0]
+ 1782              	.LM356:
+ 1783 0bd8 C8329FE5 		ldr	r3, .L248+20
+ 1784              	.LBB190:
+ 1785              	.LBB191:
+ 1786              	.LM357:
+ 1787 0bdc 0C2098E5 		ldr	r2, [r8, #12]
+ 1788              	.LBE191:
+ 1789              	.LBE190:
+ 1790              	.LM358:
+ 1791 0be0 0070C3E5 		strb	r7, [r3, #0]
+ 1792              	.LBB192:
+ 1793              	.LBB193:
+ 1794              	.LM359:
+ 1795 0be4 103098E5 		ldr	r3, [r8, #16]
+ 1796              	.LBE193:
+ 1797              	.LBE192:
+ 1798              	.LM360:
+ 1799 0be8 00108615 		strne	r1, [r6, #0]
+ 1800              	.LBB194:
+ 1801              	.LBB195:
+ 1802              	.LM361:
+ 1803 0bec 030052E1 		cmp	r2, r3
+ 1804              	.LBE195:
+ 1805              	.LBE194:
+ 1806              	.LM362:
+ 1807 0bf0 007089E5 		str	r7, [r9, #0]
+ 1808              	.LM363:
+ 1809 0bf4 B070CBE1 		strh	r7, [fp, #0]	@ movhi
+ 1810              	.LM364:
+ 1811 0bf8 00708AE5 		str	r7, [sl, #0]
+ 1812              	.LBB196:
+ 1813              	.LBB197:
+ 1814              	.LM365:
+ 1815 0bfc 90C29FE5 		ldr	ip, .L248
+ 1816 0c00 E4FFFF1A 		bne	.L241
+ 1817              	.LVL98:
+ 1818              	.L230:
+ 1819              	.LBE197:
+ 1820              	.LBE196:
+ 1821              	.LM366:
+ 1822 0c04 08D08DE2 		add	sp, sp, #8
+ 1823 0c08 F04FBDE8 		ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 1824 0c0c 1EFF2FE1 		bx	lr
+ 1825              	.LVL99:
+ 1826              	.L240:
+ 1827              	.LM367:
+ 1828 0c10 010051E3 		cmp	r1, #1
+ 1829 0c14 1500000A 		beq	.L242
+ 1830              	.LM368:
+ 1831 0c18 020051E3 		cmp	r1, #2
+ 1832 0c1c 1800000A 		beq	.L243
+ 1833              	.LM369:
+ 1834 0c20 030051E3 		cmp	r1, #3
+ 1835              	.LM370:
+ 1836 0c24 0430A003 		moveq	r3, #4
+ 1837 0c28 00308605 		streq	r3, [r6, #0]
+ 1838              	.LM371:
+ 1839 0c2c 00508A05 		streq	r5, [sl, #0]
+ 1840              	.LM372:
+ 1841 0c30 D3FFFF0A 		beq	.L239
+ 1842              	.LM373:
+ 1843 0c34 040051E3 		cmp	r1, #4
+ 1844 0c38 1600000A 		beq	.L244
+ 1845              	.LM374:
+ 1846 0c3c 050051E3 		cmp	r1, #5
+ 1847 0c40 1D00000A 		beq	.L245
+ 1848              	.LM375:
+ 1849 0c44 060051E3 		cmp	r1, #6
+ 1850 0c48 2000000A 		beq	.L246
+ 1851              	.LM376:
+ 1852 0c4c 070051E3 		cmp	r1, #7
+ 1853              	.LM377:
+ 1854 0c50 0830A003 		moveq	r3, #8
+ 1855 0c54 00308605 		streq	r3, [r6, #0]
+ 1856              	.LM378:
+ 1857 0c58 B050CB01 		streqh	r5, [fp, #0]	@ movhi
+ 1858              	.LM379:
+ 1859 0c5c C8FFFF0A 		beq	.L239
+ 1860              	.LM380:
+ 1861 0c60 080051E3 		cmp	r1, #8
+ 1862 0c64 2400000A 		beq	.L247
+ 1863              	.LVL100:
+ 1864              	.L215:
+ 1865              	.LM381:
+ 1866 0c68 007086E5 		str	r7, [r6, #0]
+ 1867 0c6c C4FFFFEA 		b	.L239
+ 1868              	.LVL101:
+ 1869              	.L242:
+ 1870              	.LM382:
+ 1871 0c70 2A0055E3 		cmp	r5, #42
+ 1872              	.LM383:
+ 1873 0c74 0230A003 		moveq	r3, #2
+ 1874 0c78 00308605 		streq	r3, [r6, #0]
+ 1875              	.LM384:
+ 1876              	.LM385:
+ 1877 0c7c 00708615 		strne	r7, [r6, #0]
+ 1878 0c80 BFFFFFEA 		b	.L239
+ 1879              	.L243:
+ 1880              	.LM386:
+ 1881 0c84 3E0055E3 		cmp	r5, #62
+ 1882              	.LM387:
+ 1883 0c88 0330A003 		moveq	r3, #3
+ 1884 0c8c 00308605 		streq	r3, [r6, #0]
+ 1885              	.LM388:
+ 1886              	.LM389:
+ 1887 0c90 00708615 		strne	r7, [r6, #0]
+ 1888 0c94 BAFFFFEA 		b	.L239
+ 1889              	.L244:
+ 1890              	.LM390:
+ 1891 0c98 00209AE5 		ldr	r2, [sl, #0]
+ 1892              	.LM391:
+ 1893 0c9c 08329FE5 		ldr	r3, .L248+24
+ 1894              	.LM392:
+ 1895 0ca0 000052E3 		cmp	r2, #0
+ 1896              	.LM393:
+ 1897 0ca4 0050C3E5 		strb	r5, [r3, #0]
+ 1898              	.LM394:
+ 1899 0ca8 0530A0C3 		movgt	r3, #5
+ 1900 0cac 003086C5 		strgt	r3, [r6, #0]
+ 1901              	.LM395:
+ 1902 0cb0 002089C5 		strgt	r2, [r9, #0]
+ 1903              	.LM396:
+ 1904              	.LM397:
+ 1905 0cb4 007086D5 		strle	r7, [r6, #0]
+ 1906 0cb8 B1FFFFEA 		b	.L239
+ 1907              	.L245:
+ 1908              	.LM398:
+ 1909 0cbc E4319FE5 		ldr	r3, .L248+20
+ 1910              	.LM399:
+ 1911 0cc0 0620A0E3 		mov	r2, #6
+ 1912              	.LM400:
+ 1913 0cc4 0050C3E5 		strb	r5, [r3, #0]
+ 1914              	.LM401:
+ 1915 0cc8 002086E5 		str	r2, [r6, #0]
+ 1916 0ccc ACFFFFEA 		b	.L239
+ 1917              	.L246:
+ 1918              	.LM402:
+ 1919 0cd0 001099E5 		ldr	r1, [r9, #0]
+ 1920 0cd4 00209AE5 		ldr	r2, [sl, #0]
+ 1921 0cd8 D0319FE5 		ldr	r3, .L248+28
+ 1922              	.LM403:
+ 1923 0cdc 010041E2 		sub	r0, r1, #1
+ 1924              	.LM404:
+ 1925 0ce0 000050E3 		cmp	r0, #0
+ 1926              	.LM405:
+ 1927 0ce4 022061E0 		rsb	r2, r1, r2
+ 1928 0ce8 0250C3E7 		strb	r5, [r3, r2]
+ 1929              	.LM406:
+ 1930 0cec 0730A003 		moveq	r3, #7
+ 1931              	.LM407:
+ 1932 0cf0 000089E5 		str	r0, [r9, #0]
+ 1933              	.LM408:
+ 1934 0cf4 00308605 		streq	r3, [r6, #0]
+ 1935 0cf8 A1FFFFEA 		b	.L239
+ 1936              	.L247:
+ 1937              	.LBB198:
+ 1938              	.LBB199:
+ 1939              	.LM409:
+ 1940 0cfc A8219FE5 		ldr	r2, .L248+24
+ 1941 0d00 0020D2E5 		ldrb	r2, [r2, #0]	@ zero_extendqisi2
+ 1942              	.LBB200:
+ 1943              	.LBB201:
+ 1944              	.LM410:
+ 1945 0d04 0230E0E1 		mvn	r3, r2
+ 1946 0d08 FF3003E2 		and	r3, r3, #255
+ 1947              	.LVL102:
+ 1948              	.LM411:
+ 1949 0d0c 033223E0 		eor	r3, r3, r3, asl #4
+ 1950              	.LVL103:
+ 1951 0d10 FF3003E2 		and	r3, r3, #255
+ 1952              	.LVL104:
+ 1953              	.LM412:
+ 1954 0d14 2312A0E1 		mov	r1, r3, lsr #4
+ 1955 0d18 031481E1 		orr	r1, r1, r3, asl #8
+ 1956 0d1c 831121E0 		eor	r1, r1, r3, asl #3
+ 1957              	.LBE201:
+ 1958              	.LBE200:
+ 1959              	.LBE199:
+ 1960              	.LBE198:
+ 1961              	.LBB202:
+ 1962              	.LBB203:
+ 1963              	.LBB204:
+ 1964              	.LBB205:
+ 1965              	.LM413:
+ 1966 0d20 80319FE5 		ldr	r3, .L248+20
+ 1967              	.LVL105:
+ 1968              	.LBE205:
+ 1969              	.LBE204:
+ 1970              	.LBE203:
+ 1971              	.LBE202:
+ 1972              	.LBB206:
+ 1973              	.LBB207:
+ 1974              	.LM414:
+ 1975 0d24 04208DE5 		str	r2, [sp, #4]
+ 1976              	.LBE207:
+ 1977              	.LBE206:
+ 1978              	.LBB208:
+ 1979              	.LBB209:
+ 1980              	.LBB210:
+ 1981              	.LBB211:
+ 1982              	.LM415:
+ 1983 0d28 0020D3E5 		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 1984              	.LBE211:
+ 1985              	.LBE210:
+ 1986              	.LBE209:
+ 1987              	.LBE208:
+ 1988              	.LBB212:
+ 1989              	.LBB213:
+ 1990              	.LBB214:
+ 1991              	.LBB215:
+ 1992              	.LM416:
+ 1993 0d2c 0118A0E1 		mov	r1, r1, asl #16
+ 1994              	.LBE215:
+ 1995              	.LBE214:
+ 1996              	.LBE213:
+ 1997              	.LBE212:
+ 1998              	.LBB216:
+ 1999              	.LBB217:
+ 2000              	.LBB218:
+ 2001              	.LBB219:
+ 2002              	.LM417:
+ 2003 0d30 212822E0 		eor	r2, r2, r1, lsr #16
+ 2004              	.LBE219:
+ 2005              	.LBE218:
+ 2006              	.LBE217:
+ 2007              	.LBE216:
+ 2008              	.LM418:
+ 2009 0d34 78419FE5 		ldr	r4, .L248+32
+ 2010              	.LBB220:
+ 2011              	.LBB221:
+ 2012              	.LBB222:
+ 2013              	.LBB223:
+ 2014              	.LM419:
+ 2015 0d38 FF2002E2 		and	r2, r2, #255
+ 2016              	.LVL106:
+ 2017              	.LBE223:
+ 2018              	.LBE222:
+ 2019              	.LBE221:
+ 2020              	.LBE220:
+ 2021              	.LM420:
+ 2022 0d3c 00E09AE5 		ldr	lr, [sl, #0]
+ 2023              	.LBB224:
+ 2024              	.LBB225:
+ 2025              	.LBB226:
+ 2026              	.LBB227:
+ 2027              	.LM421:
+ 2028 0d40 022222E0 		eor	r2, r2, r2, asl #4
+ 2029              	.LVL107:
+ 2030 0d44 FF2002E2 		and	r2, r2, #255
+ 2031              	.LVL108:
+ 2032              	.LBE227:
+ 2033              	.LBE226:
+ 2034              	.LBE225:
+ 2035              	.LBE224:
+ 2036              	.LM422:
+ 2037 0d48 B0C0DBE1 		ldrh	ip, [fp, #0]
+ 2038              	.LM423:
+ 2039 0d4c 000094E5 		ldr	r0, [r4, #0]
+ 2040              	.LM424:
+ 2041 0d50 00E08DE5 		str	lr, [sp, #0]
+ 2042 0d54 211CA0E1 		mov	r1, r1, lsr #24
+ 2043 0d58 0EE8A0E1 		mov	lr, lr, asl #16
+ 2044 0d5c 8231A0E1 		mov	r3, r2, asl #3
+ 2045              	.LM425:
+ 2046 0d60 05C48CE1 		orr	ip, ip, r5, asl #8
+ 2047              	.LM426:
+ 2048 0d64 223223E0 		eor	r3, r3, r2, lsr #4
+ 2049              	.LBB228:
+ 2050              	.LBB229:
+ 2051              	.LM427:
+ 2052 0d68 00005EE3 		cmp	lr, #0
+ 2053              	.LBE229:
+ 2054              	.LBE228:
+ 2055              	.LM428:
+ 2056 0d6c 010080E2 		add	r0, r0, #1
+ 2057              	.LM429:
+ 2058 0d70 021481E1 		orr	r1, r1, r2, asl #8
+ 2059              	.LM430:
+ 2060 0d74 000084E5 		str	r0, [r4, #0]
+ 2061              	.LM431:
+ 2062 0d78 031021E0 		eor	r1, r1, r3
+ 2063              	.LVL109:
+ 2064              	.LM432:
+ 2065 0d7c B0C0CBE1 		strh	ip, [fp, #0]	@ movhi
+ 2066              	.LBB230:
+ 2067              	.LBB231:
+ 2068              	.LM433:
+ 2069 0d80 2EE8A0E1 		mov	lr, lr, lsr #16
+ 2070 0d84 0F00000A 		beq	.L217
+ 2071 0d88 28019FE5 		ldr	r0, .L248+36
+ 2072 0d8c 00E08EE0 		add	lr, lr, r0
+ 2073              	.L219:
+ 2074              	.LBB232:
+ 2075              	.LBB233:
+ 2076              	.LM434:
+ 2077 0d90 013050E5 		ldrb	r3, [r0, #-1]	@ zero_extendqisi2
+ 2078              	.LBE233:
+ 2079              	.LBE232:
+ 2080              	.LM435:
+ 2081 0d94 0118A0E1 		mov	r1, r1, asl #16
+ 2082              	.LVL110:
+ 2083              	.LBB234:
+ 2084              	.LBB235:
+ 2085              	.LM436:
+ 2086 0d98 213823E0 		eor	r3, r3, r1, lsr #16
+ 2087 0d9c FF3003E2 		and	r3, r3, #255
+ 2088              	.LVL111:
+ 2089              	.LM437:
+ 2090 0da0 033223E0 		eor	r3, r3, r3, asl #4
+ 2091              	.LVL112:
+ 2092 0da4 FF3003E2 		and	r3, r3, #255
+ 2093              	.LVL113:
+ 2094              	.LBE235:
+ 2095              	.LBE234:
+ 2096              	.LM438:
+ 2097 0da8 211CA0E1 		mov	r1, r1, lsr #24
+ 2098 0dac 010080E2 		add	r0, r0, #1
+ 2099 0db0 8321A0E1 		mov	r2, r3, asl #3
+ 2100              	.LVL114:
+ 2101 0db4 232222E0 		eor	r2, r2, r3, lsr #4
+ 2102 0db8 031481E1 		orr	r1, r1, r3, asl #8
+ 2103              	.LM439:
+ 2104 0dbc 0E0050E1 		cmp	r0, lr
+ 2105              	.LM440:
+ 2106 0dc0 021021E0 		eor	r1, r1, r2
+ 2107              	.LVL115:
+ 2108              	.LM441:
+ 2109 0dc4 F1FFFF1A 		bne	.L219
+ 2110              	.LVL116:
+ 2111              	.L217:
+ 2112              	.LBE231:
+ 2113              	.LBE230:
+ 2114              	.LM442:
+ 2115 0dc8 0138A0E1 		mov	r3, r1, asl #16
+ 2116              	.LVL117:
+ 2117 0dcc 2338A0E1 		mov	r3, r3, lsr #16
+ 2118 0dd0 E4209FE5 		ldr	r2, .L248+40
+ 2119              	.LVL118:
+ 2120              	.LM443:
+ 2121 0dd4 03005CE1 		cmp	ip, r3
+ 2122              	.LM444:
+ 2123 0dd8 B030C2E1 		strh	r3, [r2, #0]	@ movhi
+ 2124              	.LM445:
+ 2125 0ddc A1FFFF1A 		bne	.L215
+ 2126              	.LM446:
+ 2127 0de0 D8109FE5 		ldr	r1, .L248+44
+ 2128              	.LVL119:
+ 2129              	.LM447:
+ 2130 0de4 D8209FE5 		ldr	r2, .L248+48
+ 2131              	.LM448:
+ 2132 0de8 003091E5 		ldr	r3, [r1, #0]
+ 2133              	.LM449:
+ 2134 0dec 002092E5 		ldr	r2, [r2, #0]
+ 2135              	.LM450:
+ 2136 0df0 013083E2 		add	r3, r3, #1
+ 2137              	.LM451:
+ 2138 0df4 000052E3 		cmp	r2, #0
+ 2139              	.LM452:
+ 2140 0df8 003081E5 		str	r3, [r1, #0]
+ 2141              	.LM453:
+ 2142 0dfc 99FFFF0A 		beq	.L215
+ 2143              	.LM454:
+ 2144 0e00 C0C09FE5 		ldr	ip, .L248+52
+ 2145 0e04 04109DE5 		ldr	r1, [sp, #4]
+ 2146 0e08 0030DCE5 		ldrb	r3, [ip, #0]	@ zero_extendqisi2
+ 2147 0e0c 010053E1 		cmp	r3, r1
+ 2148 0e10 0000A003 		moveq	r0, #0
+ 2149              	.LVL120:
+ 2150 0e14 0B00000A 		beq	.L225
+ 2151              	.LM455:
+ 2152 0e18 0C10A0E1 		mov	r1, ip
+ 2153 0e1c 0000A0E3 		mov	r0, #0
+ 2154 0e20 030000EA 		b	.L227
+ 2155              	.L226:
+ 2156              	.LM456:
+ 2157 0e24 0C30F1E5 		ldrb	r3, [r1, #12]!	@ zero_extendqisi2
+ 2158 0e28 04E09DE5 		ldr	lr, [sp, #4]
+ 2159 0e2c 0E0053E1 		cmp	r3, lr
+ 2160 0e30 0400000A 		beq	.L225
+ 2161              	.L227:
+ 2162              	.LM457:
+ 2163 0e34 010080E2 		add	r0, r0, #1
+ 2164 0e38 000052E1 		cmp	r2, r0
+ 2165 0e3c F8FFFF1A 		bne	.L226
+ 2166              	.LM458:
+ 2167 0e40 007086E5 		str	r7, [r6, #0]
+ 2168 0e44 4EFFFFEA 		b	.L239
+ 2169              	.L225:
+ 2170              	.LM459:
+ 2171 0e48 804080E0 		add	r4, r0, r0, asl #1
+ 2172 0e4c 04418CE0 		add	r4, ip, r4, asl #2
+ 2173 0e50 00209DE5 		ldr	r2, [sp, #0]
+ 2174 0e54 54109FE5 		ldr	r1, .L248+28
+ 2175 0e58 040094E5 		ldr	r0, [r4, #4]
+ 2176              	.LVL121:
+ 2177 0e5c FEFFFFEB 		bl	memcpy
+ 2178              	.LM460:
+ 2179 0e60 40109FE5 		ldr	r1, .L248+20
+ 2180 0e64 00C0D1E5 		ldrb	ip, [r1, #0]	@ zero_extendqisi2
+ 2181              	.LM461:
+ 2182 0e68 0120A0E3 		mov	r2, #1
+ 2183              	.LM462:
+ 2184 0e6c 01001CE3 		tst	ip, #1
+ 2185              	.LM463:
+ 2186 0e70 0820C4E5 		strb	r2, [r4, #8]
+ 2187              	.LM464:
+ 2188 0e74 7BFFFF0A 		beq	.L215
+ 2189              	.LM465:
+ 2190 0e78 4C309FE5 		ldr	r3, .L248+56
+ 2191              	.LM466:
+ 2192 0e7c 1100A0E3 		mov	r0, #17
+ 2193 0e80 0310A0E1 		mov	r1, r3
+ 2194              	.LM467:
+ 2195 0e84 00C0C3E5 		strb	ip, [r3, #0]
+ 2196              	.LM468:
+ 2197 0e88 FEFFFFEB 		bl	writePacket2Ringbuffer
+ 2198              	.LM469:
+ 2199 0e8c 007086E5 		str	r7, [r6, #0]
+ 2200 0e90 3BFFFFEA 		b	.L239
+ 2201              	.L249:
+ 2202              		.align	2
+ 2203              	.L248:
+ 2204 0e94 00000000 		.word	rxFifo
+ 2205 0e98 1C000000 		.word	rxCount.2215
+ 2206 0e9c 18000000 		.word	checksum_received.2217
+ 2207 0ea0 20000000 		.word	packetSize.2214
+ 2208 0ea4 14000000 		.word	syncstate.2218
+ 2209 0ea8 24000000 		.word	flag.2213
+ 2210 0eac 25000000 		.word	packetType.2212
+ 2211 0eb0 00000000 		.word	rxParseBuffer
+ 2212 0eb4 00000000 		.word	UART_rxPacketCount
+ 2213 0eb8 01000000 		.word	rxParseBuffer+1
+ 2214 0ebc 1A000000 		.word	checksum_computed.2216
+ 2215 0ec0 00000000 		.word	UART_rxGoodPacketCount
+ 2216 0ec4 00000000 		.word	registeredPacketCnt
+ 2217 0ec8 00000000 		.word	packetInfo
+ 2218 0ecc 11000000 		.word	packet_ack.2219
+ 2219              	.LFE10:
+ 2221              		.global	transmission_running
+ 2222              		.bss
+ 2225              	transmission_running:
+ 2226 0000 00       		.space	1
+ 2227              		.global	uart0_min_tx_buffer
+ 2228              		.data
+ 2229              		.align	1
+ 2232              	uart0_min_tx_buffer:
+ 2233 0000 0002     		.short	512
+ 2234              		.global	uart0_min_rx_buffer
+ 2235              		.align	1
+ 2238              	uart0_min_rx_buffer:
+ 2239 0002 0002     		.short	512
+ 2240              		.global	UART_rxPacketCount
+ 2241              		.bss
+ 2242 0001 000000   		.align	2
+ 2245              	UART_rxPacketCount:
+ 2246 0004 00000000 		.space	4
+ 2247              		.global	UART_rxGoodPacketCount
+ 2248              		.align	2
+ 2251              	UART_rxGoodPacketCount:
+ 2252 0008 00000000 		.space	4
+ 2253              		.global	registeredPacketCnt
+ 2254              		.align	2
+ 2257              	registeredPacketCnt:
+ 2258 000c 00000000 		.space	4
+ 2259              		.global	autobaud_in_progress
+ 2262              	autobaud_in_progress:
+ 2263 0010 00       		.space	1
+ 2264              		.data
+ 2267              	header.2271:
+ 2268 0004 FF       		.byte	-1
+ 2269 0005 09       		.byte	9
+ 2270 0006 00       		.byte	0
+ 2271 0007 00       		.byte	0
+ 2272              		.bss
+ 2273              	packet_ack.2219:
+ 2274 0011 00       		.space	1
+ 2275 0012 0000     		.align	2
+ 2276              	syncstate.2218:
+ 2277 0014 00000000 		.space	4
+ 2278              		.align	1
+ 2279              	checksum_received.2217:
+ 2280 0018 0000     		.space	2
+ 2281              		.align	1
+ 2282              	checksum_computed.2216:
+ 2283 001a 0000     		.space	2
+ 2284              		.align	2
+ 2285              	rxCount.2215:
+ 2286 001c 00000000 		.space	4
+ 2287              		.align	2
+ 2288              	packetSize.2214:
+ 2289 0020 00000000 		.space	4
+ 2290              	flag.2213:
+ 2291 0024 00       		.space	1
+ 2292              	packetType.2212:
+ 2293 0025 00       		.space	1
+ 2294              		.comm	GPS_timeout,4,4
+ 2295              		.comm	SYSTEM_initialized,1,1
+ 2296              		.comm	SSP_trans_cnt,4,4
+ 2297              		.comm	uart0_rx_cpsr,4,4
+ 2298              		.comm	uart0_tx_cpsr,4,4
+ 2299              		.comm	rxBuffer,512,1
+ 2300              		.comm	rxParseBuffer,512,1
+ 2301              		.comm	rxFifo,28,4
+ 2302              		.comm	txBuffer,512,1
+ 2303              		.comm	txFifo,28,4
+ 2304              		.comm	packetInfo,768,4
+ 2639              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart.c
+     /tmp/cccGuZX8.s:10     .text:00000000 $a
+     /tmp/cccGuZX8.s:13     .text:00000000 Fifo_initialize
+     /tmp/cccGuZX8.s:48     .text:00000028 Fifo_writeByte
+     /tmp/cccGuZX8.s:94     .text:00000074 Fifo_writeBlock
+     /tmp/cccGuZX8.s:167    .text:000000ec Fifo_readByte
+     /tmp/cccGuZX8.s:211    .text:00000134 Fifo_availableMemory
+     /tmp/cccGuZX8.s:240    .text:0000015c Fifo_reset
+     /tmp/cccGuZX8.s:262    .text:0000016c registerPacket
+     /tmp/cccGuZX8.s:304    .text:000001b4 $d
+     /tmp/cccGuZX8.s:2257   .bss:0000000c registeredPacketCnt
+                            *COM*:00000300 packetInfo
+     /tmp/cccGuZX8.s:308    .text:000001bc $a
+     /tmp/cccGuZX8.s:311    .text:000001bc UART0_writeFifo
+     /tmp/cccGuZX8.s:411    .text:00000268 $d
+                            *COM*:0000001c txFifo
+     /tmp/cccGuZX8.s:2232   .data:00000000 uart0_min_tx_buffer
+     /tmp/cccGuZX8.s:415    .text:00000270 $a
+     /tmp/cccGuZX8.s:418    .text:00000270 startAutoBaud
+     /tmp/cccGuZX8.s:446    .text:00000298 UART0_txFlush
+     /tmp/cccGuZX8.s:469    .text:000002b0 UART0_txEmpty
+     /tmp/cccGuZX8.s:494    .text:000002d0 UARTWriteChar
+     /tmp/cccGuZX8.s:521    .text:000002f0 UARTReadChar
+     /tmp/cccGuZX8.s:546    .text:00000310 UART_send
+     /tmp/cccGuZX8.s:606    .text:0000038c crc_update
+     /tmp/cccGuZX8.s:642    .text:000003b8 crc16
+     /tmp/cccGuZX8.s:715    .text:0000041c __putchar
+     /tmp/cccGuZX8.s:771    .text:00000468 UART_send_ringbuffer
+     /tmp/cccGuZX8.s:841    .text:000004e0 $d
+     /tmp/cccGuZX8.s:2225   .bss:00000000 transmission_running
+     /tmp/cccGuZX8.s:846    .text:000004e8 $a
+     /tmp/cccGuZX8.s:849    .text:000004e8 UARTInitialize
+     /tmp/cccGuZX8.s:991    .text:000005fc $d
+                            *COM*:00000004 uart0_rx_cpsr
+                            *COM*:00000004 uart0_tx_cpsr
+                            *COM*:0000001c rxFifo
+                            *COM*:00000200 rxBuffer
+                            *COM*:00000200 txBuffer
+     /tmp/cccGuZX8.s:999    .text:00000614 $a
+     /tmp/cccGuZX8.s:1002   .text:00000614 UART0_rxFlush
+     /tmp/cccGuZX8.s:1038   .text:0000063c $d
+     /tmp/cccGuZX8.s:1041   .text:00000640 $a
+     /tmp/cccGuZX8.s:1044   .text:00000640 uart0ISR
+     /tmp/cccGuZX8.s:1104   .text:000006cc $d
+     /tmp/cccGuZX8.s:1117   .text:000006f8 $a
+     /tmp/cccGuZX8.s:1290   .text:00000868 $d
+     /tmp/cccGuZX8.s:2262   .bss:00000010 autobaud_in_progress
+     /tmp/cccGuZX8.s:2238   .data:00000002 uart0_min_rx_buffer
+     /tmp/cccGuZX8.s:1297   .text:0000087c $a
+     /tmp/cccGuZX8.s:1300   .text:0000087c writePacket2Ringbuffer
+     /tmp/cccGuZX8.s:1698   .text:00000b50 $d
+     /tmp/cccGuZX8.s:2267   .data:00000004 header.2271
+     /tmp/cccGuZX8.s:1703   .text:00000b5c $a
+     /tmp/cccGuZX8.s:1706   .text:00000b5c parseRxFifo
+     /tmp/cccGuZX8.s:2204   .text:00000e94 $d
+     /tmp/cccGuZX8.s:2285   .bss:0000001c rxCount.2215
+     /tmp/cccGuZX8.s:2279   .bss:00000018 checksum_received.2217
+     /tmp/cccGuZX8.s:2288   .bss:00000020 packetSize.2214
+     /tmp/cccGuZX8.s:2276   .bss:00000014 syncstate.2218
+     /tmp/cccGuZX8.s:2290   .bss:00000024 flag.2213
+     /tmp/cccGuZX8.s:2292   .bss:00000025 packetType.2212
+                            *COM*:00000200 rxParseBuffer
+     /tmp/cccGuZX8.s:2245   .bss:00000004 UART_rxPacketCount
+     /tmp/cccGuZX8.s:2282   .bss:0000001a checksum_computed.2216
+     /tmp/cccGuZX8.s:2251   .bss:00000008 UART_rxGoodPacketCount
+     /tmp/cccGuZX8.s:2273   .bss:00000011 packet_ack.2219
+     /tmp/cccGuZX8.s:2226   .bss:00000000 $d
+     /tmp/cccGuZX8.s:2229   .data:00000000 $d
+                            *COM*:00000004 GPS_timeout
+                            *COM*:00000001 SYSTEM_initialized
+                            *COM*:00000004 SSP_trans_cnt
+     /tmp/cccGuZX8.s:2318   .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+__udivsi3
+disableIRQ
+restoreIRQ
+peripheralClockFrequency
+memcpy

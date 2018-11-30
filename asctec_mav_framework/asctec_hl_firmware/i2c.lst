@@ -1,0 +1,743 @@
+   1              		.file	"i2c.c"
+   9              	.Ltext0:
+  10              		.global	I2CMasterState
+  11              		.bss
+  12              		.align	2
+  15              	I2CMasterState:
+  16 0000 00000000 		.space	4
+  17              		.global	I2CSlaveState
+  18              		.align	2
+  21              	I2CSlaveState:
+  22 0004 00000000 		.space	4
+  23              		.global	I2CCount
+  24              		.align	2
+  27              	I2CCount:
+  28 0008 00000000 		.space	4
+  29              		.global	RdIndex
+  30              		.align	2
+  33              	RdIndex:
+  34 000c 00000000 		.space	4
+  35              		.global	WrIndex
+  36              		.align	2
+  39              	WrIndex:
+  40 0010 00000000 		.space	4
+  41              		.text
+  42              		.align	2
+  43              		.global	I2C0MasterHandler
+  45              	I2C0MasterHandler:
+  46              	.LFB2:
+  47              	.LM1:
+  48              		@ Function supports interworking.
+  49              		@ args = 0, pretend = 0, frame = 4
+  50              		@ frame_needed = 1, uses_anonymous_args = 0
+  51 0000 0DC0A0E1 		mov	ip, sp
+  52              	.LCFI0:
+  53 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+  54              	.LCFI1:
+  55 0008 04B04CE2 		sub	fp, ip, #4
+  56              	.LCFI2:
+  57 000c 04D04DE2 		sub	sp, sp, #4
+  58              	.LCFI3:
+  59              	.LM2:
+  60 0010 4E32A0E3 		mov	r3, #-536870908
+  61 0014 073983E2 		add	r3, r3, #114688
+  62 0018 003093E5 		ldr	r3, [r3, #0]
+  63 001c 0D304BE5 		strb	r3, [fp, #-13]
+  64              	.LM3:
+  65 0020 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+  66 0024 083043E2 		sub	r3, r3, #8
+  67 0028 500053E3 		cmp	r3, #80
+  68 002c 03F19F97 		ldrls	pc, [pc, r3, asl #2]
+  69 0030 060100EA 		b	.L2
+  70              		.align	2
+  71              	.L10:
+  72 0034 78010000 		.word	.L3
+  73 0038 50040000 		.word	.L2
+  74 003c 50040000 		.word	.L2
+  75 0040 50040000 		.word	.L2
+  76 0044 50040000 		.word	.L2
+  77 0048 50040000 		.word	.L2
+  78 004c 50040000 		.word	.L2
+  79 0050 50040000 		.word	.L2
+  80 0054 B0010000 		.word	.L4
+  81 0058 50040000 		.word	.L2
+  82 005c 50040000 		.word	.L2
+  83 0060 50040000 		.word	.L2
+  84 0064 50040000 		.word	.L2
+  85 0068 50040000 		.word	.L2
+  86 006c 50040000 		.word	.L2
+  87 0070 50040000 		.word	.L2
+  88 0074 08020000 		.word	.L5
+  89 0078 50040000 		.word	.L2
+  90 007c 50040000 		.word	.L2
+  91 0080 50040000 		.word	.L2
+  92 0084 50040000 		.word	.L2
+  93 0088 50040000 		.word	.L2
+  94 008c 50040000 		.word	.L2
+  95 0090 50040000 		.word	.L2
+  96 0094 2C040000 		.word	.L6
+  97 0098 50040000 		.word	.L2
+  98 009c 50040000 		.word	.L2
+  99 00a0 50040000 		.word	.L2
+ 100 00a4 50040000 		.word	.L2
+ 101 00a8 50040000 		.word	.L2
+ 102 00ac 50040000 		.word	.L2
+ 103 00b0 50040000 		.word	.L2
+ 104 00b4 70020000 		.word	.L7
+ 105 00b8 50040000 		.word	.L2
+ 106 00bc 50040000 		.word	.L2
+ 107 00c0 50040000 		.word	.L2
+ 108 00c4 50040000 		.word	.L2
+ 109 00c8 50040000 		.word	.L2
+ 110 00cc 50040000 		.word	.L2
+ 111 00d0 50040000 		.word	.L2
+ 112 00d4 70020000 		.word	.L7
+ 113 00d8 50040000 		.word	.L2
+ 114 00dc 50040000 		.word	.L2
+ 115 00e0 50040000 		.word	.L2
+ 116 00e4 50040000 		.word	.L2
+ 117 00e8 50040000 		.word	.L2
+ 118 00ec 50040000 		.word	.L2
+ 119 00f0 50040000 		.word	.L2
+ 120 00f4 50040000 		.word	.L2
+ 121 00f8 50040000 		.word	.L2
+ 122 00fc 50040000 		.word	.L2
+ 123 0100 50040000 		.word	.L2
+ 124 0104 50040000 		.word	.L2
+ 125 0108 50040000 		.word	.L2
+ 126 010c 50040000 		.word	.L2
+ 127 0110 50040000 		.word	.L2
+ 128 0114 74030000 		.word	.L8
+ 129 0118 50040000 		.word	.L2
+ 130 011c 50040000 		.word	.L2
+ 131 0120 50040000 		.word	.L2
+ 132 0124 50040000 		.word	.L2
+ 133 0128 50040000 		.word	.L2
+ 134 012c 50040000 		.word	.L2
+ 135 0130 50040000 		.word	.L2
+ 136 0134 2C040000 		.word	.L6
+ 137 0138 50040000 		.word	.L2
+ 138 013c 50040000 		.word	.L2
+ 139 0140 50040000 		.word	.L2
+ 140 0144 50040000 		.word	.L2
+ 141 0148 50040000 		.word	.L2
+ 142 014c 50040000 		.word	.L2
+ 143 0150 50040000 		.word	.L2
+ 144 0154 8C030000 		.word	.L9
+ 145 0158 50040000 		.word	.L2
+ 146 015c 50040000 		.word	.L2
+ 147 0160 50040000 		.word	.L2
+ 148 0164 50040000 		.word	.L2
+ 149 0168 50040000 		.word	.L2
+ 150 016c 50040000 		.word	.L2
+ 151 0170 50040000 		.word	.L2
+ 152 0174 8C030000 		.word	.L9
+ 153              	.L3:
+ 154              	.LM4:
+ 155 0178 8E22A0E3 		mov	r2, #-536870904
+ 156 017c 072982E2 		add	r2, r2, #114688
+ 157 0180 F8329FE5 		ldr	r3, .L30
+ 158 0184 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 159 0188 003082E5 		str	r3, [r2, #0]
+ 160              	.LM5:
+ 161 018c 0E32A0E3 		mov	r3, #-536870912
+ 162 0190 073983E2 		add	r3, r3, #114688
+ 163 0194 183083E2 		add	r3, r3, #24
+ 164 0198 2820A0E3 		mov	r2, #40
+ 165 019c 002083E5 		str	r2, [r3, #0]
+ 166              	.LM6:
+ 167 01a0 DC229FE5 		ldr	r2, .L30+4
+ 168 01a4 0130A0E3 		mov	r3, #1
+ 169 01a8 003082E5 		str	r3, [r2, #0]
+ 170              	.LM7:
+ 171 01ac AC0000EA 		b	.L11
+ 172              	.L4:
+ 173              	.LM8:
+ 174 01b0 D0329FE5 		ldr	r3, .L30+8
+ 175 01b4 003093E5 		ldr	r3, [r3, #0]
+ 176 01b8 010053E3 		cmp	r3, #1
+ 177 01bc 0300000A 		beq	.L12
+ 178 01c0 C0329FE5 		ldr	r3, .L30+8
+ 179 01c4 003093E5 		ldr	r3, [r3, #0]
+ 180 01c8 020053E3 		cmp	r3, #2
+ 181 01cc 0400001A 		bne	.L14
+ 182              	.L12:
+ 183              	.LM9:
+ 184 01d0 8E22A0E3 		mov	r2, #-536870904
+ 185 01d4 072982E2 		add	r2, r2, #114688
+ 186 01d8 A0329FE5 		ldr	r3, .L30
+ 187 01dc 0230D3E5 		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 188 01e0 003082E5 		str	r3, [r2, #0]
+ 189              	.L14:
+ 190              	.LM10:
+ 191 01e4 0E32A0E3 		mov	r3, #-536870912
+ 192 01e8 073983E2 		add	r3, r3, #114688
+ 193 01ec 183083E2 		add	r3, r3, #24
+ 194 01f0 2820A0E3 		mov	r2, #40
+ 195 01f4 002083E5 		str	r2, [r3, #0]
+ 196              	.LM11:
+ 197 01f8 84229FE5 		ldr	r2, .L30+4
+ 198 01fc 0230A0E3 		mov	r3, #2
+ 199 0200 003082E5 		str	r3, [r2, #0]
+ 200              	.LM12:
+ 201 0204 960000EA 		b	.L11
+ 202              	.L5:
+ 203              	.LM13:
+ 204 0208 74329FE5 		ldr	r3, .L30+4
+ 205 020c 003093E5 		ldr	r3, [r3, #0]
+ 206 0210 010053E3 		cmp	r3, #1
+ 207 0214 0F00001A 		bne	.L15
+ 208              	.LM14:
+ 209 0218 8E22A0E3 		mov	r2, #-536870904
+ 210 021c 072982E2 		add	r2, r2, #114688
+ 211 0220 64329FE5 		ldr	r3, .L30+12
+ 212 0224 003093E5 		ldr	r3, [r3, #0]
+ 213 0228 011083E2 		add	r1, r3, #1
+ 214 022c 4C329FE5 		ldr	r3, .L30
+ 215 0230 0130D3E7 		ldrb	r3, [r3, r1]	@ zero_extendqisi2
+ 216 0234 003082E5 		str	r3, [r2, #0]
+ 217              	.LM15:
+ 218 0238 4C329FE5 		ldr	r3, .L30+12
+ 219 023c 003093E5 		ldr	r3, [r3, #0]
+ 220 0240 012083E2 		add	r2, r3, #1
+ 221 0244 40329FE5 		ldr	r3, .L30+12
+ 222 0248 002083E5 		str	r2, [r3, #0]
+ 223              	.LM16:
+ 224 024c 30229FE5 		ldr	r2, .L30+4
+ 225 0250 0430A0E3 		mov	r3, #4
+ 226 0254 003082E5 		str	r3, [r2, #0]
+ 227              	.L15:
+ 228              	.LM17:
+ 229 0258 0E32A0E3 		mov	r3, #-536870912
+ 230 025c 073983E2 		add	r3, r3, #114688
+ 231 0260 183083E2 		add	r3, r3, #24
+ 232 0264 0820A0E3 		mov	r2, #8
+ 233 0268 002083E5 		str	r2, [r3, #0]
+ 234              	.LM18:
+ 235 026c 7C0000EA 		b	.L11
+ 236              	.L7:
+ 237              	.LM19:
+ 238 0270 14329FE5 		ldr	r3, .L30+12
+ 239 0274 002093E5 		ldr	r2, [r3, #0]
+ 240 0278 10329FE5 		ldr	r3, .L30+16
+ 241 027c 003093E5 		ldr	r3, [r3, #0]
+ 242 0280 030052E1 		cmp	r2, r3
+ 243 0284 2500000A 		beq	.L17
+ 244              	.LM20:
+ 245 0288 8E22A0E3 		mov	r2, #-536870904
+ 246 028c 072982E2 		add	r2, r2, #114688
+ 247 0290 F4319FE5 		ldr	r3, .L30+12
+ 248 0294 003093E5 		ldr	r3, [r3, #0]
+ 249 0298 011083E2 		add	r1, r3, #1
+ 250 029c DC319FE5 		ldr	r3, .L30
+ 251 02a0 0130D3E7 		ldrb	r3, [r3, r1]	@ zero_extendqisi2
+ 252 02a4 003082E5 		str	r3, [r2, #0]
+ 253              	.LM21:
+ 254 02a8 DC319FE5 		ldr	r3, .L30+12
+ 255 02ac 003093E5 		ldr	r3, [r3, #0]
+ 256 02b0 012083E2 		add	r2, r3, #1
+ 257 02b4 D0319FE5 		ldr	r3, .L30+12
+ 258 02b8 002083E5 		str	r2, [r3, #0]
+ 259              	.LM22:
+ 260 02bc C8319FE5 		ldr	r3, .L30+12
+ 261 02c0 002093E5 		ldr	r2, [r3, #0]
+ 262 02c4 C4319FE5 		ldr	r3, .L30+16
+ 263 02c8 003093E5 		ldr	r3, [r3, #0]
+ 264 02cc 030052E1 		cmp	r2, r3
+ 265 02d0 0300000A 		beq	.L19
+ 266              	.LM23:
+ 267 02d4 A8219FE5 		ldr	r2, .L30+4
+ 268 02d8 0430A0E3 		mov	r3, #4
+ 269 02dc 003082E5 		str	r3, [r2, #0]
+ 270 02e0 1D0000EA 		b	.L23
+ 271              	.L19:
+ 272              	.LM24:
+ 273 02e4 98219FE5 		ldr	r2, .L30+4
+ 274 02e8 0530A0E3 		mov	r3, #5
+ 275 02ec 003082E5 		str	r3, [r2, #0]
+ 276              	.LM25:
+ 277 02f0 9C319FE5 		ldr	r3, .L30+20
+ 278 02f4 003093E5 		ldr	r3, [r3, #0]
+ 279 02f8 000053E3 		cmp	r3, #0
+ 280 02fc 1600000A 		beq	.L23
+ 281              	.LM26:
+ 282 0300 0E32A0E3 		mov	r3, #-536870912
+ 283 0304 073983E2 		add	r3, r3, #114688
+ 284 0308 2020A0E3 		mov	r2, #32
+ 285 030c 002083E5 		str	r2, [r3, #0]
+ 286              	.LM27:
+ 287 0310 6C219FE5 		ldr	r2, .L30+4
+ 288 0314 0330A0E3 		mov	r3, #3
+ 289 0318 003082E5 		str	r3, [r2, #0]
+ 290 031c 0E0000EA 		b	.L23
+ 291              	.L17:
+ 292              	.LM28:
+ 293 0320 6C319FE5 		ldr	r3, .L30+20
+ 294 0324 003093E5 		ldr	r3, [r3, #0]
+ 295 0328 000053E3 		cmp	r3, #0
+ 296 032c 0700000A 		beq	.L24
+ 297              	.LM29:
+ 298 0330 0E32A0E3 		mov	r3, #-536870912
+ 299 0334 073983E2 		add	r3, r3, #114688
+ 300 0338 2020A0E3 		mov	r2, #32
+ 301 033c 002083E5 		str	r2, [r3, #0]
+ 302              	.LM30:
+ 303 0340 3C219FE5 		ldr	r2, .L30+4
+ 304 0344 0330A0E3 		mov	r3, #3
+ 305 0348 003082E5 		str	r3, [r2, #0]
+ 306 034c 020000EA 		b	.L23
+ 307              	.L24:
+ 308              	.LM31:
+ 309 0350 2C219FE5 		ldr	r2, .L30+4
+ 310 0354 0530A0E3 		mov	r3, #5
+ 311 0358 003082E5 		str	r3, [r2, #0]
+ 312              	.L23:
+ 313              	.LM32:
+ 314 035c 0E32A0E3 		mov	r3, #-536870912
+ 315 0360 073983E2 		add	r3, r3, #114688
+ 316 0364 183083E2 		add	r3, r3, #24
+ 317 0368 0820A0E3 		mov	r2, #8
+ 318 036c 002083E5 		str	r2, [r3, #0]
+ 319              	.LM33:
+ 320 0370 3B0000EA 		b	.L11
+ 321              	.L8:
+ 322              	.LM34:
+ 323 0374 0E32A0E3 		mov	r3, #-536870912
+ 324 0378 073983E2 		add	r3, r3, #114688
+ 325 037c 183083E2 		add	r3, r3, #24
+ 326 0380 0820A0E3 		mov	r2, #8
+ 327 0384 002083E5 		str	r2, [r3, #0]
+ 328              	.LM35:
+ 329 0388 350000EA 		b	.L11
+ 330              	.L9:
+ 331              	.LM36:
+ 332 038c 04319FE5 		ldr	r3, .L30+24
+ 333 0390 003093E5 		ldr	r3, [r3, #0]
+ 334 0394 031083E2 		add	r1, r3, #3
+ 335 0398 8E32A0E3 		mov	r3, #-536870904
+ 336 039c 073983E2 		add	r3, r3, #114688
+ 337 03a0 003093E5 		ldr	r3, [r3, #0]
+ 338 03a4 FF3003E2 		and	r3, r3, #255
+ 339 03a8 D0209FE5 		ldr	r2, .L30
+ 340 03ac 0130C2E7 		strb	r3, [r2, r1]
+ 341              	.LM37:
+ 342 03b0 E0309FE5 		ldr	r3, .L30+24
+ 343 03b4 003093E5 		ldr	r3, [r3, #0]
+ 344 03b8 012083E2 		add	r2, r3, #1
+ 345 03bc D4309FE5 		ldr	r3, .L30+24
+ 346 03c0 002083E5 		str	r2, [r3, #0]
+ 347              	.LM38:
+ 348 03c4 CC309FE5 		ldr	r3, .L30+24
+ 349 03c8 002093E5 		ldr	r2, [r3, #0]
+ 350 03cc C0309FE5 		ldr	r3, .L30+20
+ 351 03d0 003093E5 		ldr	r3, [r3, #0]
+ 352 03d4 030052E1 		cmp	r2, r3
+ 353 03d8 0300000A 		beq	.L26
+ 354              	.LM39:
+ 355 03dc A0209FE5 		ldr	r2, .L30+4
+ 356 03e0 0430A0E3 		mov	r3, #4
+ 357 03e4 003082E5 		str	r3, [r2, #0]
+ 358 03e8 050000EA 		b	.L28
+ 359              	.L26:
+ 360              	.LM40:
+ 361 03ec A4209FE5 		ldr	r2, .L30+24
+ 362 03f0 0030A0E3 		mov	r3, #0
+ 363 03f4 003082E5 		str	r3, [r2, #0]
+ 364              	.LM41:
+ 365 03f8 84209FE5 		ldr	r2, .L30+4
+ 366 03fc 0530A0E3 		mov	r3, #5
+ 367 0400 003082E5 		str	r3, [r2, #0]
+ 368              	.L28:
+ 369              	.LM42:
+ 370 0404 0E32A0E3 		mov	r3, #-536870912
+ 371 0408 073983E2 		add	r3, r3, #114688
+ 372 040c 0420A0E3 		mov	r2, #4
+ 373 0410 002083E5 		str	r2, [r3, #0]
+ 374              	.LM43:
+ 375 0414 0E32A0E3 		mov	r3, #-536870912
+ 376 0418 073983E2 		add	r3, r3, #114688
+ 377 041c 183083E2 		add	r3, r3, #24
+ 378 0420 0820A0E3 		mov	r2, #8
+ 379 0424 002083E5 		str	r2, [r3, #0]
+ 380              	.LM44:
+ 381 0428 0D0000EA 		b	.L11
+ 382              	.L6:
+ 383              	.LM45:
+ 384 042c 0E32A0E3 		mov	r3, #-536870912
+ 385 0430 073983E2 		add	r3, r3, #114688
+ 386 0434 183083E2 		add	r3, r3, #24
+ 387 0438 0820A0E3 		mov	r2, #8
+ 388 043c 002083E5 		str	r2, [r3, #0]
+ 389              	.LM46:
+ 390 0440 3C209FE5 		ldr	r2, .L30+4
+ 391 0444 0530A0E3 		mov	r3, #5
+ 392 0448 003082E5 		str	r3, [r2, #0]
+ 393              	.LM47:
+ 394 044c 040000EA 		b	.L11
+ 395              	.L2:
+ 396              	.LM48:
+ 397 0450 0E32A0E3 		mov	r3, #-536870912
+ 398 0454 073983E2 		add	r3, r3, #114688
+ 399 0458 183083E2 		add	r3, r3, #24
+ 400 045c 0820A0E3 		mov	r2, #8
+ 401 0460 002083E5 		str	r2, [r3, #0]
+ 402              	.L11:
+ 403              	.LM49:
+ 404 0464 0030A0E3 		mov	r3, #0
+ 405 0468 FD3E43E2 		sub	r3, r3, #4048
+ 406 046c 0020A0E3 		mov	r2, #0
+ 407 0470 002083E5 		str	r2, [r3, #0]
+ 408              	.LM50:
+ 409 0474 0CD04BE2 		sub	sp, fp, #12
+ 410 0478 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 411 047c 1EFF2FE1 		bx	lr
+ 412              	.L31:
+ 413              		.align	2
+ 414              	.L30:
+ 415 0480 00000000 		.word	I2CMasterBuffer
+ 416 0484 00000000 		.word	I2CMasterState
+ 417 0488 00000000 		.word	I2CCmd
+ 418 048c 00000000 		.word	WrIndex
+ 419 0490 00000000 		.word	I2CWriteLength
+ 420 0494 00000000 		.word	I2CReadLength
+ 421 0498 00000000 		.word	RdIndex
+ 422              	.LFE2:
+ 424              		.align	2
+ 425              		.global	I2C0_send_motordata
+ 427              	I2C0_send_motordata:
+ 428              	.LFB3:
+ 429              	.LM51:
+ 430              		@ Function supports interworking.
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 1, uses_anonymous_args = 0
+ 433 049c 0DC0A0E1 		mov	ip, sp
+ 434              	.LCFI4:
+ 435 04a0 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 436              	.LCFI5:
+ 437 04a4 04B04CE2 		sub	fp, ip, #4
+ 438              	.LCFI6:
+ 439              	.LM52:
+ 440 04a8 80209FE5 		ldr	r2, .L34
+ 441 04ac 0030A0E3 		mov	r3, #0
+ 442 04b0 003082E5 		str	r3, [r2, #0]
+ 443              	.LM53:
+ 444 04b4 78209FE5 		ldr	r2, .L34+4
+ 445 04b8 0030A0E3 		mov	r3, #0
+ 446 04bc 003082E5 		str	r3, [r2, #0]
+ 447              	.LM54:
+ 448 04c0 70209FE5 		ldr	r2, .L34+8
+ 449 04c4 0530A0E3 		mov	r3, #5
+ 450 04c8 003082E5 		str	r3, [r2, #0]
+ 451              	.LM55:
+ 452 04cc 68209FE5 		ldr	r2, .L34+12
+ 453 04d0 0030A0E3 		mov	r3, #0
+ 454 04d4 003082E5 		str	r3, [r2, #0]
+ 455              	.LM56:
+ 456 04d8 60209FE5 		ldr	r2, .L34+16
+ 457 04dc 0230A0E3 		mov	r3, #2
+ 458 04e0 0030C2E5 		strb	r3, [r2, #0]
+ 459              	.LM57:
+ 460 04e4 54209FE5 		ldr	r2, .L34+16
+ 461 04e8 6430A0E3 		mov	r3, #100
+ 462 04ec 0130C2E5 		strb	r3, [r2, #1]
+ 463              	.LM58:
+ 464 04f0 48209FE5 		ldr	r2, .L34+16
+ 465 04f4 6430A0E3 		mov	r3, #100
+ 466 04f8 0230C2E5 		strb	r3, [r2, #2]
+ 467              	.LM59:
+ 468 04fc 3C209FE5 		ldr	r2, .L34+16
+ 469 0500 6430A0E3 		mov	r3, #100
+ 470 0504 0330C2E5 		strb	r3, [r2, #3]
+ 471              	.LM60:
+ 472 0508 30209FE5 		ldr	r2, .L34+16
+ 473 050c 0130A0E3 		mov	r3, #1
+ 474 0510 0430C2E5 		strb	r3, [r2, #4]
+ 475              	.LM61:
+ 476 0514 28209FE5 		ldr	r2, .L34+20
+ 477 0518 0230A0E3 		mov	r3, #2
+ 478 051c 003082E5 		str	r3, [r2, #0]
+ 479              	.LM62:
+ 480 0520 FEFFFFEB 		bl	I2CEngine
+ 481              	.LM63:
+ 482 0524 0CD04BE2 		sub	sp, fp, #12
+ 483 0528 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 484 052c 1EFF2FE1 		bx	lr
+ 485              	.L35:
+ 486              		.align	2
+ 487              	.L34:
+ 488 0530 00000000 		.word	WrIndex
+ 489 0534 00000000 		.word	RdIndex
+ 490 0538 00000000 		.word	I2CWriteLength
+ 491 053c 00000000 		.word	I2CReadLength
+ 492 0540 00000000 		.word	I2CMasterBuffer
+ 493 0544 00000000 		.word	I2CCmd
+ 494              	.LFE3:
+ 496              		.align	2
+ 497              		.global	I2CStart
+ 499              	I2CStart:
+ 500              	.LFB4:
+ 501              	.LM64:
+ 502              		@ Function supports interworking.
+ 503              		@ args = 0, pretend = 0, frame = 8
+ 504              		@ frame_needed = 1, uses_anonymous_args = 0
+ 505 0548 0DC0A0E1 		mov	ip, sp
+ 506              	.LCFI7:
+ 507 054c 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 508              	.LCFI8:
+ 509 0550 04B04CE2 		sub	fp, ip, #4
+ 510              	.LCFI9:
+ 511 0554 08D04DE2 		sub	sp, sp, #8
+ 512              	.LCFI10:
+ 513              	.LM65:
+ 514 0558 0030A0E3 		mov	r3, #0
+ 515 055c 14300BE5 		str	r3, [fp, #-20]
+ 516              	.LM66:
+ 517 0560 0030A0E3 		mov	r3, #0
+ 518 0564 10300BE5 		str	r3, [fp, #-16]
+ 519              	.LM67:
+ 520 0568 0E32A0E3 		mov	r3, #-536870912
+ 521 056c 073983E2 		add	r3, r3, #114688
+ 522 0570 2020A0E3 		mov	r2, #32
+ 523 0574 002083E5 		str	r2, [r3, #0]
+ 524              	.L37:
+ 525              	.LM68:
+ 526 0578 58309FE5 		ldr	r3, .L44
+ 527 057c 003093E5 		ldr	r3, [r3, #0]
+ 528 0580 010053E3 		cmp	r3, #1
+ 529 0584 0200001A 		bne	.L38
+ 530              	.LM69:
+ 531 0588 0130A0E3 		mov	r3, #1
+ 532 058c 10300BE5 		str	r3, [fp, #-16]
+ 533              	.LM70:
+ 534 0590 0B0000EA 		b	.L40
+ 535              	.L38:
+ 536              	.LM71:
+ 537 0594 14201BE5 		ldr	r2, [fp, #-20]
+ 538 0598 0134A0E3 		mov	r3, #16777216
+ 539 059c 023043E2 		sub	r3, r3, #2
+ 540 05a0 030052E1 		cmp	r2, r3
+ 541 05a4 0200009A 		bls	.L41
+ 542              	.LM72:
+ 543 05a8 0030A0E3 		mov	r3, #0
+ 544 05ac 10300BE5 		str	r3, [fp, #-16]
+ 545              	.LM73:
+ 546 05b0 030000EA 		b	.L40
+ 547              	.L41:
+ 548              	.LM74:
+ 549 05b4 14301BE5 		ldr	r3, [fp, #-20]
+ 550 05b8 013083E2 		add	r3, r3, #1
+ 551 05bc 14300BE5 		str	r3, [fp, #-20]
+ 552              	.LM75:
+ 553 05c0 ECFFFFEA 		b	.L37
+ 554              	.L40:
+ 555              	.LM76:
+ 556 05c4 10301BE5 		ldr	r3, [fp, #-16]
+ 557              	.LM77:
+ 558 05c8 0300A0E1 		mov	r0, r3
+ 559 05cc 0CD04BE2 		sub	sp, fp, #12
+ 560 05d0 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 561 05d4 1EFF2FE1 		bx	lr
+ 562              	.L45:
+ 563              		.align	2
+ 564              	.L44:
+ 565 05d8 00000000 		.word	I2CMasterState
+ 566              	.LFE4:
+ 568              		.align	2
+ 569              		.global	I2CStop
+ 571              	I2CStop:
+ 572              	.LFB5:
+ 573              	.LM78:
+ 574              		@ Function supports interworking.
+ 575              		@ args = 0, pretend = 0, frame = 0
+ 576              		@ frame_needed = 1, uses_anonymous_args = 0
+ 577 05dc 0DC0A0E1 		mov	ip, sp
+ 578              	.LCFI11:
+ 579 05e0 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 580              	.LCFI12:
+ 581 05e4 04B04CE2 		sub	fp, ip, #4
+ 582              	.LCFI13:
+ 583              	.LM79:
+ 584 05e8 0E32A0E3 		mov	r3, #-536870912
+ 585 05ec 073983E2 		add	r3, r3, #114688
+ 586 05f0 1020A0E3 		mov	r2, #16
+ 587 05f4 002083E5 		str	r2, [r3, #0]
+ 588              	.LM80:
+ 589 05f8 0E32A0E3 		mov	r3, #-536870912
+ 590 05fc 073983E2 		add	r3, r3, #114688
+ 591 0600 183083E2 		add	r3, r3, #24
+ 592 0604 0820A0E3 		mov	r2, #8
+ 593 0608 002083E5 		str	r2, [r3, #0]
+ 594              	.L47:
+ 595              	.LM81:
+ 596 060c 0E32A0E3 		mov	r3, #-536870912
+ 597 0610 073983E2 		add	r3, r3, #114688
+ 598 0614 003093E5 		ldr	r3, [r3, #0]
+ 599 0618 103003E2 		and	r3, r3, #16
+ 600 061c 000053E3 		cmp	r3, #0
+ 601 0620 F9FFFF1A 		bne	.L47
+ 602              	.LM82:
+ 603 0624 0130A0E3 		mov	r3, #1
+ 604              	.LM83:
+ 605 0628 0300A0E1 		mov	r0, r3
+ 606 062c 0CD04BE2 		sub	sp, fp, #12
+ 607 0630 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 608 0634 1EFF2FE1 		bx	lr
+ 609              	.LFE5:
+ 611              		.align	2
+ 612              		.global	I2CInit
+ 614              	I2CInit:
+ 615              	.LFB6:
+ 616              	.LM84:
+ 617              		@ Function supports interworking.
+ 618              		@ args = 0, pretend = 0, frame = 4
+ 619              		@ frame_needed = 1, uses_anonymous_args = 0
+ 620 0638 0DC0A0E1 		mov	ip, sp
+ 621              	.LCFI14:
+ 622 063c 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 623              	.LCFI15:
+ 624 0640 04B04CE2 		sub	fp, ip, #4
+ 625              	.LCFI16:
+ 626 0644 04D04DE2 		sub	sp, sp, #4
+ 627              	.LCFI17:
+ 628 0648 10000BE5 		str	r0, [fp, #-16]
+ 629              	.LM85:
+ 630 064c 8E22A0E3 		mov	r2, #-536870904
+ 631 0650 0A2982E2 		add	r2, r2, #163840
+ 632 0654 8E32A0E3 		mov	r3, #-536870904
+ 633 0658 0A3983E2 		add	r3, r3, #163840
+ 634 065c 003093E5 		ldr	r3, [r3, #0]
+ 635 0660 0C3083E3 		orr	r3, r3, #12
+ 636 0664 003082E5 		str	r3, [r2, #0]
+ 637              	.LM86:
+ 638 0668 4E32A0E3 		mov	r3, #-536870908
+ 639 066c 0A3983E2 		add	r3, r3, #163840
+ 640 0670 0C20A0E3 		mov	r2, #12
+ 641 0674 002083E5 		str	r2, [r3, #0]
+ 642              	.LM87:
+ 643 0678 0E32A0E3 		mov	r3, #-536870912
+ 644 067c 073983E2 		add	r3, r3, #114688
+ 645 0680 183083E2 		add	r3, r3, #24
+ 646 0684 6C20A0E3 		mov	r2, #108
+ 647 0688 002083E5 		str	r2, [r3, #0]
+ 648              	.LM88:
+ 649 068c 0E32A0E3 		mov	r3, #-536870912
+ 650 0690 073983E2 		add	r3, r3, #114688
+ 651 0694 143083E2 		add	r3, r3, #20
+ 652 0698 8020A0E3 		mov	r2, #128
+ 653 069c 002083E5 		str	r2, [r3, #0]
+ 654              	.LM89:
+ 655 06a0 0E32A0E3 		mov	r3, #-536870912
+ 656 06a4 073983E2 		add	r3, r3, #114688
+ 657 06a8 103083E2 		add	r3, r3, #16
+ 658 06ac 8020A0E3 		mov	r2, #128
+ 659 06b0 002083E5 		str	r2, [r3, #0]
+ 660              	.LM90:
+ 661 06b4 0CD04BE2 		sub	sp, fp, #12
+ 662 06b8 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 663 06bc 1EFF2FE1 		bx	lr
+ 664              	.LFE6:
+ 666              		.align	2
+ 667              		.global	I2CEngine
+ 669              	I2CEngine:
+ 670              	.LFB7:
+ 671              	.LM91:
+ 672              		@ Function supports interworking.
+ 673              		@ args = 0, pretend = 0, frame = 4
+ 674              		@ frame_needed = 1, uses_anonymous_args = 0
+ 675 06c0 0DC0A0E1 		mov	ip, sp
+ 676              	.LCFI18:
+ 677 06c4 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 678              	.LCFI19:
+ 679 06c8 04B04CE2 		sub	fp, ip, #4
+ 680              	.LCFI20:
+ 681 06cc 04D04DE2 		sub	sp, sp, #4
+ 682              	.LCFI21:
+ 683              	.LM92:
+ 684 06d0 6C209FE5 		ldr	r2, .L59
+ 685 06d4 0030A0E3 		mov	r3, #0
+ 686 06d8 003082E5 		str	r3, [r2, #0]
+ 687              	.LM93:
+ 688 06dc 64209FE5 		ldr	r2, .L59+4
+ 689 06e0 0030A0E3 		mov	r3, #0
+ 690 06e4 003082E5 		str	r3, [r2, #0]
+ 691              	.LM94:
+ 692 06e8 5C209FE5 		ldr	r2, .L59+8
+ 693 06ec 0030A0E3 		mov	r3, #0
+ 694 06f0 003082E5 		str	r3, [r2, #0]
+ 695              	.LM95:
+ 696 06f4 FEFFFFEB 		bl	I2CStart
+ 697 06f8 0030A0E1 		mov	r3, r0
+ 698 06fc 010053E3 		cmp	r3, #1
+ 699 0700 0300000A 		beq	.L53
+ 700              	.LM96:
+ 701 0704 FEFFFFEB 		bl	I2CStop
+ 702              	.LM97:
+ 703 0708 0030A0E3 		mov	r3, #0
+ 704 070c 10300BE5 		str	r3, [fp, #-16]
+ 705 0710 060000EA 		b	.L55
+ 706              	.L53:
+ 707              	.LM98:
+ 708 0714 28309FE5 		ldr	r3, .L59
+ 709 0718 003093E5 		ldr	r3, [r3, #0]
+ 710 071c 050053E3 		cmp	r3, #5
+ 711 0720 FBFFFF1A 		bne	.L53
+ 712              	.LM99:
+ 713 0724 FEFFFFEB 		bl	I2CStop
+ 714              	.LM100:
+ 715 0728 0130A0E3 		mov	r3, #1
+ 716 072c 10300BE5 		str	r3, [fp, #-16]
+ 717              	.L55:
+ 718              	.LM101:
+ 719 0730 10301BE5 		ldr	r3, [fp, #-16]
+ 720              	.LM102:
+ 721 0734 0300A0E1 		mov	r0, r3
+ 722 0738 0CD04BE2 		sub	sp, fp, #12
+ 723 073c 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 724 0740 1EFF2FE1 		bx	lr
+ 725              	.L60:
+ 726              		.align	2
+ 727              	.L59:
+ 728 0744 00000000 		.word	I2CMasterState
+ 729 0748 00000000 		.word	RdIndex
+ 730 074c 00000000 		.word	WrIndex
+ 731              	.LFE7:
+ 733              		.comm	I2CCmd,4,4
+ 734              		.comm	I2CMode,4,4
+ 735              		.comm	I2CMasterBuffer,32,1
+ 736              		.comm	I2CSlaveBuffer,32,1
+ 737              		.comm	I2CReadLength,4,4
+ 738              		.comm	I2CWriteLength,4,4
+ 905              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2c.c
+     /tmp/ccmSfPdv.s:15     .bss:00000000 I2CMasterState
+     /tmp/ccmSfPdv.s:12     .bss:00000000 $d
+     /tmp/ccmSfPdv.s:21     .bss:00000004 I2CSlaveState
+     /tmp/ccmSfPdv.s:27     .bss:00000008 I2CCount
+     /tmp/ccmSfPdv.s:33     .bss:0000000c RdIndex
+     /tmp/ccmSfPdv.s:39     .bss:00000010 WrIndex
+     /tmp/ccmSfPdv.s:42     .text:00000000 $a
+     /tmp/ccmSfPdv.s:45     .text:00000000 I2C0MasterHandler
+     /tmp/ccmSfPdv.s:72     .text:00000034 $d
+     /tmp/ccmSfPdv.s:155    .text:00000178 $a
+     /tmp/ccmSfPdv.s:415    .text:00000480 $d
+                            *COM*:00000020 I2CMasterBuffer
+                            *COM*:00000004 I2CCmd
+                            *COM*:00000004 I2CWriteLength
+                            *COM*:00000004 I2CReadLength
+     /tmp/ccmSfPdv.s:424    .text:0000049c $a
+     /tmp/ccmSfPdv.s:427    .text:0000049c I2C0_send_motordata
+     /tmp/ccmSfPdv.s:669    .text:000006c0 I2CEngine
+     /tmp/ccmSfPdv.s:488    .text:00000530 $d
+     /tmp/ccmSfPdv.s:496    .text:00000548 $a
+     /tmp/ccmSfPdv.s:499    .text:00000548 I2CStart
+     /tmp/ccmSfPdv.s:565    .text:000005d8 $d
+     /tmp/ccmSfPdv.s:568    .text:000005dc $a
+     /tmp/ccmSfPdv.s:571    .text:000005dc I2CStop
+     /tmp/ccmSfPdv.s:614    .text:00000638 I2CInit
+     /tmp/ccmSfPdv.s:728    .text:00000744 $d
+                            *COM*:00000004 I2CMode
+                            *COM*:00000020 I2CSlaveBuffer
+     /tmp/ccmSfPdv.s:752    .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,714 @@
+   1              		.file	"system.c"
+   9              	.Ltext0:
+  10              		.align	2
+  11              		.global	init
+  13              	init:
+  14              	.LFB2:
+  15              	.LM1:
+  16              		@ Function supports interworking.
+  17              		@ args = 0, pretend = 0, frame = 0
+  18              		@ frame_needed = 1, uses_anonymous_args = 0
+  19 0000 0DC0A0E1 		mov	ip, sp
+  20              	.LCFI0:
+  21 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+  22              	.LCFI1:
+  23 0008 04B04CE2 		sub	fp, ip, #4
+  24              	.LCFI2:
+  25              	.LM2:
+  26 000c 0E32A0E3 		mov	r3, #-536870912
+  27 0010 7F3983E2 		add	r3, r3, #2080768
+  28 0014 0020A0E3 		mov	r2, #0
+  29 0018 002083E5 		str	r2, [r3, #0]
+  30              	.LM3:
+  31 001c 4E32A0E3 		mov	r3, #-536870908
+  32 0020 7F3983E2 		add	r3, r3, #2080768
+  33 0024 0320A0E3 		mov	r2, #3
+  34 0028 002083E5 		str	r2, [r3, #0]
+  35              	.LM4:
+  36 002c 0E32A0E3 		mov	r3, #-536870912
+  37 0030 7F3983E2 		add	r3, r3, #2080768
+  38 0034 0220A0E3 		mov	r2, #2
+  39 0038 002083E5 		str	r2, [r3, #0]
+  40              	.LM5:
+  41 003c 0E32A0E3 		mov	r3, #-536870912
+  42 0040 7F3983E2 		add	r3, r3, #2080768
+  43 0044 013C83E2 		add	r3, r3, #256
+  44 0048 0120A0E3 		mov	r2, #1
+  45 004c 002083E5 		str	r2, [r3, #0]
+  46              	.LM6:
+  47 0050 FEFFFFEB 		bl	pll_init
+  48              	.LM7:
+  49 0054 FEFFFFEB 		bl	pll_feed
+  50              	.LM8:
+  51 0058 FEFFFFEB 		bl	init_ports
+  52              	.LM9:
+  53 005c E10CA0E3 		mov	r0, #57600
+  54 0060 FEFFFFEB 		bl	UARTInitialize
+  55              	.LM10:
+  56 0064 E10CA0E3 		mov	r0, #57600
+  57 0068 FEFFFFEB 		bl	UART1Initialize
+  58              	.LM11:
+  59 006c FEFFFFEB 		bl	init_spi
+  60              	.LM12:
+  61 0070 FEFFFFEB 		bl	init_spi1
+  62              	.LM13:
+  63 0074 FEFFFFEB 		bl	init_timer0
+  64              	.LM14:
+  65 0078 FEFFFFEB 		bl	init_timer1
+  66              	.LM15:
+  67 007c FEFFFFEB 		bl	PWM_Init
+  68              	.LM16:
+  69 0080 3D09A0E3 		mov	r0, #999424
+  70 0084 090D80E2 		add	r0, r0, #576
+  71 0088 FEFFFFEB 		bl	ADCInit
+  72              	.LM17:
+  73 008c FEFFFFEB 		bl	init_interrupts
+  74              	.LM18:
+  75 0090 0CD04BE2 		sub	sp, fp, #12
+  76 0094 00689DE8 		ldmfd	sp, {fp, sp, lr}
+  77 0098 1EFF2FE1 		bx	lr
+  78              	.LFE2:
+  80              		.align	2
+  81              		.global	init_interrupts
+  83              	init_interrupts:
+  84              	.LFB3:
+  85              	.LM19:
+  86              		@ Function supports interworking.
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 1, uses_anonymous_args = 0
+  89 009c 0DC0A0E1 		mov	ip, sp
+  90              	.LCFI3:
+  91 00a0 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+  92              	.LCFI4:
+  93 00a4 04B04CE2 		sub	fp, ip, #4
+  94              	.LCFI5:
+  95              	.LM20:
+  96 00a8 FEFFFFEB 		bl	init_VIC
+  97              	.LM21:
+  98 00ac 0400A0E3 		mov	r0, #4
+  99 00b0 8C109FE5 		ldr	r1, .L5
+ 100 00b4 FEFFFFEB 		bl	install_irq
+ 101              	.LM22:
+ 102 00b8 0500A0E3 		mov	r0, #5
+ 103 00bc 84109FE5 		ldr	r1, .L5+4
+ 104 00c0 FEFFFFEB 		bl	install_irq
+ 105              	.LM23:
+ 106 00c4 0700A0E3 		mov	r0, #7
+ 107 00c8 7C109FE5 		ldr	r1, .L5+8
+ 108 00cc FEFFFFEB 		bl	install_irq
+ 109              	.LM24:
+ 110 00d0 4E32A0E3 		mov	r3, #-536870908
+ 111 00d4 013883E2 		add	r3, r3, #65536
+ 112 00d8 0320A0E3 		mov	r2, #3
+ 113 00dc 002083E5 		str	r2, [r3, #0]
+ 114              	.LM25:
+ 115 00e0 0600A0E3 		mov	r0, #6
+ 116 00e4 64109FE5 		ldr	r1, .L5+12
+ 117 00e8 FEFFFFEB 		bl	install_irq
+ 118              	.LM26:
+ 119 00ec 0339A0E3 		mov	r3, #49152
+ 120 00f0 4E3283E2 		add	r3, r3, #-536870908
+ 121 00f4 0320A0E3 		mov	r2, #3
+ 122 00f8 002083E5 		str	r2, [r3, #0]
+ 123              	.LM27:
+ 124 00fc 0B00A0E3 		mov	r0, #11
+ 125 0100 4C109FE5 		ldr	r1, .L5+16
+ 126 0104 FEFFFFEB 		bl	install_irq
+ 127              	.LM28:
+ 128 0108 0E32A0E3 		mov	r3, #-536870912
+ 129 010c 1A3983E2 		add	r3, r3, #425984
+ 130 0110 143083E2 		add	r3, r3, #20
+ 131 0114 0D20A0E3 		mov	r2, #13
+ 132 0118 002083E5 		str	r2, [r3, #0]
+ 133              	.LM29:
+ 134 011c 4E22A0E3 		mov	r2, #-536870908
+ 135 0120 1A2982E2 		add	r2, r2, #425984
+ 136 0124 4E32A0E3 		mov	r3, #-536870908
+ 137 0128 1A3983E2 		add	r3, r3, #425984
+ 138 012c 003093E5 		ldr	r3, [r3, #0]
+ 139 0130 023083E3 		orr	r3, r3, #2
+ 140 0134 003082E5 		str	r3, [r2, #0]
+ 141              	.LM30:
+ 142 0138 0CD04BE2 		sub	sp, fp, #12
+ 143 013c 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 144 0140 1EFF2FE1 		bx	lr
+ 145              	.L6:
+ 146              		.align	2
+ 147              	.L5:
+ 148 0144 00000000 		.word	timer0ISR
+ 149 0148 00000000 		.word	timer1ISR
+ 150 014c 00000000 		.word	uart1ISR
+ 151 0150 00000000 		.word	uart0ISR
+ 152 0154 00000000 		.word	SSPHandler
+ 153              	.LFE3:
+ 155              		.align	2
+ 156              		.global	init_ports
+ 158              	init_ports:
+ 159              	.LFB4:
+ 160              	.LM31:
+ 161              		@ Function supports interworking.
+ 162              		@ args = 0, pretend = 0, frame = 0
+ 163              		@ frame_needed = 1, uses_anonymous_args = 0
+ 164 0158 0DC0A0E1 		mov	ip, sp
+ 165              	.LCFI6:
+ 166 015c 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 167              	.LCFI7:
+ 168 0160 04B04CE2 		sub	fp, ip, #4
+ 169              	.LCFI8:
+ 170              	.LM32:
+ 171 0164 0E32A0E3 		mov	r3, #-536870912
+ 172 0168 0B3983E2 		add	r3, r3, #180224
+ 173 016c 84209FE5 		ldr	r2, .L9
+ 174 0170 002083E5 		str	r2, [r3, #0]
+ 175              	.LM33:
+ 176 0174 4E32A0E3 		mov	r3, #-536870908
+ 177 0178 0B3983E2 		add	r3, r3, #180224
+ 178 017c 78209FE5 		ldr	r2, .L9+4
+ 179 0180 002083E5 		str	r2, [r3, #0]
+ 180              	.LM34:
+ 181 0184 0E32A0E3 		mov	r3, #-536870912
+ 182 0188 0B3983E2 		add	r3, r3, #180224
+ 183 018c 143083E2 		add	r3, r3, #20
+ 184 0190 0420A0E3 		mov	r2, #4
+ 185 0194 002083E5 		str	r2, [r3, #0]
+ 186              	.LM35:
+ 187 0198 8E22A0E3 		mov	r2, #-536870904
+ 188 019c 0A2982E2 		add	r2, r2, #163840
+ 189 01a0 C239A0E3 		mov	r3, #3178496
+ 190 01a4 D23D83E2 		add	r3, r3, #13440
+ 191 01a8 003082E5 		str	r3, [r2, #0]
+ 192              	.LM36:
+ 193 01ac 4E32A0E3 		mov	r3, #-536870908
+ 194 01b0 0A3983E2 		add	r3, r3, #163840
+ 195 01b4 222DA0E3 		mov	r2, #2176
+ 196 01b8 002083E5 		str	r2, [r3, #0]
+ 197              	.LM37:
+ 198 01bc 0E22A0E3 		mov	r2, #-536870912
+ 199 01c0 0A2982E2 		add	r2, r2, #163840
+ 200 01c4 182082E2 		add	r2, r2, #24
+ 201 01c8 0334A0E3 		mov	r3, #50331648
+ 202 01cc 033883E2 		add	r3, r3, #196608
+ 203 01d0 003082E5 		str	r3, [r2, #0]
+ 204              	.LM38:
+ 205 01d4 0E22A0E3 		mov	r2, #-536870912
+ 206 01d8 0A2982E2 		add	r2, r2, #163840
+ 207 01dc 142082E2 		add	r2, r2, #20
+ 208 01e0 0134A0E3 		mov	r3, #16777216
+ 209 01e4 013883E2 		add	r3, r3, #65536
+ 210 01e8 003082E5 		str	r3, [r2, #0]
+ 211              	.LM39:
+ 212 01ec 0CD04BE2 		sub	sp, fp, #12
+ 213 01f0 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 214 01f4 1EFF2FE1 		bx	lr
+ 215              	.L10:
+ 216              		.align	2
+ 217              	.L9:
+ 218 01f8 5515C530 		.word	818222421
+ 219 01fc A8060415 		.word	352585384
+ 220              	.LFE4:
+ 222              		.align	2
+ 223              		.global	init_timer0
+ 225              	init_timer0:
+ 226              	.LFB5:
+ 227              	.LM40:
+ 228              		@ Function supports interworking.
+ 229              		@ args = 0, pretend = 0, frame = 0
+ 230              		@ frame_needed = 1, uses_anonymous_args = 0
+ 231 0200 0DC0A0E1 		mov	ip, sp
+ 232              	.LCFI9:
+ 233 0204 10D82DE9 		stmfd	sp!, {r4, fp, ip, lr, pc}
+ 234              	.LCFI10:
+ 235 0208 04B04CE2 		sub	fp, ip, #4
+ 236              	.LCFI11:
+ 237              	.LM41:
+ 238 020c 0139A0E3 		mov	r3, #16384
+ 239 0210 8E3283E2 		add	r3, r3, #-536870904
+ 240 0214 0020A0E3 		mov	r2, #0
+ 241 0218 002083E5 		str	r2, [r3, #0]
+ 242              	.LM42:
+ 243 021c 0139A0E3 		mov	r3, #16384
+ 244 0220 4E3283E2 		add	r3, r3, #-536870908
+ 245 0224 0020A0E3 		mov	r2, #0
+ 246 0228 002083E5 		str	r2, [r3, #0]
+ 247              	.LM43:
+ 248 022c 0E32A0E3 		mov	r3, #-536870912
+ 249 0230 013983E2 		add	r3, r3, #16384
+ 250 0234 143083E2 		add	r3, r3, #20
+ 251 0238 0320A0E3 		mov	r2, #3
+ 252 023c 002083E5 		str	r2, [r3, #0]
+ 253              	.LM44:
+ 254 0240 0139A0E3 		mov	r3, #16384
+ 255 0244 CE3283E2 		add	r3, r3, #-536870900
+ 256 0248 0020A0E3 		mov	r2, #0
+ 257 024c 002083E5 		str	r2, [r3, #0]
+ 258              	.LM45:
+ 259 0250 0E32A0E3 		mov	r3, #-536870912
+ 260 0254 013983E2 		add	r3, r3, #16384
+ 261 0258 103083E2 		add	r3, r3, #16
+ 262 025c 0020A0E3 		mov	r2, #0
+ 263 0260 002083E5 		str	r2, [r3, #0]
+ 264              	.LM46:
+ 265 0264 0E42A0E3 		mov	r4, #-536870912
+ 266 0268 014984E2 		add	r4, r4, #16384
+ 267 026c 184084E2 		add	r4, r4, #24
+ 268 0270 FEFFFFEB 		bl	peripheralClockFrequency
+ 269 0274 0020A0E1 		mov	r2, r0
+ 270 0278 24309FE5 		ldr	r3, .L13
+ 271 027c 921383E0 		umull	r1, r3, r2, r3
+ 272 0280 2333A0E1 		mov	r3, r3, lsr #6
+ 273 0284 003084E5 		str	r3, [r4, #0]
+ 274              	.LM47:
+ 275 0288 0139A0E3 		mov	r3, #16384
+ 276 028c 4E3283E2 		add	r3, r3, #-536870908
+ 277 0290 0120A0E3 		mov	r2, #1
+ 278 0294 002083E5 		str	r2, [r3, #0]
+ 279              	.LM48:
+ 280 0298 10D04BE2 		sub	sp, fp, #16
+ 281 029c 10689DE8 		ldmfd	sp, {r4, fp, sp, lr}
+ 282 02a0 1EFF2FE1 		bx	lr
+ 283              	.L14:
+ 284              		.align	2
+ 285              	.L13:
+ 286 02a4 D34D6210 		.word	274877907
+ 287              	.LFE5:
+ 289              		.align	2
+ 290              		.global	init_timer1
+ 292              	init_timer1:
+ 293              	.LFB6:
+ 294              	.LM49:
+ 295              		@ Function supports interworking.
+ 296              		@ args = 0, pretend = 0, frame = 0
+ 297              		@ frame_needed = 1, uses_anonymous_args = 0
+ 298 02a8 0DC0A0E1 		mov	ip, sp
+ 299              	.LCFI12:
+ 300 02ac 10D82DE9 		stmfd	sp!, {r4, fp, ip, lr, pc}
+ 301              	.LCFI13:
+ 302 02b0 04B04CE2 		sub	fp, ip, #4
+ 303              	.LCFI14:
+ 304              	.LM50:
+ 305 02b4 0239A0E3 		mov	r3, #32768
+ 306 02b8 8E3283E2 		add	r3, r3, #-536870904
+ 307 02bc 0020A0E3 		mov	r2, #0
+ 308 02c0 002083E5 		str	r2, [r3, #0]
+ 309              	.LM51:
+ 310 02c4 0239A0E3 		mov	r3, #32768
+ 311 02c8 4E3283E2 		add	r3, r3, #-536870908
+ 312 02cc 0020A0E3 		mov	r2, #0
+ 313 02d0 002083E5 		str	r2, [r3, #0]
+ 314              	.LM52:
+ 315 02d4 0E32A0E3 		mov	r3, #-536870912
+ 316 02d8 023983E2 		add	r3, r3, #32768
+ 317 02dc 143083E2 		add	r3, r3, #20
+ 318 02e0 0320A0E3 		mov	r2, #3
+ 319 02e4 002083E5 		str	r2, [r3, #0]
+ 320              	.LM53:
+ 321 02e8 0239A0E3 		mov	r3, #32768
+ 322 02ec CE3283E2 		add	r3, r3, #-536870900
+ 323 02f0 0020A0E3 		mov	r2, #0
+ 324 02f4 002083E5 		str	r2, [r3, #0]
+ 325              	.LM54:
+ 326 02f8 0E32A0E3 		mov	r3, #-536870912
+ 327 02fc 023983E2 		add	r3, r3, #32768
+ 328 0300 103083E2 		add	r3, r3, #16
+ 329 0304 0020A0E3 		mov	r2, #0
+ 330 0308 002083E5 		str	r2, [r3, #0]
+ 331              	.LM55:
+ 332 030c 0E42A0E3 		mov	r4, #-536870912
+ 333 0310 024984E2 		add	r4, r4, #32768
+ 334 0314 184084E2 		add	r4, r4, #24
+ 335 0318 FEFFFFEB 		bl	processorClockFrequency
+ 336 031c 0030A0E1 		mov	r3, r0
+ 337 0320 003084E5 		str	r3, [r4, #0]
+ 338              	.LM56:
+ 339 0324 0239A0E3 		mov	r3, #32768
+ 340 0328 4E3283E2 		add	r3, r3, #-536870908
+ 341 032c 0120A0E3 		mov	r2, #1
+ 342 0330 002083E5 		str	r2, [r3, #0]
+ 343              	.LM57:
+ 344 0334 10D04BE2 		sub	sp, fp, #16
+ 345 0338 10689DE8 		ldmfd	sp, {r4, fp, sp, lr}
+ 346 033c 1EFF2FE1 		bx	lr
+ 347              	.LFE6:
+ 349              		.align	2
+ 350              		.global	PWM_Init
+ 352              	PWM_Init:
+ 353              	.LFB7:
+ 354              	.LM58:
+ 355              		@ Function supports interworking.
+ 356              		@ args = 0, pretend = 0, frame = 0
+ 357              		@ frame_needed = 1, uses_anonymous_args = 0
+ 358 0340 0DC0A0E1 		mov	ip, sp
+ 359              	.LCFI15:
+ 360 0344 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 361              	.LCFI16:
+ 362 0348 04B04CE2 		sub	fp, ip, #4
+ 363              	.LCFI17:
+ 364              	.LM59:
+ 365 034c 4E32A0E3 		mov	r3, #-536870908
+ 366 0350 053983E2 		add	r3, r3, #81920
+ 367 0354 0220A0E3 		mov	r2, #2
+ 368 0358 002083E5 		str	r2, [r3, #0]
+ 369              	.LM60:
+ 370 035c CE32A0E3 		mov	r3, #-536870900
+ 371 0360 053983E2 		add	r3, r3, #81920
+ 372 0364 0020A0E3 		mov	r2, #0
+ 373 0368 002083E5 		str	r2, [r3, #0]
+ 374              	.LM61:
+ 375 036c 0E32A0E3 		mov	r3, #-536870912
+ 376 0370 053983E2 		add	r3, r3, #81920
+ 377 0374 143083E2 		add	r3, r3, #20
+ 378 0378 0220A0E3 		mov	r2, #2
+ 379 037c 002083E5 		str	r2, [r3, #0]
+ 380              	.LM62:
+ 381 0380 0E32A0E3 		mov	r3, #-536870912
+ 382 0384 053983E2 		add	r3, r3, #81920
+ 383 0388 183083E2 		add	r3, r3, #24
+ 384 038c 1228A0E3 		mov	r2, #1179648
+ 385 0390 002083E5 		str	r2, [r3, #0]
+ 386              	.LM63:
+ 387 0394 0E22A0E3 		mov	r2, #-536870912
+ 388 0398 052982E2 		add	r2, r2, #81920
+ 389 039c 442082E2 		add	r2, r2, #68
+ 390 03a0 563BA0E3 		mov	r3, #88064
+ 391 03a4 653F83E2 		add	r3, r3, #404
+ 392 03a8 023083E2 		add	r3, r3, #2
+ 393 03ac 003082E5 		str	r3, [r2, #0]
+ 394              	.LM64:
+ 395 03b0 0E32A0E3 		mov	r3, #-536870912
+ 396 03b4 053983E2 		add	r3, r3, #81920
+ 397 03b8 503083E2 		add	r3, r3, #80
+ 398 03bc 2020A0E3 		mov	r2, #32
+ 399 03c0 002083E5 		str	r2, [r3, #0]
+ 400              	.LM65:
+ 401 03c4 0E32A0E3 		mov	r3, #-536870912
+ 402 03c8 053983E2 		add	r3, r3, #81920
+ 403 03cc 4C3083E2 		add	r3, r3, #76
+ 404 03d0 7E2CA0E3 		mov	r2, #32256
+ 405 03d4 002083E5 		str	r2, [r3, #0]
+ 406              	.LM66:
+ 407 03d8 4E32A0E3 		mov	r3, #-536870908
+ 408 03dc 053983E2 		add	r3, r3, #81920
+ 409 03e0 0920A0E3 		mov	r2, #9
+ 410 03e4 002083E5 		str	r2, [r3, #0]
+ 411              	.LM67:
+ 412 03e8 0CD04BE2 		sub	sp, fp, #12
+ 413 03ec 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 414 03f0 1EFF2FE1 		bx	lr
+ 415              	.LFE7:
+ 417              		.align	2
+ 418              		.global	init_spi
+ 420              	init_spi:
+ 421              	.LFB8:
+ 422              	.LM68:
+ 423              		@ Function supports interworking.
+ 424              		@ args = 0, pretend = 0, frame = 0
+ 425              		@ frame_needed = 1, uses_anonymous_args = 0
+ 426 03f4 0DC0A0E1 		mov	ip, sp
+ 427              	.LCFI18:
+ 428 03f8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 429              	.LCFI19:
+ 430 03fc 04B04CE2 		sub	fp, ip, #4
+ 431              	.LCFI20:
+ 432              	.LM69:
+ 433 0400 CE32A0E3 		mov	r3, #-536870900
+ 434 0404 023883E2 		add	r3, r3, #131072
+ 435 0408 0420A0E3 		mov	r2, #4
+ 436 040c 002083E5 		str	r2, [r3, #0]
+ 437              	.LM70:
+ 438 0410 0E32A0E3 		mov	r3, #-536870912
+ 439 0414 023883E2 		add	r3, r3, #131072
+ 440 0418 2020A0E3 		mov	r2, #32
+ 441 041c 002083E5 		str	r2, [r3, #0]
+ 442              	.LM71:
+ 443 0420 0CD04BE2 		sub	sp, fp, #12
+ 444 0424 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 445 0428 1EFF2FE1 		bx	lr
+ 446              	.LFE8:
+ 448              		.align	2
+ 449              		.global	init_spi1
+ 451              	init_spi1:
+ 452              	.LFB9:
+ 453              	.LM72:
+ 454              		@ Function supports interworking.
+ 455              		@ args = 0, pretend = 0, frame = 4
+ 456              		@ frame_needed = 1, uses_anonymous_args = 0
+ 457 042c 0DC0A0E1 		mov	ip, sp
+ 458              	.LCFI21:
+ 459 0430 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 460              	.LCFI22:
+ 461 0434 04B04CE2 		sub	fp, ip, #4
+ 462              	.LCFI23:
+ 463 0438 04D04DE2 		sub	sp, sp, #4
+ 464              	.LCFI24:
+ 465              	.LM73:
+ 466 043c 0E22A0E3 		mov	r2, #-536870912
+ 467 0440 1A2982E2 		add	r2, r2, #425984
+ 468 0444 013BA0E3 		mov	r3, #1024
+ 469 0448 0F3083E2 		add	r3, r3, #15
+ 470 044c 003082E5 		str	r3, [r2, #0]
+ 471              	.LM74:
+ 472 0450 0E32A0E3 		mov	r3, #-536870912
+ 473 0454 1A3983E2 		add	r3, r3, #425984
+ 474 0458 103083E2 		add	r3, r3, #16
+ 475 045c 1B20A0E3 		mov	r2, #27
+ 476 0460 002083E5 		str	r2, [r3, #0]
+ 477              	.LM75:
+ 478 0464 0030A0E3 		mov	r3, #0
+ 479 0468 0E304BE5 		strb	r3, [fp, #-14]
+ 480 046c 060000EA 		b	.L22
+ 481              	.L23:
+ 482              	.LM76:
+ 483 0470 8E32A0E3 		mov	r3, #-536870904
+ 484 0474 1A3983E2 		add	r3, r3, #425984
+ 485 0478 003093E5 		ldr	r3, [r3, #0]
+ 486 047c 0D304BE5 		strb	r3, [fp, #-13]
+ 487              	.LM77:
+ 488 0480 0E305BE5 		ldrb	r3, [fp, #-14]
+ 489 0484 013083E2 		add	r3, r3, #1
+ 490 0488 0E304BE5 		strb	r3, [fp, #-14]
+ 491              	.L22:
+ 492 048c 0E305BE5 		ldrb	r3, [fp, #-14]	@ zero_extendqisi2
+ 493 0490 070053E3 		cmp	r3, #7
+ 494 0494 F5FFFF9A 		bls	.L23
+ 495              	.LM78:
+ 496 0498 0E32A0E3 		mov	r3, #-536870912
+ 497 049c 1A3983E2 		add	r3, r3, #425984
+ 498 04a0 143083E2 		add	r3, r3, #20
+ 499 04a4 0020A0E3 		mov	r2, #0
+ 500 04a8 002083E5 		str	r2, [r3, #0]
+ 501              	.LM79:
+ 502 04ac 4E32A0E3 		mov	r3, #-536870908
+ 503 04b0 1A3983E2 		add	r3, r3, #425984
+ 504 04b4 0020A0E3 		mov	r2, #0
+ 505 04b8 002083E5 		str	r2, [r3, #0]
+ 506              	.LM80:
+ 507 04bc 0CD04BE2 		sub	sp, fp, #12
+ 508 04c0 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 509 04c4 1EFF2FE1 		bx	lr
+ 510              	.LFE9:
+ 512              		.align	2
+ 513              		.global	pll_init
+ 515              	pll_init:
+ 516              	.LFB10:
+ 517              	.LM81:
+ 518              		@ Function supports interworking.
+ 519              		@ args = 0, pretend = 0, frame = 0
+ 520              		@ frame_needed = 1, uses_anonymous_args = 0
+ 521 04c8 0DC0A0E1 		mov	ip, sp
+ 522              	.LCFI25:
+ 523 04cc 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 524              	.LCFI26:
+ 525 04d0 04B04CE2 		sub	fp, ip, #4
+ 526              	.LCFI27:
+ 527              	.LM82:
+ 528 04d4 0E32A0E3 		mov	r3, #-536870912
+ 529 04d8 7F3983E2 		add	r3, r3, #2080768
+ 530 04dc 843083E2 		add	r3, r3, #132
+ 531 04e0 2320A0E3 		mov	r2, #35
+ 532 04e4 002083E5 		str	r2, [r3, #0]
+ 533              	.LM83:
+ 534 04e8 0E32A0E3 		mov	r3, #-536870912
+ 535 04ec 7F3983E2 		add	r3, r3, #2080768
+ 536 04f0 803083E2 		add	r3, r3, #128
+ 537 04f4 0320A0E3 		mov	r2, #3
+ 538 04f8 002083E5 		str	r2, [r3, #0]
+ 539              	.LM84:
+ 540 04fc 0CD04BE2 		sub	sp, fp, #12
+ 541 0500 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 542 0504 1EFF2FE1 		bx	lr
+ 543              	.LFE10:
+ 545              		.align	2
+ 546              		.global	pll_feed
+ 548              	pll_feed:
+ 549              	.LFB11:
+ 550              	.LM85:
+ 551              		@ Function supports interworking.
+ 552              		@ args = 0, pretend = 0, frame = 0
+ 553              		@ frame_needed = 1, uses_anonymous_args = 0
+ 554 0508 0DC0A0E1 		mov	ip, sp
+ 555              	.LCFI28:
+ 556 050c 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 557              	.LCFI29:
+ 558 0510 04B04CE2 		sub	fp, ip, #4
+ 559              	.LCFI30:
+ 560              	.LM86:
+ 561 0514 0E32A0E3 		mov	r3, #-536870912
+ 562 0518 7F3983E2 		add	r3, r3, #2080768
+ 563 051c 8C3083E2 		add	r3, r3, #140
+ 564 0520 AA20A0E3 		mov	r2, #170
+ 565 0524 002083E5 		str	r2, [r3, #0]
+ 566              	.LM87:
+ 567 0528 0E32A0E3 		mov	r3, #-536870912
+ 568 052c 7F3983E2 		add	r3, r3, #2080768
+ 569 0530 8C3083E2 		add	r3, r3, #140
+ 570 0534 5520A0E3 		mov	r2, #85
+ 571 0538 002083E5 		str	r2, [r3, #0]
+ 572              	.LM88:
+ 573 053c 0CD04BE2 		sub	sp, fp, #12
+ 574 0540 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 575 0544 1EFF2FE1 		bx	lr
+ 576              	.LFE11:
+ 578              		.align	2
+ 579              		.global	processorClockFrequency
+ 581              	processorClockFrequency:
+ 582              	.LFB12:
+ 583              	.LM89:
+ 584              		@ Function supports interworking.
+ 585              		@ args = 0, pretend = 0, frame = 0
+ 586              		@ frame_needed = 1, uses_anonymous_args = 0
+ 587 0548 0DC0A0E1 		mov	ip, sp
+ 588              	.LCFI31:
+ 589 054c 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 590              	.LCFI32:
+ 591 0550 04B04CE2 		sub	fp, ip, #4
+ 592              	.LCFI33:
+ 593              	.LM90:
+ 594 0554 E137A0E3 		mov	r3, #58982400
+ 595              	.LM91:
+ 596 0558 0300A0E1 		mov	r0, r3
+ 597 055c 0CD04BE2 		sub	sp, fp, #12
+ 598 0560 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 599 0564 1EFF2FE1 		bx	lr
+ 600              	.LFE12:
+ 602              		.global	__udivsi3
+ 603              		.align	2
+ 604              		.global	peripheralClockFrequency
+ 606              	peripheralClockFrequency:
+ 607              	.LFB13:
+ 608              	.LM92:
+ 609              		@ Function supports interworking.
+ 610              		@ args = 0, pretend = 0, frame = 8
+ 611              		@ frame_needed = 1, uses_anonymous_args = 0
+ 612 0568 0DC0A0E1 		mov	ip, sp
+ 613              	.LCFI34:
+ 614 056c 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 615              	.LCFI35:
+ 616 0570 04B04CE2 		sub	fp, ip, #4
+ 617              	.LCFI36:
+ 618 0574 08D04DE2 		sub	sp, sp, #8
+ 619              	.LCFI37:
+ 620              	.LM93:
+ 621 0578 0E32A0E3 		mov	r3, #-536870912
+ 622 057c 7F3983E2 		add	r3, r3, #2080768
+ 623 0580 013C83E2 		add	r3, r3, #256
+ 624 0584 003093E5 		ldr	r3, [r3, #0]
+ 625 0588 033003E2 		and	r3, r3, #3
+ 626 058c 14300BE5 		str	r3, [fp, #-20]
+ 627 0590 14301BE5 		ldr	r3, [fp, #-20]
+ 628 0594 010053E3 		cmp	r3, #1
+ 629 0598 0900000A 		beq	.L35
+ 630 059c 14301BE5 		ldr	r3, [fp, #-20]
+ 631 05a0 010053E3 		cmp	r3, #1
+ 632 05a4 0300003A 		bcc	.L34
+ 633 05a8 14301BE5 		ldr	r3, [fp, #-20]
+ 634 05ac 020053E3 		cmp	r3, #2
+ 635 05b0 0600000A 		beq	.L36
+ 636 05b4 070000EA 		b	.L33
+ 637              	.L34:
+ 638              	.LM94:
+ 639 05b8 0430A0E3 		mov	r3, #4
+ 640 05bc 10300BE5 		str	r3, [fp, #-16]
+ 641              	.LM95:
+ 642 05c0 040000EA 		b	.L33
+ 643              	.L35:
+ 644              	.LM96:
+ 645 05c4 0130A0E3 		mov	r3, #1
+ 646 05c8 10300BE5 		str	r3, [fp, #-16]
+ 647              	.LM97:
+ 648 05cc 010000EA 		b	.L33
+ 649              	.L36:
+ 650              	.LM98:
+ 651 05d0 0230A0E3 		mov	r3, #2
+ 652 05d4 10300BE5 		str	r3, [fp, #-16]
+ 653              	.L33:
+ 654              	.LM99:
+ 655 05d8 FEFFFFEB 		bl	processorClockFrequency
+ 656 05dc 0030A0E1 		mov	r3, r0
+ 657 05e0 0300A0E1 		mov	r0, r3
+ 658 05e4 10101BE5 		ldr	r1, [fp, #-16]
+ 659 05e8 FEFFFFEB 		bl	__udivsi3
+ 660 05ec 0030A0E1 		mov	r3, r0
+ 661              	.LM100:
+ 662 05f0 0300A0E1 		mov	r0, r3
+ 663 05f4 0CD04BE2 		sub	sp, fp, #12
+ 664 05f8 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 665 05fc 1EFF2FE1 		bx	lr
+ 666              	.LFE13:
+ 668              		.align	2
+ 669              		.global	delay
+ 671              	delay:
+ 672              	.LFB14:
+ 673              	.LM101:
+ 674              		@ Function supports interworking.
+ 675              		@ args = 0, pretend = 0, frame = 8
+ 676              		@ frame_needed = 1, uses_anonymous_args = 0
+ 677 0600 0DC0A0E1 		mov	ip, sp
+ 678              	.LCFI38:
+ 679 0604 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 680              	.LCFI39:
+ 681 0608 04B04CE2 		sub	fp, ip, #4
+ 682              	.LCFI40:
+ 683 060c 08D04DE2 		sub	sp, sp, #8
+ 684              	.LCFI41:
+ 685 0610 14000BE5 		str	r0, [fp, #-20]
+ 686              	.LM102:
+ 687 0614 0030A0E3 		mov	r3, #0
+ 688 0618 10300BE5 		str	r3, [fp, #-16]
+ 689 061c 020000EA 		b	.L39
+ 690              	.L40:
+ 691 0620 10301BE5 		ldr	r3, [fp, #-16]
+ 692 0624 013083E2 		add	r3, r3, #1
+ 693 0628 10300BE5 		str	r3, [fp, #-16]
+ 694              	.L39:
+ 695 062c 10201BE5 		ldr	r2, [fp, #-16]
+ 696 0630 14301BE5 		ldr	r3, [fp, #-20]
+ 697 0634 030052E1 		cmp	r2, r3
+ 698 0638 F8FFFFBA 		blt	.L40
+ 699              	.LM103:
+ 700 063c 0CD04BE2 		sub	sp, fp, #12
+ 701 0640 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 702 0644 1EFF2FE1 		bx	lr
+ 703              	.LFE14:
+ 705              		.comm	GPS_timeout,4,4
+ 706              		.comm	SYSTEM_initialized,1,1
+ 707              		.comm	SSP_trans_cnt,4,4
+ 1053              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 system.c
+     /tmp/cck22kC0.s:10     .text:00000000 $a
+     /tmp/cck22kC0.s:13     .text:00000000 init
+     /tmp/cck22kC0.s:515    .text:000004c8 pll_init
+     /tmp/cck22kC0.s:548    .text:00000508 pll_feed
+     /tmp/cck22kC0.s:158    .text:00000158 init_ports
+     /tmp/cck22kC0.s:420    .text:000003f4 init_spi
+     /tmp/cck22kC0.s:451    .text:0000042c init_spi1
+     /tmp/cck22kC0.s:225    .text:00000200 init_timer0
+     /tmp/cck22kC0.s:292    .text:000002a8 init_timer1
+     /tmp/cck22kC0.s:352    .text:00000340 PWM_Init
+     /tmp/cck22kC0.s:83     .text:0000009c init_interrupts
+     /tmp/cck22kC0.s:148    .text:00000144 $d
+     /tmp/cck22kC0.s:155    .text:00000158 $a
+     /tmp/cck22kC0.s:218    .text:000001f8 $d
+     /tmp/cck22kC0.s:222    .text:00000200 $a
+     /tmp/cck22kC0.s:606    .text:00000568 peripheralClockFrequency
+     /tmp/cck22kC0.s:286    .text:000002a4 $d
+     /tmp/cck22kC0.s:289    .text:000002a8 $a
+     /tmp/cck22kC0.s:581    .text:00000548 processorClockFrequency
+     /tmp/cck22kC0.s:671    .text:00000600 delay
+                            *COM*:00000004 GPS_timeout
+                            *COM*:00000001 SYSTEM_initialized
+                            *COM*:00000004 SSP_trans_cnt
+     /tmp/cck22kC0.s:721    .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+UARTInitialize
+UART1Initialize
+ADCInit
+init_VIC
+install_irq
+timer0ISR
+timer1ISR
+uart1ISR
+uart0ISR
+SSPHandler
+__udivsi3

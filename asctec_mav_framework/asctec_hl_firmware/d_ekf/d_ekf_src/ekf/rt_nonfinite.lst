@@ -1,0 +1,236 @@
+   1              		.file	"rt_nonfinite.c"
+   9              	.Ltext0:
+  10              		.global	__eqdf2
+  11              		.align	2
+  12              		.global	rtIsInf
+  14              	rtIsInf:
+  15              	.LFB3:
+  16              	.LM1:
+  17              		@ Function supports interworking.
+  18              		@ args = 0, pretend = 0, frame = 0
+  19              		@ frame_needed = 0, uses_anonymous_args = 0
+  20              	.LVL0:
+  21              	.LM2:
+  22 0000 50309FE5 		ldr	r3, .L10
+  23              	.LM3:
+  24 0004 30402DE9 		stmfd	sp!, {r4, r5, lr}
+  25              	.LCFI0:
+  26              	.LM4:
+  27 0008 0040A0E1 		mov	r4, r0
+  28              	.LVL1:
+  29 000c 0150A0E1 		mov	r5, r1
+  30              	.LM5:
+  31 0010 0420A0E1 		mov	r2, r4
+  32 0014 030093E8 		ldmia	r3, {r0-r1}
+  33              	.LVL2:
+  34 0018 0530A0E1 		mov	r3, r5
+  35 001c FEFFFFEB 		bl	__eqdf2
+  36              	.LVL3:
+  37 0020 000050E3 		cmp	r0, #0
+  38 0024 0510A0E1 		mov	r1, r5
+  39 0028 0400A0E1 		mov	r0, r4
+  40 002c 0130A0E3 		mov	r3, #1
+  41 0030 0500000A 		beq	.L5
+  42              	.LVL4:
+  43 0034 20C09FE5 		ldr	ip, .L10+4
+  44 0038 0C009CE8 		ldmia	ip, {r2-r3}
+  45 003c FEFFFFEB 		bl	__eqdf2
+  46              	.LVL5:
+  47 0040 000050E3 		cmp	r0, #0
+  48 0044 0030A013 		movne	r3, #0
+  49 0048 0130A003 		moveq	r3, #1
+  50              	.LVL6:
+  51              	.L5:
+  52              	.LM6:
+  53 004c 0300A0E1 		mov	r0, r3
+  54 0050 3040BDE8 		ldmfd	sp!, {r4, r5, lr}
+  55 0054 1EFF2FE1 		bx	lr
+  56              	.L11:
+  57              		.align	2
+  58              	.L10:
+  59 0058 00000000 		.word	rtInf
+  60 005c 00000000 		.word	rtMinusInf
+  61              	.LFE3:
+  63              		.global	__eqsf2
+  64              		.align	2
+  65              		.global	rtIsInfF
+  67              	rtIsInfF:
+  68              	.LFB4:
+  69              	.LM7:
+  70              		@ Function supports interworking.
+  71              		@ args = 0, pretend = 0, frame = 0
+  72              		@ frame_needed = 0, uses_anonymous_args = 0
+  73              	.LVL7:
+  74              	.LM8:
+  75 0060 44309FE5 		ldr	r3, .L20
+  76              	.LM9:
+  77 0064 10402DE9 		stmfd	sp!, {r4, lr}
+  78              	.LCFI1:
+  79              	.LM10:
+  80 0068 0040A0E1 		mov	r4, r0
+  81              	.LM11:
+  82 006c 0410A0E1 		mov	r1, r4
+  83 0070 000093E5 		ldr	r0, [r3, #0]	@ float
+  84              	.LVL8:
+  85 0074 FEFFFFEB 		bl	__eqsf2
+  86              	.LVL9:
+  87 0078 000050E3 		cmp	r0, #0
+  88 007c 0130A0E3 		mov	r3, #1
+  89 0080 0400A0E1 		mov	r0, r4
+  90 0084 0500000A 		beq	.L16
+  91              	.LVL10:
+  92 0088 20309FE5 		ldr	r3, .L20+4
+  93 008c 001093E5 		ldr	r1, [r3, #0]	@ float
+  94 0090 FEFFFFEB 		bl	__eqsf2
+  95              	.LVL11:
+  96 0094 000050E3 		cmp	r0, #0
+  97 0098 0030A013 		movne	r3, #0
+  98 009c 0130A003 		moveq	r3, #1
+  99              	.LVL12:
+ 100              	.L16:
+ 101              	.LM12:
+ 102 00a0 0300A0E1 		mov	r0, r3
+ 103 00a4 1040BDE8 		ldmfd	sp!, {r4, lr}
+ 104 00a8 1EFF2FE1 		bx	lr
+ 105              	.L21:
+ 106              		.align	2
+ 107              	.L20:
+ 108 00ac 00000000 		.word	rtInfF
+ 109 00b0 00000000 		.word	rtMinusInfF
+ 110              	.LFE4:
+ 112              		.global	__nedf2
+ 113              		.align	2
+ 114              		.global	rtIsNaN
+ 116              	rtIsNaN:
+ 117              	.LFB5:
+ 118              	.LM13:
+ 119              		@ Function supports interworking.
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122              	.LVL13:
+ 123 00b4 04E02DE5 		str	lr, [sp, #-4]!
+ 124              	.LCFI2:
+ 125              	.LM14:
+ 126 00b8 0020A0E1 		mov	r2, r0
+ 127              	.LVL14:
+ 128 00bc 0130A0E1 		mov	r3, r1
+ 129 00c0 FEFFFFEB 		bl	__nedf2
+ 130              	.LVL15:
+ 131 00c4 000050E3 		cmp	r0, #0
+ 132 00c8 0000A003 		moveq	r0, #0
+ 133 00cc 0100A013 		movne	r0, #1
+ 134              	.LM15:
+ 135 00d0 04E09DE4 		ldr	lr, [sp], #4
+ 136 00d4 1EFF2FE1 		bx	lr
+ 137              	.LFE5:
+ 139              		.global	__nesf2
+ 140              		.align	2
+ 141              		.global	rtIsNaNF
+ 143              	rtIsNaNF:
+ 144              	.LFB6:
+ 145              	.LM16:
+ 146              		@ Function supports interworking.
+ 147              		@ args = 0, pretend = 0, frame = 0
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              	.LVL16:
+ 150 00d8 04E02DE5 		str	lr, [sp, #-4]!
+ 151              	.LCFI3:
+ 152              	.LM17:
+ 153 00dc 0010A0E1 		mov	r1, r0
+ 154 00e0 FEFFFFEB 		bl	__nesf2
+ 155              	.LVL17:
+ 156 00e4 000050E3 		cmp	r0, #0
+ 157 00e8 0000A003 		moveq	r0, #0
+ 158 00ec 0100A013 		movne	r0, #1
+ 159              	.LM18:
+ 160 00f0 04E09DE4 		ldr	lr, [sp], #4
+ 161 00f4 1EFF2FE1 		bx	lr
+ 162              	.LFE6:
+ 164              		.align	2
+ 165              		.global	rt_InitInfAndNaN
+ 167              	rt_InitInfAndNaN:
+ 168              	.LFB2:
+ 169              	.LM19:
+ 170              		@ Function supports interworking.
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173              	.LVL18:
+ 174 00f8 04E02DE5 		str	lr, [sp, #-4]!
+ 175              	.LCFI4:
+ 176              	.LM20:
+ 177 00fc FEFFFFEB 		bl	rtGetNaN
+ 178              	.LVL19:
+ 179 0100 44309FE5 		ldr	r3, .L32
+ 180 0104 030083E8 		stmia	r3, {r0-r1}
+ 181              	.LM21:
+ 182 0108 FEFFFFEB 		bl	rtGetNaNF
+ 183 010c 3C309FE5 		ldr	r3, .L32+4
+ 184 0110 000083E5 		str	r0, [r3, #0]	@ float
+ 185              	.LM22:
+ 186 0114 FEFFFFEB 		bl	rtGetInf
+ 187 0118 34309FE5 		ldr	r3, .L32+8
+ 188 011c 030083E8 		stmia	r3, {r0-r1}
+ 189              	.LM23:
+ 190 0120 FEFFFFEB 		bl	rtGetInfF
+ 191 0124 2C309FE5 		ldr	r3, .L32+12
+ 192 0128 000083E5 		str	r0, [r3, #0]	@ float
+ 193              	.LM24:
+ 194 012c FEFFFFEB 		bl	rtGetMinusInf
+ 195 0130 24309FE5 		ldr	r3, .L32+16
+ 196 0134 030083E8 		stmia	r3, {r0-r1}
+ 197              	.LM25:
+ 198 0138 FEFFFFEB 		bl	rtGetMinusInfF
+ 199 013c 1C309FE5 		ldr	r3, .L32+20
+ 200 0140 000083E5 		str	r0, [r3, #0]	@ float
+ 201              	.LM26:
+ 202 0144 04E09DE4 		ldr	lr, [sp], #4
+ 203 0148 1EFF2FE1 		bx	lr
+ 204              	.L33:
+ 205              		.align	2
+ 206              	.L32:
+ 207 014c 00000000 		.word	rtNaN
+ 208 0150 00000000 		.word	rtNaNF
+ 209 0154 00000000 		.word	rtInf
+ 210 0158 00000000 		.word	rtInfF
+ 211 015c 00000000 		.word	rtMinusInf
+ 212 0160 00000000 		.word	rtMinusInfF
+ 213              	.LFE2:
+ 215              		.comm	rtInf,8,4
+ 216              		.comm	rtMinusInf,8,4
+ 217              		.comm	rtNaN,8,4
+ 218              		.comm	rtInfF,4,4
+ 219              		.comm	rtMinusInfF,4,4
+ 220              		.comm	rtNaNF,4,4
+ 313              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 rt_nonfinite.c
+     /tmp/ccqk75nl.s:11     .text:00000000 $a
+     /tmp/ccqk75nl.s:14     .text:00000000 rtIsInf
+     /tmp/ccqk75nl.s:59     .text:00000058 $d
+                            *COM*:00000008 rtInf
+                            *COM*:00000008 rtMinusInf
+     /tmp/ccqk75nl.s:64     .text:00000060 $a
+     /tmp/ccqk75nl.s:67     .text:00000060 rtIsInfF
+     /tmp/ccqk75nl.s:108    .text:000000ac $d
+                            *COM*:00000004 rtInfF
+                            *COM*:00000004 rtMinusInfF
+     /tmp/ccqk75nl.s:113    .text:000000b4 $a
+     /tmp/ccqk75nl.s:116    .text:000000b4 rtIsNaN
+     /tmp/ccqk75nl.s:143    .text:000000d8 rtIsNaNF
+     /tmp/ccqk75nl.s:167    .text:000000f8 rt_InitInfAndNaN
+     /tmp/ccqk75nl.s:207    .text:0000014c $d
+                            *COM*:00000008 rtNaN
+                            *COM*:00000004 rtNaNF
+     /tmp/ccqk75nl.s:234    .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+__eqdf2
+__eqsf2
+__nedf2
+__nesf2
+rtGetNaN
+rtGetNaNF
+rtGetInf
+rtGetInfF
+rtGetMinusInf
+rtGetMinusInfF
