@@ -26,32 +26,35 @@ int obstacle_index = 3;
 
 void start_robots_pos()
 {
+  obstaculos.push_back(obstacle());
   obstaculos[0].x = 0;
   obstaculos[0].y = 0;
-  obstaculos[0].alpha = 0;
-  obstaculos[0].beta = 0;
-  obstaculos[0].radius = 0;
-  obstaculos[0].spread = 0;
+  obstaculos[0].alpha = 1.5;
+  obstaculos[0].beta = 1.5;
+  obstaculos[0].radius = 0.5;
+  obstaculos[0].spread = 0.5;
 
+  obstaculos.push_back(obstacle());
   obstaculos[1].x = 0;
   obstaculos[1].y = 0;
-  obstaculos[1].alpha = 0;
-  obstaculos[1].beta = 0;
-  obstaculos[1].radius = 0;
-  obstaculos[1].spread = 0;
+  obstaculos[1].alpha = 1.5;
+  obstaculos[1].beta = 1.5;
+  obstaculos[1].radius = 0.5;
+  obstaculos[1].spread = 0.5;
 
+  obstaculos.push_back(obstacle());
   obstaculos[2].x = 0;
   obstaculos[2].y = 0;
-  obstaculos[2].alpha = 0;
-  obstaculos[2].beta = 0;
-  obstaculos[2].radius = 0;
-  obstaculos[2].spread = 0;
+  obstaculos[2].alpha = 1.5;
+  obstaculos[2].beta = 1.5;
+  obstaculos[2].radius = 0.5;
+  obstaculos[2].spread = 0.5;
 }
 
 void update_robots_pos(int robot, double x, double y, double z)
 {
-  obstaculos[0].x = x;
-  obstaculos[0].y = y;
+  obstaculos[robot-1].x = x;
+  obstaculos[robot-1].y = y;
 }
 
 bool addObstacle(pf_plus_consensus::PotentialField::Request  &req,
@@ -151,7 +154,9 @@ void robot_Callback(const geometry_msgs::Twist::ConstPtr& msg) {
   goalForce(msg->linear.x, msg->linear.y, msg->linear.z);
 
   for (int i = 0; i < obstacle_index; i++) {
-    obstacleForce(obstaculos[i], msg->linear.x, msg->linear.y, msg->linear.z);
+    if (i != force.angular.z - 1) {
+      obstacleForce(obstaculos[i], msg->linear.x, msg->linear.y, msg->linear.z);
+    }
   }
 
   int pub = (int) msg->angular.z - 1;
