@@ -4,10 +4,10 @@
 #include "std_msgs/String.h"
 #include "geometry_msgs/Point.h"
 #include "geometry_msgs/Twist.h"
-#include "potential_field_robot/Force.h"
-#include "potential_field_robot/ForceResponse.h"
-#include "potential_field_robot/PotentialField.h"
-#include "potential_field_robot/PotentialFieldRequest.h"
+#include "pf_plus_consensus/Force.h"
+#include "pf_plus_consensus/ForceResponse.h"
+#include "pf_plus_consensus/PotentialField.h"
+#include "pf_plus_consensus/PotentialFieldRequest.h"
 
 struct obstacle {
   double x;
@@ -18,14 +18,44 @@ struct obstacle {
   double spread;
 };
 
-potential_field_robot::PotentialFieldRequest goal;
+pf_plus_consensus::PotentialFieldRequest goal;
 geometry_msgs::Twist force;
 std::vector<obstacle> obstaculos;
 std::vector<ros::Publisher> publishers;
-int obstacle_index = 0;
+int obstacle_index = 3;
 
-bool addObstacle(potential_field_robot::PotentialField::Request  &req,
-          potential_field_robot::PotentialField::Response &res) 
+void start_robots_pos()
+{
+  obstaculos[0].x = 0;
+  obstaculos[0].y = 0;
+  obstaculos[0].alpha = 0;
+  obstaculos[0].beta = 0;
+  obstaculos[0].radius = 0;
+  obstaculos[0].spread = 0;
+
+  obstaculos[1].x = 0;
+  obstaculos[1].y = 0;
+  obstaculos[1].alpha = 0;
+  obstaculos[1].beta = 0;
+  obstaculos[1].radius = 0;
+  obstaculos[1].spread = 0;
+
+  obstaculos[2].x = 0;
+  obstaculos[2].y = 0;
+  obstaculos[2].alpha = 0;
+  obstaculos[2].beta = 0;
+  obstaculos[2].radius = 0;
+  obstaculos[2].spread = 0;
+}
+
+void update_robots_pos(int robot, double x, double y, double z)
+{
+  obstaculos[0].x = x;
+  obstaculos[0].y = y;
+}
+
+bool addObstacle(pf_plus_consensus::PotentialField::Request  &req,
+          pf_plus_consensus::PotentialField::Response &res) 
 {
   obstaculos.push_back(obstacle());
   
@@ -43,8 +73,8 @@ bool addObstacle(potential_field_robot::PotentialField::Request  &req,
   return true;
 }
 
-bool setGoal(potential_field_robot::PotentialField::Request  &req,
-          potential_field_robot::PotentialField::Response &res) 
+bool setGoal(pf_plus_consensus::PotentialField::Request  &req,
+          pf_plus_consensus::PotentialField::Response &res) 
 {
   goal.x = req.x;
   goal.y = req.y;
@@ -105,7 +135,9 @@ void obstacleForce(obstacle obs, double robotX, double robotY, double robotZ)
 }
 
 void robot_Callback(const geometry_msgs::Twist::ConstPtr& msg) {
-  ROS_INFO("robot_%d: x=%f, y=%f, z=%f", (int) msg->angular.z, msg->linear.x, msg->linear.y, msg->linear.z);
+  //ROS_INFO("robot_%d: x=%f, y=%f, z=%f", (int) msg->angular.z, msg->linear.x, msg->linear.y, msg->linear.z);
+  
+  update_robots_pos((int) msg->angular.z, (double) msg->linear.x,(double) msg->linear.y, (double) msg->linear.z);
 
   force.linear.x = 0.0;
   force.linear.y = 0.0;
@@ -114,7 +146,7 @@ void robot_Callback(const geometry_msgs::Twist::ConstPtr& msg) {
   force.angular.y = 0.0;
   force.angular.z = msg->angular.z;
 
-  ROS_INFO("request from robot_%d: x=%f, y=%f", (int) msg->angular.z, (double) msg->linear.x,(double) msg->linear.y);
+  //ROS_INFO("request from robot_%d: x=%f, y=%f", (int) msg->angular.z, (double) msg->linear.x,(double) msg->linear.y);
 
   goalForce(msg->linear.x, msg->linear.y, msg->linear.z);
 
@@ -126,7 +158,7 @@ void robot_Callback(const geometry_msgs::Twist::ConstPtr& msg) {
   publishers[pub].publish(force);
 
   
-  ROS_INFO("response to robot_%d: [dX=%f, dY=%f]", (int) force.angular.z, (double) force.linear.x, (double) force.linear.y);
+  //ROS_INFO("response to robot_%d: [dX=%f, dY=%f]", (int) force.angular.z, (double) force.linear.x, (double) force.linear.y);
 
   ros::spinOnce();
 }
@@ -137,13 +169,15 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
 
   ros::ServiceServer service_01 = n.advertiseService("set_goal", setGoal);
-  ROS_INFO("Goal setting service: online. May the Force be with you.");
+  ROS_INFO("Goal setting service: online.");
 
   ros::ServiceServer service_02 = n.advertiseService("add_obstacle", addObstacle);
-  ROS_INFO("Obstacle adding service: online. May the Force be with you.");
+  ROS_INFO("Obstacle adding service: online.");
 
   ros::Subscriber robot_01_listener = n.subscribe("robot_call", 100, robot_Callback);
-  ROS_INFO("Control for robot_01: online. May the Force be with you.");
+  ROS_INFO("Control for robot_01: online.\nMay the Force be with you.");
+
+  start_robots_pos();
 
   publishers.push_back(ros::Publisher());
   publishers[0] = n.advertise<geometry_msgs::Twist>("speed_01", 100);
