@@ -44,9 +44,9 @@ void init()
     pf_p2.radius = 1.0;
     pf_p2.spread = 1.0;
 
-    pf_p3.gain = 1.0;
-    pf_p3.radius = 1.0;
-    pf_p3.spread = 1.0;
+    pf_p1.gain = 1.0;
+    pf_p1.radius = 1.0;
+    pf_p1.spread = 1.0;
 }
 
 // calculo da forca exercida pelo ponto objetivo
@@ -107,13 +107,13 @@ pfield addPfields(pfield a, pfield b)
 
 void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
 {
-    pf_p1.x = (double) msg->pose.pose.position.x;
-    pf_p1.y = (double) msg->pose.pose.position.y;
-    pf_p1.z = (double) msg->pose.pose.position.z;
+    pf_p3.x = (double) msg->pose.pose.position.x;
+    pf_p3.y = (double) msg->pose.pose.position.y;
+    pf_p3.z = (double) msg->pose.pose.position.z;
 
     pfield temp;
-    temp = addPfields(attForce(goal, pf_p1), repForce(pf_p2, pf_p1));
-    temp = addPfields(temp, repForce(pf_p3, pf_p1));
+    temp = addPfields(attForce(goal, pf_p3), repForce(pf_p2, pf_p3));
+    temp = addPfields(temp, repForce(pf_p1, pf_p3));
 
     retorno.x = temp.x;
     retorno.y = temp.y;
@@ -129,10 +129,10 @@ void p2_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p2.y = (double) msg->pose.pose.position.y;
 }
 
-void p3_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
+void p1_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
 {
-    pf_p3.x = (double) msg->pose.pose.position.x;
-    pf_p3.y = (double) msg->pose.pose.position.y;
+    pf_p1.x = (double) msg->pose.pose.position.x;
+    pf_p1.y = (double) msg->pose.pose.position.y;
 }
 
 int main(int argc, char **argv)
@@ -144,13 +144,13 @@ int main(int argc, char **argv)
     init();
 
     // iniciando subscribers
-    sub_p1 = n.subscribe("/odom_p1", 10, robot_Callback);
+    sub_p1 = n.subscribe("/odom_p1", 10, p1_Callback);
     sub_p2 = n.subscribe("/odom_p2", 10, p2_Callback);
-    sub_p3 = n.subscribe("/odom_p3", 10, p3_Callback);
-    ROS_INFO("Control for robot_01: online. First blood.");
+    sub_p3 = n.subscribe("/odom_p3", 10, robot_Callback);
+    ROS_INFO("Control for robot_03: online. Triple kill.");
 
     // inicializando advertisers
-    pub_p1 = n.advertise<geometry_msgs::Quaternion>("/speed_01", 10);
+    pub_p1 = n.advertise<geometry_msgs::Quaternion>("/speed_03", 10);
 
     ros::spin();
 

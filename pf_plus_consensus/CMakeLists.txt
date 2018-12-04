@@ -202,3 +202,11 @@ include_directories(
 add_executable(first_blood src/first_blood.cpp)
 target_link_libraries(first_blood ${catkin_LIBRARIES})
 add_dependencies(first_blood pf_plus_consensus_generate_messages_cpp)
+
+add_executable(double_kill src/double_kill.cpp)
+target_link_libraries(double_kill ${catkin_LIBRARIES})
+add_dependencies(double_kill pf_plus_consensus_generate_messages_cpp)
+
+add_executable(triple_kill src/triple_kill.cpp)
+target_link_libraries(triple_kill ${catkin_LIBRARIES})
+add_dependencies(triple_kill pf_plus_consensus_generate_messages_cpp)
