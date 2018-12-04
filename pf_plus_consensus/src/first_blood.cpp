@@ -32,14 +32,8 @@ pfield pf_p3;
 // objeto para publicacao
 geometry_msgs::Quaternion retorno;
 
-void init() 
+void initParams() 
 {
-    goal.x = 0.0;
-    goal.y = 0.0;
-    goal.gain = 1.0;
-    goal.radius = 0.5;
-    goal.spread = 0.5;
-
     pf_p2.gain = 1.0;
     pf_p2.radius = 1.0;
     pf_p2.spread = 1.0;
@@ -120,6 +114,24 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     retorno.z = 0.0;
     retorno.w = 0.0;
 
+    //coleta dos parametros do ROS
+    ros::NodeHandle n;
+    if (!n.getParam("/pf/x", goal.x)) {
+        goal.x = 0;
+    }
+    if (!n.getParam("/pf/y", goal.y)) {
+        goal.y = 0;
+    }
+    if (!n.getParam("/pf/gain", goal.gain)) {
+        goal.gain = 1.0;
+    }
+    if (!n.getParam("/pf/radius", goal.radius)) {
+        goal.radius = 1.0;
+    }
+    if (!n.getParam("/pf/spread", goal.spread)) {
+        goal.spread = 1.0;
+    }
+
     pub_p1.publish(retorno);
 }
 
@@ -141,7 +153,13 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
 
     // iniciando parametros
-    init();
+    initParams();
+    n.setParam("/pf/x", 0);
+    n.setParam("/pf/y", 0);
+    n.setParam("/pf/z", 0);
+    n.setParam("/pf/gain", 1.0);
+    n.setParam("/pf/radius", 1.0);
+    n.setParam("/pf/spread", 1.0);
 
     // iniciando subscribers
     sub_p1 = n.subscribe("/odom_p1", 10, robot_Callback);
