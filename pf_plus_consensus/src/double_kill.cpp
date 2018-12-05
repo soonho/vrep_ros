@@ -22,12 +22,14 @@ ros::Publisher pub_p1;
 ros::Subscriber sub_p1;
 ros::Subscriber sub_p2;
 ros::Subscriber sub_p3;
+ros::Subscriber sub_q1;
 
 // campos potenciais objetivo e de aliados
 pfield goal;
 pfield pf_p1;
 pfield pf_p2;
 pfield pf_p3;
+pfield pf_q1;
 
 // objeto para publicacao
 geometry_msgs::Quaternion retorno;
@@ -41,6 +43,10 @@ void initParams()
     pf_p3.gain = 1.0;
     pf_p3.radius = 1.0;
     pf_p3.spread = 1.0;
+
+    pf_q1.gain = 1.0;
+    pf_q1.radius = 1.0;
+    pf_q1.spread = 1.0;
 }
 
 // calculo da forca exercida pelo ponto objetivo
@@ -147,6 +153,13 @@ void p3_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p3.y = (double) msg->pose.pose.position.y;
 }
 
+void q1_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
+{
+    pf_q1.x = (double) msg->pose.pose.position.x;
+    pf_q1.y = (double) msg->pose.pose.position.y;
+    pf_q1.z = (double) msg->pose.pose.position.z;
+}
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "first_blood");
@@ -165,6 +178,7 @@ int main(int argc, char **argv)
     sub_p1 = n.subscribe("/odom_p1", 10, p1_Callback);
     sub_p2 = n.subscribe("/odom_p2", 10, robot_Callback);
     sub_p3 = n.subscribe("/odom_p3", 10, p3_Callback);
+    sub_q1 = n.subscribe("/odom_q1", 10, q1_Callback);
     ROS_INFO("Control for robot_02: online. Double kill.");
 
     // inicializando advertisers

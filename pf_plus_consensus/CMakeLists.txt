@@ -210,3 +210,7 @@ add_dependencies(double_kill pf_plus_consensus_generate_messages_cpp)
 add_executable(triple_kill src/triple_kill.cpp)
 target_link_libraries(triple_kill ${catkin_LIBRARIES})
 add_dependencies(triple_kill pf_plus_consensus_generate_messages_cpp)
+
+add_executable(quadra_kill src/quadra_kill.cpp)
+target_link_libraries(quadra_kill ${catkin_LIBRARIES})
+add_dependencies(quadra_kill pf_plus_consensus_generate_messages_cpp)

@@ -5,4 +5,6 @@
   </node>
   <node name="ugv_03" pkg="pf_plus_consensus" type="triple_kill" output="screen">
   </node>
+  <node name="uav_01" pkg="pf_plus_consensus" type="quadra_kill" output="screen">
+  </node>
 </launch>
