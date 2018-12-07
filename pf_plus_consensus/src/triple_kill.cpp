@@ -23,6 +23,9 @@ ros::Subscriber sub_p1;
 ros::Subscriber sub_p2;
 ros::Subscriber sub_p3;
 ros::Subscriber sub_q1;
+ros::Subscriber sub_o1;
+ros::Subscriber sub_o2;
+ros::Subscriber sub_o3;
 
 // campos potenciais objetivo e de aliados
 pfield goal;
@@ -30,6 +33,9 @@ pfield pf_p1;
 pfield pf_p2;
 pfield pf_p3;
 pfield pf_q1;
+pfield pf_o1;
+pfield pf_o2;
+pfield pf_o3;
 
 // objeto para publicacao
 geometry_msgs::Quaternion retorno;
@@ -47,6 +53,18 @@ void initParams()
     pf_q1.gain = 1.0;
     pf_q1.radius = 1.0;
     pf_q1.spread = 1.0;
+
+    pf_o1.gain = 1.0;
+    pf_o1.radius = 1.0;
+    pf_o1.spread = 1.0;
+
+    pf_o2.gain = 1.0;
+    pf_o2.radius = 1.0;
+    pf_o2.spread = 1.0;
+
+    pf_o3.gain = 1.0;
+    pf_o3.radius = 1.0;
+    pf_o3.spread = 1.0;
 }
 
 // calculo da forca exercida pelo ponto objetivo
@@ -132,6 +150,9 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pfield temp;
     temp = addPfields(attForce(goal, pf_p3), repForce(pf_p2, pf_p3));
     temp = addPfields(temp, repForce(pf_p1, pf_p3));
+    temp = addPfields(temp, repForce(pf_o1, pf_p3));
+    temp = addPfields(temp, repForce(pf_o2, pf_p3));
+    temp = addPfields(temp, repForce(pf_o3, pf_p3));
 
     retorno.x = temp.x;
     retorno.y = temp.y;
@@ -160,6 +181,27 @@ void q1_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_q1.z = (double) msg->pose.pose.position.z;
 }
 
+void o1_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
+{
+    pf_o1.x = (double) msg->pose.pose.position.x;
+    pf_o1.y = (double) msg->pose.pose.position.y;
+    pf_o1.z = (double) msg->pose.pose.position.z;
+}
+
+void o2_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
+{
+    pf_o2.x = (double) msg->pose.pose.position.x;
+    pf_o2.y = (double) msg->pose.pose.position.y;
+    pf_o2.z = (double) msg->pose.pose.position.z;
+}
+
+void o3_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
+{
+    pf_o3.x = (double) msg->pose.pose.position.x;
+    pf_o3.y = (double) msg->pose.pose.position.y;
+    pf_o3.z = (double) msg->pose.pose.position.z;
+}
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "first_blood");
@@ -179,6 +221,9 @@ int main(int argc, char **argv)
     sub_p2 = n.subscribe("/odom_p2", 10, p2_Callback);
     sub_p3 = n.subscribe("/odom_p3", 10, robot_Callback);
     sub_q1 = n.subscribe("/odom_q1", 10, q1_Callback);
+    sub_o1 = n.subscribe("/obst_01", 10, o1_Callback);
+    sub_o2 = n.subscribe("/obst_02", 10, o2_Callback);
+    sub_o3 = n.subscribe("/obst_03", 10, o3_Callback);
     ROS_INFO("Control for robot_03: online. Triple kill.");
 
     // inicializando advertisers
