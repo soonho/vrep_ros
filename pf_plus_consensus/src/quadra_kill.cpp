@@ -13,6 +13,9 @@ struct pfield {
     double gain;
     double radius;
     double spread;
+	double vx;
+	double vy;
+	double vz;
 };
 
 // publisher do p3_01
@@ -33,6 +36,17 @@ pfield pf_q1;
 
 // objeto para publicacao
 geometry_msgs::Quaternion retorno;
+
+//parametros para ganhos
+float gain_x    = 0.5;
+float gain_y    = 0.5;
+float gain_z    = 0.05;
+float gain_yaw  = 0.3;
+float gain_vx   = 1.0;
+float gain_vy   = 1.0;
+float gain_vz   = 0.15;
+float gain_vyaw = 0.15;
+float target_z = 1.0;
 
 void initParams() 
 {

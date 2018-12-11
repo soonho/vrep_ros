@@ -58,16 +58,16 @@ float target_z = 1.0;
 void initParams() 
 {
     pf_p2.gain = 1.0;
-    pf_p2.radius = 1.0;
-    pf_p2.spread = 1.0;
+    pf_p2.radius = 0.2;
+    pf_p2.spread = 0.5;
 
     pf_p3.gain = 1.0;
-    pf_p3.radius = 1.0;
-    pf_p3.spread = 1.0;
+    pf_p3.radius = 0.2;
+    pf_p3.spread = 0.5;
 
     pf_q1.gain = 1.0;
-    pf_q1.radius = 1.0;
-    pf_q1.spread = 1.0;
+    pf_q1.radius = 0.2;
+    pf_q1.spread = 0.5;
 
     pf_o1.gain = 1.0;
     pf_o1.radius = 1.0;
@@ -132,7 +132,7 @@ pfield repForce(pfield obs, pfield robot)
 pfield consensus() {
     pfield temp;
     double ux = gain_x * (0.5 * ((pf_p2.x - 1.0) - (pf_p1.x + 1.0)) + 0.5 * ((pf_p3.x - 1.0) - (pf_p1.x + 1.0))) - gain_vx * (pf_p1.vx);
-    double uy = gain_y * (0.5 * ((pf_p2.y - 1.0) - (pf_p1.y - 0.0)) + 0.5 * ((pf_p3.y + 1.0) - (pf_p1.y - 0.0))) - gain_vy * (pf_p1.vy);
+    double uy = gain_y * (0.5 * ((pf_p2.y - 0.5) - (pf_p1.y - 0.0)) + 0.5 * ((pf_p3.y + 0.5) - (pf_p1.y - 0.0))) - gain_vy * (pf_p1.vy);
     double uz = gain_z * (target_z   - pf_p1.z)                                                                  - gain_vz * (pf_p1.vz);
     //uyaw = gain_yaw * (0.5 * ((omniant1_yaw - 0.0) - (quad1_yaw - 0.0)) + 0.5 * ((omniant2_yaw - 0.0) - (quad1_yaw - 0.0))) - gain_vyaw * (quad1_vyaw);
 
@@ -180,12 +180,13 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     }
 
     pfield temp;
-    temp = addPfields(attForce(goal, pf_p1), repForce(pf_p2, pf_p1));
-    temp = addPfields(temp, repForce(pf_p3, pf_p1));
-    temp = addPfields(temp, repForce(pf_o1, pf_p1));
-    temp = addPfields(temp, repForce(pf_o2, pf_p1));
-    temp = addPfields(temp, repForce(pf_o3, pf_p1));
-    temp = addPfields(temp, consensus());
+    //temp = addPfields(attForce(goal, pf_p1), repForce(pf_p2, pf_p1));
+    //temp = addPfields(temp, repForce(pf_p3, pf_p1));
+    //temp = addPfields(temp, repForce(pf_o1, pf_p1));
+    //temp = addPfields(temp, repForce(pf_o2, pf_p1));
+    //temp = addPfields(temp, repForce(pf_o3, pf_p1));
+    //temp = addPfields(temp, consensus());
+	temp = consensus();
 
     retorno.x = temp.x;
     retorno.y = temp.y;
