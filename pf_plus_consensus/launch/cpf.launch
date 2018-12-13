@@ -1,4 +1,7 @@
 <launch>
+  <node name="neo" pkg="pf_plus_consensus" type="rampage" output="screen" clear_params="true">
+    <rosparam file="$(find pf_plus_consensus)/launch/cpf_parameters.yaml" />
+  </node>
   <node name="ugv_01" pkg="pf_plus_consensus" type="first_blood" output="screen">
   </node>
   <node name="ugv_02" pkg="pf_plus_consensus" type="double_kill" output="screen">
