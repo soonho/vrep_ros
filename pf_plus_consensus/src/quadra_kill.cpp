@@ -1,9 +1,8 @@
 #include "ros/ros.h"
 #include <cmath>
-#include <vector>
 #include "geometry_msgs/Quaternion.h"
 #include "nav_msgs/Odometry.h"
-#include "pf_plus_consensus/PotentialField.h"
+#include "potential_fields.cpp"
 
 // representacao de campos potenciais
 struct pfield {
@@ -25,14 +24,19 @@ ros::Publisher pub_p1;
 ros::Subscriber sub_p1;
 ros::Subscriber sub_p2;
 ros::Subscriber sub_p3;
+ros::Subscriber sub_r1;
 ros::Subscriber sub_q1;
 
 // campos potenciais objetivo e de aliados
-pfield goal;
-pfield pf_p1;
-pfield pf_p2;
-pfield pf_p3;
-pfield pf_q1;
+PotentialField goal;
+PotentialField pf_p1;
+PotentialField pf_p2;
+PotentialField pf_p3;
+PotentialField pf_r1;
+PotentialField pf_q1;
+PotentialField pf_o1;
+PotentialField pf_o2;
+PotentialField pf_o3;
 
 // objeto para publicacao
 geometry_msgs::Quaternion retorno;
@@ -63,59 +67,17 @@ void initParams()
     pf_p3.spread = 1.0;
 }
 
-// calculo da forca exercida pelo ponto objetivo
-pfield attForce(pfield target, pfield robot)
-{
-    pfield temp;
-    double distance = std::pow(std::pow(target.x-robot.x, 2)+std::pow(target.y-robot.y, 2), 0.5);
-    double psi = std::atan2(target.y-robot.y, target.x-robot.x);
-    double deltaX, deltaY;
-    if (distance < target.radius) {
-        deltaX = 0;
-        deltaY = 0;
-    } else if (distance <= target.spread + target.radius) {
-        deltaX = target.gain * (distance - target.radius) * std::cos(psi);
-        deltaY = target.gain * (distance - target.radius) * std::sin(psi);
-    } else {
-        deltaX = target.gain * target.spread * std::cos(psi);
-        deltaY = target.gain * target.spread * std::sin(psi);
-    }
-    temp.x = deltaX;
-    temp.y = deltaY;
-    temp.z = 0.0;
-    return temp;
-}
+//leis de controle: omniant1 + omniant2 + quad1 (ganhos dinamicos)
+PotentialField consensus() {
+    PotentialField temp;
+    double ux = gain_x * (0.5 * ((pf_p2.x - 1.0) - (pf_q1.x + 1.0)) + 0.5 * ((pf_p3.x - 1.0) - (pf_q1.x + 1.0))) - gain_vx * (pf_q1.vx);
+    double uy = gain_y * (0.5 * ((pf_p2.y - 0.5) - (pf_q1.y - 0.0)) + 0.5 * ((pf_p3.y + 0.5) - (pf_q1.y - 0.0))) - gain_vy * (pf_q1.vy);
+    double uz = gain_z * (target_z   - pf_q1.z)                                                                  - gain_vz * (pf_q1.vz);
+    //uyaw = gain_yaw * (0.5 * ((omniant1_yaw - 0.0) - (quad1_yaw - 0.0)) + 0.5 * ((omniant2_yaw - 0.0) - (quad1_yaw - 0.0))) - gain_vyaw * (quad1_vyaw);
 
-// calculo da forca exercida por um obstaculo
-pfield repForce(pfield obs, pfield robot)
-{
-    pfield temp;
-    double distance = std::pow(std::pow(robot.x-obs.x, 2)+std::pow(robot.y-obs.y, 2), 0.5);
-    double psi = std::atan2(obs.y-robot.y, obs.x-robot.x);
-    double deltaX, deltaY;
-    if (distance > obs.spread + obs.radius) {
-        deltaX = 0;
-        deltaY = 0;
-    } else if (distance >= obs.radius) {
-        deltaX = -obs.gain * (obs.spread + obs.radius - distance) * std::cos(psi);
-        deltaY = -obs.gain * (obs.spread + obs.radius - distance) * std::sin(psi);
-    } else {
-        deltaX = -copysign(1.0, std::cos(psi)) * 9999;
-        deltaY = -copysign(1.0, std::sin(psi)) * 9999;
-    }
-    temp.x = deltaX;
-    temp.y = deltaY;
-    temp.z = 0.0;
-    return temp;
-}
-
-// funcao para somar dois campos potenciais
-pfield addPfields(pfield a, pfield b) 
-{
-    pfield temp;
-    temp.x = a.x + b.x;
-    temp.y = a.y + b.y;
-    temp.z = a.z + b.z;
+    temp.x = ux;// ux * cos(quad1_yaw) + uy * sin(quad1_yaw);
+    temp.y = uy;//-ux * sin(quad1_yaw) + uy * cos(quad1_yaw);
+    temp.z = uz;
     return temp;
 }
 
@@ -127,25 +89,17 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
 
     //coleta dos parametros do ROS
     ros::NodeHandle n;
-    if (!n.getParam("/pf/x", goal.x)) {
-        goal.x = 0;
-    }
-    if (!n.getParam("/pf/y", goal.y)) {
-        goal.y = 0;
-    }
-    if (!n.getParam("/pf/gain", goal.gain)) {
-        goal.gain = 1.0;
-    }
-    if (!n.getParam("/pf/radius", goal.radius)) {
-        goal.radius = 1.0;
-    }
-    if (!n.getParam("/pf/spread", goal.spread)) {
-        goal.spread = 1.0;
-    }
+    n.getParam("/pf/x", goal.x);
+    n.getParam("/pf/y", goal.y);
+    n.getParam("/pf/gain", goal.gain);
+    n.getParam("/pf/radius", goal.radius);
+    n.getParam("/pf/spread", goal.spread);
 
-    pfield temp;
-    temp = addPfields(attForce(goal, pf_q1), repForce(pf_p2, pf_q1));
-    temp = addPfields(temp, repForce(pf_p1, pf_q1));
+
+    PotentialField temp = consensus();
+    temp.add(temp.repForce(pf_o1, pf_q1));
+    temp.add(temp.repForce(pf_o2, pf_q1));
+    temp.add(temp.repForce(pf_o3, pf_q1));
 
     retorno.x = temp.x;
     retorno.y = temp.y;
@@ -153,6 +107,16 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     retorno.w = 0.0;
 
     pub_p1.publish(retorno);
+}
+
+void r1_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
+{
+    pf_r1.x = (double) msg->pose.pose.position.x;
+    pf_r1.y = (double) msg->pose.pose.position.y;
+    pf_r1.z = (double) msg->pose.pose.position.z;
+    pf_r1.vx = (double) msg->twist.twist.linear.x;
+    pf_r1.vy = (double) msg->twist.twist.linear.y;
+    pf_r1.vz = (double) msg->twist.twist.linear.z;
 }
 
 void p3_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
@@ -192,6 +156,7 @@ int main(int argc, char **argv)
     sub_p2 = n.subscribe("/odom_p2", 10, p2_Callback);
     sub_p3 = n.subscribe("/odom_p3", 10, p3_Callback);
     sub_q1 = n.subscribe("/odom_q1", 10, robot_Callback);
+    sub_q1 = n.subscribe("/odom_r1", 10, r1_Callback);
     ROS_INFO("Control for quad_01: online. Quadra kill.");
 
     // inicializando advertisers

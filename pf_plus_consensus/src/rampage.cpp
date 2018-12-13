@@ -27,8 +27,9 @@ PotentialField pf_o1;
 PotentialField pf_o2;
 PotentialField pf_o3;
 
-// objeto para publicacao
+// objetos para publicacao
 nav_msgs::Odometry retorno;
+int sequencer = 0;
 
 //parametros para ganhos
 float gain_x    = 0.15;
@@ -131,12 +132,11 @@ int main(int argc, char **argv)
     sub_o1 = n.subscribe("/obst_01", 10, o1_Callback);
     sub_o2 = n.subscribe("/obst_02", 10, o2_Callback);
     sub_o3 = n.subscribe("/obst_03", 10, o3_Callback);
-    ROS_INFO("Control for robot_01: online. First blood.");
+    ROS_INFO("Control for Neo_The_Chosen_One: online. Rampage.");
 
     // inicializando advertisers
     pub_r1 = n.advertise<nav_msgs::Odometry>("/odom_r1", 10);
 
-    ros::spin();
     ros::Rate loop_rate(20);
 
     while (ros::ok()) {
@@ -154,14 +154,16 @@ int main(int argc, char **argv)
         n.getParam("/pf/radius", goal.radius);
         n.getParam("/pf/spread", goal.spread);
 
-        PotentialField temp = PotentialField();
-        temp.add(temp.attForce(goal, pf_p1));
-        temp.add(temp.repForce(pf_o1, pf_p1));
-        temp.add(temp.repForce(pf_o2, pf_p1));
-        temp.add(temp.repForce(pf_o3, pf_p1));
-        
-        retorno.pose.pose.position.x = temp.x;
-        retorno.pose.pose.position.y = temp.y;
+        pf_r1.add(pf_r1.attForce(goal, pf_r1));
+        pf_r1.add(pf_r1.repForce(pf_o1, pf_r1));
+        pf_r1.add(pf_r1.repForce(pf_o2, pf_r1));
+        pf_r1.add(pf_r1.repForce(pf_o3, pf_r1));
+
+        retorno.child_frame_id = "frame_car";
+        retorno.header.seq = sequencer++;
+        retorno.header.frame_id = "world";
+        retorno.pose.pose.position.x = pf_r1.x;
+        retorno.pose.pose.position.y = pf_r1.y;
         retorno.pose.pose.position.z = 0.0;
 
         pub_r1.publish(retorno);
