@@ -143,7 +143,7 @@ int main(int argc, char **argv)
         ros::spinOnce();
 
         pf_r1.x  = (pf_p1.x - 0.5 + pf_p2.x + 0.5 + pf_p3.x + 0.5) / 3;
-        pf_r1.y  = (pf_p1.y - 0.5 + pf_p2.y + 0.5 + pf_p3.y + 0.5) / 3;
+        pf_r1.y  = (pf_p1.y - 0.0 + pf_p2.y + 0.5 + pf_p3.y + 0.5) / 3;
         pf_r1.z  = 0;
 
         //coleta dos parametros do ROS
