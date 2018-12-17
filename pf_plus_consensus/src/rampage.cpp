@@ -40,7 +40,8 @@ float gain_vx   = 0.24;
 float gain_vy   = 0.24;
 float gain_vz   = 0.15;
 float gain_vyaw = 0.15;
-float target_z = 1.0;
+float gain_pf   = 1.0;
+float target_z  = 1.0;
 
 //inicializacao dos objetos
 void initParams() 
@@ -142,22 +143,35 @@ int main(int argc, char **argv)
     while (ros::ok()) {
         ros::spinOnce();
 
+        pf_r1.x  = 0;
+        pf_r1.y  = 0;
+        pf_r1.z  = 0;
+
         pf_r1.x  = (pf_p1.x - 0.5 + pf_p2.x + 0.5 + pf_p3.x + 0.5) / 3;
         pf_r1.y  = (pf_p1.y - 0.0 + pf_p2.y + 0.5 + pf_p3.y + 0.5) / 3;
         pf_r1.z  = 0;
 
         //coleta dos parametros do ROS
-        ros::NodeHandle n;
-        n.getParam("/pf/x", goal.x);
-        n.getParam("/pf/y", goal.y);
-        n.getParam("/pf/gain", goal.gain);
-        n.getParam("/pf/radius", goal.radius);
-        n.getParam("/pf/spread", goal.spread);
+        n.getParam("/pf/goal_x", goal.x);
+        n.getParam("/pf/goal_y", goal.y);
+        n.getParam("/pf/goal_gain", goal.gain);
+        n.getParam("/pf/goal_radius", goal.radius);
+        n.getParam("/pf/goal_spread", goal.spread);
 
-        pf_r1.add(pf_r1.attForce(goal, pf_r1));
-        pf_r1.add(pf_r1.repForce(pf_o1, pf_r1));
-        pf_r1.add(pf_r1.repForce(pf_o2, pf_r1));
-        pf_r1.add(pf_r1.repForce(pf_o3, pf_r1));
+        n.getParam("/pf/gain_x", gain_x);
+        n.getParam("/pf/gain_y", gain_y);
+        n.getParam("/pf/gain_z", gain_z);
+        n.getParam("/pf/gain_yaw", gain_yaw);
+        n.getParam("/pf/gain_vx", gain_vx);
+        n.getParam("/pf/gain_vy", gain_vy);
+        n.getParam("/pf/gain_vz", gain_vz);
+        n.getParam("/pf/gain_vyaw", gain_vyaw);
+        n.getParam("/pf/gain_pf", gain_pf);
+
+        pf_r1.add(pf_r1.attForce(goal, pf_r1, gain_pf));
+        //pf_r1.add(pf_r1.repForce(pf_o1, pf_r1));
+        //pf_r1.add(pf_r1.repForce(pf_o2, pf_r1));
+        //pf_r1.add(pf_r1.repForce(pf_o3, pf_r1));
 
         retorno.child_frame_id = "frame_car";
         retorno.header.seq = sequencer++;

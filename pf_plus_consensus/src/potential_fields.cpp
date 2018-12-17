@@ -27,7 +27,7 @@ class PotentialField {
     }
 
     // calculo da forca exercida pelo ponto objetivo
-    PotentialField attForce(PotentialField target, PotentialField robot)
+    PotentialField attForce(PotentialField target, PotentialField robot, double gain_pf = 1.0)
     {
         PotentialField temp;
         double distance = std::pow(std::pow(target.x-robot.x, 2)+std::pow(target.y-robot.y, 2), 0.5);
@@ -43,9 +43,9 @@ class PotentialField {
             deltaX = target.gain * target.spread * std::cos(psi);
             deltaY = target.gain * target.spread * std::sin(psi);
         }
-        temp.x = deltaX;
-        temp.y = deltaY;
-        temp.z = 0.0;
+        temp.x = deltaX * gain_pf;
+        temp.y = deltaY * gain_pf;
+        temp.z = 0.0 * gain_pf;
         return temp;
     }
 

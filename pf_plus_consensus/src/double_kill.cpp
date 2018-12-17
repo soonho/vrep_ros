@@ -89,14 +89,6 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p2.y = (double) msg->pose.pose.position.y;
     pf_p2.z = (double) msg->pose.pose.position.z;
 
-    //coleta dos parametros do ROS
-    ros::NodeHandle n;
-    n.getParam("/pf/x", goal.x);
-    n.getParam("/pf/y", goal.y);
-    n.getParam("/pf/gain", goal.gain);
-    n.getParam("/pf/radius", goal.radius);
-    n.getParam("/pf/spread", goal.spread);
-
     PotentialField temp = consensus();
     temp.add(temp.repForce(pf_o1, pf_p2));
     temp.add(temp.repForce(pf_o2, pf_p2));
@@ -167,12 +159,6 @@ int main(int argc, char **argv)
 
     // iniciando parametros
     initParams();
-    n.setParam("/pf/x", 0);
-    n.setParam("/pf/y", 0);
-    n.setParam("/pf/z", 0);
-    n.setParam("/pf/gain", 1.0);
-    n.setParam("/pf/radius", 1.0);
-    n.setParam("/pf/spread", 1.0);
 
     // iniciando subscribers
     sub_p1 = n.subscribe("/odom_p1", 10, p1_Callback);
