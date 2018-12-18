@@ -12,4 +12,4 @@
 /pf/gain_vy:         0.24
 /pf/gain_vz:         0.15
 /pf/gain_vyaw:       0.15
-/pf/gain_pf:         1.0
+/pf/gain_pf:         20.0
