@@ -37,8 +37,8 @@ class PotentialField {
             deltaX = 0;
             deltaY = 0;
         } else if (distance <= target.spread + target.radius) {
-            deltaX = target.gain * (distance - target.radius) * std::cos(psi);
-            deltaY = target.gain * (distance - target.radius) * std::sin(psi);
+            deltaX = target.gain * 0.5 * std::pow(distance - target.radius, 2) * std::cos(psi);
+            deltaY = target.gain * 0.5 * std::pow(distance - target.radius, 2) * std::sin(psi);
         } else {
             deltaX = target.gain * target.spread * std::cos(psi);
             deltaY = target.gain * target.spread * std::sin(psi);
@@ -60,8 +60,8 @@ class PotentialField {
             deltaX = 0;
             deltaY = 0;
         } else if (distance >= obs.radius) {
-            deltaX = -obs.gain * (obs.spread + obs.radius - distance) * std::cos(psi);
-            deltaY = -obs.gain * (obs.spread + obs.radius - distance) * std::sin(psi);
+            deltaX = -obs.gain * (1 / std::pow(obs.spread + obs.radius - distance, 0.5)) * std::cos(psi);
+            deltaY = -obs.gain * (1 / std::pow(obs.spread + obs.radius - distance, 0.5)) * std::sin(psi);
         } else {
             deltaX = -copysign(1.0, std::cos(psi)) * 9999;
             deltaY = -copysign(1.0, std::sin(psi)) * 9999;
