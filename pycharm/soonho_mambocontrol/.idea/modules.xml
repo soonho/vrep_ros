@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$USER_HOME$/catkin_ws/src/soonho_lorocontrol/.idea/soonho_lorocontrol.iml" filepath="$USER_HOME$/catkin_ws/src/soonho_lorocontrol/.idea/soonho_lorocontrol.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/soonho_mambocontrol.iml" filepath="$PROJECT_DIR$/.idea/soonho_mambocontrol.iml" />
+    </modules>
+  </component>
+</project>
