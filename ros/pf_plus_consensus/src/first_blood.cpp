@@ -58,16 +58,16 @@ void initParams()
     pf_q1.spread = 0.5;
 
     pf_o1.gain = 1.0;
-    pf_o1.radius = 1.0;
-    pf_o1.spread = 1.0;
+    pf_o1.radius = 0.2;
+    pf_o1.spread = 0.5;
 
     pf_o2.gain = 1.0;
-    pf_o2.radius = 1.0;
-    pf_o2.spread = 1.0;
+    pf_o2.radius = 0.2;
+    pf_o2.spread = 0.5;
 
     pf_o3.gain = 1.0;
-    pf_o3.radius = 1.0;
-    pf_o3.spread = 1.0;
+    pf_o3.radius = 0.2;
+    pf_o3.spread = 0.5;
 }
 
 //leis de controle: omniant1 + omniant2 + quad1 (ganhos dinamicos)
@@ -94,9 +94,9 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p1.vz = (double) msg->twist.twist.linear.z;
 
     PotentialField temp = consensus();
-    temp.add(temp.repForce(pf_o1, pf_p1));
-    temp.add(temp.repForce(pf_o2, pf_p1));
-    temp.add(temp.repForce(pf_o3, pf_p1));
+    //temp.add(temp.repForce(pf_o1, pf_p1));
+    //temp.add(temp.repForce(pf_o2, pf_p1));
+    //temp.add(temp.repForce(pf_o3, pf_p1));
 
     retorno.x = temp.x;
     retorno.y = temp.y;

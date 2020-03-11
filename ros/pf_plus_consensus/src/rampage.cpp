@@ -168,7 +168,7 @@ int main(int argc, char **argv)
         n.getParam("/pf/gain_vyaw", gain_vyaw);
         n.getParam("/pf/gain_pf", gain_pf);
 
-        pf_r1.add(pf_r1.attForce(goal, pf_r1, gain_pf));
+        pf_r1.add(pf_r1.attForce(goal, pf_r1, 10.0));
         //pf_r1.add(pf_r1.repForce(pf_o1, pf_r1));
         //pf_r1.add(pf_r1.repForce(pf_o2, pf_r1));
         //pf_r1.add(pf_r1.repForce(pf_o3, pf_r1));

@@ -1,4 +1,7 @@
 #include <cmath>
+#include <vector>
+
+using namespace std;
 
 class PotentialField {
 
@@ -17,6 +20,18 @@ class PotentialField {
     PotentialField() {
         this->x = 0.0;
         this->y = 0.0;
+        this->z = 0.0;
+        this->vx = 0.0;
+        this->vy = 0.0;
+        this->vz = 0.0;
+        this->gain = 0.0;
+        this->radius = 0.0;
+        this->spread  = 0.0;
+    }
+
+    PotentialField(double a, double b) {
+        this->x = a;
+        this->y = b;
         this->z = 0.0;
         this->vx = 0.0;
         this->vy = 0.0;
@@ -78,5 +93,52 @@ class PotentialField {
         this->x += a.x;
         this->y += a.y;
         this->z += a.z;
+    }
+
+    // example of this in action here: http://itp.nyu.edu/~gab305/files/gif_with_blurred_borders.gif
+
+    float distanceFromLine(PotentialField p, PotentialField l1, PotentialField l2){
+        float xDelta = l2.x - l1.x;
+        float yDelta = l2.y - l1.y;
+
+        //	final double u = ((p3.getX() - p1.getX()) * xDelta + (p3.getY() - p1.getY()) * yDelta) / (xDelta * xDelta + yDelta * yDelta);
+        float u = ((p.x - l1.x) * xDelta + (p.y - l1.y)*yDelta) / (xDelta * xDelta + yDelta * yDelta);
+        
+        PotentialField closestPointOnLine;
+        if (u < 0) {
+	        closestPointOnLine = l1;
+	    } else if (u > 1) {
+	        closestPointOnLine = l2;
+	    } else {
+                closestPointOnLine = PotentialField(l1.x + u * xDelta, l1.y + u * yDelta);
+	    }
+        
+       
+        PotentialField d = PotentialField(p.x - closestPointOnLine.x, p.y - closestPointOnLine.y);
+        return sqrt(d.x * d.x + d.y * d.y); // distance
+    }
+
+
+    float distanceFromPoly(PotentialField p, vector<PotentialField> poly){
+        float result = 10000;
+        
+        // check each line
+        for(int i = 0; i < poly.size(); i++){
+            int previousIndex = i -1;
+            if(previousIndex < 0){
+                previousIndex = poly.size() - 1;
+            }
+            
+            PotentialField currentPoint = poly.at(i);
+            PotentialField previousPoint = poly.at(previousIndex);
+            
+            float segmentDistance = distanceFromLine(PotentialField(p.x,p.y), previousPoint, currentPoint);
+            
+            if(segmentDistance < result){
+                result = segmentDistance;
+            }
+        }
+        
+        return result;
     }
 };

@@ -59,7 +59,7 @@ float gain_vyaw = 0.15;
 float target_z = 1.0;
 
 //parametros para limitadores e offsets
-float max_accxy  = 0.15;
+float max_accxy  = 15;
 float max_accz   = 0.5;
 float min_accz   = 0.465;
 float max_uyaw   = 0.8;
@@ -84,8 +84,8 @@ void initParams()
     pf_p3.spread = 1.0;
 
     goal.gain = 1.0;
-    goal.radius = 1.0;
-    goal.spread = 1.0;
+    goal.radius = 0.2;
+    goal.spread = 0.5;
 }
 
 //leis de controle: omniant1 + omniant2 + quad1 (ganhos dinamicos)
@@ -96,8 +96,8 @@ PotentialField consensus() {
     double uz = gain_z * (target_z   - pf_q1.z)                                                                  - gain_vz * (pf_q1.vz);
     //uyaw = gain_yaw * (0.5 * ((omniant1_yaw - 0.0) - (quad1_yaw - 0.0)) + 0.5 * ((omniant2_yaw - 0.0) - (quad1_yaw - 0.0))) - gain_vyaw * (quad1_vyaw);
 
-    temp.x = ux * cos(pf_p3_yaw) + uy * sin(pf_p3_yaw);
-    temp.y = -ux * sin(pf_p3_yaw) + uy * cos(pf_p3_yaw);
+    temp.x = ux;//ux * cos(pf_p3_yaw) + uy * sin(pf_p3_yaw);
+    temp.y = uy;//-ux * sin(pf_p3_yaw) + uy * cos(pf_p3_yaw);
     temp.z = uz;
     return temp;
 }
@@ -123,14 +123,16 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     tf::Matrix3x3(quat).getRPY(roll, pitch, yaw);
     pf_p3_yaw = yaw;
 */
-    //PotentialField temp = consensus();
+    PotentialField temp = consensus();
     //temp.add(temp.repForce(pf_o1, pf_q1));
     //temp.add(temp.repForce(pf_o2, pf_q1));
     //temp.add(temp.repForce(pf_o3, pf_q1));
 
-    PotentialField temp;
-    temp.add(temp.attForce(goal, pf_q1));
-
+    //PotentialField temp;
+    //temp.add(temp.attForce(pf_r1, pf_q1));
+    //temp.x = temp.x * cos(pf_p3_yaw) + temp.y * sin(pf_p3_yaw);
+    //temp.y = -temp.x * sin(pf_p3_yaw) + temp.y * cos(pf_p3_yaw);
+/*
     //saturacao
     rx = abs(temp.x / max_accxy);
     ry = abs(temp.y / max_accxy);
@@ -141,9 +143,9 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
         rx = temp.x / rmax;
         ry = temp.y / rmax;
     }
-
-    retorno.x = rx;
-    retorno.y = ry;
+*/
+    retorno.x = temp.x;
+    retorno.y = temp.y;
     retorno.z = 0.0;
     retorno.w = 0.0;
 

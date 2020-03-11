@@ -57,24 +57,24 @@ void initParams()
     pf_q1.spread = 0.5;
 
     pf_o1.gain = 1.0;
-    pf_o1.radius = 1.0;
-    pf_o1.spread = 1.0;
+    pf_o1.radius = 0.2;
+    pf_o1.spread = 0.5;
 
     pf_o2.gain = 1.0;
-    pf_o2.radius = 1.0;
-    pf_o2.spread = 1.0;
+    pf_o2.radius = 0.2;
+    pf_o2.spread = 0.5;
 
     pf_o3.gain = 1.0;
-    pf_o3.radius = 1.0;
-    pf_o3.spread = 1.0;
+    pf_o3.radius = 0.2;
+    pf_o3.spread = 0.5;
 }
 
 //leis de controle: omniant1 + omniant2 + quad1 (ganhos dinamicos)
 PotentialField consensus() {
     PotentialField temp;
-    double ux = gain_x * (0.5 * ((pf_p1.x + 1.0) - (pf_p3.x + 0.0)) + 0.5 * ((pf_p2.x + 0.0) - (pf_p3.x + 0.0)) + 0.5 * ((pf_r1.x + 0.5) - (pf_p3.x + 0.0))) - gain_vx * (pf_p1.vx);
-    double uy = gain_y * (0.5 * ((pf_p1.y - 0.5) - (pf_p3.y + 1.0)) + 0.5 * ((pf_p2.y - 1.0) - (pf_p3.y + 1.0)) + 0.5 * ((pf_r1.y - 0.5) - (pf_p3.y - 1.0))) - gain_vy * (pf_p1.vy);
-    double uz = gain_z * (target_z   - pf_p1.z)                                                                  - gain_vz * (pf_p1.vz);
+    double ux = gain_x * (0.5 * ((pf_p1.x + 1.0) - (pf_p3.x + 0.0)) + 0.5 * ((pf_p2.x + 0.0) - (pf_p3.x + 0.0)) + 0.5 * ((pf_r1.x + 0.5) - (pf_p3.x + 0.0))) - gain_vx * (pf_p3.vx);
+    double uy = gain_y * (0.5 * ((pf_p1.y - 0.5) - (pf_p3.y + 1.0)) + 0.5 * ((pf_p2.y - 1.0) - (pf_p3.y + 1.0)) + 0.5 * ((pf_r1.y - 0.5) - (pf_p3.y - 1.0))) - gain_vy * (pf_p3.vy);
+    double uz = gain_z * (target_z   - pf_p3.z)                                                                  - gain_vz * (pf_p1.vz);
     //uyaw = gain_yaw * (0.5 * ((omniant1_yaw - 0.0) - (quad1_yaw - 0.0)) + 0.5 * ((omniant2_yaw - 0.0) - (quad1_yaw - 0.0))) - gain_vyaw * (quad1_vyaw);
 
     temp.x = ux;// ux * cos(quad1_yaw) + uy * sin(quad1_yaw);
@@ -90,9 +90,9 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p3.z = (double) msg->pose.pose.position.z;
 
     PotentialField temp = consensus();
-    temp.add(temp.repForce(pf_o1, pf_p3));
-    temp.add(temp.repForce(pf_o2, pf_p3));
-    temp.add(temp.repForce(pf_o3, pf_p3));
+    //temp.add(temp.repForce(pf_o1, pf_p3));
+    //temp.add(temp.repForce(pf_o2, pf_p3));
+    //temp.add(temp.repForce(pf_o3, pf_p3));
 
     retorno.x = temp.x;
     retorno.y = temp.y;
