@@ -1,0 +1,9 @@
+<launch>
+  <node name="neo" pkg="pf_plus_consensus_duo" type="rampage_duo" output="screen" clear_params="true">
+    <rosparam file="$(find pf_plus_consensus_duo)/launch/cpf_parameters.yaml" />
+  </node>
+  <node name="ugv_01" pkg="pf_plus_consensus_duo" type="first_blood_duo" output="screen">
+  </node>
+  <node name="uav_01" pkg="pf_plus_consensus_duo" type="quadra_kill_duo" output="screen">
+  </node>
+</launch>

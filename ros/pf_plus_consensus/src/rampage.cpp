@@ -26,6 +26,8 @@ PotentialField pf_q1;
 PotentialField pf_o1;
 PotentialField pf_o2;
 PotentialField pf_o3;
+PotentialField pf_o4;
+PotentialField pf_o5;
 
 // objetos para publicacao
 nav_msgs::Odometry retorno;
@@ -46,17 +48,35 @@ float target_z  = 1.0;
 //inicializacao dos objetos
 void initParams() 
 {
+    pf_o1.x = -3.07;
+    pf_o1.y = -0.67;
     pf_o1.gain = 1.0;
-    pf_o1.radius = 1.0;
-    pf_o1.spread = 1.0;
+    pf_o1.radius = 0.2;
+    pf_o1.spread = 0.5;
 
+    pf_o2.x = -1.95;
+    pf_o2.y = 2.21;
     pf_o2.gain = 1.0;
-    pf_o2.radius = 1.0;
-    pf_o2.spread = 1.0;
+    pf_o2.radius = 0.2;
+    pf_o2.spread = 0.5;
 
+    pf_o3.x = 0.04;
+    pf_o3.y = -1.93;
     pf_o3.gain = 1.0;
-    pf_o3.radius = 1.0;
-    pf_o3.spread = 1.0;
+    pf_o3.radius = 0.2;
+    pf_o3.spread = 0.5;
+
+    pf_o4.x = 0.57;
+    pf_o4.y = 0.66;
+    pf_o4.gain = 1.0;
+    pf_o4.radius = 0.2;
+    pf_o4.spread = 0.5;
+
+    pf_o5.x = 3.09;
+    pf_o5.y = -0.88;
+    pf_o5.gain = 1.0;
+    pf_o5.radius = 0.2;
+    pf_o5.spread = 0.5;
 }
 
 void p1_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
@@ -137,6 +157,8 @@ int main(int argc, char **argv)
 
     // inicializando advertisers
     pub_r1 = n.advertise<nav_msgs::Odometry>("/odom_r1", 10);
+    
+    initParams();
 
     ros::Rate loop_rate(20);
 
@@ -172,6 +194,8 @@ int main(int argc, char **argv)
         //pf_r1.add(pf_r1.repForce(pf_o1, pf_r1));
         //pf_r1.add(pf_r1.repForce(pf_o2, pf_r1));
         //pf_r1.add(pf_r1.repForce(pf_o3, pf_r1));
+        //pf_r1.add(pf_r1.repForce(pf_o4, pf_r1));
+        //pf_r1.add(pf_r1.repForce(pf_o5, pf_r1));
 
         retorno.child_frame_id = "frame_car";
         retorno.header.seq = sequencer++;

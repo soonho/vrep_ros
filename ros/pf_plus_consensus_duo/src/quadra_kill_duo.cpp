@@ -6,7 +6,7 @@
 #include <cmath>
 #include <math.h>
 #include "nav_msgs/Odometry.h"
-#include "potential_fields.cpp"
+#include "potential_fields_duo.cpp"
 
 using namespace std;
 
@@ -43,8 +43,6 @@ PotentialField pf_q1;
 PotentialField pf_o1;
 PotentialField pf_o2;
 PotentialField pf_o3;
-PotentialField pf_o4;
-PotentialField pf_o5;
 
 // objeto para publicacao
 geometry_msgs::Quaternion retorno;
@@ -88,43 +86,13 @@ void initParams()
     goal.gain = 1.0;
     goal.radius = 0.2;
     goal.spread = 0.5;
-
-    pf_o1.x = -3.07;
-    pf_o1.y = -0.67;
-    pf_o1.gain = 1.0;
-    pf_o1.radius = 0.1;
-    pf_o1.spread = 0.4;
-
-    pf_o2.x = -1.95;
-    pf_o2.y = 2.21;
-    pf_o2.gain = 1.0;
-    pf_o2.radius = 0.1;
-    pf_o2.spread = 0.4;
-
-    pf_o3.x = 0.04;
-    pf_o3.y = -1.93;
-    pf_o3.gain = 1.0;
-    pf_o3.radius = 0.1;
-    pf_o3.spread = 0.4;
-
-    pf_o4.x = 0.57;
-    pf_o4.y = 0.66;
-    pf_o4.gain = 1.0;
-    pf_o4.radius = 0.1;
-    pf_o4.spread = 0.4;
-
-    pf_o5.x = 3.09;
-    pf_o5.y = -0.88;
-    pf_o5.gain = 1.0;
-    pf_o5.radius = 0.1;
-    pf_o5.spread = 0.4;
 }
 
 //leis de controle: omniant1 + omniant2 + quad1 (ganhos dinamicos)
 PotentialField consensus() {
     PotentialField temp;
-    double ux = gain_x * (0.5 * ((pf_p2.x - 1.0) - (pf_q1.x + 1.0)) + 0.5 * ((pf_p3.x - 1.0) - (pf_q1.x + 1.0))) - gain_vx * (pf_q1.vx);
-    double uy = gain_y * (0.5 * ((pf_p2.y - 0.5) - (pf_q1.y - 0.0)) + 0.5 * ((pf_p3.y + 0.5) - (pf_q1.y - 0.0))) - gain_vy * (pf_q1.vy);
+    double ux = gain_x * (0.5 * ((pf_p1.x - 0.0) - (pf_q1.x + 0.0))) - gain_vx * (pf_q1.vx);
+    double uy = gain_y * (0.5 * ((pf_p1.y - 0.0) - (pf_q1.y - 0.0))) - gain_vy * (pf_q1.vy);
     double uz = gain_z * (target_z   - pf_q1.z)                                                                  - gain_vz * (pf_q1.vz);
     //uyaw = gain_yaw * (0.5 * ((omniant1_yaw - 0.0) - (quad1_yaw - 0.0)) + 0.5 * ((omniant2_yaw - 0.0) - (quad1_yaw - 0.0))) - gain_vyaw * (quad1_vyaw);
 
@@ -156,11 +124,9 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p3_yaw = yaw;
 */
     PotentialField temp = consensus();
-    temp.add(pf_r1.repForce(pf_o1, pf_q1));
-    temp.add(pf_r1.repForce(pf_o2, pf_q1));
-    temp.add(pf_r1.repForce(pf_o3, pf_q1));
-    temp.add(pf_r1.repForce(pf_o4, pf_q1));
-    temp.add(pf_r1.repForce(pf_o5, pf_q1));
+    //temp.add(temp.repForce(pf_o1, pf_q1));
+    //temp.add(temp.repForce(pf_o2, pf_q1));
+    //temp.add(temp.repForce(pf_o3, pf_q1));
 
     //PotentialField temp;
     //temp.add(temp.attForce(pf_r1, pf_q1));
@@ -216,7 +182,7 @@ void p1_Callback(const nav_msgs::Odometry::ConstPtr& msg)
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "first_blood");
+    ros::init(argc, argv, "first_blood_duo");
     ros::NodeHandle n;
 
     // iniciando parametros
