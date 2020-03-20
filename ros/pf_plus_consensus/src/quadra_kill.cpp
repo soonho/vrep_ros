@@ -88,36 +88,64 @@ void initParams()
     goal.gain = 1.0;
     goal.radius = 0.2;
     goal.spread = 0.5;
+}
 
+void initTrees() {
     pf_o1.x = -3.07;
     pf_o1.y = -0.67;
     pf_o1.gain = 1.0;
-    pf_o1.radius = 0.1;
+    pf_o1.radius = 0.3;
     pf_o1.spread = 0.4;
 
     pf_o2.x = -1.95;
     pf_o2.y = 2.21;
     pf_o2.gain = 1.0;
-    pf_o2.radius = 0.1;
+    pf_o2.radius = 0.3;
     pf_o2.spread = 0.4;
 
     pf_o3.x = 0.04;
     pf_o3.y = -1.93;
     pf_o3.gain = 1.0;
-    pf_o3.radius = 0.1;
+    pf_o3.radius = 0.3;
     pf_o3.spread = 0.4;
 
     pf_o4.x = 0.57;
     pf_o4.y = 0.66;
     pf_o4.gain = 1.0;
-    pf_o4.radius = 0.1;
+    pf_o4.radius = 0.3;
     pf_o4.spread = 0.4;
 
     pf_o5.x = 3.09;
     pf_o5.y = -0.88;
     pf_o5.gain = 1.0;
-    pf_o5.radius = 0.1;
+    pf_o5.radius = 0.3;
     pf_o5.spread = 0.4;
+}
+
+void initNarrow() {
+    pf_o1.x = 0.0;
+    pf_o1.y = 1.1;
+    pf_o1.gain = 1.0;
+    pf_o1.radius = 0.3;
+    pf_o1.spread = 0.5;
+
+    pf_o2.x = 0.0;
+    pf_o2.y = 0.0;
+    pf_o2.gain = 1.0;
+    pf_o2.radius = 0.3;
+    pf_o2.spread = 0.5;
+
+    pf_o3.x = 1.25;
+    pf_o3.y = 1.1;
+    pf_o3.gain = 1.0;
+    pf_o3.radius = 0.3;
+    pf_o3.spread = 0.5;
+
+    pf_o4.x = 1.25;
+    pf_o4.y = 0.0;
+    pf_o4.gain = 1.0;
+    pf_o4.radius = 0.3;
+    pf_o4.spread = 0.5;
 }
 
 //leis de controle: omniant1 + omniant2 + quad1 (ganhos dinamicos)
@@ -140,32 +168,14 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_q1.y = (double) msg->pose.pose.position.y;
     pf_q1.z = (double) msg->pose.pose.position.z;
     pf_p3_yaw = msg->pose.pose.orientation.w;
-/*
-    retorno.x = (double) msg->pose.pose.orientation.x;
-    retorno.y = (double) msg->pose.pose.orientation.y;
-    retorno.z = (double) msg->pose.pose.orientation.z;
-    retorno.w = (double) msg->pose.pose.orientation.w;
-
-    // the incoming geometry_msgs::Quaternion is transformed to a tf::Quaterion
-    tf::Quaternion quat;
-    tf::quaternionMsgToTF(retorno, quat);
-
-    // the tf::Quaternion has a method to acess roll pitch and yaw
-    double roll, pitch, yaw;
-    tf::Matrix3x3(quat).getRPY(roll, pitch, yaw);
-    pf_p3_yaw = yaw;
-*/
+    
     PotentialField temp = consensus();
     temp.add(pf_r1.repForce(pf_o1, pf_q1));
     temp.add(pf_r1.repForce(pf_o2, pf_q1));
     temp.add(pf_r1.repForce(pf_o3, pf_q1));
     temp.add(pf_r1.repForce(pf_o4, pf_q1));
-    temp.add(pf_r1.repForce(pf_o5, pf_q1));
+    //temp.add(pf_r1.repForce(pf_o5, pf_q1));
 
-    //PotentialField temp;
-    //temp.add(temp.attForce(pf_r1, pf_q1));
-    //temp.x = temp.x * cos(pf_p3_yaw) + temp.y * sin(pf_p3_yaw);
-    //temp.y = -temp.x * sin(pf_p3_yaw) + temp.y * cos(pf_p3_yaw);
 /*
     //saturacao
     rx = abs(temp.x / max_accxy);
@@ -221,6 +231,8 @@ int main(int argc, char **argv)
 
     // iniciando parametros
     initParams();
+    initTrees();
+    //initNarrow();
 
     // iniciando subscribers
     sub_p1 = n.subscribe("/odom_p1", 10, p1_Callback);
