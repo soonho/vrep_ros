@@ -170,11 +170,12 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p3_yaw = msg->pose.pose.orientation.w;
     
     PotentialField temp = consensus();
-    temp.add(pf_r1.repForce(pf_o1, pf_q1));
-    temp.add(pf_r1.repForce(pf_o2, pf_q1));
-    temp.add(pf_r1.repForce(pf_o3, pf_q1));
-    temp.add(pf_r1.repForce(pf_o4, pf_q1));
-    //temp.add(pf_r1.repForce(pf_o5, pf_q1));
+    //para forest
+//    temp.add(pf_r1.repForce(pf_o1, pf_q1));
+//    temp.add(pf_r1.repForce(pf_o2, pf_q1));
+//    temp.add(pf_r1.repForce(pf_o3, pf_q1));
+//    temp.add(pf_r1.repForce(pf_o4, pf_q1));
+//    temp.add(pf_r1.repForce(pf_o5, pf_q1));
 
 /*
     //saturacao

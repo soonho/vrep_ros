@@ -82,12 +82,42 @@ class PotentialField {
             deltaX = -obs.gain * (obs.spread + obs.radius - distance) * std::cos(psi);
             deltaY = -obs.gain * (obs.spread + obs.radius - distance) * std::sin(psi);
         } else {
-            deltaX = -copysign(1.0, std::cos(psi)) * 10;
-            deltaY = -copysign(1.0, std::sin(psi)) * 10;
+            deltaX = -copysign(1.0, std::cos(psi)) * 9999;
+            deltaY = -copysign(1.0, std::sin(psi)) * 9999;
         }
         temp.x = deltaX * gain_pf;
         temp.y = deltaY * gain_pf;
         temp.z = 0.0;
+        return temp;
+    }
+    
+    // calculo da forca exercida por um retangulo
+    PotentialField boxForce(PotentialField robot, double x1, double y1, double x2, double y2, double gain_pf = 1.0)
+    {
+        PotentialField temp;
+        PotentialField even_temp;
+        even_temp.gain = 1.0;
+        even_temp.radius = 0.2;
+        even_temp.spread = 0.4;
+        double now = x2;
+        while (now < x1) {
+            even_temp.x = now;
+            even_temp.y = y1;
+            temp.add(repForce(even_temp, robot));
+            even_temp.y = y2;
+            temp.add(repForce(even_temp, robot));
+            now += 0.1;
+        }
+        now = y2;
+        while (now < y1) {
+            even_temp.x = x1;
+            even_temp.y = now;
+            temp.add(repForce(even_temp, robot));
+            even_temp.x = x2;
+            temp.add(repForce(even_temp, robot));
+            now += 0.1;
+        }
+        
         return temp;
     }
 

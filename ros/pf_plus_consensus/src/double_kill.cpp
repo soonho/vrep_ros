@@ -120,6 +120,9 @@ void initNarrow() {
 //leis de controle: omniant1 + omniant2 + quad1 (ganhos dinamicos)
 PotentialField consensus() {
     PotentialField temp;
+//    double ux = gain_x * (1.0 * ((pf_r1.x + 0.50) - (pf_p2.x + 0.0))) - gain_vx * (pf_p2.vx);
+//    double uy = gain_y * (1.0 * ((pf_r1.y + 0.75) - (pf_p2.y + 0.0))) - gain_vy * (pf_p2.vy);
+//    double uz = gain_z * (target_z   - pf_p2.z)                                                                  - gain_vz * (pf_p1.vz);
     double ux = gain_x * (0.5 * ((pf_p1.x + 1.0) - (pf_p2.x + 0.0)) + 0.5 * ((pf_p3.x + 0.0) - (pf_p2.x + 0.0)) + 0.5 * ((pf_r1.x + 0.5) - (pf_p2.x + 0.0))) - gain_vx * (pf_p2.vx);
     double uy = gain_y * (0.5 * ((pf_p1.y + 0.5) - (pf_p2.y - 1.0)) + 0.5 * ((pf_p3.y + 1.0) - (pf_p2.y - 1.0)) + 0.5 * ((pf_r1.y + 0.5) - (pf_p2.y + 1.0))) - gain_vy * (pf_p2.vy);
     double uz = gain_z * (target_z   - pf_p2.z)                                                                  - gain_vz * (pf_p1.vz);
@@ -138,11 +141,15 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p2.z = (double) msg->pose.pose.position.z;
 
     PotentialField temp = consensus();
-    temp.add(pf_r1.repForce(pf_o1, pf_p2));
-    temp.add(pf_r1.repForce(pf_o2, pf_p2));
-    temp.add(pf_r1.repForce(pf_o3, pf_p2));
-    temp.add(pf_r1.repForce(pf_o4, pf_p2));
-    //temp.add(pf_r1.repForce(pf_o5, pf_p2));
+    //para forest
+//    temp.add(pf_r1.repForce(pf_o1, pf_p2));
+//    temp.add(pf_r1.repForce(pf_o2, pf_p2));
+//    temp.add(pf_r1.repForce(pf_o3, pf_p2));
+//    temp.add(pf_r1.repForce(pf_o4, pf_p2));
+//    temp.add(pf_r1.repForce(pf_o5, pf_p2));
+    temp.add(pf_p2.boxForce(pf_p2, 9.25, 2.02, 6.15, -2.17, 10));
+    temp.add(pf_p2.boxForce(pf_p2, 9.12, 7.72, 6.17, 3.35, 10));
+    temp.add(pf_p2.repForce(pf_p3, pf_p2));
 
     retorno.x = temp.x;
     retorno.y = temp.y;
