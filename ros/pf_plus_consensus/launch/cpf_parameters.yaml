@@ -1,5 +1,5 @@
-/pf/goal_x:          3.5
-/pf/goal_y:          2.5
+/pf/goal_x:          0.0
+/pf/goal_y:          4.0
 /pf/goal_z:          0
 /pf/goal_gain:       1.0
 /pf/goal_radius:     0.0
@@ -12,4 +12,6 @@
 /pf/gain_vy:         0.24
 /pf/gain_vz:         0.15
 /pf/gain_vyaw:       0.15
-/pf/gain_pf:         20.0
+/pf/gain_pf:         1.0
+/pf/gain_con:        1.0
+/pf/method:          3

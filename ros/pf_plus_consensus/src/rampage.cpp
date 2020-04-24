@@ -34,20 +34,31 @@ nav_msgs::Odometry retorno;
 int sequencer = 0;
 
 //parametros para ganhos
-float gain_x    = 0.15;
-float gain_y    = 0.15;
-float gain_z    = 0.05;
-float gain_yaw  = 0.3;
-float gain_vx   = 0.24;
-float gain_vy   = 0.24;
-float gain_vz   = 0.15;
+float gain_x = 0.15;
+float gain_y = 0.15;
+float gain_z = 0.05;
+float gain_yaw = 0.3;
+float gain_vx = 0.24;
+float gain_vy = 0.24;
+float gain_vz = 0.15;
 float gain_vyaw = 0.15;
-float gain_pf   = 1.0;
-float target_z  = 1.0;
+float gain_pf = 1.0;
+float gain_con = 1.0;
+float target_z = 1.0;
+
+//parametros para limitadores e offsets
+float max_accxy = 0.3;
+float max_accz = 0.5;
+float min_accz = 0.465;
+float max_uyaw = 0.8;
+float offset_z = 0.465;
+float offset_yaw = 0.5;
+
+int method = 0;
 
 //inicializacao dos objetos
-void initParams() 
-{
+
+void initParams() {
 }
 
 void initTrees() {
@@ -108,8 +119,7 @@ void initNarrow() {
     pf_o4.spread = 0.5;
 }
 
-void p1_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
-{
+void p1_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     pf_p1.x = (double) msg->pose.pose.position.x;
     pf_p1.y = (double) msg->pose.pose.position.y;
     pf_p1.z = (double) msg->pose.pose.position.z;
@@ -118,8 +128,7 @@ void p1_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p1.vz = (double) msg->twist.twist.linear.z;
 }
 
-void p2_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
-{
+void p2_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     pf_p2.x = (double) msg->pose.pose.position.x;
     pf_p2.y = (double) msg->pose.pose.position.y;
     pf_p2.z = (double) msg->pose.pose.position.z;
@@ -128,8 +137,7 @@ void p2_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p2.vz = (double) msg->twist.twist.linear.z;
 }
 
-void p3_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
-{
+void p3_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     pf_p3.x = (double) msg->pose.pose.position.x;
     pf_p3.y = (double) msg->pose.pose.position.y;
     pf_p3.z = (double) msg->pose.pose.position.z;
@@ -138,8 +146,7 @@ void p3_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_p3.vz = (double) msg->twist.twist.linear.z;
 }
 
-void q1_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
-{
+void q1_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     pf_q1.x = (double) msg->pose.pose.position.x;
     pf_q1.y = (double) msg->pose.pose.position.y;
     pf_q1.z = (double) msg->pose.pose.position.z;
@@ -148,29 +155,25 @@ void q1_Callback(const nav_msgs::Odometry::ConstPtr& msg)
     pf_q1.vz = (double) msg->twist.twist.linear.z;
 }
 
-void o1_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
-{
+void o1_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     pf_o1.x = (double) msg->pose.pose.position.x;
     pf_o1.y = (double) msg->pose.pose.position.y;
     pf_o1.z = (double) msg->pose.pose.position.z;
 }
 
-void o2_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
-{
+void o2_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     pf_o2.x = (double) msg->pose.pose.position.x;
     pf_o2.y = (double) msg->pose.pose.position.y;
     pf_o2.z = (double) msg->pose.pose.position.z;
 }
 
-void o3_Callback(const nav_msgs::Odometry::ConstPtr& msg) 
-{
+void o3_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     pf_o3.x = (double) msg->pose.pose.position.x;
     pf_o3.y = (double) msg->pose.pose.position.y;
     pf_o3.z = (double) msg->pose.pose.position.z;
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     ros::init(argc, argv, "first_blood");
     ros::NodeHandle n;
 
@@ -186,23 +189,26 @@ int main(int argc, char **argv)
 
     // inicializando advertisers
     pub_r1 = n.advertise<nav_msgs::Odometry>("/odom_r1", 10);
-    
+
     initParams();
-    initTrees();
-//    initNarrow();
+    //    initTrees();
+    initNarrow();
 
     ros::Rate loop_rate(20);
 
     while (ros::ok()) {
         ros::spinOnce();
 
-        pf_r1.x  = 0;
-        pf_r1.y  = 0;
-        pf_r1.z  = 0;
+        pf_r1.x = 0;
+        pf_r1.y = 0;
+        pf_r1.z = 0;
 
-        pf_r1.x  = (pf_p1.x - 0.5 + pf_p2.x + 0.5 + pf_p3.x + 0.5) / 3;
-        pf_r1.y  = (pf_p1.y - 0.0 + pf_p2.y + 0.5 + pf_p3.y + 0.5) / 3;
-        pf_r1.z  = 0;
+        //        pf_r1.x = (pf_p1.x - 0.5 + pf_p2.x + 0.5 + pf_p3.x + 0.5) / 3;
+        //        pf_r1.y = (pf_p1.y - 0.0 + pf_p2.y + 0.5 + pf_p3.y + 0.5) / 3;
+        //        pf_r1.z = 0;
+        pf_r1.x = pf_p1.x;
+        pf_r1.y = pf_p1.y;
+        pf_r1.z = 0;
 
         //coleta dos parametros do ROS
         n.getParam("/pf/goal_x", goal.x);
@@ -210,6 +216,7 @@ int main(int argc, char **argv)
         n.getParam("/pf/goal_gain", goal.gain);
         n.getParam("/pf/goal_radius", goal.radius);
         n.getParam("/pf/goal_spread", goal.spread);
+        n.getParam("/pf/method", method);
 
         n.getParam("/pf/gain_x", gain_x);
         n.getParam("/pf/gain_y", gain_y);
@@ -220,8 +227,25 @@ int main(int argc, char **argv)
         n.getParam("/pf/gain_vz", gain_vz);
         n.getParam("/pf/gain_vyaw", gain_vyaw);
         n.getParam("/pf/gain_pf", gain_pf);
+        n.getParam("/pf/gain_con", gain_con);
 
         pf_r1.add(pf_r1.attForce(goal, pf_r1, 10.0));
+        pf_r1.saturate(max_accxy);
+
+        PotentialField rep;
+        if (method == 3) {
+            PotentialField q2, q3;
+            q2.x = 2.75;
+            q2.y = 1.10;
+            q3.x = -3.25;
+            q3.y = 1.10;
+            if (rep.doIntersect(pf_q1, goal, q2, q3)) {
+                rep.add(pf_r1.rotateBoxForce(pf_r1, 3.00, 1.00, -3.00, 1.20));
+            } else {
+                rep.add(pf_r1.boxForce(pf_r1, 3.00, 1.00, -3.00, 1.20));
+            }
+        }
+        rep.saturate(max_accxy);
         //pf_r1.add(pf_r1.repForce(pf_o1, pf_r1));
         //pf_r1.add(pf_r1.repForce(pf_o2, pf_r1));
         //pf_r1.add(pf_r1.repForce(pf_o3, pf_r1));
@@ -231,8 +255,8 @@ int main(int argc, char **argv)
         retorno.child_frame_id = "frame_car";
         retorno.header.seq = sequencer++;
         retorno.header.frame_id = "world";
-        retorno.pose.pose.position.x = pf_r1.x;
-        retorno.pose.pose.position.y = pf_r1.y;
+        retorno.pose.pose.position.x = gain_pf * (pf_r1.x + rep.x);
+        retorno.pose.pose.position.y = gain_pf * (pf_r1.y + rep.y);
         retorno.pose.pose.position.z = 0.0;
 
         pub_r1.publish(retorno);
