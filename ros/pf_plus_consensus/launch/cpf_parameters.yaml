@@ -12,6 +12,6 @@
 /pf/gain_vy:         0.24
 /pf/gain_vz:         0.15
 /pf/gain_vyaw:       0.15
-/pf/gain_pf:         1.0
+/pf/gain_pf:         2.0
 /pf/gain_con:        1.0
 /pf/method:          3

@@ -176,8 +176,8 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     PotentialField con = consensus();
     con.saturate(max_accxy);
 
-    PotentialField att = pf_q1.attForce(goal, pf_q1, 1.0);
-    att.saturate(max_accxy);
+//    PotentialField att = pf_q1.attForce(goal, pf_q1, 1.0);
+//    att.saturate(max_accxy);
 
     PotentialField rep;
     //para forest
@@ -191,21 +191,23 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     //para wall
     if (method == 3) {
         PotentialField q2, q3;
-        q2.x = 2.75;
+        q2.x = 3.5;
         q2.y = 1.10;
-        q3.x = -3.25;
+        q3.x = -3.5;
         q3.y = 1.10;
         if (rep.doIntersect(pf_q1, goal, q2, q3)) {
-            rep.add(pf_q1.rotateBoxForce(pf_q1, 3.00, 1.00, -3.00, 1.20));
+            rep.add(pf_q1.rotateBoxForce(pf_q1, 3.50, 1.00, -3.50, 1.20));
         } else {
-            rep.add(pf_q1.boxForce(pf_q1, 3.00, 1.00, -3.00, 1.20));
+            rep.add(pf_q1.boxForce(pf_q1, 3.50, 1.00, -3.50, 1.20));
         }
     }
     //saturacao
     rep.saturate(max_accxy);
 
-    retorno.x = gain_pf * (att.x + rep.x) + gain_con * con.x;
-    retorno.y = gain_pf * (att.y + rep.y) + gain_con * con.y;
+    retorno.x = gain_pf * rep.x + gain_con * con.x;
+    retorno.y = gain_pf * rep.y + gain_con * con.y;
+//    retorno.x = gain_pf * (att.x + rep.x) + gain_con * con.x;
+//    retorno.y = gain_pf * (att.y + rep.y) + gain_con * con.y;
     retorno.z = 0.0;
     retorno.w = 0.0;
 

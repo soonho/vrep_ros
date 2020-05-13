@@ -235,14 +235,14 @@ int main(int argc, char **argv) {
         PotentialField rep;
         if (method == 3) {
             PotentialField q2, q3;
-            q2.x = 2.75;
+            q2.x = 3.5;
             q2.y = 1.10;
-            q3.x = -3.25;
+            q3.x = -3.5;
             q3.y = 1.10;
             if (rep.doIntersect(pf_q1, goal, q2, q3)) {
-                rep.add(pf_r1.rotateBoxForce(pf_r1, 3.00, 1.00, -3.00, 1.20));
+                rep.add(pf_r1.rotateBoxForce(pf_r1, 3.50, 1.00, -3.50, 1.20));
             } else {
-                rep.add(pf_r1.boxForce(pf_r1, 3.00, 1.00, -3.00, 1.20));
+                rep.add(pf_r1.boxForce(pf_r1, 3.50, 1.00, -3.50, 1.20));
             }
         }
         rep.saturate(max_accxy);

@@ -185,7 +185,7 @@ int main(int argc, char **argv)
         n.getParam("/pf/gain_pf", gain_pf);
 
         pf_r1.add(pf_r1.attForce(goal, pf_p1, 10.0));
-        pf_r1.add(pf_r1.repForceWall(wall, pf_p1, 10.0));
+//        pf_r1.add(pf_r1.repForceWall(wall, pf_p1, 10.0));
         //pf_r1.add(pf_r1.repForce(pf_o1, pf_r1));
         //pf_r1.add(pf_r1.repForce(pf_o2, pf_r1));
         //pf_r1.add(pf_r1.repForce(pf_o3, pf_r1));
@@ -197,7 +197,7 @@ int main(int argc, char **argv)
         retorno.pose.pose.position.y = pf_r1.y;
         retorno.pose.pose.position.z = 0.0;
 
-        pub_r1.publish(retorno);
+//        pub_r1.publish(retorno);
 
         loop_rate.sleep();
     }

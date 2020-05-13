@@ -58,11 +58,11 @@ int method = 0;
 
 void initParams() {
     pf_p2.gain = 1.0;
-    pf_p2.radius = 0.4;
+    pf_p2.radius = 0.2;
     pf_p2.spread = 0.5;
 
     pf_p1.gain = 1.0;
-    pf_p1.radius = 0.4;
+    pf_p1.radius = 0.2;
     pf_p1.spread = 0.5;
 
     pf_q1.gain = 1.0;
@@ -132,8 +132,8 @@ void initNarrow() {
 
 PotentialField consensus() {
     PotentialField temp;
-    double ux = gain_x * (0.5 * ((pf_p1.x + 1.0) - (pf_p3.x + 0.0)) + 0.5 * ((pf_p2.x + 0.0) - (pf_p3.x + 0.0)) + 0.5 * ((pf_q1.x + 0.5) - (pf_p3.x + 0.0))) - gain_vx * (pf_p3.vx);
-    double uy = gain_y * (0.5 * ((pf_p1.y - 0.5) - (pf_p3.y + 1.0)) + 0.5 * ((pf_p2.y - 1.0) - (pf_p3.y + 1.0)) + 0.5 * ((pf_q1.y - 0.5) - (pf_p3.y - 1.0))) - gain_vy * (pf_p3.vy);
+    double ux = gain_x * (0.5 * ((pf_p1.x + 1.0) - (pf_p3.x + 0.0)) + 1.5 * ((pf_p2.x + 0.0) - (pf_p3.x + 0.0)) + 0.5 * ((pf_q1.x + 0.5) - (pf_p3.x + 0.0))) - gain_vx * (pf_p3.vx);
+    double uy = gain_y * (0.5 * ((pf_p1.y - 0.5) - (pf_p3.y + 1.0)) + 1.5 * ((pf_p2.y - 1.0) - (pf_p3.y + 1.0)) + 0.5 * ((pf_q1.y - 0.5) - (pf_p3.y - 1.0))) - gain_vy * (pf_p3.vy);
     double uz = gain_z * (target_z - pf_p3.z) - gain_vz * (pf_p1.vz);
     //uyaw = gain_yaw * (0.5 * ((omniant1_yaw - 0.0) - (quad1_yaw - 0.0)) + 0.5 * ((omniant2_yaw - 0.0) - (quad1_yaw - 0.0))) - gain_vyaw * (quad1_vyaw);
 
@@ -167,14 +167,14 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     }
     if (method == 3) {
         PotentialField q2, q3;
-        q2.x = 2.75;
+        q2.x = 3.5;
         q2.y = 1.10;
-        q3.x = -3.25;
+        q3.x = -3.5;
         q3.y = 1.10;
         if (rep.doIntersect(pf_p3, goal, q2, q3)) {
-            rep.add(pf_p3.rotateBoxForce(pf_p3, 3.00, 1.00, -3.00, 1.20));
+            rep.add(pf_p3.rotateBoxForce(pf_p3, 3.50, 1.00, -3.50, 1.20));
         } else {
-            rep.add(pf_p3.boxForce(pf_p3, 3.00, 1.00, -3.00, 1.20));
+            rep.add(pf_p3.boxForce(pf_p3, 3.50, 1.00, -3.50, 1.20));
         }
         rep.add(pf_p3.repForce(pf_p2, pf_p3));
         rep.add(pf_p3.repForce(pf_p1, pf_p3));

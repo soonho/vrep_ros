@@ -58,11 +58,11 @@ int method = 0;
 
 void initParams() {
     pf_p1.gain = 1.0;
-    pf_p1.radius = 0.4;
+    pf_p1.radius = 0.2;
     pf_p1.spread = 0.5;
 
     pf_p3.gain = 1.0;
-    pf_p3.radius = 0.4;
+    pf_p3.radius = 0.2;
     pf_p3.spread = 0.5;
 
     pf_q1.gain = 1.0;
@@ -151,6 +151,9 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     PotentialField con = consensus();
     con.saturate(max_accxy);
 
+    PotentialField att = pf_p2.attForce(goal, pf_p2, 1.0);
+    att.saturate(max_accxy/2);
+
     PotentialField rep; // = consensus();
     //para forest
     if (method == 1) {
@@ -167,22 +170,24 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     }
     if (method == 3) {
         PotentialField q2, q3;
-        q2.x = 2.75;
+        q2.x = 3.5;
         q2.y = 1.10;
-        q3.x = -3.25;
+        q3.x = -3.5;
         q3.y = 1.10;
         if (rep.doIntersect(pf_p2, goal, q2, q3)) {
-            rep.add(pf_p2.rotateBoxForce(pf_p2, 3.00, 1.00, -3.00, 1.20));
+            rep.add(pf_p2.rotateBoxForce(pf_p2, 3.50, 1.00, -3.50, 1.20));
         } else {
-            rep.add(pf_p2.boxForce(pf_p2, 3.00, 1.00, -3.00, 1.20));
+            rep.add(pf_p2.boxForce(pf_p2, 3.50, 1.00, -3.50, 1.20));
         }
-        rep.add(pf_p2.repForce(pf_p3, pf_p2));
-        rep.add(pf_p2.repForce(pf_p1, pf_p2));
+//        rep.add(pf_p2.repForce(pf_p3, pf_p2));
+//        rep.add(pf_p2.repForce(pf_p1, pf_p2));
     }
     rep.saturate(max_accxy);
 
-    retorno.x = gain_pf * rep.x + gain_con * con.x;
-    retorno.y = gain_pf * rep.y + gain_con * con.y;
+    retorno.x = gain_pf * (att.x + rep.x) + gain_con * con.x;
+    retorno.y = gain_pf * (att.y + rep.y) + gain_con * con.y;
+//    retorno.x = gain_pf * rep.x + gain_con * con.x;
+//    retorno.y = gain_pf * rep.y + gain_con * con.y;
     retorno.z = 0.0;
     retorno.w = 0.0;
 
