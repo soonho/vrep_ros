@@ -143,8 +143,17 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
         rep.add(pf_r1.repForce(pf_o5, pf_p1));
     }
     if (method == 2) {
-        rep.add(pf_p1.boxForce(pf_p1, 9.25, 2.02, 6.15, -2.17));
-        rep.add(pf_p1.boxForce(pf_p1, 9.12, 7.72, 6.17, 3.35));
+        PotentialField q2, q3;
+        q2.x = 0.22;
+        q2.y = 0.20;
+        q3.x = -5.87;
+        q3.y = 0.20;
+        if (rep.doIntersect(pf_p1, goal, q2, q3)) {
+            rep.add(pf_p1.rotateBoxForce(pf_p1, 0.22, 0.20, -5.87, 1.30));
+        } else {
+            rep.add(pf_p1.boxForce(pf_p1, 7.25, 0.20, 1.10, 1.30));
+            rep.add(pf_p1.boxForce(pf_p1, 0.22, 0.20, -5.87, 1.30));
+        }
     }
     if (method == 3) {
         PotentialField q2, q3;
@@ -157,8 +166,6 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
         } else {
             rep.add(pf_p1.boxForce(pf_p1, 3.50, 1.00, -3.00, 1.20));
         }
-//        rep.add(pf_p1.repForce(pf_p2, pf_p1));
-//        rep.add(pf_p1.repForce(pf_p3, pf_p1));
     }
 //    rep.saturate(max_accxy);
 
@@ -166,13 +173,13 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     retorno.y = gain_pf * (att.y + rep.y) + gain_con * con.y;
     retorno.z = 0.0;
     retorno.w = 0.0;
-    
+
     rep.x = retorno.x;
     rep.y = retorno.y;
-    rep.saturate(max_accxy);
+        rep.saturate(max_accxy);
     retorno.x = rep.x;
     retorno.y = rep.y;
-    
+
     pub_p1.publish(retorno);
 }
 
@@ -251,13 +258,13 @@ int main(int argc, char **argv) {
 
     // iniciando subscribers
     sub_p1 = n.subscribe("/odom_p1", 10, robot_Callback);
-//    sub_p2 = n.subscribe("/odom_p2", 10, p2_Callback);
-//    sub_p3 = n.subscribe("/odom_p3", 10, p3_Callback);
+    //    sub_p2 = n.subscribe("/odom_p2", 10, p2_Callback);
+    //    sub_p3 = n.subscribe("/odom_p3", 10, p3_Callback);
     sub_q1 = n.subscribe("/odom_q1", 10, q1_Callback);
-//    sub_q1 = n.subscribe("/odom_r1", 10, r1_Callback);
-//    sub_o1 = n.subscribe("/obst_01", 10, o1_Callback);
-//    sub_o2 = n.subscribe("/obst_02", 10, o2_Callback);
-//    sub_o3 = n.subscribe("/obst_03", 10, o3_Callback);
+    //    sub_q1 = n.subscribe("/odom_r1", 10, r1_Callback);
+    //    sub_o1 = n.subscribe("/obst_01", 10, o1_Callback);
+    //    sub_o2 = n.subscribe("/obst_02", 10, o2_Callback);
+    //    sub_o3 = n.subscribe("/obst_03", 10, o3_Callback);
     ROS_INFO("Control for robot_01: online. First blood.");
 
     // inicializando advertisers
