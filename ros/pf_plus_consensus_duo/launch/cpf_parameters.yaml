@@ -1,5 +1,5 @@
 /pf/goal_x:          0.0
-/pf/goal_y:          -4.0
+/pf/goal_y:          4.0
 /pf/goal_z:          0
 /pf/goal_gain:       1.0
 /pf/goal_radius:     0.2
@@ -14,4 +14,8 @@
 /pf/gain_vyaw:       0.15
 /pf/gain_pf:         1.0
 /pf/gain_con:        1.0
-/pf/method:          2
+/pf/method:          3 
+#1-forest, 2-narrow, 3- walls
+#0,-4; 0,-4;
+/pf/delay:           0.0
+/pf/max_accxy:       1.5

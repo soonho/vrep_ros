@@ -53,6 +53,7 @@ float min_accz = 0.465;
 float max_uyaw = 0.8;
 float offset_z = 0.465;
 float offset_yaw = 0.5;
+float delay = 0.1;
 
 int method = 0;
 
@@ -77,31 +78,31 @@ void initTrees() {
     pf_o1.y = -0.67;
     pf_o1.gain = 1.0;
     pf_o1.radius = 0.3;
-    pf_o1.spread = 0.4;
+    pf_o1.spread = 0.7;
 
     pf_o2.x = -1.95;
     pf_o2.y = 2.21;
     pf_o2.gain = 1.0;
     pf_o2.radius = 0.3;
-    pf_o2.spread = 0.4;
+    pf_o2.spread = 0.7;
 
     pf_o3.x = 0.04;
     pf_o3.y = -1.93;
     pf_o3.gain = 1.0;
     pf_o3.radius = 0.3;
-    pf_o3.spread = 0.4;
+    pf_o3.spread = 0.7;
 
     pf_o4.x = 0.57;
     pf_o4.y = 0.66;
     pf_o4.gain = 1.0;
     pf_o4.radius = 0.3;
-    pf_o4.spread = 0.4;
+    pf_o4.spread = 0.7;
 
     pf_o5.x = 3.09;
     pf_o5.y = -0.88;
     pf_o5.gain = 1.0;
     pf_o5.radius = 0.3;
-    pf_o5.spread = 0.4;
+    pf_o5.spread = 0.7;
 }
 
 //leis de controle: omniant1 + omniant2 + quad1 (ganhos dinamicos)
@@ -179,7 +180,7 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
         rep.saturate(max_accxy);
     retorno.x = rep.x;
     retorno.y = rep.y;
-
+    ros::Duration(delay).sleep();
     pub_p1.publish(retorno);
 }
 
@@ -255,6 +256,8 @@ int main(int argc, char **argv) {
     n.getParam("/pf/method", method);
     n.getParam("/pf/gain_con", gain_con);
     n.getParam("/pf/gain_pf", gain_pf);
+    n.getParam("/pf/delay", delay);
+    n.getParam("/pf/max_accxy", max_accxy);
 
     // iniciando subscribers
     sub_p1 = n.subscribe("/odom_p1", 10, robot_Callback);

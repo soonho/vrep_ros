@@ -113,7 +113,7 @@ public:
             deltaY = -copysign(1.0, std::sin(psi)) * 9999;
         }
 
-        psi = -0.75 * (PI / 2); //std::atan2(deltaY, deltaX) + (PI / 2);
+        psi = -1.0 * (PI / 2); //std::atan2(deltaY, deltaX) + (PI / 2);
         temp.x = ((deltaX * std::cos(psi) - deltaY * std::sin(psi))) * gain_pf;
         temp.y = ((deltaX * std::sin(psi) + deltaY * std::cos(psi))) * gain_pf;
         temp.z = 0.0;
@@ -127,7 +127,7 @@ public:
         PotentialField temp;
         PotentialField even_temp;
         even_temp.gain = 1.0;
-        even_temp.radius = 0.25;
+        even_temp.radius = 0.50;
         even_temp.spread = 1.0;
         double now = x2;
         while (now < x1) {
@@ -156,8 +156,8 @@ public:
         PotentialField temp;
         PotentialField even_temp;
         even_temp.gain = 1.0;
-        even_temp.radius = 0.25;
-        even_temp.spread = 1.0;
+        even_temp.radius = 0.15;
+        even_temp.spread = 0.15;
         double now = x2;
         while (now < x1) {
             even_temp.x = now;

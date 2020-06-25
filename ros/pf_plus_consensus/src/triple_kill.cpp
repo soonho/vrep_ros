@@ -53,20 +53,21 @@ float min_accz = 0.465;
 float max_uyaw = 0.8;
 float offset_z = 0.465;
 float offset_yaw = 0.5;
+float delay = 0.1;
 
 int method = 0;
 
 void initParams() {
     pf_p2.gain = 1.0;
-    pf_p2.radius = 0.2;
+    pf_p2.radius = 0.4;
     pf_p2.spread = 0.5;
 
     pf_p1.gain = 1.0;
-    pf_p1.radius = 0.2;
+    pf_p1.radius = 0.4;
     pf_p1.spread = 0.5;
 
     pf_q1.gain = 1.0;
-    pf_q1.radius = 0.2;
+    pf_q1.radius = 0.4;
     pf_q1.spread = 0.5;
 }
 
@@ -149,7 +150,7 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     pf_p3.z = (double) msg->pose.pose.position.z;
 
     PotentialField con = consensus();
-    con.saturate(max_accxy);
+//    con.saturate(max_accxy);
 
     PotentialField rep; // = consensus();
     //para forest
@@ -179,12 +180,20 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
         rep.add(pf_p3.repForce(pf_p2, pf_p3));
         rep.add(pf_p3.repForce(pf_p1, pf_p3));
     }
-    rep.saturate(max_accxy);
+//    rep.saturate(max_accxy);
 
     retorno.x = gain_pf * rep.x + gain_con * con.x;
     retorno.y = gain_pf * rep.y + gain_con * con.y;
     retorno.z = 0.0;
     retorno.w = 0.0;
+
+    rep.x = retorno.x;
+    rep.y = retorno.y;
+        rep.saturate(max_accxy);
+    retorno.x = rep.x;
+    retorno.y = rep.y;
+    
+    ros::Duration(delay).sleep();
 
     pub_p1.publish(retorno);
 }
@@ -249,6 +258,8 @@ int main(int argc, char **argv) {
     n.getParam("/pf/method", method);
     n.getParam("/pf/gain_con", gain_con);
     n.getParam("/pf/gain_pf", gain_pf);
+    n.getParam("/pf/delay", delay);
+    n.getParam("/pf/max_accxy", max_accxy);
 
     // iniciando subscribers
     sub_p1 = n.subscribe("/odom_p1", 10, p1_Callback);

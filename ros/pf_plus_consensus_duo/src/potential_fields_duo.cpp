@@ -127,7 +127,7 @@ public:
         PotentialField temp;
         PotentialField even_temp;
         even_temp.gain = 1.0;
-        even_temp.radius = 0.25;
+        even_temp.radius = 0.50;
         even_temp.spread = 1.0;
         double now = x2;
         while (now < x1) {

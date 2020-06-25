@@ -72,6 +72,7 @@ float min_accz = 0.465;
 float max_uyaw = 0.8;
 float offset_z = 0.465;
 float offset_yaw = 0.5;
+float delay = 100;
 
 //variaveis para o calculo de saturacao
 float rmax = 0, rx = 0, ry = 0, rz = 0, ryaw = 0, pf_p3_yaw = 0;
@@ -216,7 +217,8 @@ void robot_Callback(const nav_msgs::Odometry::ConstPtr& msg) {
     rep.saturate(max_accxy);
     retorno.x = rep.x;
     retorno.y = rep.y;
-
+    
+    ros::Duration(delay).sleep();
     pub_p1.publish(retorno);
 }
 
@@ -262,6 +264,8 @@ int main(int argc, char **argv) {
     n.getParam("/pf/method", method);
     n.getParam("/pf/gain_con", gain_con);
     n.getParam("/pf/gain_pf", gain_pf);
+    n.getParam("/pf/delay", delay);
+    n.getParam("/pf/max_accxy", max_accxy);
 
     // iniciando subscribers
     sub_p1 = n.subscribe("/odom_p1", 10, p1_Callback);
